@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta content="" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <title>
+            Auxiliar administrativo
+        </title>
+        <!--  Normalize V8.0.1 -->
+        <link rel="stylesheet" href="./css/normalize.css" />
+        <!--  Bootstrap V4.3 -->
+        <link rel="stylesheet" href="./css/bootstrap.min.css" />
+        <!--  Bootstrap Material Design V4.0 -->
+        <link rel="stylesheet" href="./css/bootstrap-material-design.min.css" />
+        <!--  Font Awesome V5.9.0 -->
+        <link rel="stylesheet" href="./css/all.css" />
+        <!--  Sweet Alerts V8.13.0 CSS file -->
+        <link rel="stylesheet" href="./css/sweetalert2.min.css" />
+        <!--  Sweet Alert V8.13.0 JS file --><script src="./js/sweetalert2.min.js"
+        type="text/javascript"></script>
+        <!--  jQuery Custom Content Scroller V3.1.5 -->
+        <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
+        <!--  General Styles -->
+        <link rel="stylesheet" href="./css/style.css" />
+    </h:head>
+    <h:body>
+        <!--  Main container -->
+        <!--  Nav lateral -->
+        <div class="full-box nav-lateral-bg show-nav-lateral"></div>
+        <div class="full-box nav-lateral-content">
+            <i class="far fa-times-circle show-nav-lateral"></i> <img
+                src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" /> Carlos
+            Alfaro <br /><small class="roboto-condensed-light">Auxiliar
+                administrativo</small>
+            <div class="full-box nav-lateral-bar"></div>
+            <ul>
+                <li>
+                    <a href="home.html"><i class="fab fa-dashcube fa-fw"></i>
+                        &nbsp; Dashboard</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i>
+                        &nbsp; Citas <i class="fas fa-chevron-down"></i></a>
+                    <ul>
+                        <li>
+                            <a href="client-new.html"><i class="fas fa-plus fa-fw"></i>
+                                &nbsp; Agregar Citas</a>
+                        </li>
+                        <li>
+                            <a href="client-list.html"><i
+                                    class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de
+                                Citas</a>
+                        </li>
+                        <li>
+                            <a href="client-search.html"><i class="fas fa-search fa-fw"></i>
+                                &nbsp; Buscar Citas</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="nav-btn-submenu"><i
+                            class="fas fa-pallet fa-fw"></i> &nbsp; Facturas <i
+                            class="fas fa-chevron-down"></i></a>
+                    <ul>
+                        <li>
+                            <a href="item-new.html"><i class="fas fa-plus fa-fw"></i>
+                                &nbsp; Agregar Facturas</a>
+                        </li>
+                        <li>
+                            <a href="item-list.html"><i
+                                    class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de
+                                Facturas</a>
+                        </li>
+                        <li>
+                            <a href="item-search.html"><i class="fas fa-search fa-fw"></i>
+                                &nbsp; Buscar Facturas</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="nav-btn-submenu"><i
+                            class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp; Producto
+                        <i class="fas fa-chevron-down"></i></a>
+                    <ul>
+                        <li>
+                            <a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i>
+                                &nbsp; Nuevo producto</a>
+                        </li>
+                        <li>
+                            <a href="reservation-list.html"><i
+                                    class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de
+                                producto</a>
+                        </li>
+                        <li>
+                            <a href="reservation-search.html"><i
+                                    class="fas fa-search-dollar fa-fw"></i> &nbsp; Buscar
+                                producto</a>
+                        </li>
+                        <li>
+                            <a href="reservation-pending.html"><i
+                                    class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; PrÃ©stamos
+                                producto</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="nav-btn-submenu"><i
+                            class="fas  fa-user-secret fa-fw"></i> &nbsp; Servicios <i
+                            class="fas fa-chevron-down"></i></a>
+                    <ul>
+                        <li>
+                            <a href="user-new.html"><i class="fas fa-plus fa-fw"></i>
+                                &nbsp; Nuevo Servicios</a>
+                        </li>
+                        <li>
+                            <a href="user-list.html"><i
+                                    class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de
+                                Servicios</a>
+                        </li>
+                        <li>
+                            <a href="user-search.html"><i class="fas fa-search fa-fw"></i>
+                                &nbsp; Buscar Servicios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="nav-btn-submenu"><i
+                            class="fas fa-store-alt fa-fw"></i> &nbsp; Pet match <i
+                            class="fas fa-chevron-down"></i></a>
+                    <ul>
+                        <li>
+                            <a href="client-new.html"><i class="fas fa-plus fa-fw"></i>
+                                &nbsp; Agregar Pet match</a>
+                        </li>
+                        <li>
+                            <a href="client-list.html"><i
+                                    class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de Pet
+                                match</a>
+                        </li>
+                        <li>
+                            <a href="client-search.html"><i class="fas fa-search fa-fw"></i>
+                                &nbsp; Buscar Pet match</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="float-left show-nav-lateral"> <i
+                class="fas fa-exchange-alt"></i> </a> <a href="../index.html">
+            <i class="fas fa-power-off"></i> </a>
+        <!--  <a href="../index.html" class="btn-exit-system"> <i class="fas
+         fa-power-off"></i> </a> -->
+        <!--  Page header -->
+        <div class="full-box page-header">
+            <h3 class="text-left">
+                <i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR
+                PRODUCTO
+            </h3>
+            <p class="text-justify">
+                <!--  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Laudantium quod harum vitae, fugit quo soluta. Molestias officiis
+                  voluptatum delectus doloribus at tempore, iste optio quam recusandae
+                  numquam non inventore dolor. -->
+            </p>
+        </div>
+        <div class="container-fluid">
+            <ul class="full-box list-unstyled page-nav-tabs">
+                <li>
+                    <a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i>
+                        &nbsp; NUEVO PRODUCTO</a>
+                </li>
+                <li>
+                    <a href="reservation-list.html"><i
+                            class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE
+                        PRODUCTO</a>
+                </li>
+                <li>
+                    <a href="reservation-search.html"><i
+                            class="fas fa-search-dollar fa-fw"></i> &nbsp; BUSCAR PRODUCTO</a>
+                </li>
+                <!--  <li> <a href="reservation-pending.html"><i class="fas
+                  fa-hand-holding-usd fa-fw"></i> &nbsp; PRÃSTAMOS PENDIENTES</a> </li> -->
+            </ul>
+        </div>
+        <!--  CONTENT -->
+        <div class="container-fluid">
+            <div class="container-fluid form-neon">
+                <div class="container-fluid">
+                    <div>
+                        <span class="roboto-medium">PRODUCTO</span>
+                        <!--  &nbsp; Carlos Alfaro -->
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-sm">
+                            <thead>
+                                <tr class="text-center roboto-medium">
+                                    <th>
+                                        Id
+                                    </th>
+                                    <th>
+                                        Id tipo producto
+                                    </th>
+                                    <th>
+                                        Nombre
+                                    </th>
+                                    <th>
+                                        DescripciÃ³n
+                                    </th>
+                                    <th>
+                                        TamaÃ±o
+                                    </th>
+                                    <th>
+                                        Color
+                                    </th>
+                                    <th>
+                                        Sabor
+                                    </th>
+                                    <th>
+                                        Precio
+                                    </th>
+                                    <th>
+                                        Codigo de brras
+                                    </th>
+                                    <th>
+                                        Nit Proveedor
+                                    </th>
+                                    <th>
+                                        Id inventario
+                                    </th>
+                                    <th>
+                                        Id marca producto
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        3
+                                    </td>
+                                    <td>
+                                        GlicopanPetGotasÂ 
+                                    </td>
+                                    <td>
+                                        Para nutricion inadecuada
+                                    </td>
+                                    <td>
+                                        30 Ml
+                                    </td>
+                                    <td>
+                                        NA
+                                    </td>
+                                    <td>
+                                        NA
+                                    </td>
+                                    <td>
+                                        31100
+                                    </td>
+                                    <td>
+                                        77056845114
+                                    </td>
+                                    <td>
+                                        90068932
+                                    </td>
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        2
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>
+                                        3
+                                    </td>
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        Guante Dog
+                                    </td>
+                                    <td>
+                                        Removedor de Pelo Muerto
+                                    </td>
+                                    <td>
+                                        Talla M
+                                    </td>
+                                    <td>
+                                        Azul
+                                    </td>
+                                    <td>
+                                        Griseofulvina
+                                    </td>
+                                    <td>
+                                        33500
+                                    </td>
+                                    <td>
+                                        99001007260
+                                    </td>
+                                    <td>
+                                        90068941
+                                    </td>
+                                    <td>
+                                        3
+                                    </td>
+                                    <td>
+                                        3
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <form action="">
+                    <fieldset>
+                        <legend>
+                            <i class="far fa-plus-square"></i> &nbsp; InformaciÃ³n
+                            del prestamo
+                        </legend>
+                        <div class="container-fluid">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="cliente_telefono" class="bmd-label-floating">Precio</label>
+                                            <input type="text" class="form-control"
+                                                   name="cliente_telefono" id="cliente_telefono"
+                                                   maxlength="20" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="cliente_telefono" class="bmd-label-floating">Nit
+                                                proveedor</label> <input type="text"
+                                                                     class="form-control" name="cliente_telefono"
+                                                                     id="cliente_telefono_" maxlength="20" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="cliente_nombre" class="bmd-label-floating">Color</label>
+                                            <input type="text" class="form-control"
+                                                   name="cliente_nombre" id="cliente_nombre" maxlength="40" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="cliente_nombre" class="bmd-label-floating">Sabor</label>
+                                            <input type="text" class="form-control"
+                                                   name="cliente_nombre" id="cliente_nombre_" maxlength="40" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="prestamo_observacion"
+                                                   class="bmd-label-floating">TamaÃ±o</label> <input
+                                                   type="text" class="form-control"
+                                                   name="prestamo_observacion" id="prestamo_observacion"
+                                                   maxlength="400" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="prestamo_observacion"
+                                                   class="bmd-label-floating">Codigo de barras</label>
+                                            <input type="text" class="form-control"
+                                                   name="prestamo_observacion" id="prestamo_observacion_"
+                                                   maxlength="400" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="prestamo_observacion"
+                                                   class="bmd-label-floating">DescripcciÃ³n</label>
+                                            <input type="text" class="form-control"
+                                                   name="prestamo_observacion" id="prestamo_observacion__"
+                                                   maxlength="400" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <br /><br /><br />
+                    <p class="text-center" style="margin-top: 40px;">
+                        <button type="submit" class="btn btn-raised btn-success btn-sm"><i
+                                class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <!--  ============================================= = Include JavaScript
+          files = ============================================== -->
+        <!--  jQuery V3.4.1 --><script src="./js/jquery-3.4.1.min.js"
+        type="text/javascript"></script>
+        <!--  popper --> <script src="./js/popper.min.js" type="text/javascript"
+        ></script>
+        <!--  Bootstrap V4.3 --> <script src="./js/bootstrap.min.js"
+        type="text/javascript"></script>
+        <!--  jQuery Custom Content Scroller V3.1.5 --> <script
+            src="./js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"
+        ></script>
+        <!--  Bootstrap Material Design V4.0 --> <script
+            src="./js/bootstrap-material-design.min.js" type="text/javascript"
+        ></script> <script type="text/javascript"
+        >//<![CDATA[$(document).ready(function() { $('body').bootstrapMaterialDesign(); });//]]></script><script
+        src="./js/main.js" type="text/javascript"></script>
+    </h:body>
+</html>

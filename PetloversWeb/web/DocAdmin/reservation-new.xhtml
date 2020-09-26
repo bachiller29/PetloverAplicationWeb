@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+   <h:head>
+      <meta content="" />
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+      <title>Administrador</title>
+      <!--  Normalize V8.0.1 -->
+      <link rel="stylesheet" href="./css/normalize.css" />
+      <!--  Bootstrap V4.3 -->
+      <link rel="stylesheet" href="./css/bootstrap.min.css" />
+      <!--  Bootstrap Material Design V4.0 -->
+      <link rel="stylesheet" href="./css/bootstrap-material-design.min.css" />
+      <!--  Font Awesome V5.9.0 -->
+      <link rel="stylesheet" href="./css/all.css" />
+      <!--  Sweet Alerts V8.13.0 CSS file -->
+      <link rel="stylesheet" href="./css/sweetalert2.min.css" />
+      <!--  Sweet Alert V8.13.0 JS file -->
+      <script src="./js/sweetalert2.min.js" type="text/javascript"  />
+      <!--  jQuery Custom Content Scroller V3.1.5 -->
+      <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
+      <!--  General Styles -->
+      <link rel="stylesheet" href="./css/style.css" />
+   </h:head>
+   <h:body>
+      <!--  Main container -->
+      <!--  Nav lateral -->
+      <div class="full-box nav-lateral-bg show-nav-lateral" />
+      <div class="full-box nav-lateral-content">
+         <i class="far fa-times-circle show-nav-lateral" />
+         <img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" />
+         Carlos
+      Alfaro
+         <br />
+         <small class="roboto-condensed-light">Administrador</small>
+         <div class="full-box nav-lateral-bar" />
+         <ul>
+            <li>
+               <a href="home.html">
+                  <i class="fab fa-dashcube fa-fw" />
+                  &nbsp; Dashboard
+               </a>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-users fa-fw" />
+                  &nbsp; Clientes
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="client-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Agregar Cliente
+                     </a>
+                  </li>
+                  <li>
+                     <a href="client-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              clientes
+                     </a>
+                  </li>
+                  <li>
+                     <a href="client-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        &nbsp; Buscar cliente
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-pallet fa-fw" />
+                  &nbsp; Proveedor
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="item-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Agregar Proveedor
+                     </a>
+                  </li>
+                  <li>
+                     <a href="item-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              Proveedor
+                     </a>
+                  </li>
+                  <li>
+                     <a href="item-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        &nbsp; Buscar Proveedor
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-file-invoice-dollar fa-fw" />
+                  &nbsp; Inventario
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="reservation-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Nuevo inventario
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              inventario
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-search.html">
+                        <i class="fas fa-search-dollar fa-fw" />
+                        &nbsp; Buscar
+              inventario
+                     </a>
+                  </li>
+                  <!--  <li> <a href="reservation-pending.html"><i class="fas
+              fa-hand-holding-usd fa-fw"></i> &nbsp; PrÃ©stamos inventario</a>
+              </li> -->
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas  fa-user-secret fa-fw" />
+                  &nbsp; Usuarios
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="user-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Nuevo usuario
+                     </a>
+                  </li>
+                  <li>
+                     <a href="user-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              usuarios
+                     </a>
+                  </li>
+                  <li>
+                     <a href="user-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        &nbsp; Buscar usuario
+                     </a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <a href="#" class="float-left show-nav-lateral">
+         <i class="fas fa-exchange-alt" />
+      </a>
+      <a href="../index.html">
+         <i class="fas fa-power-off" />
+      </a>
+      <!--  <a href="../index.html" class="btn-exit-system"> <i class="fas
+      fa-power-off"></i> </a> -->
+      <!--  Page header -->
+      <div class="full-box page-header">
+         <h3 class="text-left">
+            <i class="fas fa-plus fa-fw" />
+            &nbsp; NUEVO INVENTARIO
+         </h3>
+         <p class="text-justify">
+            <!--  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Laudantium quod harum vitae, fugit quo soluta. Molestias officiis
+          voluptatum delectus doloribus at tempore, iste optio quam recusandae
+          numquam non inventore dolor. -->
+         </p>
+      </div>
+      <div class="container-fluid">
+         <ul class="full-box list-unstyled page-nav-tabs">
+            <li>
+               <a class="active" href="reservation-new.html">
+                  <i class="fas fa-plus fa-fw" />
+                  &nbsp; NUEVO INVENTARIO
+               </a>
+            </li>
+            <li>
+               <a href="reservation-list.html">
+                  <i class="fas fa-clipboard-list fa-fw" />
+                  &nbsp; LISTA DE
+          INVENTARIO
+               </a>
+            </li>
+            <li>
+               <a href="reservation-search.html">
+                  <i class="fas fa-search-dollar fa-fw" />
+                  &nbsp; BUSCAR INVENTARIO
+               </a>
+            </li>
+            <!--  <li> <a href="reservation-pending.html"><i class="fas
+          fa-hand-holding-usd fa-fw"></i> &nbsp; PRÃSTAMOS PENDIENTES</a> </li> -->
+         </ul>
+      </div>
+      <!--  CONTENT -->
+      <div class="container-fluid">
+         <div class="container-fluid form-neon">
+            <div class="container-fluid">
+               <p class="text-center roboto-medium">AGREGAR PROVEEDOR O INVENTARIO</p>
+               <p class="text-center">
+                  <button type="button" class="btn btn-primary">
+                     <i class="fas fa-user-plus" />
+                     &nbsp; Agregar proveedor
+                  </button>
+                  <button type="button" class="btn btn-primary">
+                     <i class="fas fa-box-open" />
+                     &nbsp; Agregar INVENTARIO
+                  </button>
+               </p>
+               <div>
+                  <span class="roboto-medium">INVENTARIO:</span>
+                  <span class="text-danger">
+                     &nbsp;<i class="fas fa-exclamation-triangle" />
+                     Seleccione el inventario
+                  </span>
+                  <form action="" style="display: inline-block !important;">
+                     <!--  Carlos Alfaro -->
+                     <button type="button" class="btn btn-danger">
+                        <i class="fas fa-box-open" />
+                     </button>
+                  </form>
+               </div>
+               <div class="table-responsive">
+                  <table class="table table-dark table-sm">
+                     <thead>
+                        <tr class="text-center roboto-medium">
+                           <th>Id inventario</th>
+                           <th>Cantidad producto</th>
+                           <th>Id administrdor</th>
+                           <th>Id salida productos</th>
+                           <th>Id entrada productos</th>
+                           <th>ELIMINAR</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr class="text-center">
+                           <td>1</td>
+                           <td>10</td>
+                           <td>1</td>
+                           <td>10</td>
+                           <td>20</td>
+                           <td>
+                              <form action="">
+                                 <button type="button" class="btn btn-warning">
+                                    <i class="far fa-trash-alt" />
+                                 </button>
+                              </form>
+                           </td>
+                        </tr>
+                        <tr class="text-center">
+                           <td>2</td>
+                           <td>20</td>
+                           <td>1</td>
+                           <td>9</td>
+                           <td>30</td>
+                           <td>
+                              <form action="">
+                                 <button type="button" class="btn btn-warning">
+                                    <i class="far fa-trash-alt" />
+                                 </button>
+                              </form>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <form action="">
+               <fieldset>
+                  <legend>
+                     <i class="far fa-plus-square" />
+                     &nbsp; InformaciÃ³n
+              del inventario
+                  </legend>
+                  <!--  <div class="container-fluid"> <div class="row"> <div
+              class="col-12 col-md-4"> <div class="form-group"> <label
+              for="prestamo_fecha_inicio">Fecha de reserva</label> <input
+              type="date" class="form-control" name="prestamo_fecha_inicio"
+              id="admin-dni"> </div> </div> <div class="col-12 col-md-4"> <div
+              class="form-group"> <label for="prestamo_fecha_final">Fecha de
+              entrega</label> <input type="date" class="form-control"
+              name="prestamo_fecha_final" id="prestamo_fecha_final"> </div>
+              </div> <div class="col-12 col-md-4"> <div class="form-group">
+              <label for="prestamo_estado"
+              class="bmd-label-floating">Estado</label> <select
+              class="form-control" name="item_estado" id="item_estado"> <option
+              value="" selected="" disabled="">Seleccione una opciÃ³n</option>
+              <option value="Prestamo">PrÃ©stamo</option> <option
+              value="Reservacion">ReservaciÃ³n</option> <option
+              value="Finalizado">Finalizado</option> </select> </div> </div>
+              <div class="col-12 col-md-6"> <div class="form-group"> <label
+              for="prestamo_total" class="bmd-label-floating">Total a
+              pagar</label> <input type="text" pattern="[0-9.]{1,10}"
+              class="form-control" name="prestamo_total" id="prestamo_total"
+              maxlength="10"> </div> </div> <div class="col-12 col-md-6"> <div
+              class="form-group"> <label for="prestamo_pagado"
+              class="bmd-label-floating">Total depositado</label> <input
+              type="text" pattern="[0-9.]{1,10}" class="form-control"
+              name="prestamo_pagado" id="prestamo_pagado" maxlength="10"> </div>
+              </div> <div class="col-12"> <div class="form-group"> <label
+              for="prestamo_observacion"
+              class="bmd-label-floating">ObservaciÃ³n</label> <input type="text"
+              pattern="[a-zA-z0-9Ã¡Ã©Ã­Ã³ÃºÃÃÃÃÃÃ±Ã#() ]{1,400}"
+              class="form-control" name="prestamo_observacion"
+              id="prestamo_observacion" maxlength="400"> </div> </div> </div>
+              </div> -->
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-12 col-md-6">
+                           <div class="form-group">
+                              <label for="cliente_telefono" class="bmd-label-floating">Precio</label>
+                              <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono" maxlength="20" />
+                           </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                           <div class="form-group">
+                              <label for="cliente_telefono" class="bmd-label-floating">Nit
+                    proveedor</label>
+                              <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono_" maxlength="20" />
+                           </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                           <div class="form-group">
+                              <label for="cliente_nombre" class="bmd-label-floating">Color</label>
+                              <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre" maxlength="40" />
+                           </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                           <div class="form-group">
+                              <label for="cliente_nombre" class="bmd-label-floating">Sabor</label>
+                              <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre_" maxlength="40" />
+                           </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                           <div class="form-group">
+                              <label for="cliente_nombre" class="bmd-label-floating">Nombre</label>
+                              <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre__" maxlength="40" />
+                           </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                           <div class="form-group">
+                              <label for="prestamo_observacion" class="bmd-label-floating">TamaÃ±o</label>
+                              <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion" maxlength="400" />
+                           </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                           <div class="form-group">
+                              <label for="prestamo_observacion" class="bmd-label-floating">Codigo de barras</label>
+                              <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion_" maxlength="400" />
+                           </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                           <div class="form-group">
+                              <label for="prestamo_observacion" class="bmd-label-floating">DescripcciÃ³n</label>
+                              <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion__" maxlength="400" />
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </fieldset>
+               <br />
+               <br />
+               <br />
+               <p class="text-center" style="margin-top: 40px;">
+                  <button type="reset" class="btn btn-raised btn-secondary btn-sm">
+                     <i class="fas fa-paint-roller" />
+                     &nbsp; LIMPIAR
+                  </button>
+                  &nbsp; &nbsp;
+                  <button type="submit" class="btn btn-raised btn-info btn-sm">
+                     <i class="far fa-save" />
+                     &nbsp; GUARDAR
+                  </button>
+               </p>
+            </form>
+         </div>
+      </div>
+      <!--  MODAL CLIENTE -->
+      <div class="modal fade" id="ModalCliente">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="ModalCliente_">Agregar cliente</h5>
+                  <button type="button" class="close">
+                     <span>&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="container-fluid">
+                     <div class="form-group">
+                        <label for="agregar_cliente" class="bmd-label-floating">DNI,
+                Nombre, Apellido, Telefono</label>
+                        <input type="text" class="form-control" name="agregar_cliente" id="agregar_cliente" maxlength="30" />
+                     </div>
+                  </div>
+                  <br />
+                  <div class="container-fluid">
+                     <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-sm">
+                           <tbody>
+                              <tr class="text-center">
+                                 <td>000000000000 - Nombre del cliente</td>
+                                 <td>
+                                    <form action="">
+                                       <button type="button" class="btn btn-primary">
+                                          <i class="fas fa-user-plus" />
+                                       </button>
+                                    </form>
+                                 </td>
+                              </tr>
+                              <tr class="text-center">
+                                 <td>000000000000 - Nombre del cliente</td>
+                                 <td>
+                                    <form action="">
+                                       <button type="button" class="btn btn-primary">
+                                          <i class="fas fa-user-plus" />
+                                       </button>
+                                    </form>
+                                 </td>
+                              </tr>
+                              <tr class="text-center">
+                                 <td>000000000000 - Nombre del cliente</td>
+                                 <td>
+                                    <form action="">
+                                       <button type="button" class="btn btn-primary">
+                                          <i class="fas fa-user-plus" />
+                                       </button>
+                                    </form>
+                                 </td>
+                              </tr>
+                              <tr class="text-center">
+                                 <td>000000000000 - Nombre del cliente</td>
+                                 <td>
+                                    <form action="">
+                                       <button type="button" class="btn btn-primary">
+                                          <i class="fas fa-user-plus" />
+                                       </button>
+                                    </form>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary">Cerrar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--  MODAL CLIENTE -->
+      <div class="modal fade" id="ModalItem">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="ModalItem_">Agregar item</h5>
+                  <button type="button" class="close">
+                     <span>&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="container-fluid">
+                     <div class="form-group">
+                        <label for="agregar_item" class="bmd-label-floating">CÃ³digo,
+                Nombre</label>
+                        <input type="text" class="form-control" name="agregar_item" id="agregar_item" maxlength="30" />
+                     </div>
+                  </div>
+                  <br />
+                  <div class="container-fluid">
+                     <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-sm">
+                           <tbody>
+                              <tr class="text-center">
+                                 <td>000000000000 - Nombre del item</td>
+                                 <td>
+                                    <form action="">
+                                       <button type="button" class="btn btn-primary">
+                                          <i class="fas fa-box-open" />
+                                       </button>
+                                    </form>
+                                 </td>
+                              </tr>
+                              <tr class="text-center">
+                                 <td>000000000000 - Nombre del item</td>
+                                 <td>
+                                    <form action="">
+                                       <button type="button" class="btn btn-primary">
+                                          <i class="fas fa-box-open" />
+                                       </button>
+                                    </form>
+                                 </td>
+                              </tr>
+                              <tr class="text-center">
+                                 <td>000000000000 - Nombre del item</td>
+                                 <td>
+                                    <form action="">
+                                       <button type="button" class="btn btn-primary">
+                                          <i class="fas fa-box-open" />
+                                       </button>
+                                    </form>
+                                 </td>
+                              </tr>
+                              <tr class="text-center">
+                                 <td>000000000000 - Nombre del item</td>
+                                 <td>
+                                    <form action="">
+                                       <button type="button" class="btn btn-primary">
+                                          <i class="fas fa-box-open" />
+                                       </button>
+                                    </form>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary">Cerrar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--  ============================================= = Includ -->
+      <!-- e JavaScript files = ============================================== -->
+      <!--  jQuery V3.4.1 -->
+      <script src="./js/jquery-3.4.1.min.js" type="text/javascript"  />
+      <!--  popper -->
+      <script src="./js/popper.min.js" type="text/javascript"  />
+      <!--  Bootstrap V4.3 -->
+      <script src="./js/bootstrap.min.js" type="text/javascript"  />
+      <!--  jQuery Custom Content Scroller V3.1.5 -->
+      <script src="./js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"  />
+      <!--  Bootstrap Material Design V4.0 -->
+      <script src="./js/bootstrap-material-design.min.js" type="text/javascript"  />
+      <script type="text/javascript" >//<![CDATA[$(document).ready(function() { $('body').bootstrapMaterialDesign(); });//]]></script>
+      <script src="./js/main.js" type="text/javascript"  />
+   </h:body>
+</html>

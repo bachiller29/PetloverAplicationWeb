@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+   <h:head>
+      <meta content="" />
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+      <title>Buscar clientes</title>
+      <!--  Normalize V8.0.1 -->
+      <link rel="stylesheet" href="./css/normalize.css" />
+      <!--  Bootstrap V4.3 -->
+      <link rel="stylesheet" href="./css/bootstrap.min.css" />
+      <!--  Bootstrap Material Design V4.0 -->
+      <link rel="stylesheet" href="./css/bootstrap-material-design.min.css" />
+      <!--  Font Awesome V5.9.0 -->
+      <link rel="stylesheet" href="./css/all.css" />
+      <!--  Sweet Alerts V8.13.0 CSS file -->
+      <link rel="stylesheet" href="./css/sweetalert2.min.css" />
+      <!--  Sweet Alert V8.13.0 JS file -->
+      <script src="./js/sweetalert2.min.js" type="text/javascript" />
+      <!--  jQuery Custom Content Scroller V3.1.5 -->
+      <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
+      <!--  General Styles -->
+      <link rel="stylesheet" href="./css/style.css" />
+      <!--  SWEETALERT -->
+      <script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js " type="text/javascript" />
+   </h:head>
+   <h:body>
+      <!--  Main container -->
+      <!--  Nav lateral -->
+      <div class="full-box nav-lateral-bg show-nav-lateral" />
+      <div class="full-box nav-lateral-content">
+         <i class="far fa-times-circle show-nav-lateral" />
+         <img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" />
+         Carlos
+      Alfaro
+         <br />
+         <small class="roboto-condensed-light">Administrador</small>
+         <div class="full-box nav-lateral-bar" />
+         <ul>
+            <li>
+               <a href="home.html">
+                  <i class="fab fa-dashcube fa-fw" />
+                  Dashboard
+               </a>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-users fa-fw" />
+                  Clientes
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="client-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        Agregar Cliente
+                     </a>
+                  </li>
+                  <li>
+                     <a href="client-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        Lista de
+              clientes
+                     </a>
+                  </li>
+                  <li>
+                     <a href="client-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        Buscar cliente
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-pallet fa-fw" />
+                  Proveedor
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="item-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        Agregar Proveedor
+                     </a>
+                  </li>
+                  <li>
+                     <a href="item-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        Lista de
+              Proveedor
+                     </a>
+                  </li>
+                  <li>
+                     <a href="item-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        Buscar Proveedor
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-file-invoice-dollar fa-fw" />
+                  Inventario
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="reservation-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        Nuevo producto
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        Lista de
+              producto
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-search.html">
+                        <i class="fas fa-search-dollar fa-fw" />
+                        Buscar
+              producto
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-pending.html">
+                        <i class="fas fa-hand-holding-usd fa-fw" />
+                        PrÃ©stamos
+              producto
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas  fa-user-secret fa-fw" />
+                  Usuarios
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="user-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        Nuevo usuario
+                     </a>
+                  </li>
+                  <li>
+                     <a href="user-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        Lista de
+              usuarios
+                     </a>
+                  </li>
+                  <li>
+                     <a href="user-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        Buscar usuario
+                     </a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <!--  Page content -->
+      <a href="#" class="float-left show-nav-lateral">
+         <i class="fas fa-exchange-alt" />
+      </a>
+      <a href="../index.html">
+         <i class="fas fa-power-off" />
+      </a>
+      <!--  <a href="../index.html" class="btn-exit-system"> <i class="fas
+      fa-power-off"></i> </a> -->
+      <!--  Page header -->
+      <div class="full-box page-header">
+         <h3 class="text-left">
+            <i class="fas fa-search fa-fw" />
+            BUSCAR CLIENTE
+         </h3>
+         <p class="text-justify">
+            <!--  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit
+          nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet
+          alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam
+          ratione. -->
+         </p>
+      </div>
+      <div class="container-fluid">
+         <ul class="full-box list-unstyled page-nav-tabs">
+            <li>
+               <a href="client-new.html">
+                  <i class="fas fa-plus fa-fw" />
+                  AGREGAR CLIENTE
+               </a>
+            </li>
+            <li>
+               <a href="client-list.html">
+                  <i class="fas fa-clipboard-list fa-fw" />
+                  LISTA DE CLIENTES
+               </a>
+            </li>
+            <li>
+               <a class="active" href="client-search.html">
+                  <i class="fas fa-search fa-fw" />
+                  BUSCAR CLIENTE
+               </a>
+            </li>
+         </ul>
+      </div>
+      <!--  Content here -->
+      <div class="container-fluid">
+         <form class="form-neon" action="">
+            <div class="container-fluid">
+               <div class="row justify-content-md-center">
+                  <div class="col-12 col-md-6">
+                     <div class="form-group">
+                        <label for="inputSearch" class="bmd-label-floating">Â¿QuÃ©
+                cliente estas buscando?</label>
+                        <input type="text" class="form-control" name="busqueda-" id="inputSearch" maxlength="30" />
+                     </div>
+                  </div>
+                  <div class="col-12">
+                     <p class="text-center" style="margin-top: 40px;">
+                        <button type="submit" class="btn btn-raised btn-info">
+                           <i class="fas fa-search" />
+                           BUSCAR
+                        </button>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+      <div class="container-fluid">
+         <form action="">
+            <input type="hidden" name="eliminar-busqueda" value="eliminar" />
+            <div class="container-fluid">
+               <div class="row justify-content-md-center">
+                  <div class="col-12 col-md-6">
+                     <p class="text-center" style="font-size: 20px;">
+                        Resultados de la busqueda
+                        <strong>âBuscarâ</strong>
+                     </p>
+                  </div>
+                  <div class="col-12">
+                     <p class="text-center" style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-raised btn-danger">
+                           <i class="far fa-trash-alt" />
+                           ELIMINAR BÃSQUEDA
+                        </button>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+      <div class="container-fluid">
+         <div class="table-responsive">
+            <table class="table table-dark table-sm">
+               <thead>
+                  <tr class="text-center roboto-medium">
+                     <th>Id Cliente</th>
+                     <th>Direccion</th>
+                     <th>Ciudad</th>
+                     <th>Barrio</th>
+                     <th>Telefono</th>
+                     <th>Email</th>
+                     <th>IdUsuario</th>
+                     <th>ACTUALIZAR</th>
+                     <th>ELIMINAR</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="text-center">
+                     <td>1</td>
+                     <td>Calle 10 # 5-51</td>
+                     <td>Bogota</td>
+                     <td>Ciudad jardin</td>
+                     <td>3195082526</td>
+                     <td>orregoldi@hotmail.com</td>
+                     <td>11</td>
+                     <td>
+                        <a href="client-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button id="btnSA_3" type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>2</td>
+                     <td>Calle 53 No 10-60</td>
+                     <td>Bogota</td>
+                     <td>Restrepo</td>
+                     <td>3207482911</td>
+                     <td>cathita_acosta@hotmail.com</td>
+                     <td>12</td>
+                     <td>
+                        <a href="client-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button id="btnSA_4" type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>3</td>
+                     <td>Calle 10 # 5-51</td>
+                     <td>Bogota</td>
+                     <td>Doce de octubre</td>
+                     <td>3139362803</td>
+                     <td>ambrosio82@gmail.com</td>
+                     <td>13</td>
+                     <td>
+                        <a href="client-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button id="btnSA_5" type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>4</td>
+                     <td>Calle 100 # 11B-27</td>
+                     <td>Bogota</td>
+                     <td>Los andes</td>
+                     <td>3113240238</td>
+                     <td>carolaasm@hotmail.com</td>
+                     <td>14</td>
+                     <td>
+                        <a href="client-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button id="btnSA_6" type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+               <a class="page-link" href="#" tabindex="-1">Anterior</a>
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">Siguiente</a>
+            </li>
+         </ul>
+      </div>
+      <!--  ============================================= = Include JavaScript
+      files = ============================================== -->
+      <!--  jQuery V3.4.1 -->
+      <script src="./js/jquery-3.4.1.min.js" type="text/javascript"  />
+      <!--  popper -->
+      <script src="./js/popper.min.js" type="text/javascript"  />
+      <!--  Bootstrap V4.3 -->
+      <script src="./js/bootstrap.min.js" type="text/javascript"  />
+      <!--  jQuery Custom Content Scroller V3.1.5 -->
+      <script src="./js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"  />
+      <!--  Bootstrap Material Design V4.0 -->
+      <script src="./js/bootstrap-material-design.min.js" type="text/javascript"  />
+      <script type="text/javascript" >//<![CDATA[$(document).ready(function() { $('body').bootstrapMaterialDesign(); });//]]></script>
+      <script src="./js/main.js" type="text/javascript"  />
+      <!--  Sweet Alert -->
+      <script type="text/javascript" >//<![CDATA[	
+			$("#btnSA_3").click(function (){
+				swal({
+				  title: "Â¿EstÃ¡ seguro?",
+				  text: "Una vez eliminado, no podrÃ¡ recuperar este archivo!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+					swal("El archivo ha sido eliminado!", {
+					  icon: "success",
+					});
+				  } else {
+					swal("OperaciÃ³n cancelada!");
+				  }
+				});	
+			});
+			$("#btnSA_4").click(function (){
+				swal({
+				  title: "Â¿EstÃ¡ seguro?",
+				  text: "Una vez eliminado, no podrÃ¡ recuperar este archivo!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+					swal("El archivo ha sido eliminado!", {
+					  icon: "success",
+					});
+				  } else {
+					swal("OperaciÃ³n cancelada!");
+				  }
+				});	
+			});
+			$("#btnSA_5").click(function (){
+				swal({
+				  title: "Â¿EstÃ¡ seguro?",
+				  text: "Una vez eliminado, no podrÃ¡ recuperar este archivo!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+					swal("El archivo ha sido eliminado!", {
+					  icon: "success",
+					});
+				  } else {
+					swal("OperaciÃ³n cancelada!");
+				  }
+				});	
+			});
+			$("#btnSA_6").click(function (){
+				swal({
+				  title: "Â¿EstÃ¡ seguro?",
+				  text: "Una vez eliminado, no podrÃ¡ recuperar este archivo!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+					swal("El archivo ha sido eliminado!", {
+					  icon: "success",
+					});
+				  } else {
+					swal("OperaciÃ³n cancelada!");
+				  }
+				});	
+			});
+		//]]></script>
+   </h:body>
+</html>

@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+   <h:head>
+      <meta content="" />
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+      <title>Administrador</title>
+      <!--  Normalize V8.0.1 -->
+      <link rel="stylesheet" href="./css/normalize.css" />
+      <!--  Bootstrap V4.3 -->
+      <link rel="stylesheet" href="./css/bootstrap.min.css" />
+      <!--  Bootstrap Material Design V4.0 -->
+      <link rel="stylesheet" href="./css/bootstrap-material-design.min.css" />
+      <!--  Font Awesome V5.9.0 -->
+      <link rel="stylesheet" href="./css/all.css" />
+      <!--  Sweet Alerts V8.13.0 CSS file -->
+      <link rel="stylesheet" href="./css/sweetalert2.min.css" />
+      <!--  Sweet Alert V8.13.0 JS file -->
+      <script src="./js/sweetalert2.min.js" type="text/javascript"  />
+      <!--  jQuery Custom Content Scroller V3.1.5 -->
+      <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
+      <!--  General Styles -->
+      <link rel="stylesheet" href="./css/style.css" />
+   </h:head>
+   <h:body>
+      <!--  Main container -->
+      <!--  Nav lateral -->
+      <div class="full-box nav-lateral-bg show-nav-lateral" />
+      <div class="full-box nav-lateral-content">
+         <i class="far fa-times-circle show-nav-lateral" />
+         <img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" />
+         Carlos
+      Alfaro
+         <br />
+         <small class="roboto-condensed-light">Administrador</small>
+         <div class="full-box nav-lateral-bar" />
+         <ul>
+            <li>
+               <a href="home.html">
+                  <i class="fab fa-dashcube fa-fw" />
+                  &nbsp; Dashboard
+               </a>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-users fa-fw" />
+                  &nbsp; Clientes
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="client-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Agregar Cliente
+                     </a>
+                  </li>
+                  <li>
+                     <a href="client-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              clientes
+                     </a>
+                  </li>
+                  <li>
+                     <a href="client-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        &nbsp; Buscar cliente
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-pallet fa-fw" />
+                  &nbsp; Proveedor
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="item-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Agregar Proveedor
+                     </a>
+                  </li>
+                  <li>
+                     <a href="item-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              Proveedor
+                     </a>
+                  </li>
+                  <li>
+                     <a href="item-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        &nbsp; Buscar Proveedor
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-file-invoice-dollar fa-fw" />
+                  &nbsp; Inventario
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="reservation-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Nuevo producto
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              producto
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-search.html">
+                        <i class="fas fa-search-dollar fa-fw" />
+                        &nbsp; Buscar
+              producto
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-pending.html">
+                        <i class="fas fa-hand-holding-usd fa-fw" />
+                        &nbsp; PrÃ©stamos
+              producto
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas  fa-user-secret fa-fw" />
+                  &nbsp; Usuarios
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="user-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Nuevo usuario
+                     </a>
+                  </li>
+                  <li>
+                     <a href="user-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              usuarios
+                     </a>
+                  </li>
+                  <li>
+                     <a href="user-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        &nbsp; Buscar usuario
+                     </a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <!--  Page content -->
+      <a href="#" class="float-left show-nav-lateral">
+         <i class="fas fa-exchange-alt" />
+      </a>
+      <a href="../index.html">
+         <i class="fas fa-power-off" />
+      </a>
+      <!--  <a href="../index.html" class="btn-exit-system"> <i class="fas
+      fa-power-off"></i> </a> -->
+      <!--  Page header -->
+      <div class="full-box page-header">
+         <h3 class="text-left">
+            <i class="fas fa-sync-alt fa-fw" />
+            &nbsp; ACTUALIZAR USUARIO
+         </h3>
+         <p class="text-justify">
+            <!--  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit
+          nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet
+          alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam
+          ratione. -->
+         </p>
+      </div>
+      <div class="container-fluid">
+         <ul class="full-box list-unstyled page-nav-tabs">
+            <li>
+               <a href="user-new.html">
+                  <i class="fas fa-plus fa-fw" />
+                  &nbsp; NUEVO USUARIO
+               </a>
+            </li>
+            <li>
+               <a href="user-list.html">
+                  <i class="fas fa-clipboard-list fa-fw" />
+                  &nbsp; LISTA DE USUARIOS
+               </a>
+            </li>
+            <li>
+               <a href="user-search.html">
+                  <i class="fas fa-search fa-fw" />
+                  &nbsp; BUSCAR USUARIO
+               </a>
+            </li>
+         </ul>
+      </div>
+      <!--  Content -->
+      <div class="container-fluid">
+         <form action="" class="form-neon">
+            <fieldset>
+               <legend>
+                  <i class="far fa-address-card" />
+                  &nbsp; InformaciÃ³n
+            personal
+               </legend>
+               <div class="container-fluid">
+                  <div class="row">
+                     <!--  <div class="col-12 col-md-4"> <div class="form-group">
+                <label for="usuario_dni" class="bmd-label-floating">DNI</label>
+                <input type="text" pattern="[0-9-]{1,20}" class="form-control"
+                name="usuario_dni" id="usuario_dni" maxlength="20"> </div>
+                </div> -->
+                     <div class="col-12 col-md-4">
+                        <div class="form-group">
+                           <label for="usuario_nombre" class="bmd-label-floating">Nombres</label>
+                           <input type="text" class="form-control" name="usuario_nombre" id="usuario_nombre" maxlength="35" />
+                        </div>
+                     </div>
+                     <div class="col-12 col-md-4">
+                        <div class="form-group">
+                           <label for="usuario_apellido" class="bmd-label-floating">Apellidos</label>
+                           <input type="text" class="form-control" name="usuario_apellido" id="usuario_apellido" maxlength="35" />
+                        </div>
+                     </div>
+                     <div class="col-12 col-md-6">
+                        <div class="form-group">
+                           <label for="usuario_telefono" class="bmd-label-floating">Usuario</label>
+                           <input type="text" class="form-control" name="usuario_telefono" id="usuario_telefono" maxlength="20" />
+                        </div>
+                     </div>
+                     <div class="col-12 col-md-6">
+                        <div class="form-group">
+                           <label for="usuario_direccion" class="bmd-label-floating">ContraseÃ±a</label>
+                           <input type="text" class="form-control" name="usuario_direccion" id="usuario_direccion" maxlength="190" />
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </fieldset>
+            <br />
+            <br />
+            <br />
+            <fieldset>
+               <legend>
+                  <i class="fas fa-user-lock" />
+                  &nbsp; InformaciÃ³n de la
+            cuenta
+               </legend>
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-12 col-md-4">
+                        <div class="form-group">
+                           <label for="prestamo_estado" class="bmd-label-floating">Estado</label>
+                           <select class="form-control" name="item_estado" id="item_estado">
+                              <option value="">Seleccione una opciÃ³n</option>
+                              <option value="Prestamo">Asesor comercial</option>
+                              <option value="Reservacion">Veterinario</option>
+                              <option value="Finalizado">Esteticista de mascota</option>
+                              <option value="Finalizado">Auxiliar de mascota</option>
+                              <option value="Finalizado">Cliente</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </fieldset>
+            <br />
+            <br />
+            <br />
+            <fieldset>
+               <legend>
+                  <i class="fas fa-medal" />
+                  &nbsp; Nivel de privilegio
+               </legend>
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-12">
+                        <p>
+                           <span class="badge badge-info">Control total</span>
+                           Permisos para registrar, actualizar y eliminar
+                        </p>
+                        <p>
+                           <span class="badge badge-success">EdiciÃ³n</span>
+                           Permisos para registrar y actualizar
+                        </p>
+                        <p>
+                           <span class="badge badge-dark">Registrar</span>
+                           Solo
+                  permisos para registrar
+                        </p>
+                        <div class="form-group">
+                           <select class="form-control" name="usuario_privilegio">
+                              <option value="">Seleccione una opciÃ³n</option>
+                              <option value="1">Control total</option>
+                              <option value="2">EdiciÃ³n</option>
+                              <option value="3">Registrar</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </fieldset>
+            <br />
+            <br />
+            <br />
+            <fieldset>
+               <p class="text-center">Para poder guardar los cambios en esta cuenta debe de ingresar su
+            nombre de usuario y contraseÃ±a</p>
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-12 col-md-6">
+                        <div class="form-group">
+                           <label for="usuario_admin" class="bmd-label-floating">Nombre
+                  de usuario</label>
+                           <input type="text" class="form-control" name="usuario_admin" id="usuario_admin" maxlength="35" />
+                        </div>
+                     </div>
+                     <div class="col-12 col-md-6">
+                        <div class="form-group">
+                           <label for="clave_admin" class="bmd-label-floating">ContraseÃ±a</label>
+                           <input type="password" class="form-control" name="clave_admin" id="clave_admin" maxlength="200" />
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </fieldset>
+            <p class="text-center" style="margin-top: 40px;">
+               <button type="submit" class="btn btn-raised btn-success btn-sm">
+                  <i class="fas fa-sync-alt" />
+                  &nbsp; ACTUALIZAR
+               </button>
+            </p>
+         </form>
+      </div>
+      <!--  ============================================= = Include JavaScript
+      files = ============================================== -->
+      <!--  jQuery V3.4.1 -->
+      <script src="./js/jquery-3.4.1.min.js" type="text/javascript"  />
+      <!--  popper -->
+      <script src="./js/popper.min.js" type="text/javascript"  />
+      <!--  Bootstrap V4.3 -->
+      <script src="./js/bootstrap.min.js" type="text/javascript"  />
+      <!--  jQuery Custom Content Scroller V3.1.5 -->
+      <script src="./js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"  />
+      <!--  Bootstrap Material Design V4.0 -->
+      <script src="./js/bootstrap-material-design.min.js" type="text/javascript"  />
+      <script type="text/javascript" >//<![CDATA[$(document).ready(function() { $('body').bootstrapMaterialDesign(); });//]]></script>
+      <script src="./js/main.js" type="text/javascript"  />
+   </h:body>
+</html>

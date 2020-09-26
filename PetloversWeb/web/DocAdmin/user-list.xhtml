@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+   <h:head>
+      <meta content="" />
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+      <title>Administrador</title>
+      <!--  Normalize V8.0.1 -->
+      <link rel="stylesheet" href="./css/normalize.css" />
+      <!--  Bootstrap V4.3 -->
+      <link rel="stylesheet" href="./css/bootstrap.min.css" />
+      <!--  Bootstrap Material Design V4.0 -->
+      <link rel="stylesheet" href="./css/bootstrap-material-design.min.css" />
+      <!--  Font Awesome V5.9.0 -->
+      <link rel="stylesheet" href="./css/all.css" />
+      <!--  Sweet Alerts V8.13.0 CSS file -->
+      <link rel="stylesheet" href="./css/sweetalert2.min.css" />
+      <!--  Sweet Alert V8.13.0 JS file -->
+      <script src="./js/sweetalert2.min.js" type="text/javascript"  />
+      <!--  jQuery Custom Content Scroller V3.1.5 -->
+      <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
+      <!--  General Styles -->
+      <link rel="stylesheet" href="./css/style.css" />
+   </h:head>
+   <h:body>
+      <!--  Main container -->
+      <!--  Nav lateral -->
+      <div class="full-box nav-lateral-bg show-nav-lateral" />
+      <div class="full-box nav-lateral-content">
+         <i class="far fa-times-circle show-nav-lateral" />
+         <img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" />
+         Carlos
+      Alfaro
+         <br />
+         <small class="roboto-condensed-light">Administrador</small>
+         <div class="full-box nav-lateral-bar" />
+         <ul>
+            <li>
+               <a href="home.html">
+                  <i class="fab fa-dashcube fa-fw" />
+                  &nbsp; Dashboard
+               </a>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-users fa-fw" />
+                  &nbsp; Clientes
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="client-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Agregar Cliente
+                     </a>
+                  </li>
+                  <li>
+                     <a href="client-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              clientes
+                     </a>
+                  </li>
+                  <li>
+                     <a href="client-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        &nbsp; Buscar cliente
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-pallet fa-fw" />
+                  &nbsp; Proveedor
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="item-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Agregar Proveedor
+                     </a>
+                  </li>
+                  <li>
+                     <a href="item-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              Proveedor
+                     </a>
+                  </li>
+                  <li>
+                     <a href="item-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        &nbsp; Buscar Proveedor
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas fa-file-invoice-dollar fa-fw" />
+                  &nbsp; Inventario
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="reservation-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Nuevo producto
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              producto
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-search.html">
+                        <i class="fas fa-search-dollar fa-fw" />
+                        &nbsp; Buscar
+              producto
+                     </a>
+                  </li>
+                  <li>
+                     <a href="reservation-pending.html">
+                        <i class="fas fa-hand-holding-usd fa-fw" />
+                        &nbsp; PrÃ©stamos
+              producto
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="nav-btn-submenu">
+                  <i class="fas  fa-user-secret fa-fw" />
+                  &nbsp; Usuarios
+                  <i class="fas fa-chevron-down" />
+               </a>
+               <ul>
+                  <li>
+                     <a href="user-new.html">
+                        <i class="fas fa-plus fa-fw" />
+                        &nbsp; Nuevo usuario
+                     </a>
+                  </li>
+                  <li>
+                     <a href="user-list.html">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; Lista de
+              usuarios
+                     </a>
+                  </li>
+                  <li>
+                     <a href="user-search.html">
+                        <i class="fas fa-search fa-fw" />
+                        &nbsp; Buscar usuario
+                     </a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <!--  Page content -->
+      <a href="#" class="float-left show-nav-lateral">
+         <i class="fas fa-exchange-alt" />
+      </a>
+      <a href="../index.html">
+         <i class="fas fa-power-off" />
+      </a>
+      <!--  <a href="../index.html" class="btn-exit-system"> <i class="fas
+      fa-power-off"></i> </a> -->
+      <!--  Page header -->
+      <div class="full-box page-header">
+         <h3 class="text-left">
+            <i class="fas fa-clipboard-list fa-fw" />
+            &nbsp; LISTA DE
+        USUARIOS
+         </h3>
+         <p class="text-justify">
+            <!--  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit
+          nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet
+          alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam
+          ratione. -->
+         </p>
+      </div>
+      <div class="container-fluid">
+         <ul class="full-box list-unstyled page-nav-tabs">
+            <li>
+               <a href="user-new.html">
+                  <i class="fas fa-plus fa-fw" />
+                  &nbsp; NUEVO USUARIO
+               </a>
+            </li>
+            <li>
+               <a class="active" href="user-list.html">
+                  <i class="fas fa-clipboard-list fa-fw" />
+                  &nbsp; LISTA DE
+          USUARIOS
+               </a>
+            </li>
+            <li>
+               <a href="user-search.html">
+                  <i class="fas fa-search fa-fw" />
+                  &nbsp; BUSCAR USUARIO
+               </a>
+            </li>
+         </ul>
+      </div>
+      <!--  Content -->
+      <div class="container-fluid">
+         <div class="table-responsive">
+            <table class="table table-dark table-sm">
+               <thead>
+                  <tr class="text-center roboto-medium">
+                     <th>Id</th>
+                     <th>Nombre</th>
+                     <th>Apellido</th>
+                     <th>Login</th>
+                     <th>ContraseÃ±a</th>
+                     <th>Id tipo rol</th>
+                     <th>ACTUALIZAR</th>
+                     <th>ELIMINAR</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="text-center">
+                     <td>1</td>
+                     <td>ADRIANA CAROLINA</td>
+                     <td>HERNANDEZ MONTERROZA</td>
+                     <td>administrator</td>
+                     <td>x</td>
+                     <td>1</td>
+                     <td>
+                        <a href="user-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>2</td>
+                     <td>ANGELA PATRICIA</td>
+                     <td>REY SANCHEZ</td>
+                     <td>user1</td>
+                     <td>Zz</td>
+                     <td>2</td>
+                     <td>
+                        <a href="user-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>3</td>
+                     <td>DANIELA KATHERINNE</td>
+                     <td>ABONDANO ACEVEDO</td>
+                     <td>admin</td>
+                     <td>St@rt123</td>
+                     <td>3</td>
+                     <td>
+                        <a href="user-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>4</td>
+                     <td>MÃNICA ALEXANDRA</td>
+                     <td>CARVAJAL VARGAS</td>
+                     <td>alex</td>
+                     <td>1</td>
+                     <td>3</td>
+                     <td>
+                        <a href="user-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>5</td>
+                     <td>RAFAEL ANDRES</td>
+                     <td>ACERO CARO</td>
+                     <td>pos</td>
+                     <td>P@ssw0rd</td>
+                     <td>3</td>
+                     <td>
+                        <a href="user-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>6</td>
+                     <td>LORENA FERNANDA</td>
+                     <td>CRUZ GARCIA</td>
+                     <td>cldo</td>
+                     <td>bl4ck4ndwhite</td>
+                     <td>3</td>
+                     <td>
+                        <a href="user-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>7</td>
+                     <td>CAMILO ALBERTO</td>
+                     <td>VILLA MONROY</td>
+                     <td>demo</td>
+                     <td>admin</td>
+                     <td>3</td>
+                     <td>
+                        <a href="user-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+                  <tr class="text-center">
+                     <td>8</td>
+                     <td>FABIAN ANDRES</td>
+                     <td>MAHECHA PIÃEROS</td>
+                     <td>db2admin</td>
+                     <td>alex</td>
+                     <td>3</td>
+                     <td>
+                        <a href="user-update.html" class="btn btn-success">
+                           <i class="fas fa-sync-alt" />
+                        </a>
+                     </td>
+                     <td>
+                        <form action="">
+                           <button type="button" class="btn btn-warning">
+                              <i class="far fa-trash-alt" />
+                           </button>
+                        </form>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+               <a class="page-link" href="#" tabindex="-1">Regresar</a>
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">Siguiente</a>
+            </li>
+         </ul>
+      </div>
+      <!--  ============================================= = Include JavaScript
+      files = ============================================== -->
+      <!--  jQuery V3.4.1 -->
+      <script src="./js/jquery-3.4.1.min.js" type="text/javascript"  />
+      <!--  popper -->
+      <script src="./js/popper.min.js" type="text/javascript"  />
+      <!--  Bootstrap V4.3 -->
+      <script src="./js/bootstrap.min.js" type="text/javascript"  />
+      <!--  jQuery Custom Content Scroller V3.1.5 -->
+      <script src="./js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"  />
+      <!--  Bootstrap Material Design V4.0 -->
+      <script src="./js/bootstrap-material-design.min.js" type="text/javascript"  />
+      <script type="text/javascript" >//<![CDATA[$(document).ready(function() { $('body').bootstrapMaterialDesign(); });//]]></script>
+      <script src="./js/main.js" type="text/javascript"  />
+   </h:body>
+</html>
