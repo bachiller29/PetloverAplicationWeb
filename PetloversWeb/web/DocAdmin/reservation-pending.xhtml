@@ -1,387 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-   <h:head>
-      <meta content="" />
-      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-      <title>Prestamos pendientes</title>
-      <!--  Normalize V8.0.1 -->
-      <link rel="stylesheet" href="./css/normalize.css" />
-      <!--  Bootstrap V4.3 -->
-      <link rel="stylesheet" href="./css/bootstrap.min.css" />
-      <!--  Bootstrap Material Design V4.0 -->
-      <link rel="stylesheet" href="./css/bootstrap-material-design.min.css" />
-      <!--  Font Awesome V5.9.0 -->
-      <link rel="stylesheet" href="./css/all.css" />
-      <!--  Sweet Alerts V8.13.0 CSS file -->
-      <link rel="stylesheet" href="./css/sweetalert2.min.css" />
-      <!--  Sweet Alert V8.13.0 JS file -->
-      <script src="./js/sweetalert2.min.js" type="text/javascript"  />
-      <!--  jQuery Custom Content Scroller V3.1.5 -->
-      <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
-      <!--  General Styles -->
-      <link rel="stylesheet" href="./css/style.css" />
-   </h:head>
-   <h:body>
-      <!--  Main container -->
-      <!--  Nav lateral -->
-      <div class="full-box nav-lateral-bg show-nav-lateral" />
-      <div class="full-box nav-lateral-content">
-         <i class="far fa-times-circle show-nav-lateral" />
-         <img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" />
-         Carlos
-      Alfaro
-         <br />
-         <small class="roboto-condensed-light">Web Developer</small>
-         <div class="full-box nav-lateral-bar" />
-         <ul>
-            <li>
-               <a href="home.html">
-                  <i class="fab fa-dashcube fa-fw" />
-                  &nbsp; Dashboard
-               </a>
-            </li>
-            <li>
-               <a href="#" class="nav-btn-submenu">
-                  <i class="fas fa-users fa-fw" />
-                  &nbsp; Clientes
-                  <i class="fas fa-chevron-down" />
-               </a>
-               <ul>
-                  <li>
-                     <a href="client-new.html">
-                        <i class="fas fa-plus fa-fw" />
-                        &nbsp; Agregar Cliente
-                     </a>
-                  </li>
-                  <li>
-                     <a href="client-list.html">
-                        <i class="fas fa-clipboard-list fa-fw" />
-                        &nbsp; Lista de
-              clientes
-                     </a>
-                  </li>
-                  <li>
-                     <a href="client-search.html">
-                        <i class="fas fa-search fa-fw" />
-                        &nbsp; Buscar cliente
-                     </a>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               <a href="#" class="nav-btn-submenu">
-                  <i class="fas fa-pallet fa-fw" />
-                  &nbsp; Items
-                  <i class="fas fa-chevron-down" />
-               </a>
-               <ul>
-                  <li>
-                     <a href="item-new.html">
-                        <i class="fas fa-plus fa-fw" />
-                        &nbsp; Agregar item
-                     </a>
-                  </li>
-                  <li>
-                     <a href="item-list.html">
-                        <i class="fas fa-clipboard-list fa-fw" />
-                        &nbsp; Lista de
-              items
-                     </a>
-                  </li>
-                  <li>
-                     <a href="item-search.html">
-                        <i class="fas fa-search fa-fw" />
-                        &nbsp; Buscar item
-                     </a>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               <a href="#" class="nav-btn-submenu">
-                  <i class="fas fa-file-invoice-dollar fa-fw" />
-                  &nbsp; PrÃ©stamos
-                  <i class="fas fa-chevron-down" />
-               </a>
-               <ul>
-                  <li>
-                     <a href="reservation-new.html">
-                        <i class="fas fa-plus fa-fw" />
-                        &nbsp; Nuevo prÃ©stamo
-                     </a>
-                  </li>
-                  <li>
-                     <a href="reservation-list.html">
-                        <i class="fas fa-clipboard-list fa-fw" />
-                        &nbsp; Lista de
-              prÃ©stamos
-                     </a>
-                  </li>
-                  <li>
-                     <a href="reservation-search.html">
-                        <i class="fas fa-search-dollar fa-fw" />
-                        &nbsp; Buscar
-              prÃ©stamos
-                     </a>
-                  </li>
-                  <li>
-                     <a href="reservation-pending.html">
-                        <i class="fas fa-hand-holding-usd fa-fw" />
-                        &nbsp; PrÃ©stamos
-              pendientes
-                     </a>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               <a href="#" class="nav-btn-submenu">
-                  <i class="fas  fa-user-secret fa-fw" />
-                  &nbsp; Usuarios
-                  <i class="fas fa-chevron-down" />
-               </a>
-               <ul>
-                  <li>
-                     <a href="user-new.html">
-                        <i class="fas fa-plus fa-fw" />
-                        &nbsp; Nuevo usuario
-                     </a>
-                  </li>
-                  <li>
-                     <a href="user-list.html">
-                        <i class="fas fa-clipboard-list fa-fw" />
-                        &nbsp; Lista de
-              usuarios
-                     </a>
-                  </li>
-                  <li>
-                     <a href="user-search.html">
-                        <i class="fas fa-search fa-fw" />
-                        &nbsp; Buscar usuario
-                     </a>
-                  </li>
-               </ul>
-            </li>
-         </ul>
-      </div>
-      <a href="#" class="float-left show-nav-lateral">
-         <i class="fas fa-exchange-alt" />
-      </a>
-      <a href="../index.html">
-         <i class="fas fa-power-off" />
-      </a>
-      <!--  <a href="../index.html" class="btn-exit-system"> <i class="fas
-      fa-power-off"></i> </a> -->
-      <!--  Page header -->
-      <div class="full-box page-header">
-         <h3 class="text-left">
-            <i class="fas fa-hand-holding-usd fa-fw" />
-            &nbsp; PRÃSTAMO
-        PENDIENTES
-         </h3>
-         <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia fugiat
-        est ducimus inventore, repellendus deserunt cum aliquam dignissimos,
-        consequuntur molestiae perferendis quae, impedit doloribus harum
-        necessitatibus magnam voluptatem voluptatum alias!</p>
-      </div>
-      <div class="container-fluid">
-         <ul class="full-box list-unstyled page-nav-tabs">
-            <li>
-               <a href="reservation-new.html">
-                  <i class="fas fa-plus fa-fw" />
-                  &nbsp; NUEVO PRÃSTAMO
-               </a>
-            </li>
-            <li>
-               <a href="reservation-list.html">
-                  <i class="fas fa-clipboard-list fa-fw" />
-                  &nbsp; LISTA DE
-          PRÃSTAMOS
-               </a>
-            </li>
-            <li>
-               <a href="reservation-search.html">
-                  <i class="fas fa-search-dollar fa-fw" />
-                  &nbsp; BUSCAR PRÃSTAMOS
-               </a>
-            </li>
-            <li>
-               <a class="active" href="reservation-pending.html">
-                  <i class="fas fa-hand-holding-usd fa-fw" />
-                  &nbsp; PRÃSTAMOS
-          PENDIENTES
-               </a>
-            </li>
-         </ul>
-      </div>
-      <!--  CONTENT -->
-      <div class="container-fluid">
-         <div class="table-responsive">
-            <table class="table table-dark table-sm">
-               <thead>
-                  <tr class="text-center roboto-medium">
-                     <th>#</th>
-                     <th>CLIENTE</th>
-                     <th>FECHA DE PRÃSTAMO</th>
-                     <th>FECHA DE ENTREGA</th>
-                     <th>ESTADO</th>
-                     <th>FACTURA</th>
-                     <th>ACTUALIZAR</th>
-                     <th>PAGOS</th>
-                     <th>ELIMINAR</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr class="text-center">
-                     <td>1</td>
-                     <td>NOMBRE CLIENTE</td>
-                     <td>2017/10/8</td>
-                     <td>2017/10/10</td>
-                     <td>Pendiente</td>
-                     <td>
-                        <a href="#" class="btn btn-info">
-                           <i class="fas fa-file-pdf" />
-                        </a>
-                     </td>
-                     <td>
-                        <a href="reservation-update.html" class="btn btn-success">
-                           <i class="fas fa-sync-alt" />
-                        </a>
-                     </td>
-                     <td>
-                        <a href="payment.html" class="btn btn-info">
-                           <i class="fas fa-dollar-sign" />
-                        </a>
-                     </td>
-                     <td>
-                        <form action="">
-                           <button type="button" class="btn btn-warning">
-                              <i class="far fa-trash-alt" />
-                           </button>
-                        </form>
-                     </td>
-                  </tr>
-                  <tr class="text-center">
-                     <td>2</td>
-                     <td>NOMBRE CLIENTE</td>
-                     <td>2017/10/8</td>
-                     <td>2017/10/10</td>
-                     <td>Pendiente</td>
-                     <td>
-                        <a href="#" class="btn btn-info">
-                           <i class="fas fa-file-pdf" />
-                        </a>
-                     </td>
-                     <td>
-                        <a href="reservation-update.html" class="btn btn-success">
-                           <i class="fas fa-sync-alt" />
-                        </a>
-                     </td>
-                     <td>
-                        <a href="payment.html" class="btn btn-info">
-                           <i class="fas fa-dollar-sign" />
-                        </a>
-                     </td>
-                     <td>
-                        <form action="">
-                           <button type="button" class="btn btn-warning">
-                              <i class="far fa-trash-alt" />
-                           </button>
-                        </form>
-                     </td>
-                  </tr>
-                  <tr class="text-center">
-                     <td>3</td>
-                     <td>NOMBRE CLIENTE</td>
-                     <td>2017/10/8</td>
-                     <td>2017/10/10</td>
-                     <td>Pendiente</td>
-                     <td>
-                        <a href="#" class="btn btn-info">
-                           <i class="fas fa-file-pdf" />
-                        </a>
-                     </td>
-                     <td>
-                        <a href="reservation-update.html" class="btn btn-success">
-                           <i class="fas fa-sync-alt" />
-                        </a>
-                     </td>
-                     <td>
-                        <a href="payment.html" class="btn btn-info">
-                           <i class="fas fa-dollar-sign" />
-                        </a>
-                     </td>
-                     <td>
-                        <form action="">
-                           <button type="button" class="btn btn-warning">
-                              <i class="far fa-trash-alt" />
-                           </button>
-                        </form>
-                     </td>
-                  </tr>
-                  <tr class="text-center">
-                     <td>4</td>
-                     <td>NOMBRE CLIENTE</td>
-                     <td>2017/10/8</td>
-                     <td>2017/10/10</td>
-                     <td>Pendiente</td>
-                     <td>
-                        <a href="#" class="btn btn-info">
-                           <i class="fas fa-file-pdf" />
-                        </a>
-                     </td>
-                     <td>
-                        <a href="reservation-update.html" class="btn btn-success">
-                           <i class="fas fa-sync-alt" />
-                        </a>
-                     </td>
-                     <td>
-                        <a href="payment.html" class="btn btn-info">
-                           <i class="fas fa-dollar-sign" />
-                        </a>
-                     </td>
-                     <td>
-                        <form action="">
-                           <button type="button" class="btn btn-warning">
-                              <i class="far fa-trash-alt" />
-                           </button>
-                        </form>
-                     </td>
-                  </tr>
-               </tbody>
-            </table>
-         </div>
-         <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-               <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item">
-               <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-               <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-               <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-               <a class="page-link" href="#">Next</a>
-            </li>
-         </ul>
-      </div>
-      <!--  ============================================= = Include JavaScript
-      files = ============================================== -->
-      <!--  jQuery V3.4.1 -->
-      <script src="./js/jquery-3.4.1.min.js" type="text/javascript"  />
-      <!--  popper -->
-      <script src="./js/popper.min.js" type="text/javascript"  />
-      <!--  Bootstrap V4.3 -->
-      <script src="./js/bootstrap.min.js" type="text/javascript"  />
-      <!--  jQuery Custom Content Scroller V3.1.5 -->
-      <script src="./js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"  />
-      <!--  Bootstrap Material Design V4.0 -->
-      <script src="./js/bootstrap-material-design.min.js" type="text/javascript"  />
-      <script type="text/javascript" >//<![CDATA[$(document).ready(function() { $('body').bootstrapMaterialDesign(); });//]]></script>
-      <script src="./js/main.js" type="text/javascript"  />
-   </h:body>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:body>
+        <ui:composition template="./docAdminTemplate.xhtml">
+            <ui:define name="head">
+                <i class="fas fa-hand-holding-usd fa-fw" />
+                &nbsp; PRÃSTAMO
+                PENDIENTES
+            </ui:define>
+            <ui:define name="content">
+                <div class="container-fluid">
+                    <ul class="full-box list-unstyled page-nav-tabs">
+                        <li>
+                            <a href="reservation-new.html">
+                                <i class="fas fa-plus fa-fw" />
+                                &nbsp; NUEVO PRÃSTAMO
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reservation-list.html">
+                                <i class="fas fa-clipboard-list fa-fw" />
+                                &nbsp; LISTA DE
+                                PRÃSTAMOS
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reservation-search.html">
+                                <i class="fas fa-search-dollar fa-fw" />
+                                &nbsp; BUSCAR PRÃSTAMOS
+                            </a>
+                        </li>
+                        <li>
+                            <a class="active" href="reservation-pending.html">
+                                <i class="fas fa-hand-holding-usd fa-fw" />
+                                &nbsp; PRÃSTAMOS
+                                PENDIENTES
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--  CONTENT -->
+                <div class="container-fluid">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-sm">
+                            <thead>
+                                <tr class="text-center roboto-medium">
+                                    <th>#</th>
+                                    <th>CLIENTE</th>
+                                    <th>FECHA DE PRÃSTAMO</th>
+                                    <th>FECHA DE ENTREGA</th>
+                                    <th>ESTADO</th>
+                                    <th>FACTURA</th>
+                                    <th>ACTUALIZAR</th>
+                                    <th>PAGOS</th>
+                                    <th>ELIMINAR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td>1</td>
+                                    <td>NOMBRE CLIENTE</td>
+                                    <td>2017/10/8</td>
+                                    <td>2017/10/10</td>
+                                    <td>Pendiente</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info">
+                                            <i class="fas fa-file-pdf" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="reservation-update.html" class="btn btn-success">
+                                            <i class="fas fa-sync-alt" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="payment.html" class="btn btn-info">
+                                            <i class="fas fa-dollar-sign" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form action="">
+                                            <button type="button" class="btn btn-warning">
+                                                <i class="far fa-trash-alt" />
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>2</td>
+                                    <td>NOMBRE CLIENTE</td>
+                                    <td>2017/10/8</td>
+                                    <td>2017/10/10</td>
+                                    <td>Pendiente</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info">
+                                            <i class="fas fa-file-pdf" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="reservation-update.html" class="btn btn-success">
+                                            <i class="fas fa-sync-alt" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="payment.html" class="btn btn-info">
+                                            <i class="fas fa-dollar-sign" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form action="">
+                                            <button type="button" class="btn btn-warning">
+                                                <i class="far fa-trash-alt" />
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>3</td>
+                                    <td>NOMBRE CLIENTE</td>
+                                    <td>2017/10/8</td>
+                                    <td>2017/10/10</td>
+                                    <td>Pendiente</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info">
+                                            <i class="fas fa-file-pdf" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="reservation-update.html" class="btn btn-success">
+                                            <i class="fas fa-sync-alt" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="payment.html" class="btn btn-info">
+                                            <i class="fas fa-dollar-sign" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form action="">
+                                            <button type="button" class="btn btn-warning">
+                                                <i class="far fa-trash-alt" />
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td>4</td>
+                                    <td>NOMBRE CLIENTE</td>
+                                    <td>2017/10/8</td>
+                                    <td>2017/10/10</td>
+                                    <td>Pendiente</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info">
+                                            <i class="fas fa-file-pdf" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="reservation-update.html" class="btn btn-success">
+                                            <i class="fas fa-sync-alt" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="payment.html" class="btn btn-info">
+                                            <i class="fas fa-dollar-sign" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form action="">
+                                            <button type="button" class="btn btn-warning">
+                                                <i class="far fa-trash-alt" />
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
