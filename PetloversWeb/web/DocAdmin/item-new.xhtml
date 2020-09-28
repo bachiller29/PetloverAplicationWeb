@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
    <h:head>
       <meta content="" />
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
@@ -172,20 +172,11 @@
       <a href="../index.html">
          <i class="fas fa-power-off" />
       </a>
-      <!--  <a href="../index.html" class="btn-exit-system"> <i class="fas
-      fa-power-off"></i> </a> -->
-      <!--  Page header -->
       <div class="full-box page-header">
          <h3 class="text-left">
             <i class="fas fa-plus fa-fw" />
             &nbsp; AGREGAR PROVEEDOR
          </h3>
-         <p class="text-justify">
-            <!--  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque
-          laudantium necessitatibus eius iure adipisci modi distinctio. Earum
-          repellat iste et aut, ullam, animi similique sed soluta tempore cum
-          quis corporis! -->
-         </p>
       </div>
       <div class="container-fluid">
          <ul class="full-box list-unstyled page-nav-tabs">
@@ -211,49 +202,49 @@
       </div>
       <!--  CONTENT -->
       <div class="container-fluid">
-         <form action="" class="form-neon">
+         <h:form class="form-neon">
             <fieldset>
                <legend>
                   <i class="far fa-plus-square" />
                   &nbsp; InformaciÃ³n del
             proveedor
-               </legend>
+               </legend> 
                <div class="container-fluid">
                   <div class="row">
                      <div class="col-12 col-md-4">
                         <div class="form-group">
-                           <label for="item_codigo" class="bmd-label-floating">Nit</label>
-                           <input type="text" class="form-control" name="item_codigo" id="item_codigo" maxlength="45" />
+                           <h:outputText value="Nit">Nit</h:outputText>
+                           <h:inputText id="Nit" value="#{clienteBean.proveedores.nitProveedor}"></h:inputText>
                         </div>
                      </div>
                      <div class="col-12 col-md-4">
                         <div class="form-group">
-                           <label for="item_nombre" class="bmd-label-floating">Nombre</label>
-                           <input type="text" class="form-control" name="item_nombre" id="item_nombre" maxlength="140" />
+                           <h:outputText value="Nombre">Nombre</h:outputText>
+                           <h:inputText id="Nombre" value="#{clienteBean.proveedores.nombresProveedor}"></h:inputText>
                         </div>
                      </div>
                      <div class="col-12 col-md-4">
                         <div class="form-group">
-                           <label for="cliente_direccion" class="bmd-label-floating">DirecciÃ³n</label>
-                           <input type="text" class="form-control" name="cliente_direccion" id="cliente_direccion" maxlength="150" />
+                           <h:outputText value="Direccion">DirecciÃ³n</h:outputText>
+                           <h:inputText id="Direccion" value="#{clienteBean.proveedores.direccionProveedor}"></h:inputText>
                         </div>
                      </div>
                      <div class="col-12 col-md-6">
                         <div class="form-group">
-                           <label for="item_nombre" class="bmd-label-floating">Ciudad</label>
-                           <input type="text" class="form-control" name="item_nombre" id="item_nombre_" maxlength="140" />
+                           <h:outputText value="Ciudad">Ciudad</h:outputText>
+                           <h:inputText id="Ciudad" value="#{clienteBean.proveedores.ciudadProveedor}"></h:inputText>
                         </div>
                      </div>
                      <div class="col-12 col-md-6">
                         <div class="form-group">
-                           <label for="cliente_dni" class="bmd-label-floating">Email</label>
-                           <input type="text" class="form-control" id="cliente_dni" maxlength="27" />
+                           <h:outputText value="Email">Email</h:outputText>
+                           <h:inputText id="Email" value="#{clienteBean.proveedores.emailProveedor}"></h:inputText>
                         </div>
                      </div>
                      <div class="col-12 col-md-4">
                         <div class="form-group">
-                           <label for="cliente_telefono" class="bmd-label-floating">TelÃ©fono</label>
-                           <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono" maxlength="20" />
+                           <h:outputText value="Telefono">Telefono</h:outputText>
+                           <h:inputText id="Telefono" value="#{clienteBean.proveedores.telefonoProveedor}"></h:inputText>
                         </div>
                      </div>
                   </div>
@@ -269,15 +260,11 @@
                </button>
                &nbsp; &nbsp;
             </p>
-         </form>
-         <form action="">
-            <!--  <button id="" type="submit" class="btn btn-raised btn-info
-          btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button> -->
-            <button id="btnSA_3" type="button" class="btn btn-raised btn-info btn-sm">
+            <h:commandButton  class="btn btn-raised btn-info btn-sm" value="Guardar" actionListener="#{clienteBean.createProveedor()}">
                <i class="far fa-save" />
                Guardar
-            </button>
-         </form>
+            </h:commandButton>
+         </h:form>
       </div>
       <!--  ============================================= = Include JavaScript
       files = ============================================== -->

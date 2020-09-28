@@ -322,51 +322,50 @@
                      <div class="row">
                         <div class="col-12 col-md-6">
                            <div class="form-group">
-                              <label for="cliente_telefono" class="bmd-label-floating">Precio</label>
-                              <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono" maxlength="20" />
+                              <h:outputText value="Precio">Precio</h:outputText >
+                              <h:inputText id="Precio" value="#{clienteBean.productos.precioProducto}"></h:inputText>
                            </div>
                         </div>
                         <div class="col-12 col-md-6">
                            <div class="form-group">
-                              <label for="cliente_telefono" class="bmd-label-floating">Nit
-                    proveedor</label>
-                              <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono_" maxlength="20" />
+                              <h:outputText value="NitProveedor">Nit proveedor</h:outputText >
+                              <h:inputText id="NitProveedor" value="#{clienteBean.productos.nitProveedor}"></h:inputText>
                            </div>
                         </div>
                         <div class="col-12 col-md-6">
                            <div class="form-group">
-                              <label for="cliente_nombre" class="bmd-label-floating">Color</label>
-                              <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre" maxlength="40" />
+                              <h:outputText value="Color">Color</h:outputText >
+                              <h:inputText id="Color" value="#{clienteBean.productos.colorProducto}"></h:inputText>
                            </div>
                         </div>
                         <div class="col-12 col-md-4">
                            <div class="form-group">
-                              <label for="cliente_nombre" class="bmd-label-floating">Sabor</label>
-                              <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre_" maxlength="40" />
+                              <h:outputText  value="Sabor">Sabor</h:outputText >
+                              <h:inputText id="Sabor" value="#{clienteBean.productos.saborProducto}"></h:inputText>
                            </div>
                         </div>
                         <div class="col-12 col-md-4">
                            <div class="form-group">
-                              <label for="cliente_nombre" class="bmd-label-floating">Nombre</label>
-                              <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre__" maxlength="40" />
+                              <h:outputText  value="Nombre">Nombre</h:outputText>
+                              <h:inputText id="Nombre" value="#{clienteBean.productos.nombreProducto}"></h:inputText>
                            </div>
                         </div>
                         <div class="col-12 col-md-4">
                            <div class="form-group">
-                              <label for="prestamo_observacion" class="bmd-label-floating">TamaÃ±o</label>
-                              <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion" maxlength="400" />
+                              <h:outputText value="Tamano">TamaÃ±o</h:outputText>
+                              <h:inputText id="Tamano" value="#{clienteBean.productos.tamanoProducto}"></h:inputText>
                            </div>
                         </div>
                         <div class="col-12 col-md-4">
                            <div class="form-group">
-                              <label for="prestamo_observacion" class="bmd-label-floating">Codigo de barras</label>
-                              <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion_" maxlength="400" />
+                              <h:outputText value="CodigoDeBarra">Codigo de barras</h:outputText>
+                              <h:inputText id="CodigoDeBarra" value="#{clienteBean.productos.codigoBarrasProducto}"></h:inputText>
                            </div>
                         </div>
                         <div class="col-12 col-md-4">
                            <div class="form-group">
-                              <label for="prestamo_observacion" class="bmd-label-floating">DescripcciÃ³n</label>
-                              <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion__" maxlength="400" />
+                              <h:outputText value="Description">DescripcciÃ³n</h:outputText>
+                              <h:inputText id="Description" value="#{clienteBean.productos.descripcion}"></h:inputText>
                            </div>
                         </div>
                      </div>

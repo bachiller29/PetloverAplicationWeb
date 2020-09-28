@@ -22,10 +22,6 @@ public class Dao {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/petlovers", "petloversuser", "1234");
-//            if (connection != null) {
-//                System.out.println("Conexión a base de datos ... Ok");
-//                connection.close();
-//            }
         } catch (Exception e) {
             throw e;
         }
