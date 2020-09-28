@@ -34,7 +34,7 @@
                 </div>
                 <!--  Content -->
                 <div class="container-fluid">
-                    <form action="" class="form-neon">
+                    <h:form class="form-neon">
                         <fieldset>
                             <legend>
                                 <i class="far fa-address-card" />
@@ -50,26 +50,26 @@
                                </div> -->
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="usuario_nombre" class="bmd-label-floating">Nombres</label>
-                                            <input type="text" class="form-control" name="usuario_nombre" id="usuario_nombre" maxlength="35" />
+                                            <h:outputText value="Nombres">Nombres</h:outputText>
+                                            <h:inputText id="Nombres" value="#{clienteBean.usuarios.nombres}"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="usuario_apellido" class="bmd-label-floating">Apellidos</label>
-                                            <input type="text" class="form-control" name="usuario_apellido" id="usuario_apellido" maxlength="35" />
+                                            <h:outputText value="Apellidos">Apellidos</h:outputText>
+                                            <h:inputText id="Apellidos" value="#{clienteBean.usuarios.apellidos}"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="usuario_telefono" class="bmd-label-floating">Usuario</label>
-                                            <input type="text" class="form-control" name="usuario_telefono" id="usuario_telefono" maxlength="20" />
+                                            <h:outputText value="UsuarioLogin">Usuario login</h:outputText>
+                                            <h:inputText id="UsuarioLogin" value="#{clienteBean.usuarios.usuariologin}"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="usuario_direccion" class="bmd-label-floating">ContraseÃ±a</label>
-                                            <input type="text" class="form-control" name="usuario_direccion" id="usuario_direccion" maxlength="190" />
+                                            <h:outputText value="Contraseña">ContraseÃ±a</h:outputText>
+                                            <h:inputText id="Contraseña" value="#{clienteBean.usuarios.contrasena}"></h:inputText>
                                         </div>
                                     </div>
                                 </div>
@@ -143,12 +143,12 @@
                                 &nbsp; LIMPIAR
                             </button>
                             &nbsp; &nbsp;
-                            <button type="submit" class="btn btn-raised btn-info btn-sm">
+                            <h:commandButton  class="btn btn-raised btn-info btn-sm" value="Guardar" actionListener="#{clienteBean.createUsuario()}">
                                 <i class="far fa-save" />
-                                &nbsp; GUARDAR
-                            </button>
+                                Guardar
+                            </h:commandButton>
                         </p>
-                    </form>
+                    </h:form>
                 </div>
             </ui:define>
         </ui:composition>

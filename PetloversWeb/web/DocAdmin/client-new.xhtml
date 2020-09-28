@@ -50,37 +50,32 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="cliente_dni" class="bmd-label-floating">Email</label>
-                                            <!--<input type="text" class="form-control" id="cliente_dni" maxlength="27" />-->
-                                            <h:inputText class="form-control" id="cliente_dni" value="#{clientsController.objCliente.email}" />
+                                            <h:outputText  value="Email" class="bmd-label-floating"/>
+                                            <h:inputText  id="Email" value="#{clienteBean.clientes.email}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="cliente_nombre" class="bmd-label-floating">Ciudad</label>
-                                            <h:inputText class="form-control" id="cliente_nombre" value="#{clientsController.objCliente.ciudad}" />
-                                            <!--<input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre" maxlength="40" />-->
+                                            <label  value="Ciudad" class="bmd-label-floating">Ciudad</label>
+                                            <h:inputText id="Ciudad"  value="#{clienteBean.clientes.ciudad}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="cliente_apellido" class="bmd-label-floating">Barrio</label>
-                                            <!--<input type="text" class="form-control" name="cliente_apellido" id="cliente_apellido" maxlength="40" />-->
-                                            <h:inputText class="form-control" id="cliente_apellido" value="#{clientsController.objCliente.barrio}" />
+                                            <label  value="Barrio" class="bmd-label-floating">Barrio</label>
+                                            <h:inputText id="Barrio" value="#{clienteBean.clientes.barrio}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="cliente_telefono" class="bmd-label-floating">TelÃ©fono</label>
-                                            <!--<input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono" maxlength="20" />-->
-                                            <h:inputText class="form-control" id="cliente_telefono" value="#{clientsController.objCliente.telefono}" />
+                                            <h:outputText value="Telefono" class="bmd-label-floating">Telefono</h:outputText>
+                                            <h:inputText  id="Telefono" class="form-control" value="#{clienteBean.clientes.telefono}"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="cliente_direccion" class="bmd-label-floating">DirecciÃ³n</label>
-                                            <!--<input type="text" class="form-control" name="cliente_direccion" id="cliente_direccion" maxlength="150" />-->
-                                            <h:inputText class="form-control" id="cliente_direccion" value="#{clientsController.objCliente.direccion}" />
+                                            <label  value="Direccion" class="bmd-label-floating">Direccion</label>
+                                            <h:inputText id="Direccion" value="#{clienteBean.clientes.direccion}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                 </div>
@@ -96,11 +91,10 @@ and open the template in the editor.
                             </button>
                             &nbsp; &nbsp;
                         </p>
-                        <h:commandButton class="btn btn-raised btn-info btn-sm" id="btnSA_3" value="Guardar" action="#{clientsController.crearCliente()}" />
-                        <!--<button id="btnSA_3" type="button" class="btn btn-raised btn-info btn-sm">
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" actionListener="#{clienteBean.createCliente()}">
                             <i class="far fa-save" />
                             Guardar
-                        </button>-->
+                        </h:commandButton>
                     </h:form>
                 </div>
             </ui:define>

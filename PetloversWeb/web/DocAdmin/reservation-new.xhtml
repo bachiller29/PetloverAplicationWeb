@@ -4,11 +4,11 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-         <ui:composition template="./docAdminTemplate.xhtml">
+        <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
-                        <i class="fas fa-plus fa-fw" />
-                        &nbsp; NUEVO INVENTARIO
-                    </ui:define>
+                <i class="fas fa-plus fa-fw" />
+                &nbsp; NUEVO INVENTARIO
+            </ui:define>
             <ui:define name="content">
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
@@ -108,94 +108,61 @@
                                 </table>
                             </div>
                         </div>
-                        <form action="">
+                        <h:form >
                             <fieldset>
                                 <legend>
                                     <i class="far fa-plus-square" />
                                     &nbsp; InformaciÃ³n
                                     del inventario
                                 </legend>
-                                <!--  <div class="container-fluid"> <div class="row"> <div
-                            class="col-12 col-md-4"> <div class="form-group"> <label
-                            for="prestamo_fecha_inicio">Fecha de reserva</label> <input
-                            type="date" class="form-control" name="prestamo_fecha_inicio"
-                            id="admin-dni"> </div> </div> <div class="col-12 col-md-4"> <div
-                            class="form-group"> <label for="prestamo_fecha_final">Fecha de
-                            entrega</label> <input type="date" class="form-control"
-                            name="prestamo_fecha_final" id="prestamo_fecha_final"> </div>
-                            </div> <div class="col-12 col-md-4"> <div class="form-group">
-                            <label for="prestamo_estado"
-                            class="bmd-label-floating">Estado</label> <select
-                            class="form-control" name="item_estado" id="item_estado"> <option
-                            value="" selected="" disabled="">Seleccione una opciÃ³n</option>
-                            <option value="Prestamo">PrÃ©stamo</option> <option
-                            value="Reservacion">ReservaciÃ³n</option> <option
-                            value="Finalizado">Finalizado</option> </select> </div> </div>
-                            <div class="col-12 col-md-6"> <div class="form-group"> <label
-                            for="prestamo_total" class="bmd-label-floating">Total a
-                            pagar</label> <input type="text" pattern="[0-9.]{1,10}"
-                            class="form-control" name="prestamo_total" id="prestamo_total"
-                            maxlength="10"> </div> </div> <div class="col-12 col-md-6"> <div
-                            class="form-group"> <label for="prestamo_pagado"
-                            class="bmd-label-floating">Total depositado</label> <input
-                            type="text" pattern="[0-9.]{1,10}" class="form-control"
-                            name="prestamo_pagado" id="prestamo_pagado" maxlength="10"> </div>
-                            </div> <div class="col-12"> <div class="form-group"> <label
-                            for="prestamo_observacion"
-                            class="bmd-label-floating">ObservaciÃ³n</label> <input type="text"
-                            pattern="[a-zA-z0-9Ã¡Ã©Ã­Ã³ÃºÃÃÃÃÃÃ±Ã#() ]{1,400}"
-                            class="form-control" name="prestamo_observacion"
-                            id="prestamo_observacion" maxlength="400"> </div> </div> </div>
-                            </div> -->
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
-                                                <label for="cliente_telefono" class="bmd-label-floating">Precio</label>
-                                                <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono" maxlength="20" />
+                                                <h:outputText value="Precio" class="bmd-label-floating">Precio produco</h:outputText >
+                                                <h:inputText id="Precio" value="#{clienteBean.productos.precioProducto}" class="form-control" ></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
-                                                <label for="cliente_telefono" class="bmd-label-floating">Nit
-                                                    proveedor</label>
-                                                <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono_" maxlength="20" />
+                                                <h:outputText value="NitProveedor" class="bmd-label-floating">Nit proveedor</h:outputText >
+                                                <h:inputText id="NitProveedor" value="#{clienteBean.productos.nitProveedor}" class="form-control"></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
-                                                <label for="cliente_nombre" class="bmd-label-floating">Color</label>
-                                                <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre" maxlength="40" />
+                                                <h:outputText value="Color" class="bmd-label-floating">Color produco</h:outputText >
+                                                <h:inputText id="Color" value="#{clienteBean.productos.colorProducto}" class="form-control"></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="form-group">
-                                                <label for="cliente_nombre" class="bmd-label-floating">Sabor</label>
-                                                <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre_" maxlength="40" />
+                                                <h:outputText  value="Sabor" class="bmd-label-floating">Sabor produco</h:outputText >
+                                                <h:inputText id="Sabor" value="#{clienteBean.productos.saborProducto}" class="form-control"></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="form-group">
-                                                <label for="cliente_nombre" class="bmd-label-floating">Nombre</label>
-                                                <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre__" maxlength="40" />
+                                                <h:outputText  value="Nombre" class="bmd-label-floating">Nombre produco</h:outputText>
+                                                <h:inputText id="Nombre" value="#{clienteBean.productos.nombreProducto}" class="form-control"></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="form-group">
-                                                <label for="prestamo_observacion" class="bmd-label-floating">TamaÃ±o</label>
-                                                <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion" maxlength="400" />
+                                                <h:outputText value="Tamano" class="bmd-label-floating">Tamaño produco</h:outputText>
+                                                <h:inputText id="Tamano" value="#{clienteBean.productos.tamanoProducto}" class="form-control"></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="form-group">
-                                                <label for="prestamo_observacion" class="bmd-label-floating">Codigo de barras</label>
-                                                <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion_" maxlength="400" />
+                                                <h:outputText value="CodigoDeBarra" class="bmd-label-floating">Codigo de barras</h:outputText>
+                                                <h:inputText id="CodigoDeBarra" value="#{clienteBean.productos.codigoBarrasProducto}" class="form-control"></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="form-group">
-                                                <label for="prestamo_observacion" class="bmd-label-floating">DescripcciÃ³n</label>
-                                                <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion__" maxlength="400" />
+                                                <h:outputText value="Description" class="bmd-label-floating">Descripccion</h:outputText>
+                                                <h:inputText id="Description" value="#{clienteBean.productos.descripcion}" class="form-control"></h:inputText>
                                             </div>
                                         </div>
                                     </div>
@@ -210,12 +177,12 @@
                                     &nbsp; LIMPIAR
                                 </button>
                                 &nbsp; &nbsp;
-                                <button type="submit" class="btn btn-raised btn-info btn-sm">
+                                <h:commandButton  class="btn btn-raised btn-info btn-sm" value="Guardar" actionListener="#{clienteBean.createProducto()}">
                                     <i class="far fa-save" />
-                                    &nbsp; GUARDAR
-                                </button>
+                                    Guardar
+                                </h:commandButton>
                             </p>
-                        </form>
+                        </h:form>
                     </div>
                 </div>
                 <!--  MODAL CLIENTE -->

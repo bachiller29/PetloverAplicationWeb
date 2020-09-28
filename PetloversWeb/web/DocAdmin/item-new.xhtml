@@ -35,7 +35,7 @@
                 </div>
                 <!--  CONTENT -->
                 <div class="container-fluid">
-                    <form action="" class="form-neon">
+                    <h:form class="form-neon">
                         <fieldset>
                             <legend>
                                 <i class="far fa-plus-square" />
@@ -46,38 +46,38 @@
                                 <div class="row">
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="item_codigo" class="bmd-label-floating">Nit</label>
-                                            <input type="text" class="form-control" name="item_codigo" id="item_codigo" maxlength="45" />
+                                            <h:outputText value="Nit" class="bmd-label-floating">Nit proveedor</h:outputText>
+                                            <h:inputText id="Nit" value="#{clienteBean.proveedores.nitProveedor}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="item_nombre" class="bmd-label-floating">Nombre</label>
-                                            <input type="text" class="form-control" name="item_nombre" id="item_nombre" maxlength="140" />
+                                            <h:outputText value="Nombre" class="bmd-label-floating">Nombre proveedor</h:outputText>
+                                            <h:inputText id="Nombre" value="#{clienteBean.proveedores.nombresProveedor}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="cliente_direccion" class="bmd-label-floating">DirecciÃ³n</label>
-                                            <input type="text" class="form-control" name="cliente_direccion" id="cliente_direccion" maxlength="150" />
+                                            <h:outputText value="Direccion" class="bmd-label-floating">Direccion proveedor</h:outputText>
+                                            <h:inputText id="Direccion" value="#{clienteBean.proveedores.direccionProveedor}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="item_nombre" class="bmd-label-floating">Ciudad</label>
-                                            <input type="text" class="form-control" name="item_nombre" id="item_nombre_" maxlength="140" />
+                                            <h:outputText value="Ciudad" class="bmd-label-floating">Ciudad proveedor</h:outputText>
+                                            <h:inputText id="Ciudad" value="#{clienteBean.proveedores.ciudadProveedor}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="cliente_dni" class="bmd-label-floating">Email</label>
-                                            <input type="text" class="form-control" id="cliente_dni" maxlength="27" />
+                                            <h:outputText value="Email" class="bmd-label-floating">Email proveedor</h:outputText>
+                                            <h:inputText id="Email" value="#{clienteBean.proveedores.emailProveedor}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="cliente_telefono" class="bmd-label-floating">TelÃ©fono</label>
-                                            <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono" maxlength="20" />
+                                            <h:outputText value="Telefono" class="bmd-label-floating">Telefono proveedor</h:outputText>
+                                            <h:inputText id="Telefono" value="#{clienteBean.proveedores.telefonoProveedor}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                 </div>
@@ -93,15 +93,11 @@
                             </button>
                             &nbsp; &nbsp;
                         </p>
-                    </form>
-                    <form action="">
-                        <!--  <button id="" type="submit" class="btn btn-raised btn-info
-                      btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button> -->
-                        <button id="btnSA_3" type="button" class="btn btn-raised btn-info btn-sm">
+                        <h:commandButton  class="btn btn-raised btn-info btn-sm" value="Guardar" actionListener="#{clienteBean.createProveedor()}">
                             <i class="far fa-save" />
                             Guardar
-                        </button>
-                    </form>
+                        </h:commandButton>
+                    </h:form>
                 </div>
             </ui:define>
         </ui:composition>

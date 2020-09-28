@@ -63,7 +63,7 @@ public class Productos implements Serializable {
     private TipoProductos idTipoProducto;
     @JoinColumn(name = "Nit_Proveedor", referencedColumnName = "Nit_Proveedor")
     @ManyToOne
-    private Proveedores nitProveedor;
+    private Integer nitProveedor;
     @JoinColumn(name = "Id_Inventario", referencedColumnName = "Id_Inventario")
     @ManyToOne
     private Inventario idInventario;
@@ -159,11 +159,11 @@ public class Productos implements Serializable {
         this.idTipoProducto = idTipoProducto;
     }
 
-    public Proveedores getNitProveedor() {
+    public Integer getNitProveedor() {
         return nitProveedor;
     }
 
-    public void setNitProveedor(Proveedores nitProveedor) {
+    public void setNitProveedor(Integer nitProveedor) {
         this.nitProveedor = nitProveedor;
     }
 

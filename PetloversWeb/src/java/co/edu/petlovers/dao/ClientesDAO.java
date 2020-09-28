@@ -14,17 +14,17 @@ public class ClientesDAO extends Dao {
         try {
             this.Connet();
             StringBuilder str = new StringBuilder("insert into clientes (direccion, ciudad, barrio, telefono, email) values (");
-            str.append("\"");
+            str.append("'");
             str.append(clientes.getDireccion());
-            str.append("\",\"");
+            str.append("','");
             str.append(clientes.getCiudad());
-            str.append("\",\"");
+            str.append("','");
             str.append(clientes.getBarrio());
-            str.append("\",");
+            str.append("',");
             str.append(clientes.getTelefono());
-            str.append(",\"");
+            str.append(",'");
             str.append(clientes.getEmail());
-            str.append("\")");
+            str.append("')");
 
             Statement st = this.getConnection().createStatement();
             st.executeUpdate(str.toString());
@@ -66,21 +66,21 @@ public class ClientesDAO extends Dao {
             this.Connet();
             StringBuilder str = new StringBuilder("insert into productos (Nombre_Producto, Descripcion, Tamano_Producto, Color_Producto, Sabor_Producto, "
                     + "Precio_Producto, Codigo_Barras_Producto, Nit_Proveedor) values (");
-            str.append("\"");
+            str.append("'");
             str.append(producto.getNombreProducto());
-            str.append("\",\"");
+            str.append("','");
             str.append(producto.getDescripcion());
-            str.append("\",\"");
+            str.append("','");
             str.append(producto.getTamanoProducto());
-            str.append("\",\"");
+            str.append("','");
             str.append(producto.getColorProducto());
-            str.append("\",\"");
+            str.append("','");
             str.append(producto.getSaborProducto());
-            str.append(",'");
+            str.append("','");
             str.append(producto.getPrecioProducto());
             str.append("','");
             str.append(producto.getCodigoBarrasProducto());
-            str.append("','");
+            str.append("',");
             str.append(producto.getNitProveedor());
             str.append(")");
 
@@ -96,16 +96,16 @@ public class ClientesDAO extends Dao {
     public void createUsuario(Usuarios usuario) throws Exception {
         try {
             this.Connet();
-            StringBuilder str = new StringBuilder("insert into usuario (Nombres, Apellidos, Usuario_login, Contrasena) values (");
-            str.append("\"");
+            StringBuilder str = new StringBuilder("insert into usuarios (Nombres, Apellidos, Usuario_login, Contrasena) values (");
+            str.append("'");
             str.append(usuario.getNombres());
-            str.append("\",\"");
+            str.append("','");
             str.append(usuario.getApellidos());
-            str.append("\",\"");
+            str.append("','");
             str.append(usuario.getUsuariologin());
-            str.append("\",\"");
+            str.append("','");
             str.append(usuario.getContrasena());
-            str.append("\")");
+            str.append("')");
 
             Statement st = this.getConnection().createStatement();
             st.executeUpdate(str.toString());
