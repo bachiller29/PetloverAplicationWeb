@@ -2,14 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
                 <i class="fas fa-clipboard-list fa-fw" />
-                &nbsp; LISTA DE
-                PROVEEDOR
+                &nbsp; LISTA DE PROVEEDOR
             </ui:define>
             <ui:define name="content">
                 <div class="container-fluid">
@@ -23,8 +23,7 @@
                         <li>
                             <a class="active" href="item-list.html">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE
-                                PROVEEDOR
+                                &nbsp; LISTA DE PROVEEDOR
                             </a>
                         </li>
                         <li>
@@ -36,203 +35,48 @@
                     </ul>
                 </div>
                 <!--  CONTENT -->
-                <div class="container-fluid">
-                    <div class="table-responsive">
-                        <table class="table table-dark table-sm">
-                            <thead>
-                                <tr class="text-center roboto-medium">
-                                    <th>Nit</th>
-                                    <th>Nombre</th>
-                                    <th>DirecciÃ³n</th>
-                                    <th>Ciudad</th>
-                                    <th>Email</th>
-                                    <th>Telefono</th>
-                                    <th>ACTUALIZAR</th>
-                                    <th>ELIMINAR</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="text-center">
-                                    <td>90060340</td>
-                                    <td>IKEA</td>
-                                    <td>Cr 13#26-81</td>
-                                    <td>Bogota</td>
-                                    <td>jorge.lov_04@hotmail.com</td>
-                                    <td>341 1348</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_1" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068932</td>
-                                    <td>Canon</td>
-                                    <td>Cr 7 No. 22 - 79</td>
-                                    <td>Neiva</td>
-                                    <td>nachosacerdote@gmail.com</td>
-                                    <td>691 8654</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_2" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068941</td>
-                                    <td>Haagen</td>
-                                    <td>Cl.90 # 11a-54</td>
-                                    <td>Bogota</td>
-                                    <td>jpalomasjrpp60@yahoo.com</td>
-                                    <td>343 0999</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_3" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068942</td>
-                                    <td>Puro maiz</td>
-                                    <td>Cl 12# 2-65</td>
-                                    <td>Fusa</td>
-                                    <td>Pachita_1@hotmail.com</td>
-                                    <td>315 8890</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_4" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068943</td>
-                                    <td>El Comal</td>
-                                    <td>Cr. 18 No. 82 - 35</td>
-                                    <td>Bogota</td>
-                                    <td>Ferney987@gmail.com</td>
-                                    <td>343 1223</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_5" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068944</td>
-                                    <td>Mechadas</td>
-                                    <td>Cr 13 # 26- 82</td>
-                                    <td>Girardo</td>
-                                    <td>Andres444@gmail.com</td>
-                                    <td>564 3435</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_6" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068650</td>
-                                    <td>Prolim</td>
-                                    <td>Cr 7 No. 22 - 80</td>
-                                    <td>Cali</td>
-                                    <td>Albertina678@gmail.com</td>
-                                    <td>886 0525</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_7" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068951</td>
-                                    <td>Chikyhy</td>
-                                    <td>Cl.90 # 11a-55</td>
-                                    <td>Manizales</td>
-                                    <td>Cuesta88@gmail.com</td>
-                                    <td>838 8606</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_8" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
-                </div>
+                <h:form>
+                    <h:dataTable id="data" value="#{clienteBean.listProveedores}" var="proveedor">
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Nit</f:facet>  
+                            <h:outputLabel value="#{proveedor.nitProveedor}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Nombre</f:facet>  
+                            <h:outputLabel value="#{proveedor.nombresProveedor}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Direccion</f:facet>  
+                            <h:outputLabel value="#{proveedor.direccionProveedor}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Ciudad</f:facet>  
+                            <h:outputLabel value="#{proveedor.ciudadProveedor}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Email</f:facet>  
+                            <h:outputLabel value="#{proveedor.emailProveedor}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Telefono</f:facet>  
+                            <h:outputLabel value="#{proveedor.telefonoProveedor}" class="text-center"/>
+                        </h:column>
+                        <h:column >
+                            <h:commandButton value="Editar" action="#{clienteBean.byProveedor(proveedor)}" class="btn btn-raised btn-info btn-sm">
+                                <i class="fas fa-clipboard-list fa-fw" />  
+                            </h:commandButton>
+                        </h:column>
+                        <h:column >
+                            <h:commandButton value="Delete" action="#{clienteBean.deleteProvedor(proveedor)}" class="tn btn-raised btn-info btn-sm" >
+                                <i class="fas fa-clipboard-list fa-fw" />                                 
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                    <h:commandButton class="btn btn-raised btn-info btn-sm" value="Listar" actionListener="#{clienteBean.listProveedor()}">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; 
+                    </h:commandButton>
+                </h:form>
             </ui:define>
         </ui:composition>
         <!--  Sweet Alert -->

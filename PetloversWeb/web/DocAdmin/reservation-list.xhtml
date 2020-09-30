@@ -2,14 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
                 <i class="fas fa-clipboard-list fa-fw" />
-                &nbsp; LISTA DE
-                INVENTARIO
+                &nbsp; LISTA DE INVENTARIO
             </ui:define>
             <ui:define name="content">
                 <div class="container-fluid">
@@ -23,8 +24,7 @@
                         <li>
                             <a class="active" href="reservation-list.html">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE
-                                INVENTARIO
+                                &nbsp; LISTA DE INVENTARIO
                             </a>
                         </li>
                         <li>
@@ -33,116 +33,64 @@
                                 &nbsp; BUSCAR INVENTARIO
                             </a>
                         </li>
-                        <!--  <li> <a href="reservation-pending.html"><i class="fas
-                      fa-hand-holding-usd fa-fw"></i> &nbsp; PRÃSTAMOS PENDIENTES</a> </li> -->
                     </ul>
                 </div>
                 <!--  CONTENT -->
-                <div class="container-fluid">
-                    <div class="table-responsive">
-                        <table class="table table-dark table-sm">
-                            <thead>
-                                <tr class="text-center roboto-medium">
-                                    <th>Id inventario</th>
-                                    <th>Cantidad producto</th>
-                                    <th>Id administrdor</th>
-                                    <th>Id salida productos</th>
-                                    <th>Id entrada productos</th>
-                                    <th>ELIMINAR</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="text-center">
-                                    <td>1</td>
-                                    <td>10</td>
-                                    <td>1</td>
-                                    <td>10</td>
-                                    <td>20</td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>2</td>
-                                    <td>20</td>
-                                    <td>1</td>
-                                    <td>9</td>
-                                    <td>30</td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>3</td>
-                                    <td>20</td>
-                                    <td>1</td>
-                                    <td>10</td>
-                                    <td>30</td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>4</td>
-                                    <td>8</td>
-                                    <td>1</td>
-                                    <td>9</td>
-                                    <td>30</td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>5</td>
-                                    <td>2</td>
-                                    <td>1</td>
-                                    <td>9</td>
-                                    <td>10</td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterios</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
-                </div>
+                <h:form>
+                    <p:growl id="message" showDetail="true" />
+                    <h:dataTable id="data" value="#{clienteBean.listProductos}" var="producto">
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Id producto</f:facet>  
+                            <h:outputLabel value="#{producto.idProducto}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Nombre</f:facet>  
+                            <h:outputLabel value="#{producto.nombreProducto}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Descripcion</f:facet>  
+                            <h:outputLabel value="#{producto.descripcion}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Tamaño</f:facet>  
+                            <h:outputLabel value="#{producto.tamanoProducto}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Color</f:facet>  
+                            <h:outputLabel value="#{producto.colorProducto}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Sabor</f:facet>  
+                            <h:outputLabel value="#{producto.saborProducto}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Precio</f:facet>  
+                            <h:outputLabel value="#{producto.precioProducto}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Codigo producto</f:facet>  
+                            <h:outputLabel value="#{producto.codigoBarrasProducto}" class="text-center"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">Nit proveedor</f:facet>  
+                            <h:outputLabel value="#{producto.nitProveedor}" class="text-center"/>
+                        </h:column>
+                        <h:column >
+                            <h:commandButton value="Editar" action="#{clienteBean.byProducto(producto)}" class="btn btn-raised btn-info btn-sm" >
+                                <i class="fas fa-clipboard-list fa-fw" />                                 
+                            </h:commandButton>
+                        </h:column>
+                        <h:column >
+                            <h:commandButton value="Delete" action="#{clienteBean.deleteProducto(producto)}" class="tn btn-raised btn-info btn-sm" >
+                                <i class="fas fa-clipboard-list fa-fw" />                                 
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                    <h:commandButton class="btn btn-raised btn-info btn-sm" value="Listar" actionListener="#{clienteBean.listProducto()}">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; 
+                    </h:commandButton>
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>

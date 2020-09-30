@@ -7,8 +7,7 @@
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
                 <i class="fas fa-sync-alt fa-fw" />
-                &nbsp; ACTUALIZAR
-                INVENTARIO
+                &nbsp; ACTUALIZAR INVENTARIO
             </ui:define>
             <ui:define name="content">
                 <div class="container-fluid">
@@ -22,8 +21,7 @@
                         <li>
                             <a href="reservation-list.html">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE
-                                INVENTARIO
+                                &nbsp; LISTA DE INVENTARIO
                             </a>
                         </li>
                         <li>
@@ -32,8 +30,6 @@
                                 &nbsp; BUSCAR INVENTARIO
                             </a>
                         </li>
-                        <!--  <li> <a href="reservation-pending.html"><i class="fas
-                      fa-hand-holding-usd fa-fw"></i> &nbsp; PRÃSTAMOS PENDIENTES</a> </li> -->
                     </ul>
                 </div>
                 <!--  CONTENT -->
@@ -44,93 +40,70 @@
                                 <span class="roboto-medium">INVENTARIO</span>
                                 <!--  &nbsp; Carlos Alfaro -->
                             </div>
-                            <div class="table-responsive">
-                                <table class="table table-dark table-sm">
-                                    <thead>
-                                        <tr class="text-center roboto-medium">
-                                            <th>Id inventario</th>
-                                            <th>Cantidad producto</th>
-                                            <th>Id administrdor</th>
-                                            <th>Id salida productos</th>
-                                            <th>Id entrada productos</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="text-center">
-                                            <td>1</td>
-                                            <td>10</td>
-                                            <td>1</td>
-                                            <td>10</td>
-                                            <td>20</td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td>2</td>
-                                            <td>20</td>
-                                            <td>1</td>
-                                            <td>9</td>
-                                            <td>30</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
-                        <form action="">
+                        <h:form>
                             <fieldset>
                                 <legend>
                                     <i class="far fa-plus-square" />
-                                    &nbsp; InformaciÃ³n
-                                    del inventario
+                                    &nbsp; Informacion del inventario
                                 </legend>
                                 <div class="container-fluid">
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="cliente_telefono" class="bmd-label-floating">Precio</label>
-                                                    <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono" maxlength="20" />
+                                                    <label for="IdProducto" class="bmd-label-floating">Id producto</label>
+                                                    <h:inputText id="IdProducto" value="#{clienteBean.productos.idProducto}" class="form-control"></h:inputText>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="cliente_telefono" class="bmd-label-floating">Nit
-                                                        proveedor</label>
-                                                    <input type="text" class="form-control" name="cliente_telefono" id="cliente_telefono_" maxlength="20" />
+                                                    <label for="Nombre" class="bmd-label-floating">Nombre</label>
+                                                    <h:inputText id="Nombre" value="#{clienteBean.productos.nombreProducto}"  class="form-control"></h:inputText>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="cliente_nombre" class="bmd-label-floating">Color</label>
-                                                    <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre" maxlength="40" />
+                                                    <label for="Descripcion" class="bmd-label-floating">Descripccion</label>
+                                                    <h:inputText id="Description" value="#{clienteBean.productos.descripcion}"  class="form-control"></h:inputText>                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="Tamano" class="bmd-label-floating">Tamaño</label>
+                                                    <h:inputText value="#{clienteBean.productos.tamanoProducto}"  class="form-control"></h:inputText>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4">
                                                 <div class="form-group">
-                                                    <label for="cliente_nombre" class="bmd-label-floating">Sabor</label>
-                                                    <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre_" maxlength="40" />
+                                                    <label for="Color" class="bmd-label-floating">Color</label>
+                                                    <h:inputText id="Color" value="#{clienteBean.productos.colorProducto}"  class="form-control"></h:inputText>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <div class="form-group">  
+                                                    <label for="Sabor" class="bmd-label-floating">Sabor</label>
+                                                    <h:inputText id="Sabor" value="#{clienteBean.productos.saborProducto}"  class="form-control"></h:inputText>
+
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4">
                                                 <div class="form-group">
-                                                    <label for="cliente_nombre" class="bmd-label-floating">Nombre</label>
-                                                    <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre__" maxlength="40" />
+                                                    <label for="Precio" class="bmd-label-floating">Precio</label>
+                                                    <h:inputText id="Precio" value="#{clienteBean.productos.precioProducto}"  class="form-control"></h:inputText>    
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4">
                                                 <div class="form-group">
-                                                    <label for="prestamo_observacion" class="bmd-label-floating">TamaÃ±o</label>
-                                                    <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion" maxlength="400" />
+                                                    <label for="CodigoDeBarras" class="bmd-label-floating">Codigo producto</label>
+                                                    <h:inputText id="CodigoDeBarra" value="#{clienteBean.productos.codigoBarrasProducto}"  class="form-control"></h:inputText>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4">
                                                 <div class="form-group">
-                                                    <label for="prestamo_observacion" class="bmd-label-floating">Codigo de barras</label>
-                                                    <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion_" maxlength="400" />
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <label for="prestamo_observacion" class="bmd-label-floating">DescripcciÃ³n</label>
-                                                    <input type="text" class="form-control" name="prestamo_observacion" id="prestamo_observacion__" maxlength="400" />
+                                                    <label for="NotProveedor" class="bmd-label-floating">Nit proveedor</label>
+                                                    <h:inputText id="NitProveedor" value="#{clienteBean.productos.nitProveedor}"  class="form-control"></h:inputText>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,13 +113,12 @@
                             <br />
                             <br />
                             <br />
-                            <p class="text-center" style="margin-top: 40px;">
-                                <button type="submit" class="btn btn-raised btn-success btn-sm">
-                                    <i class="fas fa-sync-alt" />
-                                    &nbsp; ACTUALIZAR
-                                </button>
-                            </p>
-                        </form>
+                            <p class="text-center" style="margin-top: 40px;" />
+                            <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" action="#{clienteBean.updateProducto()}">
+                                <i class="far fa-save" />
+                                Guardar
+                            </h:commandButton>
+                        </h:form>
                     </div>
                 </div>
             </ui:define>

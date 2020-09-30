@@ -2,13 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
                 <i class="fas fa-clipboard-list fa-fw" />
-                &nbsp; LISTA DE
-                USUARIOS
+                &nbsp; LISTA DE USUARIOS
             </ui:define>
             <ui:define name="content">
                 <div class="container-fluid">
@@ -22,8 +23,7 @@
                         <li>
                             <a class="active" href="user-list.html">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE
-                                USUARIOS
+                                &nbsp; LISTA DE USUARIOS
                             </a>
                         </li>
                         <li>
@@ -35,203 +35,45 @@
                     </ul>
                 </div>
                 <!--  Content -->
-                <div class="container-fluid">
-                    <div class="table-responsive">
-                        <table class="table table-dark table-sm">
-                            <thead>
-                                <tr class="text-center roboto-medium">
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Login</th>
-                                    <th>ContraseÃ±a</th>
-                                    <th>Id tipo rol</th>
-                                    <th>ACTUALIZAR</th>
-                                    <th>ELIMINAR</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="text-center">
-                                    <td>1</td>
-                                    <td>ADRIANA CAROLINA</td>
-                                    <td>HERNANDEZ MONTERROZA</td>
-                                    <td>administrator</td>
-                                    <td>x</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>2</td>
-                                    <td>ANGELA PATRICIA</td>
-                                    <td>REY SANCHEZ</td>
-                                    <td>user1</td>
-                                    <td>Zz</td>
-                                    <td>2</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>3</td>
-                                    <td>DANIELA KATHERINNE</td>
-                                    <td>ABONDANO ACEVEDO</td>
-                                    <td>admin</td>
-                                    <td>St@rt123</td>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>4</td>
-                                    <td>MÃNICA ALEXANDRA</td>
-                                    <td>CARVAJAL VARGAS</td>
-                                    <td>alex</td>
-                                    <td>1</td>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>5</td>
-                                    <td>RAFAEL ANDRES</td>
-                                    <td>ACERO CARO</td>
-                                    <td>pos</td>
-                                    <td>P@ssw0rd</td>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>6</td>
-                                    <td>LORENA FERNANDA</td>
-                                    <td>CRUZ GARCIA</td>
-                                    <td>cldo</td>
-                                    <td>bl4ck4ndwhite</td>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>7</td>
-                                    <td>CAMILO ALBERTO</td>
-                                    <td>VILLA MONROY</td>
-                                    <td>demo</td>
-                                    <td>admin</td>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>8</td>
-                                    <td>FABIAN ANDRES</td>
-                                    <td>MAHECHA PIÃEROS</td>
-                                    <td>db2admin</td>
-                                    <td>alex</td>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Regresar</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
-                </div>
+                <h:form>
+                    <p:growl id="message" showDetail="true" />
+                    <h:dataTable id="data" value="#{clienteBean.listUsuarios}" var="usuario">
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">ID</f:facet>  
+                            <h:outputLabel value="#{usuario.idUsuario}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">Nombre</f:facet>  
+                            <h:outputLabel value="#{usuario.nombres}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">Apellido</f:facet>  
+                            <h:outputLabel value="#{usuario.apellidos}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">Usuario</f:facet>  
+                            <h:outputLabel value="#{usuario.usuariologin}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">Contraseña</f:facet>  
+                            <h:outputLabel value="#{usuario.contrasena}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <h:commandButton value="Editar" action="#{clienteBean.byUsuario(usuario)}" class="btn btn-raised btn-info btn-sm" >
+                                <i class="fas fa-clipboard-list fa-fw" />                                 
+                            </h:commandButton>
+                        </h:column>
+                        <h:column >
+                            <h:commandButton value="Delete" action="#{clienteBean.deleteUsuario(usuario)}" class="tn btn-raised btn-info btn-sm" >
+                                <i class="fas fa-clipboard-list fa-fw" />                                 
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                    <h:commandButton class="btn btn-raised btn-info btn-sm" value="Listar" actionListener="#{clienteBean.listUsuario()}">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; 
+                    </h:commandButton>
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>

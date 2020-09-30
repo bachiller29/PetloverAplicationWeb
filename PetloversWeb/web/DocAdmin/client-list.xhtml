@@ -2,13 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
                 <i class="fas fa-clipboard-list fa-fw" />
-                &nbsp; LISTA DE
-                CLIENTES
+                &nbsp; LISTA DE CLIENTES
             </ui:define>
             <ui:define name="content">
                 <div class="container-fluid">
@@ -22,8 +22,7 @@
                         <li>
                             <a class="active" href="client-list.html">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE
-                                CLIENTES
+                                &nbsp; LISTA DE CLIENTES
                             </a>
                         </li>
                         <li>
@@ -34,171 +33,48 @@
                         </li>
                     </ul>
                 </div>
-                <!--  Content here -->
-                <div class="container-fluid">
-                    <div class="table-responsive">
-                        <table class="table table-dark table-sm">
-                            <thead>
-                                <tr class="text-center roboto-medium">
-                                    <th>Id Cliente</th>
-                                    <th>Direccion</th>
-                                    <th>Ciudad</th>
-                                    <th>Barrio</th>
-                                    <th>Telefono</th>
-                                    <th>Email</th>
-                                    <th>IdUsuario</th>
-                                    <th>ACTUALIZAR</th>
-                                    <th>ELIMINAR</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="text-center">
-                                    <td>1</td>
-                                    <td>Calle 10 # 5-51</td>
-                                    <td>Bogota</td>
-                                    <td>Ciudad jardin</td>
-                                    <td>3195082526</td>
-                                    <td>orregoldi@hotmail.com</td>
-                                    <td>11</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_3" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>2</td>
-                                    <td>Calle 53 No 10-60</td>
-                                    <td>Bogota</td>
-                                    <td>Restrepo</td>
-                                    <td>3207482911</td>
-                                    <td>cathita_acosta@hotmail.com</td>
-                                    <td>12</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_4" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>3</td>
-                                    <td>Calle 10 # 5-51</td>
-                                    <td>Bogota</td>
-                                    <td>Doce de octubre</td>
-                                    <td>3139362803</td>
-                                    <td>ambrosio82@gmail.com</td>
-                                    <td>13</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_5" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>4</td>
-                                    <td>Calle 100 # 11B-27</td>
-                                    <td>Bogota</td>
-                                    <td>Los andes</td>
-                                    <td>3113240238</td>
-                                    <td>carolaasm@hotmail.com</td>
-                                    <td>14</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_6" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>5</td>
-                                    <td>Carrera 10 No. 27 â 27</td>
-                                    <td>Bogota</td>
-                                    <td>Los alcazares</td>
-                                    <td>3219563930</td>
-                                    <td>danycast98@hotmail.com</td>
-                                    <td>15</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_7" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>6</td>
-                                    <td>Carrera 10 No. 27-51</td>
-                                    <td>Bogota</td>
-                                    <td>Parque el salitre</td>
-                                    <td>3149473938</td>
-                                    <td>marjobio@hotmail.com</td>
-                                    <td>16</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_8" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
-                </div>
+                <h:form>
+                    <h:dataTable id="data" value="#{clienteBean.listClientes}" var="cliente" >
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">ID</f:facet>  
+                            <h:outputLabel value="#{cliente.idCliente}" class="text-center" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" class="text-center roboto-medium">direccion</f:facet>  
+                            <h:outputLabel value="#{cliente.direccion}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">ciudad</f:facet>  
+                            <h:outputLabel value="#{cliente.ciudad}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">barrio</f:facet>  
+                            <h:outputLabel value="#{cliente.barrio}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">telefono</f:facet>  
+                            <h:outputLabel value="#{cliente.telefono}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header" class="text-center roboto-medium">email</f:facet>  
+                            <h:outputLabel value="#{cliente.email}" class="text-center" />
+                        </h:column>
+                        <h:column >
+                            <h:commandButton value="Editar" action="#{clienteBean.tomarCliente(cliente)}" class="btn btn-raised btn-info btn-sm" >
+                                <i class="fas fa-clipboard-list fa-fw" />                                 
+                            </h:commandButton>
+                        </h:column>
+                        <h:column >
+                            <h:commandButton value="Delete" action="#{clienteBean.deleteCliente(cliente)}" class="tn btn-raised btn-info btn-sm" >
+                                <i class="fas fa-clipboard-list fa-fw" />                                 
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                    <h:commandButton class="btn btn-raised btn-info btn-sm" value="Listar" actionListener="#{clienteBean.listCliente()}">
+                        <i class="fas fa-clipboard-list fa-fw" />
+                        &nbsp; 
+                    </h:commandButton>
+                </h:form>
             </ui:define>
         </ui:composition>
         <!--  Sweet Alert -->

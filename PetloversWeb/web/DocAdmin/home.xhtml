@@ -10,41 +10,43 @@
                 &nbsp; SERVICIOS
             </ui:define>
             <ui:define name="content">  
-                <a href="client-new.html" class="tile" >
-                    <div class="tile-tittle">Clientes</div>
-                    <div class="tile-icon">
-                        <i class="fas fa-users fa-fw" />
-                        <p>5 Registrados</p>
-                    </div>
-                </a>
-                <a href="item-list.html" class="tile" >
-                    <div class="tile-tittle">Proveedor</div>
-                    <div class="tile-icon">
-                        <i class="fas fa-pallet fa-fw" />
-                        <p>9 Registrados</p>
-                    </div>
-                </a>
-                <a href="reservation-list.html" class="tile" >
-                    <div class="tile-tittle">Inventario</div>
-                    <div class="tile-icon">
-                        <i class="fas fa-file-invoice-dollar fa-fw" />
-                        <p>10 Registrados</p>
-                    </div>
-                </a>
-                <a href="user-list.html" class="tile" >
-                    <div class="tile-tittle">Usuarios</div>
-                    <div class="tile-icon">
-                        <i class="fas fa-user-secret fa-fw" />
-                        <p>50 Registrados</p>
-                    </div>
-                </a>
-                <a href="company.html" class="tile" >
-                    <div class="tile-tittle">Empresa</div>
-                    <div class="tile-icon">
-                        <i class="fas fa-store-alt fa-fw" />
-                        <p>1 Registrada</p>
-                    </div>
-                </a>
+                <h:form>
+                    <h:commandLink action="client-new" class="tile" >
+                        <div class="tile-tittle">Clientes</div>
+                        <div class="tile-icon">
+                            <i class="fas fa-users fa-fw" />
+                            <p>5 Registrados</p>
+                        </div>
+                    </h:commandLink>
+                    <a href="item-list.html" class="tile" >
+                        <div class="tile-tittle">Proveedor</div>
+                        <div class="tile-icon">
+                            <i class="fas fa-pallet fa-fw" />
+                            <p>9 Registrados</p>
+                        </div>
+                    </a>
+                    <a href="reservation-list.html" class="tile" >
+                        <div class="tile-tittle">Inventario</div>
+                        <div class="tile-icon">
+                            <i class="fas fa-file-invoice-dollar fa-fw" />
+                            <p>10 Registrados</p>
+                        </div>
+                    </a>
+                    <a href="user-list.html" class="tile" >
+                        <div class="tile-tittle">Usuarios</div>
+                        <div class="tile-icon">
+                            <i class="fas fa-user-secret fa-fw" />
+                            <p>50 Registrados</p>
+                        </div>
+                    </a>
+                    <a href="company.html" class="tile" >
+                        <div class="tile-tittle">Empresa</div>
+                        <div class="tile-icon">
+                            <i class="fas fa-store-alt fa-fw" />
+                            <p>1 Registrada</p>
+                        </div>
+                    </a>
+                </h:form>
             </ui:define>  
         </ui:composition>
     </h:body>

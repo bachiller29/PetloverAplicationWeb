@@ -102,8 +102,10 @@
                                     </ul>
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="./DocLogin/index.html" class="header-btn">Iniciar
-                                        Sesion - Login</a>
+                                    <!--<h:form>-->
+                                    <h:link class="header-btn" outcome="/DocLogin/login" value="Iniciar Sesion"></h:link>
+                                    <!--</h:form>-->
+                                    <!--                                    <a href="./DocLogin/index.html" class="header-btn"></a>-->
                                 </div>
                             </div>
                         </div>
@@ -833,7 +835,7 @@
                                     <!--  Link back to Colorlib can't be removed. Template is
                                       licensed under CC BY 3.0. -->
                                     Spartaco &copy;<script type="text/javascript"
-                                    xml:space="preserve">//<![CDATA[document.write(new Date().getFullYear());//]]></script>
+                                    >//<![CDATA[document.write(new Date().getFullYear());//]]></script>
                                     Todos los derechos reservados | esto esta hecho para ell@s <i
                                         class="fa fa-heart"> </i> <a
                                         href="https://colorlib.com" target="_blank"> </a>
@@ -889,6 +891,8 @@
         src="./assets/js/plugins.js" type="text/javascript" ></script><script
         src="./assets/js/main.js" type="text/javascript" ></script>
 
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
     </h:body>
 </html>
 

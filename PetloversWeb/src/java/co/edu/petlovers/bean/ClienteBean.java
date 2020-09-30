@@ -5,12 +5,17 @@ import co.edu.petlovers.model.Clientes;
 import co.edu.petlovers.model.Productos;
 import co.edu.petlovers.model.Proveedores;
 import co.edu.petlovers.model.Usuarios;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.application.FacesMessage;
 //import javax.annotation.ManagedBean;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "clienteBean")
-@RequestScoped
+@SessionScoped
 public class ClienteBean {
 
     //Se crea variable para poder optener sus atributos 
@@ -18,20 +23,30 @@ public class ClienteBean {
     private Proveedores proveedor;
     private Productos producto;
     private Usuarios usuario;
+    private List<Clientes> listCliente;
+    private List<Proveedores> listProveedor;
+    private List<Productos> listProducto;
+    private List<Usuarios> listUsuario;
 
     public ClienteBean() {
         cliente = new Clientes();
         proveedor = new Proveedores();
         producto = new Productos();
         usuario = new Usuarios();
+        listCliente = new ArrayList<Clientes>();
+        listProveedor = new ArrayList<Proveedores>();
+        listProducto = new ArrayList<Productos>();
+        listUsuario = new ArrayList<Usuarios>();
     }
 
     // invocamos los metodos del patron de acceso DAO
     // insercion a la base de datos 
-    public void createCliente() throws Exception {
+    public String createCliente() throws Exception {
         try {
             ClientesDAO dao = new ClientesDAO();
             dao.createCliente(cliente);
+            cliente = new Clientes();
+            return "client-list";
         } catch (Exception e) {
             throw e;
         }
@@ -64,6 +79,149 @@ public class ClienteBean {
         }
     }
 
+    public void listCliente() throws Exception {
+        try {
+            ClientesDAO dao = new ClientesDAO();
+            listCliente = dao.listCliente();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void listProveedor() throws Exception {
+        try {
+            ClientesDAO dao = new ClientesDAO();
+            listProveedor = dao.listProveedor();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void listProducto() throws Exception {
+        try {
+            ClientesDAO dao = new ClientesDAO();
+            listProducto = dao.listProducto();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void listUsuario() throws Exception {
+        try {
+            ClientesDAO dao = new ClientesDAO();
+            listUsuario = dao.listUsuario();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public String tomarCliente(Clientes objCliente) throws Exception {
+        try {
+            cliente = new Clientes();
+            cliente = objCliente;
+            return "client-update";
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public String byProveedor(Proveedores objProveedor) throws Exception {
+        try {
+            proveedor = new Proveedores();
+            proveedor = objProveedor;
+            return "item-update";
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public String byProducto(Productos objProducto) throws Exception {
+        try {
+            producto = new Productos();
+            producto = objProducto;
+            return "reservation-update";
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public String byUsuario(Usuarios objUsuario) throws Exception {
+        try {
+            usuario = new Usuarios();
+            usuario = objUsuario;
+            return "user-update";
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public String updateCliente() throws Exception {
+        ClientesDAO dao = new ClientesDAO();
+        dao.updateCliente(cliente);
+        cliente = new Clientes();
+        return "client-list";
+    }
+
+    public String updateProveedor() throws Exception {
+        ClientesDAO dao = new ClientesDAO();
+        dao.updateProveedor(proveedor);
+        proveedor = new Proveedores();
+        return "item-list";
+    }
+
+    public String updateProducto() throws Exception {
+        ClientesDAO dao = new ClientesDAO();
+        dao.updateProducto(producto);
+        producto = new Productos();
+        return "reservation-list";
+    }
+
+    public String updateUsuario() throws Exception {
+        ClientesDAO dao = new ClientesDAO();
+        dao.updateUsuario(usuario);
+        usuario = new Usuarios();
+        return "user-list";
+    }
+
+    public void deleteCliente(Clientes cliente) throws Exception {
+        ClientesDAO dao = new ClientesDAO();
+        dao.deleteCliente(cliente);
+        listCliente = dao.listCliente();
+    }
+
+    public void deleteProvedor(Proveedores proveedor) throws Exception {
+        ClientesDAO dao = new ClientesDAO();
+        dao.deleteProveedor(proveedor);
+        listProveedor = dao.listProveedor();
+    }
+
+    public void deleteProducto(Productos producto) throws Exception {
+        ClientesDAO dao = new ClientesDAO();
+        if (!dao.validateDetalleOrdenPagoByIdProduct(producto.getIdProducto())) {
+            dao.deleteProducto(producto);
+            listProducto = dao.listProducto();
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Producto eliminado exitosamente.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        } else {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El producto no puede ser eliminado porque tiene una orden de pago.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
+
+    public void deleteUsuario(Usuarios usuario) throws Exception {
+        ClientesDAO dao = new ClientesDAO();
+        if (!dao.validateTipoRolByIdTipoRol(usuario.getIdUsuario())) {
+            dao.deleteUsuario(usuario);
+            listUsuario = dao.listUsuario();
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Producto eliminado exitosamente.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        } else {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El producto no puede ser eliminado por que tiene rol asignado");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+
+    }
+
     public Clientes getClientes() {
         return cliente;
     }
@@ -94,5 +252,37 @@ public class ClienteBean {
 
     public void setUsuarios(Usuarios usuario) {
         this.usuario = usuario;
+    }
+
+    public List<Clientes> getListClientes() {
+        return listCliente;
+    }
+
+    public void setListClientes(List<Clientes> listCliente) {
+        this.listCliente = listCliente;
+    }
+
+    public List<Proveedores> getListProveedores() {
+        return listProveedor;
+    }
+
+    public void setListProveedores(List<Proveedores> listProveedor) {
+        this.listProveedor = listProveedor;
+    }
+
+    public List<Productos> getListProductos() {
+        return listProducto;
+    }
+
+    public void setListProductos(List<Productos> listProducto) {
+        this.listProducto = listProducto;
+    }
+
+    public List<Usuarios> getListUsuarios() {
+        return listUsuario;
+    }
+
+    public void setListUsuarios(List<Usuarios> listUsuario) {
+        this.listUsuario = listUsuario;
     }
 }
