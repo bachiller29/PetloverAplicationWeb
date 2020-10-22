@@ -32,44 +32,41 @@ and open the template in the editor.
                 </div>
                 <!--  Content here -->
                 <div class="container-fluid">
-                    <form action="" class="form-neon">
+                    <h:form class="form-neon">
                         <fieldset>
                             <legend>
-                                <i class="fas fa-user"></i> &nbsp; InformaciÃ³n bÃ¡sica
+                                <i class="fas fa-user"></i> &nbsp; Informacion basica
                             </legend>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="prestamo_fecha_inicio">Fecha de reserva</label>
-                                            <input class="form-control" name="prestamo_fecha_inicio"
-                                                   id="admin-dni" />
+                                            <h:outputText  value="Fecha" class="bmd-label-floating">Fecha</h:outputText>
+                                            <h:inputText  id="FechaCita" value="#{adminAuxBean.citas.fechaCita}" class="form-control"></h:inputText>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
+                                    </div>                                   
+                                    <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="prestamo_estado" class="bmd-label-floating">Estado
-                                                cita</label> <select class="form-control"
-                                                                 name="item_estado" id="item_estado">
-                                                <option value="">
-                                                    Seleccione una opciÃ³n
-                                                </option>
-                                                <option value="Prestamo">
-                                                    Cancelado
-                                                </option>
-                                                <option value="Reservacion">
-                                                    ReservaciÃ³n
-                                                </option>
-                                                <option value="Finalizado">
-                                                    Disponible
-                                                </option></select>
+                                            <h:outputText  value="Hora" class="bmd-label-floating">Hora</h:outputText>
+                                            <h:inputText  id="HoraCita" value="#{adminAuxBean.citas.horaCita}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="cliente_telefono" class="bmd-label-floating">Hora</label>
-                                            <input type="text" class="form-control"
-                                                   name="cliente_telefono" id="cliente_telefono" maxlength="20" />
+                                            <h:outputText  value="Estado" class="bmd-label-floating">Estado</h:outputText>
+                                            <h:inputText  id="EstadoCita" value="#{adminAuxBean.citas.estadoCita}" class="form-control"></h:inputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <h:outputText  value="IdCliente" class="bmd-label-floating">IdCliente</h:outputText>
+                                            <h:inputText  id="IdCliente" value="#{adminAuxBean.citas.idCliente}" class="form-control"></h:inputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <h:outputText  value="IdServicio" class="bmd-label-floating">Servicio</h:outputText>
+                                            <h:inputText  id="IdServicio" value="#{adminAuxBean.citas.idServicio}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                 </div>
@@ -79,13 +76,14 @@ and open the template in the editor.
                         <p class="text-center" style="margin-top: 40px;">
                             <button type="reset" class="btn btn-raised btn-secondary btn-sm"><i
                                     class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
-                            &nbsp; &nbsp; <button type="submit"
-                                                  class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i>
-                                &nbsp; GUARDAR</button>
+                            &nbsp; &nbsp;
                         </p>
-                    </form>
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" actionListener="#{adminAuxBean.createCita()}">
+                             <i class="far fa-save" />
+                            
+                        </h:commandButton>                      
+                    </h:form>         
                 </div>
-
             </ui:define>
         </ui:composition>
     </h:body>
