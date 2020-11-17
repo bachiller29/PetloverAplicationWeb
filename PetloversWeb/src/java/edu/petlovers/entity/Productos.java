@@ -9,14 +9,14 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,12 +28,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "productos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Productos.findAll", query = "SELECT p FROM Productos p")})
+    @NamedQuery(name = "Productos.findAll", query = "SELECT p FROM Productos p"),
+    @NamedQuery(name = "Productos.findByIdProducto", query = "SELECT p FROM Productos p WHERE p.idProducto = :idProducto"),
+    @NamedQuery(name = "Productos.findByNombreProducto", query = "SELECT p FROM Productos p WHERE p.nombreProducto = :nombreProducto"),
+    @NamedQuery(name = "Productos.findByDescripcion", query = "SELECT p FROM Productos p WHERE p.descripcion = :descripcion"),
+    @NamedQuery(name = "Productos.findByTamanoProducto", query = "SELECT p FROM Productos p WHERE p.tamanoProducto = :tamanoProducto"),
+    @NamedQuery(name = "Productos.findByColorProducto", query = "SELECT p FROM Productos p WHERE p.colorProducto = :colorProducto"),
+    @NamedQuery(name = "Productos.findBySaborProducto", query = "SELECT p FROM Productos p WHERE p.saborProducto = :saborProducto"),
+    @NamedQuery(name = "Productos.findByPrecioProducto", query = "SELECT p FROM Productos p WHERE p.precioProducto = :precioProducto"),
+    @NamedQuery(name = "Productos.findByCodigoBarrasProducto", query = "SELECT p FROM Productos p WHERE p.codigoBarrasProducto = :codigoBarrasProducto")})
 public class Productos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "Id_Producto")
     private Integer idProducto;
     @Size(max = 20)
@@ -56,16 +64,16 @@ public class Productos implements Serializable {
     @Column(name = "Codigo_Barras_Producto")
     private Integer codigoBarrasProducto;
     @JoinColumn(name = "Id_Tipo_Producto", referencedColumnName = "Id_Tipo_Producto")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private TipoProductos idTipoProducto;
     @JoinColumn(name = "Nit_Proveedor", referencedColumnName = "Nit_Proveedor")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Proveedores nitProveedor;
     @JoinColumn(name = "Id_Inventario", referencedColumnName = "Id_Inventario")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Inventario idInventario;
     @JoinColumn(name = "Id_Marca_Producto", referencedColumnName = "Id_Marca_Producto")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private MarcaProductos idMarcaProducto;
 
     public Productos() {

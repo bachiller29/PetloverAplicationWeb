@@ -29,5 +29,7 @@ public interface UsuariosFacadeLocal {
     List<Usuarios> findRange(int[] range);
 
     int count();
+
+    public Usuarios recuperarClave(String emailIn);
     
 }

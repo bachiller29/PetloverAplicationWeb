@@ -10,6 +10,7 @@ import edu.petlovers.entity.Usuarios;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -17,6 +18,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class UsuariosFacade extends AbstractFacade<Usuarios> implements UsuariosFacadeLocal {
+
     @PersistenceContext(unitName = "PetloversWebPU")
     private EntityManager em;
 
@@ -28,5 +30,16 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Usuarios
     public UsuariosFacade() {
         super(Usuarios.class);
     }
-    
+
+    @Override
+    public Usuarios recuperarClave(String emailIn) {
+        try {
+            Query qt = em.createQuery("SELECT p FROM Usuarios p WHERE p.email = :emailIn");
+            qt.setParameter("emailIn", emailIn);
+            return (Usuarios) qt.getSingleResult();
+        } catch (Exception e) {
+            return new Usuarios();
+        }
+    }
+
 }
