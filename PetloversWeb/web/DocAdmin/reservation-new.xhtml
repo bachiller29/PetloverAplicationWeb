@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
@@ -34,77 +35,7 @@
                 </div>
                 <!--  CONTENT -->
                 <div class="container-fluid">
-                    <div class="container-fluid form-neon">
-<!--                        <div class="container-fluid">
-                            <p class="text-center roboto-medium">AGREGAR PROVEEDOR O INVENTARIO</p>
-                            <p class="text-center">
-                                <button type="button" class="btn btn-primary">
-                                    <i class="fas fa-user-plus" />
-                                    &nbsp; Agregar proveedor
-                                </button>
-                                <button type="button" class="btn btn-primary">
-                                    <i class="fas fa-box-open" />
-                                    &nbsp; Agregar INVENTARIO   
-                                </button>
-                            </p>
-                            <div>
-                                <span class="roboto-medium">INVENTARIO:</span>
-                                <span class="text-danger">
-                                    &nbsp;<i class="fas fa-exclamation-triangle" />
-                                    Seleccione el inventario
-                                </span>
-                                <form action="" style="display: inline-block !important;">
-                                      Carlos Alfaro 
-                                    <button type="button" class="btn btn-danger">
-                                        <i class="fas fa-box-open" />
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-dark table-sm">
-                                    <thead>
-                                        <tr class="text-center roboto-medium">
-                                            <th>Id inventario</th>
-                                            <th>Cantidad producto</th>
-                                            <th>Id administrdor</th>
-                                            <th>Id salida productos</th>
-                                            <th>Id entrada productos</th>
-                                            <th>ELIMINAR</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="text-center">
-                                            <td>1</td>
-                                            <td>10</td>
-                                            <td>1</td>
-                                            <td>10</td>
-                                            <td>20</td>
-                                            <td>
-                                                <form action="">
-                                                    <button type="button" class="btn btn-warning">
-                                                        <i class="far fa-trash-alt" />
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td>2</td>
-                                            <td>20</td>
-                                            <td>1</td>
-                                            <td>9</td>
-                                            <td>30</td>
-                                            <td>
-                                                <form action="">
-                                                    <button type="button" class="btn btn-warning">
-                                                        <i class="far fa-trash-alt" />
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>-->
+                    <div class="container-fluid form-neon">                       
                         <h:form >
                             <fieldset>
                                 <legend>
@@ -112,56 +43,33 @@
                                     &nbsp; Informacion
                                     del inventario
                                 </legend>
+                                <h:inputText id="idproductps" value="#{inventarioRequest.objInventario.idInventario}" style="display:none;" />
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
-                                                <h:outputText value="Precio" class="bmd-label-floating">Precio producto</h:outputText >
-                                                <h:inputText id="Precio" value="#{clienteBean.productos.precioProducto}" class="form-control" ></h:inputText>
+                                                <h:outputText value="Precio" class="bmd-label-floating">Cantidad producto</h:outputText >
+                                                <h:inputText id="Precio" value="#{inventarioRequest.objInventario.cantidadProductos}" class="form-control" ></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
-                                                <h:outputText value="NitProveedor" class="bmd-label-floating">Nit proveedor</h:outputText >
-                                                <h:inputText id="NitProveedor" value="#{clienteBean.productos.nitProveedor}" class="form-control"></h:inputText>
+                                                <h:outputText value="Nit proveedor" class="bmd-label-floating">Numero administrador</h:outputText >
+                                                <h:inputText id="NitProveedor" value="#{inventarioRequest.objInventario.idAdmin.idAdmin}" class="form-control"></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
-                                                <h:outputText value="Color" class="bmd-label-floating">Color producto</h:outputText >
-                                                <h:inputText id="Color" value="#{clienteBean.productos.colorProducto}" class="form-control"></h:inputText>
+                                                <h:outputText value="Referencia salida producto" class="bmd-label-floating">Referencia salida producto</h:outputText >
+                                                <h:inputText id="referenciaSalidaProducto" value="#{inventarioRequest.objInventario.idSalidaProductos.idSalidaProductos}" class="form-control"></h:inputText>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="form-group">
-                                                <h:outputText  value="Sabor" class="bmd-label-floating">Sabor producto</h:outputText >
-                                                <h:inputText id="Sabor" value="#{clienteBean.productos.saborProducto}" class="form-control"></h:inputText>
+                                                <h:outputText  value="Referencia entrada producto" class="bmd-label-floating">Referencia entrada producto</h:outputText >
+                                                <h:inputText id="referenciaEntradaProducto" value="#{inventarioRequest.objInventario.idEntradaProductos.idEntradaProductos}" class="form-control"></h:inputText>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-md-4">
-                                            <div class="form-group">
-                                                <h:outputText  value="Nombre" class="bmd-label-floating">Nombre producto</h:outputText>
-                                                <h:inputText id="Nombre" value="#{clienteBean.productos.nombreProducto}" class="form-control"></h:inputText>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4">
-                                            <div class="form-group">
-                                                <h:outputText value="Tamano" class="bmd-label-floating">Tamaño producto</h:outputText>
-                                                <h:inputText id="Tamano" value="#{clienteBean.productos.tamanoProducto}" class="form-control"></h:inputText>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4">
-                                            <div class="form-group">
-                                                <h:outputText value="CodigoDeBarra" class="bmd-label-floating">Codigo de barras</h:outputText>
-                                                <h:inputText id="CodigoDeBarra" value="#{clienteBean.productos.codigoBarrasProducto}" class="form-control"></h:inputText>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4">
-                                            <div class="form-group">
-                                                <h:outputText value="Description" class="bmd-label-floating">Descripccion</h:outputText>
-                                                <h:inputText id="Description" value="#{clienteBean.productos.descripcion}" class="form-control"></h:inputText>
-                                            </div>
-                                        </div>
+                                        </div>                                                                                                                                  
                                     </div>
                                 </div>
                             </fieldset>
@@ -169,17 +77,43 @@
                             <br />
                             <br />
                             <p class="text-center" style="margin-top: 40px;">
-                                <button type="reset" class="btn btn-raised btn-secondary btn-sm">
-                                    <i class="fas fa-paint-roller" />
-                                    &nbsp; LIMPIAR
-                                </button>
-                                &nbsp; &nbsp;
-                                <h:commandButton  class="btn btn-raised btn-info btn-sm" value="Guardar" actionListener="#{clienteBean.createProducto()}">
-                                    <i class="far fa-save" />
-                                    Guardar
-                                </h:commandButton>
+                                <h:commandButton action="#{inventarioRequest.actualizarInventario()}" class="btn btn-raised btn-info btn-sm" value="ACTUALIZAR"></h:commandButton>              
+                                &nbsp; &nbsp;                                
+                                <h:commandButton action="#{inventarioRequest.registrarInventario()}" class="btn btn-raised btn-info btn-sm" value="GUARDAR"></h:commandButton>    
                             </p>
-                        </h:form>
+                        </h:form>                        
+                          <div class="table-responsive">
+                            <table class="table table-dark table-sm">
+                                <thead>
+                                    <tr class="text-center roboto-medium">
+                                        <th>Precio</th>
+                                        <th>Nit proveedor</th>
+                                        <th>N. Salida producto</th>
+                                        <th>N. Entrada producto</th>                                        
+                                        <th>Eliminar</th>
+                                        <th>Ver</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <h:form>
+                                        <c:forEach items="#{inventarioRequest.listaInventario}" var="obj">
+                                            <tr>
+                                                <td>#{obj.cantidadProductos}</td>
+                                                <td>#{obj.idAdmin.idAdmin}</td>
+                                                <td>#{obj.idSalidaProductos.idSalidaProductos}</td>
+                                                <td>#{obj.idEntradaProductos.idEntradaProductos}</td>                                                
+                                                <td>
+                                                    <h:commandButton action="#{inventarioRequest.removerInventario(obj)}" value="Eliminar"></h:commandButton>                                                                                    
+                                                </td>
+                                                <td>
+                                                    <h:commandButton action="#{inventarioRequest.cargaInventario(obj)}" value="Ver"></h:commandButton>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </h:form>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!--  MODAL CLIENTE -->

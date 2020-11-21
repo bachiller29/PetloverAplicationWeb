@@ -6,21 +6,18 @@
 package edu.petlovers.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,27 +27,27 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "inventario")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Inventario.findAll", query = "SELECT i FROM Inventario i")})
+    @NamedQuery(name = "Inventario.findAll", query = "SELECT i FROM Inventario i"),
+    @NamedQuery(name = "Inventario.findByIdInventario", query = "SELECT i FROM Inventario i WHERE i.idInventario = :idInventario"),
+    @NamedQuery(name = "Inventario.findByCantidadProductos", query = "SELECT i FROM Inventario i WHERE i.cantidadProductos = :cantidadProductos")})
 public class Inventario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "Id_Inventario")
     private Integer idInventario;
     @Column(name = "Cantidad_Productos")
     private Integer cantidadProductos;
     @JoinColumn(name = "Id_Admin", referencedColumnName = "Id_Admin")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Administradores idAdmin;
     @JoinColumn(name = "Id_Salida_Productos", referencedColumnName = "Id_Salida_Productos")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private SalidaProductos idSalidaProductos;
     @JoinColumn(name = "Id_Entrada_Productos", referencedColumnName = "Id_Entrada_Productos")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private EntradaProductos idEntradaProductos;
-    @OneToMany(mappedBy = "idInventario", fetch = FetchType.LAZY)
-    private Collection<Productos> productosCollection;
 
     public Inventario() {
     }
@@ -97,15 +94,6 @@ public class Inventario implements Serializable {
 
     public void setIdEntradaProductos(EntradaProductos idEntradaProductos) {
         this.idEntradaProductos = idEntradaProductos;
-    }
-
-    @XmlTransient
-    public Collection<Productos> getProductosCollection() {
-        return productosCollection;
-    }
-
-    public void setProductosCollection(Collection<Productos> productosCollection) {
-        this.productosCollection = productosCollection;
     }
 
     @Override

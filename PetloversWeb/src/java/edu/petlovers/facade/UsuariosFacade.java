@@ -38,8 +38,19 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Usuarios
             qt.setParameter("emailIn", emailIn);
             return (Usuarios) qt.getSingleResult();
         } catch (Exception e) {
-            return new Usuarios();
+            return new Usuarios();      
         }
     }
 
+    @Override
+    public Usuarios loginUsuario(String email, String contrasena) {
+        try {
+            Query q = em.createQuery("SELECT u FROM Usuarios u WHERE u.email = :email AND u.contrasena = :contrasena");
+            q.setParameter("email", email);
+            q.setParameter("contrasena", contrasena);
+            return (Usuarios) q.getSingleResult();
+        } catch (Exception e) {
+            return new Usuarios();
+        }
+    }
 }

@@ -7,6 +7,7 @@ package edu.petlovers.controller;
 
 import edu.petlovers.entity.Proveedores;
 import edu.petlovers.local.ProveedoresFacadeLocal;
+import edu.petlovers.utilities.Email;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
@@ -73,6 +74,15 @@ public class ProveedorRequest implements Serializable {
         this.nuevoActualizar = false;
         listaProveedores.clear();
         listaProveedores.addAll(proveedorFacadeLocal.findAll());
+    }
+    
+    public void correoMasico(){
+        try {
+            for (Proveedores iProveedores : listaProveedores) {
+           Email.sendBienvenido(iProveedores.getEmailProveedor(), iProveedores.getNombresProveedor(), null, null);
+            }
+        } catch (Exception e) {
+        }
     }
 
     public Proveedores getObjProveedores() {

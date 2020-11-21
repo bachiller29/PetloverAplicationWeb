@@ -44,11 +44,12 @@ public class ProductosRequest implements Serializable {
 
     @EJB
     InventarioFacadeLocal inventarioFacadeLocal;
-    
+
     @EJB
     MarcaProductosFacadeLocal marcaProductosFacadeLocal;
 
-    private Productos objProductos = new Productos(); ;
+    private Productos objProductos = new Productos();
+    ;
 
     private Integer idToUpdate;
     ArrayList<Productos> listaProductos = new ArrayList();
@@ -73,14 +74,14 @@ public class ProductosRequest implements Serializable {
         String mensajeSw = "";
 
         try {
-        objProductos.setNitProveedor(proveedoresFacadeLocal.find(objProductos.getNitProveedor().getNitProveedor()));
-         objProductos.setIdTipoProducto(tipoProductosFacadeLocal.find(objProductos.getIdTipoProducto().getIdTipoProducto()));
-        objProductos.setIdInventario(inventarioFacadeLocal.find(1));
-        objProductos.setIdMarcaProducto(marcaProductosFacadeLocal.find(1));
-        
-        productosFacadeLocal.create(objProductos);
-        listaProductos.add(objProductos);
-        mensajeSw = "swal('Producto creado' , 'con exito' , 'success')";
+            objProductos.setNitProveedor(proveedoresFacadeLocal.find(objProductos.getNitProveedor().getNitProveedor()));
+            objProductos.setIdTipoProducto(tipoProductosFacadeLocal.find(objProductos.getIdTipoProducto().getIdTipoProducto()));
+            objProductos.setIdInventario(inventarioFacadeLocal.find(1));
+            objProductos.setIdMarcaProducto(marcaProductosFacadeLocal.find(1));
+
+            productosFacadeLocal.create(objProductos);
+            listaProductos.add(objProductos);
+            mensajeSw = "swal('Producto creado' , 'con exito' , 'success')";
         } catch (Exception e) {
             mensajeSw = "swal('El producto' , 'no fue registrado' , 'error');";
         }
@@ -100,7 +101,7 @@ public class ProductosRequest implements Serializable {
     }
 
     public void actualizarProducto() {
-        
+
 //        objProductos.setIdProducto(this.idToUpdate);
         productosFacadeLocal.edit(objProductos);
         this.nuevoActualizar = false;

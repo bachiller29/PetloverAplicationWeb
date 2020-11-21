@@ -20,6 +20,7 @@ import javax.mail.internet.MimeMessage;
  * @author SENA
  */
 public class Email {
+
     public static void sendModificacion(String para, String Nombres, String nombUsu, String clave) {
         final String user = "";//cambiará en consecuencia al servidor utilizado
         final String pass = "";
@@ -127,8 +128,8 @@ public class Email {
     }
 
     public static void sendBienvenido(String para, String Nombres, String nombUsu, String clave) {
-        final String user = "";//cambiará en consecuencia al servidor utilizado
-        final String pass = "";
+        final String user = "stivencruz09291998@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "123hola123";
 
 //1st paso) Obtener el objeto de sesión
         Properties props = new Properties();
@@ -154,15 +155,15 @@ public class Email {
             message.setSubject("Bienvenido Banco-Pedagogico");
 
             message.setContent(
-                    "<center><img src='http://fs5.directupload.net/images/160530/khs5cmdc.jpg' title='Banco Pedagogico'></center>"
+                    "<center><img src='https://elsignificadode.net/wp-content/uploads/2017/10/BIENVENIDO.jpg' title='Bienvenidos'></center>"
                     + "<h3> Bienvenido. "
                     + Nombres
                     + "</h3>"
                     + "Datos de Ingreso: "
-                    + "<h4> Nombre Usuario : "
+                    + "<h4> Correo Usuario : "
                     + nombUsu
                     + "</h4>"
-                    + "<h4> Documento Usuario : "
+                    + "<h4> Clave usuario : "
                     + clave
                     + " </h4>", "text/html");
 
@@ -215,5 +216,5 @@ public class Email {
         }
 
     }
-    
+
 }
