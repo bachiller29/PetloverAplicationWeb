@@ -10,6 +10,7 @@ import edu.petlovers.entity.HistoriaClinica;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +30,13 @@ public class HistoriaClinicaFacade extends AbstractFacade<HistoriaClinica> imple
         super(HistoriaClinica.class);
     }
     
+    public HistoriaClinica buscarHistoriaClinica(int idHistoria) {
+        try {
+            Query q = em.createQuery("SELECT hc FROM HistoriaClinica hc WHERE hc.idHistoriaClinica = :idHistoria");
+            q.setParameter("idHistoria", idHistoria);
+            return (HistoriaClinica) q.getSingleResult();
+        } catch (Exception e) {
+            return new HistoriaClinica();
+        }
+    }
 }

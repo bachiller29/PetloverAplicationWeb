@@ -21,13 +21,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Entity
 @Table(name = "servicios")
@@ -41,11 +42,11 @@ public class Servicios implements Serializable {
     @Basic(optional = false)
     @Column(name = "Id_Servicio")
     private Integer idServicio;
-    @Size(max = 280)
-    @Column(name = "Descripcion")
-    private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idServicio", fetch = FetchType.LAZY)
-    private Collection<HistoriaClinica> historiaClinicaCollection;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "Nombre_Servicio")
+    private String nombreServicio;
     @OneToMany(mappedBy = "idServicio", fetch = FetchType.LAZY)
     private Collection<Citas> citasCollection;
     @JoinColumn(name = "Nit_Criadero", referencedColumnName = "Nit_Criadero")
@@ -65,6 +66,11 @@ public class Servicios implements Serializable {
         this.idServicio = idServicio;
     }
 
+    public Servicios(Integer idServicio, String nombreServicio) {
+        this.idServicio = idServicio;
+        this.nombreServicio = nombreServicio;
+    }
+
     public Integer getIdServicio() {
         return idServicio;
     }
@@ -73,21 +79,12 @@ public class Servicios implements Serializable {
         this.idServicio = idServicio;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getNombreServicio() {
+        return nombreServicio;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    @XmlTransient
-    public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
-        return historiaClinicaCollection;
-    }
-
-    public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
-        this.historiaClinicaCollection = historiaClinicaCollection;
+    public void setNombreServicio(String nombreServicio) {
+        this.nombreServicio = nombreServicio;
     }
 
     @XmlTransient

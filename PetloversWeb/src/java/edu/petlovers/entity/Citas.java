@@ -7,7 +7,6 @@ package edu.petlovers.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,15 +21,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Entity
 @Table(name = "citas")
@@ -44,12 +41,12 @@ public class Citas implements Serializable {
     @Basic(optional = false)
     @Column(name = "Id_Citas")
     private Integer idCitas;
+    @Size(max = 15)
     @Column(name = "Fecha_Cita")
-    @Temporal(TemporalType.DATE)
-    private Date fechaCita;
+    private String fechaCita;
+    @Size(max = 15)
     @Column(name = "Hora_Cita")
-    @Temporal(TemporalType.TIME)
-    private Date horaCita;
+    private String horaCita;
     @Size(max = 20)
     @Column(name = "Estado_Cita")
     private String estadoCita;
@@ -79,19 +76,19 @@ public class Citas implements Serializable {
         this.idCitas = idCitas;
     }
 
-    public Date getFechaCita() {
+    public String getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(Date fechaCita) {
+    public void setFechaCita(String fechaCita) {
         this.fechaCita = fechaCita;
     }
 
-    public Date getHoraCita() {
+    public String getHoraCita() {
         return horaCita;
     }
 
-    public void setHoraCita(Date horaCita) {
+    public void setHoraCita(String horaCita) {
         this.horaCita = horaCita;
     }
 

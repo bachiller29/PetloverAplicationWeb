@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Entity
 @Table(name = "provee_inve")

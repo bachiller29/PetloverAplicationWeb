@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Entity
 @Table(name = "tipo_empleados")
@@ -41,8 +41,6 @@ public class TipoEmpleados implements Serializable {
     @Size(max = 60)
     @Column(name = "Tipo_empleado")
     private String tipoempleado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoEmpleado", fetch = FetchType.LAZY)
-    private Collection<HistoriaClinica> historiaClinicaCollection;
     @OneToMany(mappedBy = "idTipoEmpleado", fetch = FetchType.LAZY)
     private Collection<Empleados> empleadosCollection;
 
@@ -67,15 +65,6 @@ public class TipoEmpleados implements Serializable {
 
     public void setTipoempleado(String tipoempleado) {
         this.tipoempleado = tipoempleado;
-    }
-
-    @XmlTransient
-    public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
-        return historiaClinicaCollection;
-    }
-
-    public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
-        this.historiaClinicaCollection = historiaClinicaCollection;
     }
 
     @XmlTransient

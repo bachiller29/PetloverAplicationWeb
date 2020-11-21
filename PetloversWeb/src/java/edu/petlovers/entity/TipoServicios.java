@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -23,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Entity
 @Table(name = "tipo_servicios")
@@ -33,13 +35,15 @@ import javax.xml.bind.annotation.XmlTransient;
 public class TipoServicios implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "Id_Tipo_Servicio")
     private Integer idTipoServicio;
-    @Size(max = 20)
-    @Column(name = "Nombre_Servicio")
-    private String nombreServicio;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 280)
+    @Column(name = "Descripcion")
+    private String descripcion;
     @Column(name = "Valor_Servicio")
     private Integer valorServicio;
     @OneToMany(mappedBy = "idTipoServicio", fetch = FetchType.LAZY)
@@ -52,6 +56,11 @@ public class TipoServicios implements Serializable {
         this.idTipoServicio = idTipoServicio;
     }
 
+    public TipoServicios(Integer idTipoServicio, String descripcion) {
+        this.idTipoServicio = idTipoServicio;
+        this.descripcion = descripcion;
+    }
+
     public Integer getIdTipoServicio() {
         return idTipoServicio;
     }
@@ -60,12 +69,12 @@ public class TipoServicios implements Serializable {
         this.idTipoServicio = idTipoServicio;
     }
 
-    public String getNombreServicio() {
-        return nombreServicio;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNombreServicio(String nombreServicio) {
-        this.nombreServicio = nombreServicio;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Integer getValorServicio() {

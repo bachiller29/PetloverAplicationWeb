@@ -5,7 +5,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <h:head>
-        <meta content="" />
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
         <!--  Normalize V8.0.1 -->
         <link rel="stylesheet" href="./css/normalize.css" />
@@ -17,12 +19,13 @@
         <link rel="stylesheet" href="./css/all.css" />
         <!--  Sweet Alerts V8.13.0 CSS file -->
         <link rel="stylesheet" href="./css/sweetalert2.min.css" />
-        <!--  Sweet Alert V8.13.0 JS file --><script src="./js/sweetalert2.min.js"
-        type="text/javascript" ></script>
+        <!--  Sweet Alert V8.13.0 JS file --><script src="./js/sweetalert2.min.js" type="text/javascript" ></script>
         <!--  jQuery Custom Content Scroller V3.1.5 -->
         <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
         <!--  General Styles -->
         <link rel="stylesheet" href="./css/style.css" />
+        
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </h:head>
 
     <h:body>
@@ -95,7 +98,7 @@
             <section class="full-box page-content">
                 <nav class="full-box navbar-info">
                     <a href="#" class="float-left show-nav-lateral"> <i
-                            class="fas fa-exchange-alt"></i> </a> <a href="../index.html">
+                            class="fas fa-exchange-alt"></i> </a> <a href="../index.xhtml">
                         <i class="fas fa-power-off"></i> </a>
                 </nav>
                 <!--  Page header -->
@@ -115,20 +118,14 @@
         </main>
         <!--  ============================================= = Include JavaScript
           files = ============================================== -->
-        <!--  jQuery V3.4.1 --><script src="./js/jquery-3.4.1.min.js"
-        type="text/javascript" ></script>
-        <!--  popper --> <script src="./js/popper.min.js" type="text/javascript"
-        ></script>
-        <!--  Bootstrap V4.3 --> <script src="./js/bootstrap.min.js"
-        type="text/javascript" ></script>
-        <!--  jQuery Custom Content Scroller V3.1.5 --> <script
-            src="./js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"
-        ></script>
-        <!--  Bootstrap Material Design V4.0 --> <script
-            src="./js/bootstrap-material-design.min.js" type="text/javascript"
-        ></script> <script type="text/javascript"
-        >//<![CDATA[$(document).ready(function() { $('body').bootstrapMaterialDesign(); });//]]></script><script
-        src="./js/main.js" type="text/javascript" ></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <!--  jQuery V3.4.1 --><script src="./js/jquery-3.4.1.min.js" type="text/javascript" ></script>
+        <!--  popper --> <script src="./js/popper.min.js" type="text/javascript"></script>
+        <!--  Bootstrap V4.3 --> <script src="./js/bootstrap.min.js" type="text/javascript" ></script>
+        <!--  jQuery Custom Content Scroller V3.1.5 --> <script src="./js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+        <!--  Bootstrap Material Design V4.0 --> <script src="./js/bootstrap-material-design.min.js" type="text/javascript"></script> 
+        <script type="text/javascript">//<![CDATA[$(document).ready(function() { $('body').bootstrapMaterialDesign(); });//]]></script>
+        <script src="./js/main.js" type="text/javascript" ></script>
 
     </h:body>
 

@@ -5,335 +5,107 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <ui:composition template="./docPersonalDeTiendaTemplate.xhtml">
             <ui:define name="head">
-                <i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR CITAS
+                <i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR CITA
             </ui:define>         
             <ui:define name="content">  
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="client-new.html"><i class="fas fa-plus fa-fw"></i>
+                            <a href="client-new.xhtml"><i class="fas fa-plus fa-fw"></i>
                                 &nbsp; AGREGAR CITAS</a>
                         </li>
                         <li>
-                            <a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i>
+                            <a href="client-list.xhtml"><i class="fas fa-clipboard-list fa-fw"></i>
                                 &nbsp; LISTA DE CITAS</a>
                         </li>
                         <li>
-                            <a class="active" href="client-search.html"><i
-                                    class="fas fa-search fa-fw"></i> &nbsp; BUSCAR CITAS</a>
+                            <a class="active" href="client-search.xhtml"><i class="fas fa-search fa-fw"></i>
+                                &nbsp; BUSCAR CITAS</a>
                         </li>
                     </ul>
                 </div>
                 <!--  Content here -->
                 <div class="container-fluid">
-                    <form class="form-neon" action="">
+                    <h:form class="form-neon">
                         <div class="container-fluid">
                             <div class="row justify-content-md-center">
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="inputSearch" class="bmd-label-floating">Â¿QuÃ©
-                                            cita estas buscando?</label> <input type="text"
-                                                                            class="form-control" name="busqueda-" id="inputSearch"
-                                                                            maxlength="30" />
+                                        <label for="id_cita" class="bmd-label-floating">Ingresa el ID de la cita a buscar</label> 
+                                        <h:inputText required="true" requiredMessage="Ingrese un ID valido" value="#{citasRequest.idCita}" class="form-control" id="id_cita" maxlength="5" />
+                                        <h:message for="id_cita" style="color: red;" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <p class="text-center" style="margin-top: 40px;">
-                                        <button type="submit" class="btn btn-raised btn-info"><i
-                                                class="fas fa-search"></i> &nbsp; BUSCAR</button>
+                                        <h:commandButton type="submit" action="#{citasRequest.buscaCita()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
+                                        <!--        <button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search"></i> 
+                                                    &nbsp; BUSCAR</button>      -->
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </h:form>
                 </div>
                 <div class="container-fluid">
-                    <form action="">
-                        <input type="hidden" name="eliminar-busqueda" value="eliminar" />
-                        <div class="container-fluid">
-                            <div class="row justify-content-md-center">
-                                <div class="col-12 col-md-6">
-                                    <p class="text-center" style="font-size: 20px;">
-                                        Resultados de la busqueda <strong>âBuscarâ</strong>
-                                    </p>
-                                </div>
-                                <div class="col-12">
-                                    <p class="text-center" style="margin-top: 20px;">
-                                        <button type="submit" class="btn btn-raised btn-danger"><i
-                                                class="far fa-trash-alt"></i> &nbsp; ELIMINAR BÃSQUEDA</button>
-                                    </p>
-                                </div>
-                            </div>
+                    <div class="row justify-content-md-center">
+                        <div class="col-12 col-md-6">
+                            <p class="text-center" style="font-size: 20px; margin-top: 15px;">
+                                Resultados de la busqueda <strong>ID Cita Medica</strong>
+                            </p>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="container-fluid">
                     <div class="table-responsive">
                         <table class="table table-dark table-sm">
                             <thead>
                                 <tr class="text-center roboto-medium">
-                                    <th>
-                                        Id
-                                    </th>
-                                    <th>
-                                        Id tipo producto
-                                    </th>
-                                    <th>
-                                        Nombre
-                                    </th>
-                                    <th>
-                                        DescripciÃ³n
-                                    </th>
-                                    <th>
-                                        TamaÃ±o
-                                    </th>
-                                    <th>
-                                        Color
-                                    </th>
-                                    <th>
-                                        Sabor
-                                    </th>
-                                    <th>
-                                        Precio
-                                    </th>
-                                    <th>
-                                        Codigo de brras
-                                    </th>
-                                    <th>
-                                        Nit Proveedor
-                                    </th>
-                                    <th>
-                                        Id inventario
-                                    </th>
-                                    <th>
-                                        Id marca producto
-                                    </th>
-                                    <th>
-                                        ACTUALIZAR
-                                    </th>
-                                    <th>
-                                        ELIMINAR
-                                    </th>
+                                    <th>Id Cita</th>
+                                    <th>Fecha Cita</th>
+                                    <th>Hora Cita</th>
+                                    <th>Estado Cita</th>
+                                    <th>Id Cliente</th>
+                                    <th>Id Servicio</th>
+                                    <th>ACTUALIZAR</th>
+                                    <th>ELIMINAR</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="text-center">
-                                    <td>
-                                        8
-                                    </td>
-                                    <td>
-                                        8
-                                    </td>
-                                    <td>
-                                        Hemolitan
-                                    </td>
-                                    <td>
-                                        Comedero para perro
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        Verde
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        31100
-                                    </td>
-                                    <td>
-                                        32769655468
-                                    </td>
-                                    <td>
-                                        90068951
-                                    </td>
-                                    <td>
-                                        8
-                                    </td>
-                                    <td>
-                                        8
-                                    </td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success"> <i
-                                                class="fas fa-sync-alt"></i> </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning"> <i
-                                                    class="far fa-trash-alt"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        GlicopanPetGotasÂ 
-                                    </td>
-                                    <td>
-                                        Para nutricion inadecuada
-                                    </td>
-                                    <td>
-                                        30 Ml
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        31100
-                                    </td>
-                                    <td>
-                                        77056845114
-                                    </td>
-                                    <td>
-                                        90068932
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success"> <i
-                                                class="fas fa-sync-alt"></i> </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning"> <i
-                                                    class="far fa-trash-alt"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        Guante Dog
-                                    </td>
-                                    <td>
-                                        Griseofulvina
-                                    </td>
-                                    <td>
-                                        Removedor de Pelo Muerto
-                                    </td>
-                                    <td>
-                                        Talla M
-                                    </td>
-                                    <td>
-                                        Azul
-                                    </td>
-                                    <td>
-                                        33500
-                                    </td>
-                                    <td>
-                                        99001007260
-                                    </td>
-                                    <td>
-                                        90068941
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success"> <i
-                                                class="fas fa-sync-alt"></i> </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning"> <i
-                                                    class="far fa-trash-alt"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        CamaSpice
-                                    </td>
-                                    <td>
-                                        Antibiotico para la piel
-                                    </td>
-                                    <td>
-                                        250 Mg
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        37600
-                                    </td>
-                                    <td>
-                                        77020040035
-                                    </td>
-                                    <td>
-                                        90068942
-                                    </td>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success"> <i
-                                                class="fas fa-sync-alt"></i> </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning"> <i
-                                                    class="far fa-trash-alt"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                <h:form>
+                                    <c:forEach items="#{citasRequest.unicaCita}" var="cita">
+                                        <tr class="text-center">
+                                            <td>#{cita.idCitas}</td>
+                                            <td>#{cita.fechaCita}</td>
+                                            <td>#{cita.horaCita}</td>
+                                            <td>#{cita.estadoCita}</td>
+                                            <td>#{cita.idCliente.idCliente}</td>
+                                            <td>#{cita.idServicio.idServicio}</td>
+                                            <td><h:commandLink action="client-update.xhtml" onclick="#{citasRequest.cargarCita(cita)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
+                                            <td><h:commandLink action="#{citasRequest.eliminarCita(cita)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
+                                        </tr>
+                                    </c:forEach>
+                                </h:form>
                             </tbody>
                         </table>
                     </div>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
+                    <div class="col-12">
+                        <h:form>
+                            <p class="text-center" style="margin-top: 20px;">
+                                <h:commandButton action="#{citasRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
+                        <!--        <button type="reset" class="btn btn-raised btn-danger"><i class="far fa-trash-alt"></i> &nbsp; ELIMINAR BÃSQUEDA</button>      -->
+                            </p>
+                        </h:form>
+                    </div>
                 </div>
             </ui:define>  
         </ui:composition>

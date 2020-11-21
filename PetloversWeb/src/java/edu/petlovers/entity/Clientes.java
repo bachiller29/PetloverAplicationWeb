@@ -8,7 +8,6 @@ package edu.petlovers.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Entity
 @Table(name = "clientes")
@@ -52,12 +51,6 @@ public class Clientes implements Serializable {
     private String barrio;
     @Column(name = "Telefono")
     private Integer telefono;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Size(max = 40)
-    @Column(name = "Email")
-    private String email;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente", fetch = FetchType.LAZY)
-    private Collection<HistoriaClinica> historiaClinicaCollection;
     @JoinColumn(name = "id_usuario", referencedColumnName = "Id_Usuario")
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuarios idUsuario;
@@ -111,23 +104,6 @@ public class Clientes implements Serializable {
 
     public void setTelefono(Integer telefono) {
         this.telefono = telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @XmlTransient
-    public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
-        return historiaClinicaCollection;
-    }
-
-    public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
-        this.historiaClinicaCollection = historiaClinicaCollection;
     }
 
     public Usuarios getIdUsuario() {

@@ -5,82 +5,111 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <ui:composition template="./docPersonalDeTiendaTemplate.xhtml">
-        <ui:define name="head">
-            <i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR CITAS
-        </ui:define>         
-        <ui:define name="content">  
-            <div class="container-fluid">
-                <ul class="full-box list-unstyled page-nav-tabs">
-                    <li>
-                        <a href="client-new.html"><i class="fas fa-plus fa-fw"></i>
-                            &nbsp; AGREGAR CITAS</a>
-                    </li>
-                    <li>
-                        <a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i>
-                            &nbsp; LISTA DE CITAS</a>
-                    </li>
-                    <li>
-                        <a href="client-search.html"><i class="fas fa-search fa-fw"></i>
-                            &nbsp; BUSCAR CITAS</a>
-                    </li>
-                </ul>
-            </div>
-            <!--  Content here -->
-            <div class="container-fluid">
-                <form action="" class="form-neon">
-                    <fieldset>
-                        <legend>
-                            <i class="fas fa-user"></i> &nbsp; InformaciÃ³n bÃ¡sica
-                        </legend>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label for="prestamo_fecha_inicio">Fecha de reserva</label>
-                                        <input class="form-control" name="prestamo_fecha_inicio"
-                                               id="admin-dni" />
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:body>
+        <ui:composition template="./docPersonalDeTiendaTemplate.xhtml">
+            <ui:define name="head">
+                <i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR CITAS
+            </ui:define>         
+            <ui:define name="content">  
+                <div class="container-fluid">
+                    <ul class="full-box list-unstyled page-nav-tabs">
+                        <li>
+                            <a href="client-new.xhtml"><i class="fas fa-plus fa-fw"></i>
+                                &nbsp; AGREGAR CITAS</a>
+                        </li>
+                        <li>
+                            <a href="client-list.xhtml"><i class="fas fa-clipboard-list fa-fw"></i>
+                                &nbsp; LISTA DE CITAS</a>
+                        </li>
+                        <li>
+                            <a href="client-search.xhtml"><i class="fas fa-search fa-fw"></i>
+                                &nbsp; BUSCAR CITAS</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--  Content here -->
+                <div class="container-fluid">
+                    <h:form class="form-neon">
+                        <fieldset>
+                            <legend>
+                                <i class="fas fa-user"></i> &nbsp; Información básica
+                            </legend>
+                            <h:inputText id="id_cita" value="#{citasRequest.objCita.idCitas}" style="display: none;" />
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="id_cliente">ID Cliente</label>
+                                            <h:selectOneMenu id="id_cliente" value="#{citasRequest.objCita.idCliente.idCliente}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{citasRequest.listaIdClientes}" var="idCli" itemValue="#{idCli.idCliente}" itemLabel="#{idCli.idCliente}"></f:selectItems>  
+                                            </h:selectOneMenu>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label for="prestamo_estado" class="bmd-label-floating">Estado
-                                            cita</label> <select class="form-control"
-                                                             name="item_estado" id="item_estado">
-                                            <option value="">
-                                                Seleccione una opciÃ³n
-                                            </option>
-                                            <option value="Prestamo">
-                                                Cancelado
-                                            </option>
-                                            <option value="Reservacion">
-                                                ReservaciÃ³n
-                                            </option>
-                                            <option value="Finalizado">
-                                                Disponible
-                                            </option></select>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="id_servicio">Seleccione un Servicio</label>
+                                            <h:selectOneMenu id="id_servicio" value="#{citasRequest.objCita.idServicio.idServicio}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{citasRequest.listaIdServicio}" var="idSer" itemValue="#{idSer.idServicio}" itemLabel="#{idSer.nombreServicio}"></f:selectItems>
+                                        <!--    <f:selectItem itemValue="1" itemLabel="Baño" />
+                                                <f:selectItem itemValue="2" itemLabel="Vacunación" />
+                                                <f:selectItem itemValue="3" itemLabel="Cepillado" />
+                                                <f:selectItem itemValue="4" itemLabel="Consulta General" />
+                                                <f:selectItem itemValue="5" itemLabel="Nutricion" />
+                                                <f:selectItem itemValue="6" itemLabel="Cirugia" />
+                                                <f:selectItem itemValue="7" itemLabel="Peluqueria" />
+                                                <f:selectItem itemValue="8" itemLabel="Corte de Uñas" />
+                                                <f:selectItem itemValue="9" itemLabel="Limpieza Oidos y Dientes" />
+                                                <f:selectItem itemValue="10" itemLabel="Aromaterapia" />
+                                                <f:selectItem itemValue="11" itemLabel="Guarderia" />
+                                                <f:selectItem itemValue="12" itemLabel="Criadero de Mascotas" />
+                                                <f:selectItem itemValue="13" itemLabel="Esterilización" />      -->
+                                            </h:selectOneMenu>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="form-group">
-                                        <label for="cliente_telefono" class="bmd-label-floating">Hora</label>
-                                        <input type="text" class="form-control"
-                                               name="cliente_telefono" id="cliente_telefono" maxlength="20" />
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="fecha">Fecha de reserva</label>
+                                            <h:inputText id="fecha" required="true" requiredMessage="Ingrese una fecha valida" value="#{citasRequest.objCita.fechaCita}" class="form-control" html5:type="date"/>
+                                            <h:message for="fecha" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="hora" class="bmd-label-floating">Hora</label>
+                                            <h:inputText id="hora" required="true" requiredMessage="Ingrese una hora valida" maxlength="15" value="#{citasRequest.objCita.horaCita}" class="form-control" html5:type="time" />
+                                            <h:message for="hora" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="estado" class="bmd-label-floating">Estado cita</label>
+                                            <h:selectOneMenu id="estado" value="#{citasRequest.objCita.estadoCita}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItem itemValue="" itemLabel="Seleccione una opción" />
+                                                <f:selectItem itemValue="Reservada" itemLabel="Reservada" />
+                                                <f:selectItem itemValue="Reprogramada" itemLabel="Reprogramada" />
+                                                <f:selectItem itemValue="Cancelada" itemLabel="Cancelada" />
+                                            </h:selectOneMenu>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </fieldset>
-                    <br /><br /><br />
-                    <p class="text-center" style="margin-top: 40px;">
-                        <button type="submit" class="btn btn-raised btn-success btn-sm"><i
-                                class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>
-                    </p>
-                </form>
-            </div>
-        </ui:define>  
-    </ui:composition>
-</h:body>
+                        </fieldset>
+                        <br /><br /><br />
+                        <p class="text-center" style="margin-top: 40px;">
+                            <a href="client-list.xhtml" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"> <i class="fas fa-backward"></i> &nbsp; REGRESAR</a>
+                            &nbsp; &nbsp;
+                            <h:commandButton action="#{citasRequest.actualizarCita()}" class="btn btn-raised btn-success btn-lg" value="Actualizar"></h:commandButton>
+                            <!--        <button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>   -->
+                        </p>
+                    </h:form>
+                </div>
+            </ui:define>  
+        </ui:composition>
+    </h:body>
 </html>

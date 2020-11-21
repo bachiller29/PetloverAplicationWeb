@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Entity
 @Table(name = "historia_clinica")
@@ -41,31 +41,32 @@ public class HistoriaClinica implements Serializable {
     @Size(max = 15)
     @Column(name = "Peso")
     private String peso;
+    @Size(max = 250)
+    @Column(name = "Enfermedades_Previas")
+    private String enfermedadesPrevias;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 250)
+    @Size(min = 1, max = 500)
     @Column(name = "Diagnostico")
     private String diagnostico;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 200)
+    @Size(min = 1, max = 500)
     @Column(name = "Tratamiento")
     private String tratamiento;
-    @JoinColumn(name = "Id_Cliente", referencedColumnName = "Id_Cliente")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Clientes idCliente;
+    @Size(max = 250)
+    @Column(name = "Procedimiento_Quirurgico")
+    private String procedimientoQuirurgico;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "Id_Cliente")
+    private int idCliente;
     @JoinColumn(name = "Id_Mascota", referencedColumnName = "Id_Mascota")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Mascotas idMascota;
     @JoinColumn(name = "Id_Citas", referencedColumnName = "Id_Citas")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Citas idCitas;
-    @JoinColumn(name = "Id_Servicio", referencedColumnName = "Id_Servicio")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Servicios idServicio;
-    @JoinColumn(name = "Id_Tipo_Empleado", referencedColumnName = "Id_Tipo_Empleado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private TipoEmpleados idTipoEmpleado;
 
     public HistoriaClinica() {
     }
@@ -74,10 +75,11 @@ public class HistoriaClinica implements Serializable {
         this.idHistoriaClinica = idHistoriaClinica;
     }
 
-    public HistoriaClinica(Integer idHistoriaClinica, String diagnostico, String tratamiento) {
+    public HistoriaClinica(Integer idHistoriaClinica, String diagnostico, String tratamiento, int idCliente) {
         this.idHistoriaClinica = idHistoriaClinica;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
+        this.idCliente = idCliente;
     }
 
     public Integer getIdHistoriaClinica() {
@@ -96,6 +98,14 @@ public class HistoriaClinica implements Serializable {
         this.peso = peso;
     }
 
+    public String getEnfermedadesPrevias() {
+        return enfermedadesPrevias;
+    }
+
+    public void setEnfermedadesPrevias(String enfermedadesPrevias) {
+        this.enfermedadesPrevias = enfermedadesPrevias;
+    }
+
     public String getDiagnostico() {
         return diagnostico;
     }
@@ -112,11 +122,19 @@ public class HistoriaClinica implements Serializable {
         this.tratamiento = tratamiento;
     }
 
-    public Clientes getIdCliente() {
+    public String getProcedimientoQuirurgico() {
+        return procedimientoQuirurgico;
+    }
+
+    public void setProcedimientoQuirurgico(String procedimientoQuirurgico) {
+        this.procedimientoQuirurgico = procedimientoQuirurgico;
+    }
+
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Clientes idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -134,22 +152,6 @@ public class HistoriaClinica implements Serializable {
 
     public void setIdCitas(Citas idCitas) {
         this.idCitas = idCitas;
-    }
-
-    public Servicios getIdServicio() {
-        return idServicio;
-    }
-
-    public void setIdServicio(Servicios idServicio) {
-        this.idServicio = idServicio;
-    }
-
-    public TipoEmpleados getIdTipoEmpleado() {
-        return idTipoEmpleado;
-    }
-
-    public void setIdTipoEmpleado(TipoEmpleados idTipoEmpleado) {
-        this.idTipoEmpleado = idTipoEmpleado;
     }
 
     @Override

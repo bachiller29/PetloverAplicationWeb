@@ -29,5 +29,7 @@ public interface HistoriaClinicaFacadeLocal {
     List<HistoriaClinica> findRange(int[] range);
 
     int count();
+
+    public HistoriaClinica buscarHistoriaClinica(int idHistoria);
     
 }

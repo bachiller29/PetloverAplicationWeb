@@ -10,6 +10,7 @@ import edu.petlovers.entity.Citas;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +30,13 @@ public class CitasFacade extends AbstractFacade<Citas> implements CitasFacadeLoc
         super(Citas.class);
     }
     
+    public Citas buscarCita(int idCita){
+        try {
+            Query q = em.createQuery("SELECT c FROM Citas c WHERE c.idCitas = :idCita");
+            q.setParameter("idCita", idCita);
+            return (Citas) q.getSingleResult();
+        } catch (Exception e) {
+            return new Citas();
+        }
+    }
 }

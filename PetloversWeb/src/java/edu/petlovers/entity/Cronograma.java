@@ -6,7 +6,6 @@
 package edu.petlovers.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,14 +18,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Entity
 @Table(name = "cronograma")
@@ -43,12 +40,12 @@ public class Cronograma implements Serializable {
     @Size(max = 20)
     @Column(name = "Jornada")
     private String jornada;
+    @Size(max = 10)
     @Column(name = "Fecha")
-    @Temporal(TemporalType.DATE)
-    private Date fecha;
+    private String fecha;
+    @Size(max = 10)
     @Column(name = "Hora")
-    @Temporal(TemporalType.TIME)
-    private Date hora;
+    private String hora;
     @JoinColumn(name = "Id_Empleado", referencedColumnName = "Id_Empleado")
     @ManyToOne(fetch = FetchType.LAZY)
     private Empleados idEmpleado;
@@ -79,19 +76,19 @@ public class Cronograma implements Serializable {
         this.jornada = jornada;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public Date getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
