@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
@@ -14,19 +15,19 @@
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="item-new.html">
+                            <a href="item-new.xhtml">
                                 <i class="fas fa-plus fa-fw" />
                                 &nbsp; AGREGAR PROVEEDOR
                             </a>
                         </li>
                         <li>
-                            <a href="item-list.html">
+                            <a href="item-list.xhtml">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE PROVEEDOR
+                                &nbsp; LISTA DE PROVEEDORES
                             </a>
                         </li>
                         <li>
-                            <a class="active" href="item-search.html">
+                            <a class="active" href="item-search.xhtml">
                                 <i class="fas fa-search fa-fw" />
                                 &nbsp; BUSCAR PROVEEDOR
                             </a>
@@ -35,244 +36,80 @@
                 </div>
                 <!--  CONTENT -->
                 <div class="container-fluid">
-                    <form class="form-neon" action="">
+                    <h:form class="form-neon">
                         <div class="container-fluid">
                             <div class="row justify-content-md-center">
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="inputSearch" class="bmd-label-floating">Â¿QuÃ©
-                                            proveedor estas buscando?</label>
-                                        <input type="text" class="form-control" name="busqueda-" id="inputSearch" maxlength="30" />
+                                        <label for="nitProved" class="bmd-label-floating">Ingrese el NIT del proveedor a buscar?</label>
+                                        <h:inputText id="nitProved" required="true" requiredMessage="Ingrese un NIT valido" maxlength="11" value="#{proveedorRequest.idProveedor}" class="form-control" />
+                                        <h:message for="nitProved" style="color: red;" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <p class="text-center" style="margin-top: 40px;">
-                                        <button type="submit" class="btn btn-raised btn-info">
-                                            <i class="fas fa-search" />
-                                            &nbsp; BUSCAR
-                                        </button>
+                                        <h:commandButton type="submit" action="#{proveedorRequest.buscaProveedor()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
+                                        <!--    <button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search" /> &nbsp; BUSCAR </button>   -->
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </h:form>
                 </div>
                 <div class="container-fluid">
-                    <form action="">
-                        <input type="hidden" name="eliminar-busqueda" value="eliminar" />
-                        <div class="container-fluid">
-                            <div class="row justify-content-md-center">
-                                <div class="col-12 col-md-6">
-                                    <p class="text-center" style="font-size: 20px;">
-                                        Resultados de la busqueda
-                                        <strong>âBuscarâ</strong>
-                                    </p>
-                                </div>
-                                <div class="col-12">
-                                    <p class="text-center" style="margin-top: 20px;">
-                                        <button type="submit" class="btn btn-raised btn-danger">
-                                            <i class="far fa-trash-alt" />
-                                            &nbsp; ELIMINAR BÃSQUEDA
-                                        </button>
-                                    </p>
-                                </div>
-                            </div>
+                    <div class="row justify-content-md-center">
+                        <div class="col-12 col-md-6">
+                            <p class="text-center" style="font-size: 20px; margin-top: 15px;">
+                                Resultados de la busqueda <strong>NIT Proveedor</strong>
+                            </p>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="container-fluid">
                     <div class="table-responsive">
                         <table class="table table-dark table-sm">
                             <thead>
                                 <tr class="text-center roboto-medium">
-                                    <th>Nit</th>
-                                    <th>Nombre</th>
-                                    <th>DirecciÃ³n</th>
-                                    <th>Ciudad</th>
-                                    <th>Email</th>
-                                    <th>Telefono</th>
+                                    <td>Nit</td>
+                                    <td>Nombre Proveedor</td>
+                                    <td>Dirección</td>
+                                    <td>Ciudad</td>
+                                    <td>Email</td>
+                                    <td>Telefono</td>
                                     <th>ACTUALIZAR</th>
                                     <th>ELIMINAR</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="text-center">
-                                    <td>90060340</td>
-                                    <td>IKEA</td>
-                                    <td>Cr 13#26-81</td>
-                                    <td>Bogota</td>
-                                    <td>jorge.lov_04@hotmail.com</td>
-                                    <td>341 1348</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_3" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068932</td>
-                                    <td>Canon</td>
-                                    <td>Cr 7 No. 22 - 79</td>
-                                    <td>Neiva</td>
-                                    <td>nachosacerdote@gmail.com</td>
-                                    <td>691 8654</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_4" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068941</td>
-                                    <td>Haagen</td>
-                                    <td>Cl.90 # 11a-54</td>
-                                    <td>Bogota</td>
-                                    <td>jpalomasjrpp60@yahoo.com</td>
-                                    <td>343 0999</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_5" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>90068942</td>
-                                    <td>Puro maiz</td>
-                                    <td>Cl 12# 2-65</td>
-                                    <td>Fusa</td>
-                                    <td>Pachita_1@hotmail.com</td>
-                                    <td>315 8890</td>
-                                    <td>
-                                        <a href="item-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_6" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                <h:form>
+                                    <c:forEach items="#{proveedorRequest.unicoProveedor}" var="Proved">
+                                        <tr>
+                                            <td>#{Proved.nitProveedor}</td>
+                                            <td>#{Proved.nombresProveedor}</td>
+                                            <td>#{Proved.direccionProveedor}</td>
+                                            <td>#{Proved.ciudadProveedor}</td>
+                                            <td>#{Proved.emailProveedor}</td>
+                                            <td>#{Proved.telefonoProveedor}</td> 
+                                            <td><h:commandLink action="item-update.xhtml" actionListener="#{proveedorRequest.cargarProveedor(Proved)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
+                                            <td><h:commandLink action="#{proveedorRequest.removerProveedor(Proved)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
+                                        </tr>
+                                    </c:forEach>
+                                </h:form>
                             </tbody>
                         </table>
                     </div>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
+                    <div class="col-12">
+                        <h:form>
+                            <p class="text-center" style="margin-top: 20px;">
+                                <h:commandButton action="#{proveedorRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
+                        <!--        <button type="reset" class="btn btn-raised btn-danger"><i class="far fa-trash-alt"></i> &nbsp; ELIMINAR BÃSQUEDA</button>      -->
+                            </p>
+                        </h:form>
+                    </div>
                 </div>
             </ui:define>
         </ui:composition>
-        <!--  Sweet Alert -->
-        <script type="text/javascript">//<![CDATA[	
-            $("#btnSA_3").click(function (){
-            swal({
-            title: "Â¿EstÃ¡ seguro?",
-                    text: "Una vez eliminado, no podrÃ¡ recuperar este archivo!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-            })
-                    .then((willDelete) = > {
-                    if (willDelete) {
-                    swal("El archivo ha sido eliminado!", {
-                    icon: "success",
-                    });
-                    } else {
-                    swal("OperaciÃ³n cancelada!");
-                    }
-                    });
-            });
-                    $("#btnSA_4").click(function (){
-            swal({
-            title: "Â¿EstÃ¡ seguro?",
-                    text: "Una vez eliminado, no podrÃ¡ recuperar este archivo!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-            })
-                    .then((willDelete) = > {
-                    if (willDelete) {
-                    swal("El archivo ha sido eliminado!", {
-                    icon: "success",
-                    });
-                    } else {
-                    swal("OperaciÃ³n cancelada!");
-                    }
-                    });
-            });
-                    $("#btnSA_5").click(function (){
-            swal({
-            title: "Â¿EstÃ¡ seguro?",
-                    text: "Una vez eliminado, no podrÃ¡ recuperar este archivo!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-            })
-                    .then((willDelete) = > {
-                    if (willDelete) {
-                    swal("El archivo ha sido eliminado!", {
-                    icon: "success",
-                    });
-                    } else {
-                    swal("OperaciÃ³n cancelada!");
-                    }
-                    });
-            });
-                    $("#btnSA_6").click(function (){
-            swal({
-            title: "Â¿EstÃ¡ seguro?",
-                    text: "Una vez eliminado, no podrÃ¡ recuperar este archivo!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-            })
-                    .then((willDelete) = > {
-                    if (willDelete) {
-                    swal("El archivo ha sido eliminado!", {
-                    icon: "success",
-                    });
-                    } else {
-                    swal("OperaciÃ³n cancelada!");
-                    }
-                    });
-            });
-                    //]]></script>
     </h:body>
 </html>

@@ -10,6 +10,7 @@ import edu.petlovers.entity.Inventario;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +30,13 @@ public class InventarioFacade extends AbstractFacade<Inventario> implements Inve
         super(Inventario.class);
     }
     
+    public Inventario buscarInventario(int idInventario) {
+        try {
+            Query q = em.createQuery("SELECT i FROM Inventario i WHERE i.idInventario = :idInventario");
+            q.setParameter("idInventario", idInventario);
+            return (Inventario) q.getSingleResult();
+        } catch (Exception e) {
+            return new Inventario();
+        }
+    }
 }

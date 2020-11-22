@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
@@ -14,19 +15,19 @@
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="item-new.html">
+                            <a href="item-new.xhtml">
                                 <i class="fas fa-plus fa-fw" />
                                 &nbsp; AGREGAR PROVEEDOR
                             </a>
                         </li>
                         <li>
-                            <a href="item-list.html">
+                            <a href="item-list.xhtml">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE PROVEEDOR
+                                &nbsp; LISTA DE PROVEEDORES
                             </a>
                         </li>
                         <li>
-                            <a href="item-search.html">
+                            <a href="item-search.xhtml">
                                 <i class="fas fa-search fa-fw" />
                                 &nbsp; BUSCAR PROVEEDOR
                             </a>
@@ -39,80 +40,66 @@
                         <fieldset>
                             <legend>
                                 <i class="far fa-plus-square" />
-                                &nbsp; Informacion del proveedor
+                                &nbsp; Información del proveedor
                             </legend>
+                            <h:inputText id="id_proveedor" value="#{proveedorRequest.objProveedores.nitProveedor}" style="display: none;" />
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="item_codigo" class="bmd-label-floating">Nit</label>
-                                            <h:inputText id="NitProveedor" value="#{clienteBean.proveedores.nitProveedor}" class="form-control"></h:inputText>
+                                            <h:outputText value="Nit" class="bmd-label-floating">Nit proveedor</h:outputText>
+                                            <h:inputText id="Nit" required="true" requiredMessage="Ingrese un NIT valido" maxlength="10" value="#{proveedorRequest.objProveedores.nitProveedor}" class="form-control"></h:inputText>
+                                            <h:message for="Nit" style="color: red;" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="item_nombre" class="bmd-label-floating">Nombre</label>
-                                            <h:inputText id="Nombre" value="#{clienteBean.proveedores.nombresProveedor}" class="form-control"></h:inputText>
+                                            <h:outputText value="Nombre" class="bmd-label-floating">Nombre</h:outputText>
+                                            <h:inputText id="NomProv" required="true" requiredMessage="Ingrese un nombre valido" maxlength="20" value="#{proveedorRequest.objProveedores.nombresProveedor}" class="form-control"></h:inputText>
+                                            <h:message for="NomProv" style="color: red;" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="cliente_direccion" class="bmd-label-floating">Direccion</label>
-                                            <h:inputText id="Direccion" value="#{clienteBean.proveedores.direccionProveedor}" class="form-control"></h:inputText>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="item_nombre" class="bmd-label-floating">Ciudad</label>
-                                            <h:inputText id="Ciudad" value="#{clienteBean.proveedores.ciudadProveedor}" class="form-control"></h:inputText>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="cliente_dni" class="bmd-label-floating">Email</label>
-                                            <h:inputText id="email" value="#{clienteBean.proveedores.emailProveedor}" class="form-control"></h:inputText>
+                                            <h:outputText value="Dirección" class="bmd-label-floating">Dirección</h:outputText>
+                                            <h:inputText id="DireccionProve" required="true" requiredMessage="Ingrese una direccion valida" maxlength="40" value="#{proveedorRequest.objProveedores.direccionProveedor}" class="form-control"></h:inputText>
+                                            <h:message for="DireccionProve" style="color: red;" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="cliente_telefono" class="bmd-label-floating">Telefono</label>
-                                            <h:inputText id="Telefono" value="#{clienteBean.proveedores.telefonoProveedor}" class="form-control"></h:inputText>
+                                            <label for="CiudadProve" style="margin-top: 30px;" class="bmd-label-floating">Ciudad</label>
+                                            <h:inputText id="CiudadProve" required="true" requiredMessage="Ingrese una ciudad valida" maxlength="15" value="#{proveedorRequest.objProveedores.ciudadProveedor}" class="form-control"></h:inputText>
+                                            <h:message for="CiudadProve" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="EmailProve" style="margin-top: 30px;" class="bmd-label-floating">Email</label>
+                                            <h:inputText id="EmailProve" required="true" requiredMessage="Ingrese un correo valido" maxlength="40" value="#{proveedorRequest.objProveedores.emailProveedor}" class="form-control"></h:inputText>
+                                            <h:message for="EmailProve" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="TelefonoProve" style="margin-top: 30px;" class="bmd-label-floating">Teléfono</label>
+                                            <h:inputText id="TelefonoProve" required="true" requiredMessage="Ingrese un correo valido" maxlength="10" value="#{proveedorRequest.objProveedores.telefonoProveedor}" class="form-control"></h:inputText>
+                                            <h:message for="TelefonoProve" style="color: red;" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </fieldset>
-                        <br />
-                        <br />
-                        <br />
-                        <p class="text-center" style="margin-top: 40px;" />
-                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" action="#{clienteBean.updateProveedor()}">
-                            <i class="far fa-save" />
-                            Guardar
-                        </h:commandButton>
+                        <br /><br /><br />
+                        <p class="text-center" style="margin-top: 40px;">
+                            <a href="item-list.xhtml" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"> <i class="fas fa-backward"></i> &nbsp; REGRESAR</a>
+                            &nbsp; &nbsp;
+                            <h:commandButton action="#{proveedorRequest.actualizarProveedor()}" class="btn btn-raised btn-success btn-lg" value="Actualizar"></h:commandButton>
+                            <!--        <button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>   -->
+                        </p>
                     </h:form>
                 </div>
             </ui:define>
         </ui:composition>
-        <script type="text/javascript">//<![CDATA[	
-            $("#btnSA_3").click(function () {
-                swal({
-                title: "Â¿EstÃ¡ seguro?",
-                        text: "Una vez actualice, no podrÃ¡ recuperar este archivo!",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                })
-                        .then((willDelete) = > {
-                        if (willDelete) {
-                            swal("El archivo ha sido actualizado!", {
-                                icon: "success",
-                            });
-                        } else {
-                            swal("OperaciÃ³n cancelada!");
-                        }
-                    });
-            });
-                    //]]></script>
     </h:body>
 </html>

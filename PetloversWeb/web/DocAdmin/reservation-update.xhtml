@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
@@ -13,19 +14,19 @@
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="reservation-new.html">
+                            <a href="reservation-new.xhtml">
                                 <i class="fas fa-plus fa-fw" />
                                 &nbsp; NUEVO INVENTARIO
                             </a>
                         </li>
                         <li>
-                            <a href="reservation-list.html">
+                            <a href="reservation-list.xhtml">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE INVENTARIO
+                                &nbsp; LISTA DE INVENTARIOS
                             </a>
                         </li>
                         <li>
-                            <a href="reservation-search.html">
+                            <a href="reservation-search.xhtml">
                                 <i class="fas fa-search-dollar fa-fw" />
                                 &nbsp; BUSCAR INVENTARIO
                             </a>
@@ -34,92 +35,56 @@
                 </div>
                 <!--  CONTENT -->
                 <div class="container-fluid">
-                    <div class="container-fluid form-neon">
-                        <div class="container-fluid">
-                            <div>
-                                <span class="roboto-medium">INVENTARIO</span>
-                                <!--  &nbsp; Carlos Alfaro -->
-                            </div>
-                        </div>
-                        <h:form>
-                            <fieldset>
-                                <legend>
-                                    <i class="far fa-plus-square" />
-                                    &nbsp; Informacion del inventario
-                                </legend>
-                                <div class="container-fluid">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="IdProducto" class="bmd-label-floating">Id producto</label>
-                                                    <h:inputText id="IdProducto" value="#{clienteBean.productos.idProducto}" class="form-control"></h:inputText>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="Nombre" class="bmd-label-floating">Nombre</label>
-                                                    <h:inputText id="Nombre" value="#{clienteBean.productos.nombreProducto}"  class="form-control"></h:inputText>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="Descripcion" class="bmd-label-floating">Descripccion</label>
-                                                    <h:inputText id="Description" value="#{clienteBean.productos.descripcion}"  class="form-control"></h:inputText>                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="Tamano" class="bmd-label-floating">Tamaño</label>
-                                                    <h:inputText value="#{clienteBean.productos.tamanoProducto}"  class="form-control"></h:inputText>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <label for="Color" class="bmd-label-floating">Color</label>
-                                                    <h:inputText id="Color" value="#{clienteBean.productos.colorProducto}"  class="form-control"></h:inputText>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">  
-                                                    <label for="Sabor" class="bmd-label-floating">Sabor</label>
-                                                    <h:inputText id="Sabor" value="#{clienteBean.productos.saborProducto}"  class="form-control"></h:inputText>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <label for="Precio" class="bmd-label-floating">Precio</label>
-                                                    <h:inputText id="Precio" value="#{clienteBean.productos.precioProducto}"  class="form-control"></h:inputText>    
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <label for="CodigoDeBarras" class="bmd-label-floating">Codigo producto</label>
-                                                    <h:inputText id="CodigoDeBarra" value="#{clienteBean.productos.codigoBarrasProducto}"  class="form-control"></h:inputText>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <label for="NotProveedor" class="bmd-label-floating">Nit proveedor</label>
-                                                    <h:inputText id="NitProveedor" value="#{clienteBean.productos.nitProveedor}"  class="form-control"></h:inputText>
-                                                </div>
-                                            </div>
+                    <h:form class="form-neon">
+                        <fieldset>
+                            <legend>
+                                <i class="far fa-plus-square" style="margin-bottom: 40px;" />
+                                &nbsp; Información del inventario
+                            </legend>
+                            <h:inputText id="idInventario" value="#{inventarioRequest.objInventario.idInventario}" style="display:none;" />
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputText value="Cantidad Productos" class="bmd-label-floating">Cantidad producto</h:outputText >
+                                            <h:inputText id="CantiProd" required="true" requiredMessage="Ingrese un valor valido" maxlength="10" value="#{inventarioRequest.objInventario.cantidadProductos}" class="form-control" ></h:inputText>
+                                            <h:message for="CantiProd" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputText value="ID Administrador" class="bmd-label-floating">Id administrador</h:outputText >
+                                            <h:selectOneMenu id="id_admin" value="#{inventarioRequest.objInventario.idAdmin.idAdmin}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{inventarioRequest.listaAdministradores}" var="idAdmin" itemValue="#{idAdmin.idAdmin}" itemLabel="#{idAdmin.idAdmin}"></f:selectItems>  
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputText  value="ID Entrada Producto" class="bmd-label-floating">Referencia entrada producto</h:outputText >
+                                            <h:selectOneMenu id="id_entrada_p" value="#{inventarioRequest.objInventario.idEntradaProductos.idEntradaProductos}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{inventarioRequest.listaEntradaP}" var="idEntrada" itemValue="#{idEntrada.idEntradaProductos}" itemLabel="#{idEntrada.idEntradaProductos} - #{idEntrada.fechaEntrada}"></f:selectItems>  
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputText value="ID Salida Producto" class="bmd-label-floating">Referencia salida producto</h:outputText >
+                                            <h:selectOneMenu id="id_salida_p" value="#{inventarioRequest.objInventario.idSalidaProductos.idSalidaProductos}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{inventarioRequest.listaSalidaP}" var="idSalida" itemValue="#{idSalida.idSalidaProductos}" itemLabel="#{idSalida.idSalidaProductos} - #{idSalida.fechaSalida}"></f:selectItems>  
+                                            </h:selectOneMenu>
                                         </div>
                                     </div>
                                 </div>
-                            </fieldset>
-                            <br />
-                            <br />
-                            <br />
-                            <p class="text-center" style="margin-top: 40px;" />
-                            <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" action="#{clienteBean.updateProducto()}">
-                                <i class="far fa-save" />
-                                Guardar
-                            </h:commandButton>
-                        </h:form>
-                    </div>
+                            </div>
+                        </fieldset>
+                        <br /><br /><br />
+                        <p class="text-center" style="margin-top: 40px;" />
+                            <a href="reservation-list.xhtml" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"> <i class="fas fa-backward"></i> &nbsp; REGRESAR</a>
+                            &nbsp; &nbsp;
+                            <h:commandButton action="#{inventarioRequest.actualizarInventario()}" class="btn btn-raised btn-success btn-lg" value="Actualizar"></h:commandButton>
+                            <!--        <button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>   -->
+                    </h:form>
                 </div>
             </ui:define>
         </ui:composition>

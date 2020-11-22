@@ -10,6 +10,7 @@ import edu.petlovers.entity.Proveedores;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +30,13 @@ public class ProveedoresFacade extends AbstractFacade<Proveedores> implements Pr
         super(Proveedores.class);
     }
     
+    public Proveedores buscarProveedor(int idProveedor) {
+        try {
+            Query q = em.createQuery("SELECT p FROM Proveedores p WHERE p.nitProveedor = :idProveedor");
+            q.setParameter("idProveedor", idProveedor);
+            return (Proveedores) q.getSingleResult();
+        } catch (Exception e) {
+            return new Proveedores();
+        }
+    }
 }

@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
@@ -15,19 +14,19 @@
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="user-new.html">
+                            <a href="user-new.xhtml">
                                 <i class="fas fa-plus fa-fw" />
                                 &nbsp; NUEVO USUARIO
                             </a>
                         </li>
                         <li>
-                            <a class="active" href="user-list.html">
+                            <a class="active" href="user-list.xhtml">
                                 <i class="fas fa-clipboard-list fa-fw" />
                                 &nbsp; LISTA DE USUARIOS
                             </a>
                         </li>
                         <li>
-                            <a href="user-search.html">
+                            <a href="user-search.xhtml">
                                 <i class="fas fa-search fa-fw" />
                                 &nbsp; BUSCAR USUARIO
                             </a>
@@ -35,45 +34,63 @@
                     </ul>
                 </div>
                 <!--  Content -->
-                <h:form>
-                    <p:growl id="message" showDetail="true" />
-                    <h:dataTable id="data" value="#{clienteBean.listUsuarios}" var="usuario">
-                        <h:column >
-                            <f:facet name="header" class="text-center roboto-medium">ID</f:facet>  
-                            <h:outputLabel value="#{usuario.idUsuario}" class="text-center" />
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header" class="text-center roboto-medium">Nombre</f:facet>  
-                            <h:outputLabel value="#{usuario.nombres}" class="text-center" />
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header" class="text-center roboto-medium">Apellido</f:facet>  
-                            <h:outputLabel value="#{usuario.apellidos}" class="text-center" />
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header" class="text-center roboto-medium">Usuario</f:facet>  
-                            <h:outputLabel value="#{usuario.usuariologin}" class="text-center" />
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header" class="text-center roboto-medium">Contraseña</f:facet>  
-                            <h:outputLabel value="#{usuario.contrasena}" class="text-center" />
-                        </h:column>
-                        <h:column >
-                            <h:commandButton value="Editar" action="#{clienteBean.byUsuario(usuario)}" class="btn btn-raised btn-info btn-sm" >
-                                <i class="fas fa-clipboard-list fa-fw" />                                 
-                            </h:commandButton>
-                        </h:column>
-                        <h:column >
-                            <h:commandButton value="Delete" action="#{clienteBean.deleteUsuario(usuario)}" class="tn btn-raised btn-info btn-sm" >
-                                <i class="fas fa-clipboard-list fa-fw" />                                 
-                            </h:commandButton>
-                        </h:column>
-                    </h:dataTable>
-                    <h:commandButton class="btn btn-raised btn-info btn-sm" value="Listar" actionListener="#{clienteBean.listUsuario()}">
-                        <i class="fas fa-clipboard-list fa-fw" />
-                        &nbsp; 
-                    </h:commandButton>
-                </h:form>
+                <div class="container-fluid">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-sm">
+                            <thead>
+                                <tr class="text-center roboto-medium">
+                                    <th>Id Usuario</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Tipo Documento</th>
+                                    <th>No Documento</th>
+                                    <th>Email</th>
+                                    <th>Tipo Rol</th>
+                                    <th>Fecha Registro</th>
+                                    <th>ACTUALIZAR</th>
+                                    <th>ELIMINAR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <h:form>
+                                    <c:forEach items="#{usuariosRequest.listaUsuarios}" var="usu">
+                                        <tr class="text-center">
+                                            <td>#{usu.idUsuario}</td>
+                                            <td>#{usu.nombres}</td>
+                                            <td>#{usu.apellidos}</td>
+                                            <td>#{usu.tipoDocumento}</td>
+                                            <td>#{usu.documento}</td>
+                                            <td>#{usu.email}</td>
+                                            <td>#{usu.idTipoRol.nombreRol}</td>
+                                            <td>#{usu.fechaRegistro}</td>
+                                            <td><h:commandLink action="user-update.xhtml" actionListener="#{usuariosRequest.cargarUsuario(usu)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
+                                            <td><h:commandLink action="#{usuariosRequest.eliminarUsuario(usu)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
+                                        </tr>
+                                    </c:forEach>
+                                </h:form>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

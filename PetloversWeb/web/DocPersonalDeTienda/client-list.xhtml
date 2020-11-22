@@ -42,7 +42,7 @@ and open the template in the editor.
                                     <th>Hora Cita</th>
                                     <th>Estado Cita</th>
                                     <th>Id Cliente</th>
-                                    <th>Id Servicio</th>
+                                    <th>Servicio</th>
                                     <th>ACTUALIZAR</th>
                                     <th>ELIMINAR</th>
                                 </tr>
@@ -56,7 +56,7 @@ and open the template in the editor.
                                             <td>#{obl.horaCita}</td>
                                             <td>#{obl.estadoCita}</td>
                                             <td>#{obl.idCliente.idCliente}</td>
-                                            <td>#{obl.idServicio.idServicio}</td>
+                                            <td>#{obl.idServicio.nombreServicio}</td>
                                             <td><h:commandLink action="client-update.xhtml" actionListener="#{citasRequest.cargarCita(obl)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
                                             <td><h:commandLink action="#{citasRequest.eliminarCita(obl)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>

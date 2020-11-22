@@ -40,10 +40,10 @@ public class Cronograma implements Serializable {
     @Size(max = 20)
     @Column(name = "Jornada")
     private String jornada;
-    @Size(max = 10)
+    @Size(max = 15)
     @Column(name = "Fecha")
     private String fecha;
-    @Size(max = 10)
+    @Size(max = 15)
     @Column(name = "Hora")
     private String hora;
     @JoinColumn(name = "Id_Empleado", referencedColumnName = "Id_Empleado")

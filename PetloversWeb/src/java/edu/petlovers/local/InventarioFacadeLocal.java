@@ -29,5 +29,7 @@ public interface InventarioFacadeLocal {
     List<Inventario> findRange(int[] range);
 
     int count();
+
+    public Inventario buscarInventario(int idInventario);
     
 }

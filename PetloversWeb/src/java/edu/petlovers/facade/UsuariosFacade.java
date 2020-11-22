@@ -31,6 +31,16 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Usuarios
         super(Usuarios.class);
     }
 
+    public Usuarios buscarUsuario(int idUsuario) {
+        try {
+            Query q = em.createQuery("SELECT u FROM Usuarios u WHERE u.idUsuario = :idUsuario");
+            q.setParameter("idUsuario", idUsuario);
+            return (Usuarios) q.getSingleResult();
+        } catch (Exception e) {
+            return new Usuarios();
+        }
+    }
+    
     @Override
     public Usuarios recuperarClave(String emailIn) {
         try {

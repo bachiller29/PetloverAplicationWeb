@@ -5,6 +5,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        
         <meta content="" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
         <title>Administrador</title>
@@ -24,6 +27,8 @@
         <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
         <!--  General Styles -->
         <link rel="stylesheet" href="./css/style.css" />
+        
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </h:head>
 
     <h:body>
@@ -69,8 +74,7 @@
                                         <li>
                                             <h:commandLink action="client-list">
                                                 <i class="fas fa-clipboard-list fa-fw" />
-                                                &nbsp; Lista de
-                                                clientes
+                                                &nbsp; Lista de clientes
                                             </h:commandLink>
                                         </li>
                                         <li>
@@ -97,8 +101,7 @@
                                         <li>
                                             <h:commandLink action="item-list">
                                                 <i class="fas fa-clipboard-list fa-fw" />
-                                                &nbsp; Lista de
-                                                Proveedores
+                                                &nbsp; Lista de Proveedores
                                             </h:commandLink>
                                         </li>
                                         <li>
@@ -125,22 +128,19 @@
                                         <li>
                                             <h:commandLink action="reservation-list">
                                                 <i class="fas fa-clipboard-list fa-fw" />
-                                                &nbsp; Lista de
-                                                producto
+                                                &nbsp; Lista de producto
                                             </h:commandLink>
                                         </li>
                                         <li>
                                             <h:commandLink action="reservation-search">
                                                 <i class="fas fa-search-dollar fa-fw" />
-                                                &nbsp; Buscar
-                                                producto
+                                                &nbsp; Buscar producto
                                             </h:commandLink>
                                         </li>
                                         <li>
                                             <h:commandLink action="reservation-pending">
                                                 <i class="fas fa-hand-holding-usd fa-fw" />
-                                                &nbsp; PrÃ©stamos
-                                                producto
+                                                &nbsp; Prestamos producto
                                             </h:commandLink>
                                         </li>
                                     </ul>
@@ -161,8 +161,7 @@
                                         <li>
                                             <h:commandLink action="user-list">
                                                 <i class="fas fa-clipboard-list fa-fw" />
-                                                &nbsp; Lista de
-                                                usuarios
+                                                &nbsp; Lista de usuarios
                                             </h:commandLink>
                                         </li>
                                         <li>
@@ -184,7 +183,7 @@
                     <a href="#" class="float-left show-nav-lateral">
                         <i class="fas fa-exchange-alt" />
                     </a>
-                    <a href="../index.html">
+                    <a href="../index.xhtml">
                         <i class="fas fa-power-off" />
                     </a>
                 </nav>
@@ -205,6 +204,7 @@
         </main>
         <!--  ============================================= = Include JavaScript
         files = ============================================== -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <!--  jQuery V3.4.1 -->
         <script src="./js/jquery-3.4.1.min.js" type="text/javascript" />
         <!--  popper -->

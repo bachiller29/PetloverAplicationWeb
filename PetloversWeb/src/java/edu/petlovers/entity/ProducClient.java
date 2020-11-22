@@ -6,7 +6,6 @@
 package edu.petlovers.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -53,9 +50,9 @@ public class ProducClient implements Serializable {
     @NotNull
     @Column(name = "Numero_Orden")
     private int numeroOrden;
+    @Size(max = 15)
     @Column(name = "Fecha_Orden")
-    @Temporal(TemporalType.DATE)
-    private Date fechaOrden;
+    private String fechaOrden;
     @Basic(optional = false)
     @NotNull
     @Column(name = "Id_Producto")
@@ -114,11 +111,11 @@ public class ProducClient implements Serializable {
         this.numeroOrden = numeroOrden;
     }
 
-    public Date getFechaOrden() {
+    public String getFechaOrden() {
         return fechaOrden;
     }
 
-    public void setFechaOrden(Date fechaOrden) {
+    public void setFechaOrden(String fechaOrden) {
         this.fechaOrden = fechaOrden;
     }
 

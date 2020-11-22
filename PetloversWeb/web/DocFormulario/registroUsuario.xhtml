@@ -45,6 +45,16 @@
                     <h:form class="login100-form validate-form">
                         <span class="login100-form-title p-b-59"> Registrate </span>
                         <div class="wrap-input100 validate-input">
+                            <span class="label-input100">Tipo de Documento</span>
+                            <h:selectOneMenu id="tipoDoc" value="#{registroUsuarioRequest.usRed.tipoDocumento}" class="input100">
+                                <f:selectItem itemValue="Cedula" itemLabel="Cedula" />
+                                <f:selectItem itemValue="Cedula Ex" itemLabel="Cedula Ex" />
+                                <f:selectItem itemValue="Tar. Identidad" itemLabel="Tar. Identidad" />
+                                <f:selectItem itemValue="Pasaporte" itemLabel="Pasaporte" />
+                            </h:selectOneMenu>
+                            <span class="focus-input100"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input">
                             <span class="label-input100">Documento</span>
                             <h:inputText value="#{registroUsuarioRequest.usRed.documento}" class="input100"  />
                             <span class="focus-input100"></span>
@@ -76,11 +86,8 @@
 
                         <div class="flex-m w-full p-b-33">
                             <div class="contact100-form-checkbox">
-                                <input class="input-checkbox100" id="ckb1" type="checkbox"
-                                       name="remember-me" /> <label class="label-checkbox100"
-                                       for="ckb1"> <span class="txt1"> Acepto los <a href="#"
-                                                                              class="txt2 hov1"> terminos de usuario </a> </span>
-                                </label>
+                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" /> 
+                                <label class="label-checkbox100" for="ckb1"><span class="txt1"> Acepto los <a href="#" class="txt2 hov1"> terminos de usuario </a> </span></label>
                             </div>
                         </div>
                         <div class="container-login100-form-btn">
@@ -88,8 +95,7 @@
                                 <div class="login100-form-bgbtn"></div>
                                 <h:commandButton action="#{registroUsuarioRequest.crearUsuario()}" id="btnSA_3" class="login100-form-btn" value="Registrate"/>
                             </div>
-                            <a href="../DocLogin/index.html"
-                               class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30"> Regresar <i class="fa fa-long-arrow-right m-l-5"></i> </a>
+                            <a href="../DocLogin/index.xhtml" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30"> Regresar <i class="fa fa-long-arrow-right m-l-5"></i> </a>
                         </div>
                     </h:form>
                 </div>

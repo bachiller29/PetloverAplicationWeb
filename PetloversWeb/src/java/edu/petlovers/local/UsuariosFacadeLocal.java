@@ -33,5 +33,7 @@ public interface UsuariosFacadeLocal {
     public Usuarios recuperarClave(String emailIn);
 
     public Usuarios loginUsuario(String email, String contrasena);
+
+    public Usuarios buscarUsuario(int idUsuario);
     
 }

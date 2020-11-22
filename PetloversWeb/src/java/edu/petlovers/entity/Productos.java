@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,21 +23,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Entity
 @Table(name = "productos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Productos.findAll", query = "SELECT p FROM Productos p"),
-    @NamedQuery(name = "Productos.findByIdProducto", query = "SELECT p FROM Productos p WHERE p.idProducto = :idProducto"),
-    @NamedQuery(name = "Productos.findByNombreProducto", query = "SELECT p FROM Productos p WHERE p.nombreProducto = :nombreProducto"),
-    @NamedQuery(name = "Productos.findByDescripcion", query = "SELECT p FROM Productos p WHERE p.descripcion = :descripcion"),
-    @NamedQuery(name = "Productos.findByTamanoProducto", query = "SELECT p FROM Productos p WHERE p.tamanoProducto = :tamanoProducto"),
-    @NamedQuery(name = "Productos.findByColorProducto", query = "SELECT p FROM Productos p WHERE p.colorProducto = :colorProducto"),
-    @NamedQuery(name = "Productos.findBySaborProducto", query = "SELECT p FROM Productos p WHERE p.saborProducto = :saborProducto"),
-    @NamedQuery(name = "Productos.findByPrecioProducto", query = "SELECT p FROM Productos p WHERE p.precioProducto = :precioProducto"),
-    @NamedQuery(name = "Productos.findByCodigoBarrasProducto", query = "SELECT p FROM Productos p WHERE p.codigoBarrasProducto = :codigoBarrasProducto")})
+    @NamedQuery(name = "Productos.findAll", query = "SELECT p FROM Productos p")})
 public class Productos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,16 +57,16 @@ public class Productos implements Serializable {
     @Column(name = "Codigo_Barras_Producto")
     private Integer codigoBarrasProducto;
     @JoinColumn(name = "Id_Tipo_Producto", referencedColumnName = "Id_Tipo_Producto")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private TipoProductos idTipoProducto;
     @JoinColumn(name = "Nit_Proveedor", referencedColumnName = "Nit_Proveedor")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Proveedores nitProveedor;
     @JoinColumn(name = "Id_Inventario", referencedColumnName = "Id_Inventario")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Inventario idInventario;
     @JoinColumn(name = "Id_Marca_Producto", referencedColumnName = "Id_Marca_Producto")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private MarcaProductos idMarcaProducto;
 
     public Productos() {

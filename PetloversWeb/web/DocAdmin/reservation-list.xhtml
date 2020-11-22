@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
@@ -16,19 +15,19 @@
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="reservation-new.html">
+                            <a href="reservation-new.xhtml">
                                 <i class="fas fa-plus fa-fw" />
                                 &nbsp; NUEVO INVENTARIO
                             </a>
                         </li>
                         <li>
-                            <a class="active" href="reservation-list.html">
+                            <a class="active" href="reservation-list.xhtml">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE INVENTARIO
+                                &nbsp; LISTA DE INVENTARIOS
                             </a>
                         </li>
                         <li>
-                            <a href="reservation-search.html">
+                            <a href="reservation-search.xhtml">
                                 <i class="fas fa-search-dollar fa-fw" />
                                 &nbsp; BUSCAR INVENTARIO
                             </a>
@@ -36,61 +35,57 @@
                     </ul>
                 </div>
                 <!--  CONTENT -->
-                <h:form>
-                    <p:growl id="message" showDetail="true" />
-                    <h:dataTable id="data" value="#{clienteBean.listProductos}" var="producto">
-                        <h:column>
-                            <f:facet name="header" class="text-center roboto-medium">Id producto</f:facet>  
-                            <h:outputLabel value="#{producto.idProducto}" class="text-center"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header" class="text-center roboto-medium">Nombre</f:facet>  
-                            <h:outputLabel value="#{producto.nombreProducto}" class="text-center"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header" class="text-center roboto-medium">Descripcion</f:facet>  
-                            <h:outputLabel value="#{producto.descripcion}" class="text-center"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header" class="text-center roboto-medium">Tamaño</f:facet>  
-                            <h:outputLabel value="#{producto.tamanoProducto}" class="text-center"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header" class="text-center roboto-medium">Color</f:facet>  
-                            <h:outputLabel value="#{producto.colorProducto}" class="text-center"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header" class="text-center roboto-medium">Sabor</f:facet>  
-                            <h:outputLabel value="#{producto.saborProducto}" class="text-center"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header" class="text-center roboto-medium">Precio</f:facet>  
-                            <h:outputLabel value="#{producto.precioProducto}" class="text-center"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header" class="text-center roboto-medium">Codigo producto</f:facet>  
-                            <h:outputLabel value="#{producto.codigoBarrasProducto}" class="text-center"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header" class="text-center roboto-medium">Nit proveedor</f:facet>  
-                            <h:outputLabel value="#{producto.nitProveedor}" class="text-center"/>
-                        </h:column>
-                        <h:column >
-                            <h:commandButton value="Editar" action="#{clienteBean.byProducto(producto)}" class="btn btn-raised btn-info btn-sm" >
-                                <i class="fas fa-clipboard-list fa-fw" />                                 
-                            </h:commandButton>
-                        </h:column>
-                        <h:column >
-                            <h:commandButton value="Delete" action="#{clienteBean.deleteProducto(producto)}" class="tn btn-raised btn-info btn-sm" >
-                                <i class="fas fa-clipboard-list fa-fw" />                                 
-                            </h:commandButton>
-                        </h:column>
-                    </h:dataTable>
-                    <h:commandButton class="btn btn-raised btn-info btn-sm" value="Listar" actionListener="#{clienteBean.listProducto()}">
-                        <i class="fas fa-clipboard-list fa-fw" />
-                        &nbsp; 
-                    </h:commandButton>
-                </h:form>
+                <div class="container-fluid">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-sm">
+                            <thead>
+                                <tr class="text-center roboto-medium">
+                                    <th>Id Inventario</th>
+                                    <th>Cantidad Productos</th>
+                                    <th>Id Administrador</th>
+                                    <th>N. Salida producto</th>
+                                    <th>N. Entrada producto</th>                                        
+                                    <th>ACTUALIZAR</th>
+                                    <th>ELIMINAR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <h:form>
+                                    <c:forEach items="#{inventarioRequest.listaInventario}" var="objInve">
+                                        <tr>
+                                            <td>#{objInve.idInventario}</td>
+                                            <td>#{objInve.cantidadProductos}</td>
+                                            <td>#{objInve.idAdmin.idAdmin}</td>
+                                            <td>#{objInve.idSalidaProductos.idSalidaProductos}</td>
+                                            <td>#{objInve.idEntradaProductos.idEntradaProductos}</td>                                                
+                                            <td><h:commandLink action="reservation-update.xhtml" actionListener="#{inventarioRequest.cargaInventario(objInve)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
+                                            <td><h:commandLink action="#{inventarioRequest.removerInventario(objInve)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
+                                        </tr>
+                                    </c:forEach>
+                                </h:form>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

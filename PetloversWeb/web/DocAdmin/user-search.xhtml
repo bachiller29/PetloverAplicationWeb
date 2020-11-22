@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
@@ -13,19 +14,19 @@
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="user-new.html">
+                            <a href="user-new.xhtml">
                                 <i class="fas fa-plus fa-fw" />
                                 &nbsp; NUEVO USUARIO
                             </a>
                         </li>
                         <li>
-                            <a href="user-list.html">
+                            <a href="user-list.xhtml">
                                 <i class="fas fa-clipboard-list fa-fw" />
                                 &nbsp; LISTA DE USUARIOS
                             </a>
                         </li>
                         <li>
-                            <a class="active" href="user-search.html">
+                            <a class="active" href="user-search.xhtml">
                                 <i class="fas fa-search fa-fw" />
                                 &nbsp; BUSCAR USUARIO
                             </a>
@@ -34,167 +35,83 @@
                 </div>
                 <!--  Content -->
                 <div class="container-fluid">
-                    <form class="form-neon" action="">
+                    <h:form class="form-neon">
                         <div class="container-fluid">
                             <div class="row justify-content-md-center">
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="inputSearch" class="bmd-label-floating">Â¿QuÃ©
-                                            usuario estas buscando?</label>
-                                        <input type="text" class="form-control" name="busqueda-" id="inputSearch" maxlength="30" />
+                                        <label for="id_usuario" class="bmd-label-floating">Ingresa el ID de la cita a buscar</label> 
+                                        <h:inputText required="true" requiredMessage="Ingrese un ID valido" value="#{usuariosRequest.idUsuario}" class="form-control" id="id_usuario" maxlength="5" />
+                                        <h:message for="id_usuario" style="color: red;" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <p class="text-center" style="margin-top: 40px;">
-                                        <button type="submit" class="btn btn-raised btn-info">
-                                            <i class="fas fa-search" />
-                                            &nbsp; BUSCAR
-                                        </button>
+                                        <h:commandButton type="submit" action="#{usuariosRequest.buscaUsuario()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
+                                        <!--        <button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search"></i> 
+                                                    &nbsp; BUSCAR</button>      -->
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </h:form>
                 </div>
                 <div class="container-fluid">
-                    <form action="">
-                        <input type="hidden" name="eliminar-busqueda" value="eliminar" />
-                        <div class="container-fluid">
-                            <div class="row justify-content-md-center">
-                                <div class="col-12 col-md-6">
-                                    <p class="text-center" style="font-size: 20px;">
-                                        Resultados de la busqueda
-                                        <strong>âBuscarâ</strong>
-                                    </p>
-                                </div>
-                                <div class="col-12">
-                                    <p class="text-center" style="margin-top: 20px;">
-                                        <button type="submit" class="btn btn-raised btn-danger">
-                                            <i class="far fa-trash-alt" />
-                                            &nbsp; ELIMINAR BÃSQUEDA
-                                        </button>
-                                    </p>
-                                </div>
-                            </div>
+                    <div class="row justify-content-md-center">
+                        <div class="col-12 col-md-6">
+                            <p class="text-center" style="font-size: 20px; margin-top: 15px;">
+                                Resultados de la busqueda <strong>ID Usuario</strong>
+                            </p>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="container-fluid">
                     <div class="table-responsive">
                         <table class="table table-dark table-sm">
                             <thead>
                                 <tr class="text-center roboto-medium">
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Login</th>
-                                    <th>ContraseÃ±a</th>
-                                    <th>Id tipo rol</th>
+                                    <th>Id Usuario</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Tipo Documento</th>
+                                    <th>No Documento</th>
+                                    <th>Email</th>
+                                    <th>Tipo Rol</th>
+                                    <th>Fecha Registro</th>
                                     <th>ACTUALIZAR</th>
                                     <th>ELIMINAR</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="text-center">
-                                    <td>1</td>
-                                    <td>ADRIANA CAROLINA</td>
-                                    <td>HERNANDEZ MONTERROZA</td>
-                                    <td>administrator</td>
-                                    <td>x</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>2</td>
-                                    <td>ANGELA PATRICIA</td>
-                                    <td>REY SANCHEZ</td>
-                                    <td>user1</td>
-                                    <td>Zz</td>
-                                    <td>2</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>3</td>
-                                    <td>DANIELA KATHERINNE</td>
-                                    <td>ABONDANO ACEVEDO</td>
-                                    <td>admin</td>
-                                    <td>St@rt123</td>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>4</td>
-                                    <td>MÃNICA ALEXANDRA</td>
-                                    <td>CARVAJAL VARGAS</td>
-                                    <td>alex</td>
-                                    <td>1</td>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="user-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                <h:form>
+                                    <c:forEach items="#{usuariosRequest.unicoUsuario}" var="usuar">
+                                        <tr class="text-center">
+                                            <td>#{usuar.idUsuario}</td>
+                                            <td>#{usuar.nombres}</td>
+                                            <td>#{usuar.apellidos}</td>
+                                            <td>#{usuar.tipoDocumento}</td>
+                                            <td>#{usuar.documento}</td>
+                                            <td>#{usuar.email}</td>
+                                            <td>#{usuar.idTipoRol.nombreRol}</td>
+                                            <td>#{usuar.fechaRegistro}</td>
+                                            <td><h:commandLink action="user-update.xhtml" actionListener="#{usuariosRequest.cargarUsuario(usuar)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
+                                            <td><h:commandLink action="#{usuariosRequest.eliminarUsuario(usuar)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
+                                        </tr>
+                                    </c:forEach>
+                                </h:form>
                             </tbody>
                         </table>
                     </div>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Regresar</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
+                    <div class="col-12">
+                        <h:form>
+                            <p class="text-center" style="margin-top: 20px;">
+                                <h:commandButton action="#{usuariosRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
+                        <!--        <button type="reset" class="btn btn-raised btn-danger"><i class="far fa-trash-alt"></i> &nbsp; ELIMINAR BÃSQUEDA</button>      -->
+                            </p>
+                        </h:form>
+                    </div>
                 </div>
             </ui:define>
         </ui:composition>

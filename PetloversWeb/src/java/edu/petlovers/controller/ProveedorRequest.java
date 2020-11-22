@@ -30,12 +30,12 @@ public class ProveedorRequest implements Serializable {
     ProveedoresFacadeLocal proveedorFacadeLocal;
 
     private Proveedores objProveedores = new Proveedores();
-    ArrayList<Proveedores> listaProveedores = new ArrayList();
-    boolean nuevoActualizar;
 
-    /**
-     * Creates a new instance of ProveedorRequest
-     */
+    ArrayList<Proveedores> listaProveedores = new ArrayList();
+
+    private int idProveedor;
+    private ArrayList<Proveedores> unicoProveedor = new ArrayList<>();
+    
     public ProveedorRequest() {
     }
 
@@ -50,36 +50,71 @@ public class ProveedorRequest implements Serializable {
         try {
             proveedorFacadeLocal.create(objProveedores);
             listaProveedores.add(objProveedores);
-            mensajeSw = "swal('Producto creado' , 'con exito' , 'success')";
+            mensajeSw = "swal('Proveedor creado' , 'con exito' , 'success')";
         } catch (Exception e) {
-            mensajeSw = "swal('El producto' , 'no fue registrado' , 'error');";
+            mensajeSw = "swal('El proveedor' , 'no fue registrado' , 'error');";
         }
-
         objProveedores = new Proveedores();
         PrimeFaces.current().executeScript(mensajeSw);
     }
 
     public void removerProveedor(Proveedores objProveedor) {
-        proveedorFacadeLocal.remove(objProveedor);
-        listaProveedores.remove(objProveedor);
+        String mensajeSw = "";
+
+        try {
+            proveedorFacadeLocal.remove(objProveedor);
+            listaProveedores.remove(objProveedor);
+            mensajeSw = "swal('Proveedor' , ' Eliminado ', 'success')";
+        } catch (Exception e) {
+            mensajeSw = "swal('El proveedor' , 'no ha sido eliminado' , 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeSw);
     }
-    
-    public void cargarProveedor(Proveedores objProveedor){
+
+    public void cargarProveedor(Proveedores objProveedor) {
         this.objProveedores = objProveedor;
-        this.nuevoActualizar = true;
+    }
+
+    public void actualizarProveedor() {
+        String mensajeSw = "";
+
+        try {
+            proveedorFacadeLocal.edit(objProveedores);
+            listaProveedores.clear();
+            listaProveedores.addAll(proveedorFacadeLocal.findAll());
+            mensajeSw = "swal('El proveedor' , ' se ha modificado exitosamente ', 'success')";
+        } catch (Exception e) {
+            mensajeSw = "swal('El usuario' , ' No ha sido modificado ', 'error')";
+        }
+        objProveedores = new Proveedores();
+        PrimeFaces.current().executeScript(mensajeSw);
+    }
+
+    public void buscaProveedor() {
+        Proveedores busProve = new Proveedores();
+        String mensajeSw = "";
+        try {
+            busProve = proveedorFacadeLocal.buscarProveedor(idProveedor);
+            if(busProve.getNitProveedor() == null) {
+                mensajeSw = "swal('El proveedor' , ' No se encuentra registrado ', 'error')";
+            } else {
+                unicoProveedor.add(busProve);
+                mensajeSw = "swal('Proveedor' , ' Encontrado exitosamente ', 'success')";
+            }
+        } catch (Exception e) {
+            mensajeSw = "swal('El proveedor' , ' No se encuentra registrado ', 'error')";
+        }
+        PrimeFaces.current().executeScript(mensajeSw);
     }
     
-    public void actualizarProveedor(){
-        proveedorFacadeLocal.edit(objProveedores);
-        this.nuevoActualizar = false;
-        listaProveedores.clear();
-        listaProveedores.addAll(proveedorFacadeLocal.findAll());
+    public void vaciarBusqueda() {
+        unicoProveedor = new ArrayList<>();
     }
     
-    public void correoMasico(){
+    public void correoMasico() {
         try {
             for (Proveedores iProveedores : listaProveedores) {
-           Email.sendBienvenido(iProveedores.getEmailProveedor(), iProveedores.getNombresProveedor(), null, null);
+                Email.sendBienvenido(iProveedores.getEmailProveedor(), iProveedores.getNombresProveedor(), null, null);
             }
         } catch (Exception e) {
         }
@@ -101,12 +136,20 @@ public class ProveedorRequest implements Serializable {
         this.listaProveedores = listaProveedores;
     }
 
-    public boolean isNuevoActualizar() {
-        return nuevoActualizar;
+    public int getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setNuevoActualizar(boolean nuevoActualizar) {
-        this.nuevoActualizar = nuevoActualizar;
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
+    public ArrayList<Proveedores> getUnicoProveedor() {
+        return unicoProveedor;
+    }
+
+    public void setUnicoProveedor(ArrayList<Proveedores> unicoProveedor) {
+        this.unicoProveedor = unicoProveedor;
     }
 
 }

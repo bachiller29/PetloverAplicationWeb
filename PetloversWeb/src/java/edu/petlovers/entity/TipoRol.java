@@ -37,7 +37,7 @@ public class TipoRol implements Serializable {
     @NotNull
     @Column(name = "Id_Tipo_Rol")
     private Integer idTipoRol;
-    @Size(max = 20)
+    @Size(max = 25)
     @Column(name = "Nombre_Rol")
     private String nombreRol;
     @OneToMany(mappedBy = "idTipoRol", fetch = FetchType.LAZY)

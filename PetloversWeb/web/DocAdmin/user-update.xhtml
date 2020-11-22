@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
@@ -13,19 +14,19 @@
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="user-new.html">
+                            <a href="user-new.xhtml">
                                 <i class="fas fa-plus fa-fw" />
                                 &nbsp; NUEVO USUARIO
                             </a>
                         </li>
                         <li>
-                            <a href="user-list.html">
+                            <a href="user-list.xhtml">
                                 <i class="fas fa-clipboard-list fa-fw" />
                                 &nbsp; LISTA DE USUARIOS
                             </a>
                         </li>
                         <li>
-                            <a href="user-search.html">
+                            <a href="user-search.xhtml">
                                 <i class="fas fa-search fa-fw" />
                                 &nbsp; BUSCAR USUARIO
                             </a>
@@ -37,127 +38,76 @@
                     <h:form  class="form-neon">
                         <fieldset>
                             <legend>
-                                <i class="far fa-address-card" />
-                                &nbsp; Informacion personal </legend>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12 col-md-4">
-                                        <div class="form-group">
-                                            <label for="usuario_nombre" class="bmd-label-floating">Nombres</label>
-                                            <h:inputText id="Nombres" value="#{clienteBean.usuarios.nombres}" class="form-control"></h:inputText>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4">
-                                        <div class="form-group">
-                                            <label for="usuario_apellido" class="bmd-label-floating">Apellidos</label>
-                                            <h:inputText id="Apellidos" value="#{clienteBean.usuarios.apellidos}" class="form-control"></h:inputText>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="usuario_telefono" class="bmd-label-floating">Usuario</label>
-                                            <h:inputText id="UsuarioLogin" value="#{clienteBean.usuarios.usuariologin}" class="form-control"></h:inputText>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="usuario_direccion" class="bmd-label-floating">Contraseña</label>
-                                            <h:inputText id="Contraseña" value="#{clienteBean.usuarios.contrasena}" class="form-control"></h:inputText>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <br />
-                        <br />
-                        <br />
-                        <fieldset>
-                            <legend>
-                                <i class="fas fa-user-lock" />
-                                &nbsp; Informacion de la cuenta
+                                <i class="far fa-address-card" style="margin-bottom: 40px;" />
+                                &nbsp; Información personal del usuario
                             </legend>
+                            <h:inputText id="id_usuario" value="#{usuariosRequest.objUsuario.idUsuario}" style="display: none;" />
                             <div class="container-fluid">
                                 <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="tipoDoc" class="bmd-label-floating">Tipo Documento</label>
+                                            <h:selectOneMenu id="tipoDoc" value="#{usuariosRequest.objUsuario.tipoDocumento}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItem itemValue="Cedula" itemLabel="Cedula" />
+                                                <f:selectItem itemValue="Cedula Ex" itemLabel="Cedula Ex" />
+                                                <f:selectItem itemValue="Tar. Identidad" itemLabel="Tar. Identidad" />
+                                                <f:selectItem itemValue="Pasaporte" itemLabel="Pasaporte" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="documento" class="bmd-label-floating">Numero Documento</label>
+                                            <h:inputText id="documento" required="true" requiredMessage="Ingrese un documento valido" maxlength="20" value="#{usuariosRequest.objUsuario.documento}" class="form-control" />
+                                            <h:message for="documento" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="nombre" style="margin-top: 30px;" class="bmd-label-floating">Nombres</label>
+                                            <h:inputText id="nombre" required="true" requiredMessage="Ingrese un nombre valido" maxlength="35" value="#{usuariosRequest.objUsuario.nombres}" class="form-control"/>
+                                            <h:message for="nombre" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="apellido" style="margin-top: 30px;" class="bmd-label-floating">Apellidos</label>
+                                            <h:inputText id="apellido" required="true" requiredMessage="Ingrese un apellido valido" maxlength="35" value="#{usuariosRequest.objUsuario.apellidos}" class="form-control"/>
+                                            <h:message for="apellido" style="color: red;" />
+                                        </div>
+                                    </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="prestamo_estado" class="bmd-label-floating">Estado</label>
-                                            <select class="form-control" name="item_estado" id="item_estado">
-                                                <option value="">Seleccione una opcion</option>
-                                                <option value="Prestamo">Asesor comercial</option>
-                                                <option value="Reservacion">Veterinario</option>
-                                                <option value="Finalizado">Esteticista de mascota</option>
-                                                <option value="Finalizado">Auxiliar de mascota</option>
-                                                <option value="Finalizado">Cliente</option>
-                                            </select>
+                                            <label for="email" style="margin-top: 30px;" class="bmd-label-floating">Correo Electronico</label>
+                                            <h:inputText id="email" required="true" requiredMessage="Ingrese un correo valido" maxlength="50" value="#{usuariosRequest.objUsuario.email}" class="form-control"/>
+                                            <h:message for="email" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="clave" style="margin-top: 30px;" class="bmd-label-floating">Contraseña</label>
+                                            <h:inputSecret id="clave" required="true" requiredMessage="Ingrese un correo valido" maxlength="15" value="#{usuariosRequest.objUsuario.contrasena}" class="form-control"/>
+                                            <h:message for="clave" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="rol" style="margin-top: 30px;" class="bmd-label-floating">Tipo Rol</label>
+                                            <h:selectOneMenu id="rol" value="#{usuariosRequest.objUsuario.idTipoRol.idTipoRol}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{usuariosRequest.listaRoles}" var="idRol" itemValue="#{idRol.idTipoRol}" itemLabel="#{idRol.nombreRol}"></f:selectItems>  
+                                            </h:selectOneMenu>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </fieldset>
-                        <br />
-                        <br />
-                        <br />
-                        <fieldset>
-                            <legend>
-                                <i class="fas fa-medal" />
-                                &nbsp; Nivel de privilegio
-                            </legend>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p>
-                                            <span class="badge badge-info">Control total</span>
-                                            Permisos para registrar, actualizar y eliminar
-                                        </p>
-                                        <p>
-                                            <span class="badge badge-success">Edicion</span>
-                                            Permisos para registrar y actualizar
-                                        </p>
-                                        <p>
-                                            <span class="badge badge-dark">Registrar</span>
-                                            Solo permisos para registrar
-                                        </p>
-                                        <div class="form-group">
-                                            <select class="form-control" name="usuario_privilegio">
-                                                <option value="">Seleccione una opcion</option>
-                                                <option value="1">Control total</option>
-                                                <option value="2">Edicion</option>
-                                                <option value="3">Registrar</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <br />
-                        <br />
-                        <br />
-                        <fieldset>
-                            <p class="text-center">Para poder guardar los cambios en esta cuenta debe de ingresar su
-                                nombre de usuario y contraseña</p>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="usuario_admin" class="bmd-label-floating">Nombre
-                                                de usuario</label>
-                                            <input type="text" class="form-control" name="usuario_admin" id="usuario_admin" maxlength="35" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="clave_admin" class="bmd-label-floating">Contraseña</label>
-                                            <input type="password" class="form-control" name="clave_admin" id="clave_admin" maxlength="200" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <p class="text-center" style="margin-top: 40px;" />
-                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" action="#{clienteBean.updateUsuario()}">
-                            <i class="far fa-save" />
-                            Guardar
-                        </h:commandButton>
+                        <br /><br /><br />
+                        <p class="text-center" style="margin-top: 40px;">
+                            <a href="user-list.xhtml" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"> <i class="fas fa-backward"></i> &nbsp; REGRESAR</a>
+                            &nbsp; &nbsp;
+                            <h:commandButton action="#{usuariosRequest.actualizarUsuario()}" class="btn btn-raised btn-success btn-lg" value="Actualizar"></h:commandButton>
+                            <!--        <button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>   -->
+                        </p>
                     </h:form>
                 </div>
             </ui:define>

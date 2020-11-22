@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
@@ -14,19 +14,19 @@
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a class="active" href="reservation-new.html">
+                            <a class="active" href="reservation-new.xhtml">
                                 <i class="fas fa-plus fa-fw" />
                                 &nbsp; NUEVO INVENTARIO
                             </a>
                         </li>
                         <li>
-                            <a href="reservation-list.html">
+                            <a href="reservation-list.xhtml">
                                 <i class="fas fa-clipboard-list fa-fw" />
-                                &nbsp; LISTA DE INVENTARIO
+                                &nbsp; LISTA DE INVENTARIOS
                             </a>
                         </li>
                         <li>
-                            <a href="reservation-search.html">
+                            <a href="reservation-search.xhtml">
                                 <i class="fas fa-search-dollar fa-fw" />
                                 &nbsp; BUSCAR INVENTARIO
                             </a>
@@ -35,235 +35,56 @@
                 </div>
                 <!--  CONTENT -->
                 <div class="container-fluid">
-                    <div class="container-fluid form-neon">                       
-                        <h:form >
-                            <fieldset>
-                                <legend>
-                                    <i class="far fa-plus-square" />
-                                    &nbsp; Informacion
-                                    del inventario
-                                </legend>
-                                <h:inputText id="idproductps" value="#{inventarioRequest.objInventario.idInventario}" style="display:none;" />
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <h:outputText value="Precio" class="bmd-label-floating">Cantidad producto</h:outputText >
-                                                <h:inputText id="Precio" value="#{inventarioRequest.objInventario.cantidadProductos}" class="form-control" ></h:inputText>
-                                            </div>
+                    <h:form class="form-neon">
+                        <fieldset>
+                            <legend>
+                                <i class="far fa-plus-square" style="margin-bottom: 40px;" />
+                                &nbsp; Información del inventario
+                            </legend>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputText value="Cantidad Productos" class="bmd-label-floating">Cantidad producto</h:outputText >
+                                            <h:inputText id="CantiProd" required="true" requiredMessage="Ingrese un valor valido" maxlength="10" value="#{inventarioRequest.objInventario.cantidadProductos}" class="form-control" ></h:inputText>
+                                            <h:message for="CantiProd" style="color: red;" />
                                         </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <h:outputText value="Nit proveedor" class="bmd-label-floating">Numero administrador</h:outputText >
-                                                <h:inputText id="NitProveedor" value="#{inventarioRequest.objInventario.idAdmin.idAdmin}" class="form-control"></h:inputText>
-                                            </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputText value="ID Administrador" class="bmd-label-floating">Id administrador</h:outputText >
+                                            <h:selectOneMenu id="id_admin" value="#{inventarioRequest.objInventario.idAdmin.idAdmin}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{inventarioRequest.listaAdministradores}" var="idAdmin" itemValue="#{idAdmin.idAdmin}" itemLabel="#{idAdmin.idAdmin}"></f:selectItems>  
+                                            </h:selectOneMenu>
                                         </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <h:outputText value="Referencia salida producto" class="bmd-label-floating">Referencia salida producto</h:outputText >
-                                                <h:inputText id="referenciaSalidaProducto" value="#{inventarioRequest.objInventario.idSalidaProductos.idSalidaProductos}" class="form-control"></h:inputText>
-                                            </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputText  value="ID Entrada Producto" class="bmd-label-floating">Referencia entrada producto</h:outputText >
+                                            <h:selectOneMenu id="id_entrada_p" value="#{inventarioRequest.objInventario.idEntradaProductos.idEntradaProductos}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{inventarioRequest.listaEntradaP}" var="idEntrada" itemValue="#{idEntrada.idEntradaProductos}" itemLabel="#{idEntrada.idEntradaProductos} - #{idEntrada.fechaEntrada}"></f:selectItems>  
+                                            </h:selectOneMenu>
                                         </div>
-                                        <div class="col-12 col-md-4">
-                                            <div class="form-group">
-                                                <h:outputText  value="Referencia entrada producto" class="bmd-label-floating">Referencia entrada producto</h:outputText >
-                                                <h:inputText id="referenciaEntradaProducto" value="#{inventarioRequest.objInventario.idEntradaProductos.idEntradaProductos}" class="form-control"></h:inputText>
-                                            </div>
-                                        </div>                                                                                                                                  
                                     </div>
-                                </div>
-                            </fieldset>
-                            <br />
-                            <br />
-                            <br />
-                            <p class="text-center" style="margin-top: 40px;">
-                                <h:commandButton action="#{inventarioRequest.actualizarInventario()}" class="btn btn-raised btn-info btn-sm" value="ACTUALIZAR"></h:commandButton>              
-                                &nbsp; &nbsp;                                
-                                <h:commandButton action="#{inventarioRequest.registrarInventario()}" class="btn btn-raised btn-info btn-sm" value="GUARDAR"></h:commandButton>    
-                            </p>
-                        </h:form>                        
-                          <div class="table-responsive">
-                            <table class="table table-dark table-sm">
-                                <thead>
-                                    <tr class="text-center roboto-medium">
-                                        <th>Precio</th>
-                                        <th>Nit proveedor</th>
-                                        <th>N. Salida producto</th>
-                                        <th>N. Entrada producto</th>                                        
-                                        <th>Eliminar</th>
-                                        <th>Ver</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <h:form>
-                                        <c:forEach items="#{inventarioRequest.listaInventario}" var="obj">
-                                            <tr>
-                                                <td>#{obj.cantidadProductos}</td>
-                                                <td>#{obj.idAdmin.idAdmin}</td>
-                                                <td>#{obj.idSalidaProductos.idSalidaProductos}</td>
-                                                <td>#{obj.idEntradaProductos.idEntradaProductos}</td>                                                
-                                                <td>
-                                                    <h:commandButton action="#{inventarioRequest.removerInventario(obj)}" value="Eliminar"></h:commandButton>                                                                                    
-                                                </td>
-                                                <td>
-                                                    <h:commandButton action="#{inventarioRequest.cargaInventario(obj)}" value="Ver"></h:commandButton>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                    </h:form>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!--  MODAL CLIENTE -->
-                <div class="modal fade" id="ModalCliente">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="ModalCliente_">Agregar cliente</h5>
-                                <button type="button" class="close">
-                                    <span>&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <div class="form-group">
-                                        <label for="agregar_cliente" class="bmd-label-floating">DNI,
-                                            Nombre, Apellido, Telefono</label>
-                                        <input type="text" class="form-control" name="agregar_cliente" id="agregar_cliente" maxlength="30" />
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="container-fluid">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-bordered table-sm">
-                                            <tbody>
-                                                <tr class="text-center">
-                                                    <td>000000000000 - Nombre del cliente</td>
-                                                    <td>
-                                                        <form action="">
-                                                            <button type="button" class="btn btn-primary">
-                                                                <i class="fas fa-user-plus" />
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>000000000000 - Nombre del cliente</td>
-                                                    <td>
-                                                        <form action="">
-                                                            <button type="button" class="btn btn-primary">
-                                                                <i class="fas fa-user-plus" />
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>000000000000 - Nombre del cliente</td>
-                                                    <td>
-                                                        <form action="">
-                                                            <button type="button" class="btn btn-primary">
-                                                                <i class="fas fa-user-plus" />
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>000000000000 - Nombre del cliente</td>
-                                                    <td>
-                                                        <form action="">
-                                                            <button type="button" class="btn btn-primary">
-                                                                <i class="fas fa-user-plus" />
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputText value="ID Salida Producto" class="bmd-label-floating">Referencia salida producto</h:outputText >
+                                            <h:selectOneMenu id="id_salida_p" value="#{inventarioRequest.objInventario.idSalidaProductos.idSalidaProductos}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{inventarioRequest.listaSalidaP}" var="idSalida" itemValue="#{idSalida.idSalidaProductos}" itemLabel="#{idSalida.idSalidaProductos} - #{idSalida.fechaSalida}"></f:selectItems>  
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>                                                                                                                      
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary">Cerrar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--  MODAL CLIENTE -->
-                <div class="modal fade" id="ModalItem">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="ModalItem_">Agregar item</h5>
-                                <button type="button" class="close">
-                                    <span>&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <div class="form-group">
-                                        <label for="agregar_item" class="bmd-label-floating">CÃ³digo,
-                                            Nombre</label>
-                                        <input type="text" class="form-control" name="agregar_item" id="agregar_item" maxlength="30" />
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="container-fluid">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-bordered table-sm">
-                                            <tbody>
-                                                <tr class="text-center">
-                                                    <td>000000000000 - Nombre del item</td>
-                                                    <td>
-                                                        <form action="">
-                                                            <button type="button" class="btn btn-primary">
-                                                                <i class="fas fa-box-open" />
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>000000000000 - Nombre del item</td>
-                                                    <td>
-                                                        <form action="">
-                                                            <button type="button" class="btn btn-primary">
-                                                                <i class="fas fa-box-open" />
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>000000000000 - Nombre del item</td>
-                                                    <td>
-                                                        <form action="">
-                                                            <button type="button" class="btn btn-primary">
-                                                                <i class="fas fa-box-open" />
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>000000000000 - Nombre del item</td>
-                                                    <td>
-                                                        <form action="">
-                                                            <button type="button" class="btn btn-primary">
-                                                                <i class="fas fa-box-open" />
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary">Cerrar</button>
-                            </div>
-                        </div>
-                    </div>
-
+                        </fieldset>
+                        <br /><br /><br />
+                        <p class="text-center" style="margin-top: 40px;">
+                            <button type="reset" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
+                            &nbsp; &nbsp; 
+                            <!--    <button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button> -->
+                            <h:commandButton action="#{inventarioRequest.registrarInventario()}" class="btn btn-raised btn-info btn-lg" value="Guardar"></h:commandButton>
+                        </p>
+                    </h:form>                        
                 </div>
             </ui:define>
         </ui:composition>
