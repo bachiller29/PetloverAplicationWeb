@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
@@ -45,40 +46,14 @@ and open the template in the editor.
                             <div class="row justify-content-md-center">
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="inputSearch" class="bmd-label-floating">Â¿QuÃ©
-                                            cliente estas buscando?</label>
-                                        <input type="text" class="form-control" name="busqueda-" id="inputSearch" maxlength="30" />
+                                        <label for="nitProved" class="bmd-label-floating">Ingrese el numero del cliente a buscar?</label>
+                                        <h:inputText id="nitProved" required="true" requiredMessage="Ingrese un NIT valido" maxlength="11" value="#{clientesRequest.idCliente}" class="form-control" />
+                                        <h:message for="nitProved" style="color: red;" />
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                 <div class="col-12">
                                     <p class="text-center" style="margin-top: 40px;">
-                                        <button type="submit" class="btn btn-raised btn-info">
-                                            <i class="fas fa-search" />
-                                            BUSCAR
-                                        </button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="container-fluid">
-                    <form action="">
-                        <input type="hidden" name="eliminar-busqueda" value="eliminar" />
-                        <div class="container-fluid">
-                            <div class="row justify-content-md-center">
-                                <div class="col-12 col-md-6">
-                                    <p class="text-center" style="font-size: 20px;">
-                                        Resultados de la busqueda
-                                        <strong>âBuscarâ</strong>
-                                    </p>
-                                </div>
-                                <div class="col-12">
-                                    <p class="text-center" style="margin-top: 20px;">
-                                        <button type="submit" class="btn btn-raised btn-danger">
-                                            <i class="far fa-trash-alt" />
-                                            ELIMINAR BÃSQUEDA
-                                        </button>
+                                        <h:commandButton type="submit" action="#{clientesRequest.buscarCliente()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
                                     </p>
                                 </div>
                             </div>
@@ -90,122 +65,41 @@ and open the template in the editor.
                         <table class="table table-dark table-sm">
                             <thead>
                                 <tr class="text-center roboto-medium">
-                                    <th>Id Cliente</th>
-                                    <th>Direccion</th>
-                                    <th>Ciudad</th>
-                                    <th>Barrio</th>
-                                    <th>Telefono</th>
-                                    <th>Email</th>
-                                    <th>IdUsuario</th>
-                                    <th>ACTUALIZAR</th>
-                                    <th>ELIMINAR</th>
+                                    <td>Id</td>
+                                    <td>Dirección</td>
+                                    <td>Ciudad</td>
+                                    <td>Barrio</td>
+                                    <td>Telefono</td>
+                                    <td>Usuario</td>
+                                    <td>ACTUALIZAR</td>
+                                    <td>ELIMINAR</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="text-center">
-                                    <td>1</td>
-                                    <td>Calle 10 # 5-51</td>
-                                    <td>Bogota</td>
-                                    <td>Ciudad jardin</td>
-                                    <td>3195082526</td>
-                                    <td>orregoldi@hotmail.com</td>
-                                    <td>11</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_3" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>2</td>
-                                    <td>Calle 53 No 10-60</td>
-                                    <td>Bogota</td>
-                                    <td>Restrepo</td>
-                                    <td>3207482911</td>
-                                    <td>cathita_acosta@hotmail.com</td>
-                                    <td>12</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_4" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>3</td>
-                                    <td>Calle 10 # 5-51</td>
-                                    <td>Bogota</td>
-                                    <td>Doce de octubre</td>
-                                    <td>3139362803</td>
-                                    <td>ambrosio82@gmail.com</td>
-                                    <td>13</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_5" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>4</td>
-                                    <td>Calle 100 # 11B-27</td>
-                                    <td>Bogota</td>
-                                    <td>Los andes</td>
-                                    <td>3113240238</td>
-                                    <td>carolaasm@hotmail.com</td>
-                                    <td>14</td>
-                                    <td>
-                                        <a href="client-update.html" class="btn btn-success">
-                                            <i class="fas fa-sync-alt" />
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button id="btnSA_6" type="button" class="btn btn-warning">
-                                                <i class="far fa-trash-alt" />
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                 <h:form>
+                                    <c:forEach items="#{clientesRequest.listaClientes}" var="obCli">
+                                        <tr>
+                                            <td>#{obCli.idCliente}</td>
+                                            <td>#{obCli.direccion}</td>
+                                            <td>#{obCli.ciudad}</td>
+                                            <td>#{obCli.barrio}</td>
+                                            <td>#{obCli.telefono}</td>
+                                            <td>#{obCli.idUsuario.nombres}</td> 
+                                            <td><h:commandLink action="item-update.xhtml" actionListener="#{clientesRequest.cargarCliente(obCli)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{clientesRequest.removerCliente(obCli)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                        </tr>
+                                    </c:forEach>
+                                </h:form>
                             </tbody>
                         </table>
                     </div>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
+                    <div class="col-12">
+                        <h:form>
+                            <p class="text-center" style="margin-top: 20px;">
+                                <h:commandButton action="#{proveedorRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
+                            </p>
+                        </h:form>
+                    </div>
                 </div>
             </ui:define>
         </ui:composition>

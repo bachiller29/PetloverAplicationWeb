@@ -49,7 +49,6 @@
                                 <div class="col-12">
                                     <p class="text-center" style="margin-top: 40px;">
                                         <h:commandButton type="submit" action="#{proveedorRequest.buscaProveedor()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
-                                        <!--    <button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search" /> &nbsp; BUSCAR </button>   -->
                                     </p>
                                 </div>
                             </div>
@@ -91,9 +90,7 @@
                                             <td>#{Proved.emailProveedor}</td>
                                             <td>#{Proved.telefonoProveedor}</td> 
                                             <td><h:commandLink action="item-update.xhtml" actionListener="#{proveedorRequest.cargarProveedor(Proved)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
-                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
                                             <td><h:commandLink action="#{proveedorRequest.removerProveedor(Proved)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
-                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
                                         </tr>
                                     </c:forEach>
                                 </h:form>
@@ -104,7 +101,6 @@
                         <h:form>
                             <p class="text-center" style="margin-top: 20px;">
                                 <h:commandButton action="#{proveedorRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
-                        <!--        <button type="reset" class="btn btn-raised btn-danger"><i class="far fa-trash-alt"></i> &nbsp; ELIMINAR BÃSQUEDA</button>      -->
                             </p>
                         </h:form>
                     </div>

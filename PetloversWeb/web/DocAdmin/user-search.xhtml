@@ -48,8 +48,6 @@
                                 <div class="col-12">
                                     <p class="text-center" style="margin-top: 40px;">
                                         <h:commandButton type="submit" action="#{usuariosRequest.buscaUsuario()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
-                                        <!--        <button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search"></i> 
-                                                    &nbsp; BUSCAR</button>      -->
                                     </p>
                                 </div>
                             </div>
@@ -95,9 +93,7 @@
                                             <td>#{usuar.idTipoRol.nombreRol}</td>
                                             <td>#{usuar.fechaRegistro}</td>
                                             <td><h:commandLink action="user-update.xhtml" actionListener="#{usuariosRequest.cargarUsuario(usuar)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
-                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
                                             <td><h:commandLink action="#{usuariosRequest.eliminarUsuario(usuar)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
-                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
                                         </tr>
                                     </c:forEach>
                                 </h:form>
@@ -108,7 +104,6 @@
                         <h:form>
                             <p class="text-center" style="margin-top: 20px;">
                                 <h:commandButton action="#{usuariosRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
-                        <!--        <button type="reset" class="btn btn-raised btn-danger"><i class="far fa-trash-alt"></i> &nbsp; ELIMINAR BÃSQUEDA</button>      -->
                             </p>
                         </h:form>
                     </div>

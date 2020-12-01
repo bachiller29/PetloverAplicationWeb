@@ -61,9 +61,7 @@
                                             <td>#{obProv.emailProveedor}</td>
                                             <td>#{obProv.telefonoProveedor}</td> 
                                             <td><h:commandLink action="item-update.xhtml" actionListener="#{proveedorRequest.cargarProveedor(obProv)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
-                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
                                             <td><h:commandLink action="#{proveedorRequest.removerProveedor(obProv)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
-                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
                                         </tr>
                                     </c:forEach>
                                 </h:form>

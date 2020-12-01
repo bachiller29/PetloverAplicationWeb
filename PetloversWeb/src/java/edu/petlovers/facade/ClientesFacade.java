@@ -10,6 +10,7 @@ import edu.petlovers.entity.Clientes;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +30,14 @@ public class ClientesFacade extends AbstractFacade<Clientes> implements Clientes
         super(Clientes.class);
     }
     
+    @Override
+    public Clientes buscarCliente(int idCliente){
+        try {
+            Query q = em.createQuery("SELECT c FROM Clientes c WHERE c.idCliente = :idCliente");
+            q.setParameter("idCliente", idCliente);
+            return (Clientes) q.getSingleResult();
+        } catch (Exception e) {
+            return new Clientes();
+        }
+    }
 }

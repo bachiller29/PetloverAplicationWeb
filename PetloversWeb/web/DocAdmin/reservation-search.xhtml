@@ -31,7 +31,6 @@
                                 &nbsp; BUSCAR INVENTARIO
                             </a>
                         </li>
-                        <!--  <li> <a href="reservation-pending.html"><i class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; PRÃSTAMOS PENDIENTES</a> </li> -->
                     </ul>
                 </div>
                 <!--  CONTENT -->
@@ -49,7 +48,6 @@
                                 <div class="col-12">
                                     <p class="text-center" style="margin-top: 40px;">
                                         <h:commandButton type="submit" action="#{inventarioRequest.buscaInventario()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
-                                        <!--    <button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search" /> &nbsp; BUSCAR </button>   -->
                                     </p>
                                 </div>
                             </div>
@@ -89,9 +87,7 @@
                                             <td>#{Invent.idSalidaProductos.idSalidaProductos}</td>
                                             <td>#{Invent.idEntradaProductos.idEntradaProductos}</td>                                                
                                             <td><h:commandLink action="reservation-update.xhtml" actionListener="#{inventarioRequest.cargaInventario(Invent)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
-                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
                                             <td><h:commandLink action="#{inventarioRequest.removerInventario(Invent)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
-                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
                                         </tr>
                                     </c:forEach>
                                 </h:form>
@@ -102,7 +98,6 @@
                         <h:form>
                             <p class="text-center" style="margin-top: 20px;">
                                 <h:commandButton action="#{inventarioRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
-                        <!--        <button type="reset" class="btn btn-raised btn-danger"><i class="far fa-trash-alt"></i> &nbsp; ELIMINAR BÃSQUEDA</button>      -->
                             </p>
                         </h:form>
                     </div>

@@ -41,46 +41,51 @@
                                 <i class="fas fa-user" />
                                 &nbsp; Informacion basica
                             </legend>
+                            <h:inputText id="id_proveedor" value="#{proveedorRequest.objProveedores.nitProveedor}" style="display: none;" />
                             <div class="container-fluid">
                                 <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label  value="Direccion" class="bmd-label-floating">Direccion</label>
+                                            <h:inputText id="Direccion" value="#{clientesRequest.objClientes.direccion}" requiredMessage="Ingrese una direccion" class="form-control"></h:inputText>
+                                            <h:message for="Nit" style="color: red;" />
+                                        </div>
+                                    </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="cliente_dni" class="bmd-label-floating">Email</label>
-                                            <h:inputText id="email" value="#{clienteBean.clientes.email}" class="form-control"></h:inputText>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="cliente_nombre" class="bmd-label-floating">Ciudad</label>
-                                            <h:inputText id="ciudad" value="#{clienteBean.clientes.ciudad}" class="form-control"></h:inputText>
+                                            <label  value="Ciudad" class="bmd-label-floating">Ciudad</label>
+                                            <h:inputText id="Ciudad" requiredMessage="Ingrese una ciudad"  value="#{clientesRequest.objClientes.ciudad}" class="form-control"></h:inputText>
+                                            <h:message for="Nit" style="color: red;" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="cliente_apellido" class="bmd-label-floating">Barrio</label>
-                                            <h:inputText id="Barrio" value="#{clienteBean.clientes.barrio}" class="form-control"></h:inputText>
+                                            <label  value="Barrio" class="bmd-label-floating">Barrio</label>
+                                            <h:inputText id="Barrio" value="#{clientesRequest.objClientes.barrio}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
-                                        <div class="form-group">
-                                            <label for="cliente_telefono" class="bmd-label-floating">Telefono</label>
-                                            <h:inputText id="telefono" value="#{clienteBean.clientes.telefono}" class="form-control"></h:inputText>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4">
-                                        <div class="form-group">
-                                            <label for="cliente_direccion" class="bmd-label-floating">Direccion</label>
-                                            <h:inputText id="direccion" value="#{clienteBean.clientes.direccion}" class="form-control"></h:inputText>
-                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="form-group">
+                                                <h:outputText value="Telefono" class="bmd-label-floating">Telefono</h:outputText>
+                                                <h:inputText  id="Telefono" class="form-control" value="#{clientesRequest.objClientes.telefono}" requiredMessage="Ingrese un telefono"></h:inputText>
+                                                <h:message for="Nit" style="color: red;" />
+                                            </div>
+                                        </div>                                  
+                                        <!--                                    <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <h:outputText value="Email" class="bmd-label-floating"/>
+                                                <h:inputText id="Email" value="{clientesRequest.objClientes.}" class="form-control"></h:inputText>
+                                            </div>
+                                        </div>-->
                                     </div>
                                 </div>
-                            </div>
                         </fieldset>
                         <br />
                         <br />
                         <br />
                         <p class="text-center" style="margin-top: 40px;" />
-                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" action="#{clienteBean.updateCliente()}">
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Actualizar" action="#{productosRequest.actualizarProducto()}">
                             <i class="far fa-save" />
                             Guardar
                         </h:commandButton>

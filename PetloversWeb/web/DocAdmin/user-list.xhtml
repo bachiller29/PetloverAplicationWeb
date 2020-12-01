@@ -64,9 +64,7 @@
                                             <td>#{usu.idTipoRol.nombreRol}</td>
                                             <td>#{usu.fechaRegistro}</td>
                                             <td><h:commandLink action="user-update.xhtml" actionListener="#{usuariosRequest.cargarUsuario(usu)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
-                                            <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
                                             <td><h:commandLink action="#{usuariosRequest.eliminarUsuario(usu)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
-                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
                                         </tr>
                                     </c:forEach>
                                 </h:form>

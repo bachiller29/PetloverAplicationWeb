@@ -44,36 +44,39 @@
                             </legend>
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <h:outputText  value="Email" class="bmd-label-floating"/>
-                                            <h:inputText  id="Email" value="#{clienteBean.clientes.email}" class="form-control"></h:inputText>
+                                            <label  value="Direccion" class="bmd-label-floating">Direccion</label>
+                                            <h:inputText id="Direccion" value="#{clientesRequest.objClientes.direccion}" requiredMessage="Ingrese una direccion" class="form-control"></h:inputText>
+                                            <h:message for="Nit" style="color: red;" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label  value="Ciudad" class="bmd-label-floating">Ciudad</label>
-                                            <h:inputText id="Ciudad"  value="#{clienteBean.clientes.ciudad}" class="form-control"></h:inputText>
+                                            <h:inputText id="Ciudad" requiredMessage="Ingrese una ciudad"  value="#{clientesRequest.objClientes.ciudad}" class="form-control"></h:inputText>
+                                            <h:message for="Nit" style="color: red;" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
                                             <label  value="Barrio" class="bmd-label-floating">Barrio</label>
-                                            <h:inputText id="Barrio" value="#{clienteBean.clientes.barrio}" class="form-control"></h:inputText>
+                                            <h:inputText id="Barrio" value="#{clientesRequest.objClientes.barrio}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
                                             <h:outputText value="Telefono" class="bmd-label-floating">Telefono</h:outputText>
-                                            <h:inputText  id="Telefono" class="form-control" value="#{clienteBean.clientes.telefono}"></h:inputText>
+                                            <h:inputText  id="Telefono" class="form-control" value="#{clientesRequest.objClientes.telefono}" requiredMessage="Ingrese un telefono"></h:inputText>
+                                            <h:message for="Nit" style="color: red;" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4">
+<!--                                    <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label  value="Direccion" class="bmd-label-floating">Direccion</label>
-                                            <h:inputText id="Direccion" value="#{clienteBean.clientes.direccion}" class="form-control"></h:inputText>
+                                            <h:outputText value="Email" class="bmd-label-floating"/>
+                                            <h:inputText id="Email" value="{clientesRequest.objClientes.}" class="form-control"></h:inputText>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </fieldset>
@@ -87,7 +90,7 @@
                             </button>
                             &nbsp; &nbsp;
                         </p>
-                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" actionListener="#{clienteBean.createCliente()}">
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" action="#{clientesRequest.registrarCliente()}">
                             <i class="far fa-save" />
                             Guardar
                         </h:commandButton>
