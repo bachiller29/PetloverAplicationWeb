@@ -7,9 +7,11 @@ package edu.petlovers.controller;
 
 import edu.petlovers.entity.Citas;
 import edu.petlovers.entity.Clientes;
+import edu.petlovers.entity.Mascotas;
 import edu.petlovers.entity.Servicios;
 import edu.petlovers.local.CitasFacadeLocal;
 import edu.petlovers.local.ClientesFacadeLocal;
+import edu.petlovers.local.MascotasFacadeLocal;
 import edu.petlovers.local.ServiciosFacadeLocal;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,6 +32,8 @@ public class CitasRequest implements Serializable {
     @EJB
     CitasFacadeLocal citasFacadeLocal;
     @EJB
+    MascotasFacadeLocal mascotasFacadeLocal;
+    @EJB
     ClientesFacadeLocal clientesFacadeLocal;
     @EJB
     ServiciosFacadeLocal serviciosFacadeLocal;
@@ -38,7 +42,8 @@ public class CitasRequest implements Serializable {
 //    private Clientes objCliente = new Clientes();
 
     private ArrayList<Citas> listaCitas = new ArrayList<>();
-    private ArrayList<Clientes> listaIdClientes = new ArrayList<>();
+    private ArrayList<Mascotas> listaIdMascotas = new ArrayList<>();
+//    private ArrayList<Clientes> listaIdClientes = new ArrayList<>();
     private ArrayList<Servicios> listaIdServicio = new ArrayList<>();
 
 //    private Clientes idCliente;
@@ -52,9 +57,10 @@ public class CitasRequest implements Serializable {
     @PostConstruct
     public void postCita() {
         listaCitas.addAll(citasFacadeLocal.findAll());
-        listaIdClientes.addAll(clientesFacadeLocal.findAll());
+        listaIdMascotas.addAll(mascotasFacadeLocal.findAll());
         listaIdServicio.addAll(serviciosFacadeLocal.findAll());
-        objCita.setIdCliente(new Clientes());
+        objCita.setIdMascota(new Mascotas());
+//        objCita.setIdCliente(new Clientes());
         objCita.setIdServicio(new Servicios());
     }
 
@@ -62,10 +68,16 @@ public class CitasRequest implements Serializable {
         String mensaje = "";
 
         try {
-            objCita.setIdCliente(clientesFacadeLocal.find(objCita.getIdCliente().getIdCliente()));
-            objCita.setIdServicio(serviciosFacadeLocal.find(objCita.getIdServicio().getIdServicio()));
-            citasFacadeLocal.create(objCita);
-            mensaje = "swal('La cita' , ' Se ha registrado exitosamente ', 'success')";
+            int cantidadCitas = citasFacadeLocal.cantidadCitas(objCita.getIdCliente().getIdCliente(), objCita.getFechaCita());
+            if (cantidadCitas < 3) {
+                objCita.setIdMascota(mascotasFacadeLocal.find(objCita.getIdMascota().getIdMascota()));
+//                objCita.setIdCliente(clientesFacadeLocal.find(objCita.getIdCliente().getIdCliente()));
+                objCita.setIdServicio(serviciosFacadeLocal.find(objCita.getIdServicio().getIdServicio()));
+                citasFacadeLocal.create(objCita);
+                mensaje = "swal('La cita' , ' Se ha registrado exitosamente ', 'success')";
+            } else {
+                mensaje = "swal('Excede numero de citas' , ' por el dia " + objCita.getFechaCita() + " ', 'error')";
+            }
         } catch (Exception e) {
             mensaje = "swal('La cita' , ' No ha sido registrada ', 'error')";
         }
@@ -124,7 +136,7 @@ public class CitasRequest implements Serializable {
     public void vaciarBusqueda() {
         unicaCita = new ArrayList<>();
     }
-    
+
     public Citas getObjCita() {
         return objCita;
     }
@@ -157,6 +169,14 @@ public class CitasRequest implements Serializable {
         this.unicaCita = unicaCita;
     }
 
+    public ArrayList<Mascotas> getListaIdMascotas() {
+        return listaIdMascotas;
+    }
+
+    public void setListaIdMascotas(ArrayList<Mascotas> listaIdMascotas) {
+        this.listaIdMascotas = listaIdMascotas;
+    }
+/*    
     public ArrayList<Clientes> getListaIdClientes() {
         return listaIdClientes;
     }
@@ -164,7 +184,7 @@ public class CitasRequest implements Serializable {
     public void setListaIdClientes(ArrayList<Clientes> listaIdClientes) {
         this.listaIdClientes = listaIdClientes;
     }
-
+*/
     public ArrayList<Servicios> getListaIdServicio() {
         return listaIdServicio;
     }

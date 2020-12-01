@@ -42,15 +42,23 @@ and open the template in the editor.
                             </legend>
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="id_cliente">ID Cliente</label>
-                                            <h:selectOneMenu id="id_cliente" value="#{citasRequest.objCita.idCliente.idCliente}" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItems value="#{citasRequest.listaIdClientes}" var="idCli" itemValue="#{idCli.idCliente}" itemLabel="#{idCli.idCliente}"></f:selectItems>  
+                                            <label for="id_mascota">ID - Nombre de la Mascota</label>
+                                            <h:selectOneMenu id="id_mascota" value="#{citasRequest.objCita.idMascota.idMascota}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{citasRequest.listaIdMascotas}" var="idMasc" itemValue="#{idMasc.idMascota}" itemLabel="#{idMasc.idMascota} - #{idMasc.nombresMascota}"></f:selectItems>  
                                             </h:selectOneMenu>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="id_cliente">Nombre del Cliente Propietario</label>
+                                            <h:selectOneMenu id="id_cliente" value="#{citasRequest.objCita.idCliente.idCliente}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{citasRequest.listaIdMascotas}" var="idCli" itemValue="#{idCli.idCliente}" itemLabel="#{idCli.idCliente.idUsuario.nombres} #{idCli.idCliente.idUsuario.apellidos}"></f:selectItems>  
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
                                         <div class="form-group">
                                             <label for="id_servicio">Seleccione un Servicio</label>
                                             <h:selectOneMenu id="id_servicio" value="#{citasRequest.objCita.idServicio.idServicio}" class="form-control" style="margin-top: 10px;">

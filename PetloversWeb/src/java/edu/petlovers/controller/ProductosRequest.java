@@ -49,11 +49,9 @@ public class ProductosRequest implements Serializable {
     MarcaProductosFacadeLocal marcaProductosFacadeLocal;
 
     private Productos objProductos = new Productos();
-    ;
 
     private Integer idToUpdate;
     ArrayList<Productos> listaProductos = new ArrayList();
-    boolean nuevoActualizar;
 
     /**
      * Creates a new instance of ProductosRequest
@@ -92,7 +90,6 @@ public class ProductosRequest implements Serializable {
     public void cargarFormulario(Productos objCargar) {
         this.objProductos = objCargar;
         this.idToUpdate = objCargar.getIdProducto();
-        this.nuevoActualizar = true;
     }
 
     public void removerProducto(Productos objProductos) {
@@ -104,7 +101,6 @@ public class ProductosRequest implements Serializable {
 
 //        objProductos.setIdProducto(this.idToUpdate);
         productosFacadeLocal.edit(objProductos);
-        this.nuevoActualizar = false;
         listaProductos.clear();
         listaProductos.addAll(productosFacadeLocal.findAll());
     }
@@ -123,14 +119,6 @@ public class ProductosRequest implements Serializable {
 
     public void setListaProductos(ArrayList<Productos> listaProductos) {
         this.listaProductos = listaProductos;
-    }
-
-    public boolean getNuevoActualizar() {
-        return this.nuevoActualizar;
-    }
-
-    public void setNuevoActualizar(boolean nuevoActualizar) {
-        this.nuevoActualizar = nuevoActualizar;
     }
 
 }

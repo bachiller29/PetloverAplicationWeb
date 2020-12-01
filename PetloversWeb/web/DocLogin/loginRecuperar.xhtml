@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>PetLovers</title>
+        <title>Recuperar Contraseña</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <!--===============================================================================================-->	
@@ -38,13 +39,13 @@
             <div class="container-login100">
                 <div class="wrap-login100">
                     <div class="login100-form validate-form">
-                        <h:form>
+                        <h:form class="col-xl-12" >
                             <span class="login100-form-title p-b-34">
-                                Recuperar contraseña
+                                <strong>Recuperar contraseña</strong>
                             </span>                          
                             <div class="wrap-input100 validate-input">
                                 <span class="label-input100" value="Email"></span>
-                                <h:inputText value="#{registroUsuarioRequest.correoRecuperar}" class="input100" /> 
+                                <h:inputText value="#{registroUsuarioRequest.correoRecuperar}" class="input100" id="recuperarEmail" html5:placeholder="Correo Electrónico"/> 
                                 <span class="focus-input100"></span>
                             </div>
                             <br/>
@@ -52,10 +53,9 @@
                                 <h:commandButton action="#{registroUsuarioRequest.recuperarClave()}" value="Enviar" class="login100-form-btn" />
                             </div>
                             <br/>                         		                         
-                            <div class="w-full text-center">
-                                <a href="../DocFormulario/index.html" class="txt3">
-                                    REGÍSTRATE
-                                </a>
+                            <div class="container-login100-form-btn">
+                                <a href="../DocFormulario/registroUsuario.xhtml" class="txt3" style="margin-top: 10px; margin-left: 35px;"><strong>REGÍSTRATE</strong></a>
+                                <a href="../DocLogin/login.xhtml" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30" style="margin-left: 40px;"> Regresar <i class="fa fa-long-arrow-right m-l-5"></i> </a>
                             </div>
                         </h:form>
                     </div>

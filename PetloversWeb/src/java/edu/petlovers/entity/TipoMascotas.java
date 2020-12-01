@@ -8,6 +8,7 @@ package edu.petlovers.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,7 +42,7 @@ public class TipoMascotas implements Serializable {
     @Size(max = 10)
     @Column(name = "Tipo_Mascota")
     private String tipoMascota;
-    @OneToMany(mappedBy = "idTipoMascota", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoMascota", fetch = FetchType.LAZY)
     private Collection<Mascotas> mascotasCollection;
 
     public TipoMascotas() {

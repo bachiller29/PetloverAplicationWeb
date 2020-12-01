@@ -57,10 +57,9 @@ public class HistoriaClinica implements Serializable {
     @Size(max = 250)
     @Column(name = "Procedimiento_Quirurgico")
     private String procedimientoQuirurgico;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "Id_Cliente")
-    private int idCliente;
+    @JoinColumn(name = "Id_Cliente", referencedColumnName = "Id_Cliente")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Clientes idCliente;
     @JoinColumn(name = "Id_Mascota", referencedColumnName = "Id_Mascota")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Mascotas idMascota;
@@ -75,11 +74,10 @@ public class HistoriaClinica implements Serializable {
         this.idHistoriaClinica = idHistoriaClinica;
     }
 
-    public HistoriaClinica(Integer idHistoriaClinica, String diagnostico, String tratamiento, int idCliente) {
+    public HistoriaClinica(Integer idHistoriaClinica, String diagnostico, String tratamiento) {
         this.idHistoriaClinica = idHistoriaClinica;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
-        this.idCliente = idCliente;
     }
 
     public Integer getIdHistoriaClinica() {
@@ -130,11 +128,11 @@ public class HistoriaClinica implements Serializable {
         this.procedimientoQuirurgico = procedimientoQuirurgico;
     }
 
-    public int getIdCliente() {
+    public Clientes getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(Clientes idCliente) {
         this.idCliente = idCliente;
     }
 

@@ -12,6 +12,7 @@ import edu.petlovers.local.MascotasFacadeLocal;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,6 +30,17 @@ public class MascotasFacade extends AbstractFacade<Mascotas> implements Mascotas
 
     public MascotasFacade() {
         super(Mascotas.class);
+    }
+    
+    @Override
+    public int cantidadMascotas(int idCliente){
+        try {
+            Query q = em.createNativeQuery("SELECT COUNT(*) FROM mascotas WHERE id_Cliente = " + idCliente);
+            int count = ((Number) q.getSingleResult()).intValue();
+            return count;
+        } catch (Exception e) {
+            return 0;
+        }
     }
     
 }

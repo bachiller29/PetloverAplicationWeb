@@ -7,7 +7,6 @@ package edu.petlovers.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,8 +21,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -50,29 +47,31 @@ public class Mascotas implements Serializable {
     @Size(max = 15)
     @Column(name = "Nombres_Mascota")
     private String nombresMascota;
-    @Column(name = "Fecha_De_Nacimiento")
-    @Temporal(TemporalType.DATE)
-    private Date fechaDeNacimiento;
     @Size(max = 25)
     @Column(name = "Edad")
     private String edad;
+    @Size(max = 15)
+    @Column(name = "Fecha_De_Nacimiento")
+    private String fechaDeNacimiento;
     @Size(max = 25)
     @Column(name = "Color")
     private String color;
     @Size(max = 5)
     @Column(name = "Esterilizado")
     private String esterilizado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMascota", fetch = FetchType.LAZY)
-    private Collection<HistoriaClinica> historiaClinicaCollection;
+    @OneToMany(mappedBy = "idMascota", fetch = FetchType.LAZY)
+    private Collection<Citas> citasCollection;
     @JoinColumn(name = "Id_Tipo_Mascota", referencedColumnName = "Id_Tipo_Mascota")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TipoMascotas idTipoMascota;
     @JoinColumn(name = "Id_Raza_Mascota", referencedColumnName = "Id_Raza_Mascota")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private RazaMascotas idRazaMascota;
     @JoinColumn(name = "Id_Cliente", referencedColumnName = "Id_Cliente")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Clientes idCliente;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMascota", fetch = FetchType.LAZY)
+    private Collection<HistoriaClinica> historiaClinicaCollection;
 
     public Mascotas() {
     }
@@ -105,20 +104,20 @@ public class Mascotas implements Serializable {
         this.nombresMascota = nombresMascota;
     }
 
-    public Date getFechaDeNacimiento() {
-        return fechaDeNacimiento;
-    }
-
-    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
-        this.fechaDeNacimiento = fechaDeNacimiento;
-    }
-
     public String getEdad() {
         return edad;
     }
 
     public void setEdad(String edad) {
         this.edad = edad;
+    }
+
+    public String getFechaDeNacimiento() {
+        return fechaDeNacimiento;
+    }
+
+    public void setFechaDeNacimiento(String fechaDeNacimiento) {
+        this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
     public String getColor() {
@@ -138,12 +137,12 @@ public class Mascotas implements Serializable {
     }
 
     @XmlTransient
-    public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
-        return historiaClinicaCollection;
+    public Collection<Citas> getCitasCollection() {
+        return citasCollection;
     }
 
-    public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
-        this.historiaClinicaCollection = historiaClinicaCollection;
+    public void setCitasCollection(Collection<Citas> citasCollection) {
+        this.citasCollection = citasCollection;
     }
 
     public TipoMascotas getIdTipoMascota() {
@@ -168,6 +167,15 @@ public class Mascotas implements Serializable {
 
     public void setIdCliente(Clientes idCliente) {
         this.idCliente = idCliente;
+    }
+
+    @XmlTransient
+    public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
+        return historiaClinicaCollection;
+    }
+
+    public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
+        this.historiaClinicaCollection = historiaClinicaCollection;
     }
 
     @Override

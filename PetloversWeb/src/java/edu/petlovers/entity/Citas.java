@@ -50,16 +50,19 @@ public class Citas implements Serializable {
     @Size(max = 20)
     @Column(name = "Estado_Cita")
     private String estadoCita;
+    @JoinColumn(name = "Id_Mascota", referencedColumnName = "Id_Mascota")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Mascotas idMascota;
+    @JoinColumn(name = "Id_Servicio", referencedColumnName = "Id_Servicio")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Servicios idServicio;
+    @JoinColumn(name = "Id_Cliente", referencedColumnName = "Id_Cliente")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Clientes idCliente;
     @OneToMany(mappedBy = "idCitas", fetch = FetchType.LAZY)
     private Collection<Cronograma> cronogramaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCitas", fetch = FetchType.LAZY)
     private Collection<HistoriaClinica> historiaClinicaCollection;
-    @JoinColumn(name = "Id_Cliente", referencedColumnName = "Id_Cliente")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Clientes idCliente;
-    @JoinColumn(name = "Id_Servicio", referencedColumnName = "Id_Servicio")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Servicios idServicio;
 
     public Citas() {
     }
@@ -100,6 +103,30 @@ public class Citas implements Serializable {
         this.estadoCita = estadoCita;
     }
 
+    public Mascotas getIdMascota() {
+        return idMascota;
+    }
+
+    public void setIdMascota(Mascotas idMascota) {
+        this.idMascota = idMascota;
+    }
+
+    public Servicios getIdServicio() {
+        return idServicio;
+    }
+
+    public void setIdServicio(Servicios idServicio) {
+        this.idServicio = idServicio;
+    }
+
+    public Clientes getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Clientes idCliente) {
+        this.idCliente = idCliente;
+    }
+
     @XmlTransient
     public Collection<Cronograma> getCronogramaCollection() {
         return cronogramaCollection;
@@ -116,22 +143,6 @@ public class Citas implements Serializable {
 
     public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
         this.historiaClinicaCollection = historiaClinicaCollection;
-    }
-
-    public Clientes getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Clientes idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public Servicios getIdServicio() {
-        return idServicio;
-    }
-
-    public void setIdServicio(Servicios idServicio) {
-        this.idServicio = idServicio;
     }
 
     @Override

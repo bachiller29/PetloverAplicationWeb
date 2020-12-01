@@ -7,9 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>
-            Login
-        </title>
+        <title> Registro Usuario </title>
         <meta content="" />
         <!-- =============================================================================================== -->
         <link rel="icon" type="image/png" href="../assets/img/fondo1.ico" />
@@ -59,31 +57,26 @@
                             <h:inputText value="#{registroUsuarioRequest.usRed.documento}" class="input100"  />
                             <span class="focus-input100"></span>
                         </div>
-
                         <div class="wrap-input100 validate-input">
                             <span class="label-input100">Nombre</span>
-                            <h:inputText value="#{registroUsuarioRequest.usRed.nombres}" class="input100" /> 
+                            <h:inputText value="#{registroUsuarioRequest.usRed.nombres}" class="input100" />
                             <span class="focus-input100"></span>
                         </div>
-
                         <div class="wrap-input100 validate-input">
                             <span class="label-input100">Apellido</span>
-                            <h:inputText value="#{registroUsuarioRequest.usRed.apellidos}" class="input100" /> 
+                            <h:inputText value="#{registroUsuarioRequest.usRed.apellidos}" class="input100" />
                             <span class="focus-input100"></span>
                         </div>
-
                         <div class="wrap-input100 validate-input">
-                            <span class="label-input100">Email</span>
-                            <h:inputText value="#{registroUsuarioRequest.usRed.email}" class="input100" /> 
+                            <span class="label-input100">Correo Electrónico</span>
+                            <h:inputText value="#{registroUsuarioRequest.usRed.email}" class="input100" />
                             <span class="focus-input100"></span>
                         </div>
-
                         <div class="wrap-input100 validate-input">
-                            <span class="label-input100">Clave</span> 
-                            <h:inputSecret value="#{registroUsuarioRequest.usRed.contrasena}" class="input100" /> 
+                            <span class="label-input100">Contraseña</span> 
+                            <h:inputSecret value="#{registroUsuarioRequest.usRed.contrasena}" class="input100" />
                             <span class="focus-input100"></span>
                         </div>                                       
-
                         <div class="flex-m w-full p-b-33">
                             <div class="contact100-form-checkbox">
                                 <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" /> 
@@ -92,10 +85,9 @@
                         </div>
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
-                                <div class="login100-form-bgbtn"></div>
                                 <h:commandButton action="#{registroUsuarioRequest.crearUsuario()}" id="btnSA_3" class="login100-form-btn" value="Registrate"/>
                             </div>
-                            <a href="../DocLogin/index.xhtml" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30"> Regresar <i class="fa fa-long-arrow-right m-l-5"></i> </a>
+                            <a href="../DocLogin/login.xhtml" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30"> Regresar <i class="fa fa-long-arrow-right m-l-5"></i> </a>
                         </div>
                     </h:form>
                 </div>
@@ -104,23 +96,23 @@
 
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <!-- 
-          =============================================================================================== --><script
-        src="vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
-        <!-- =============================================================================================== --><script
-        src="vendor/animsition/js/animsition.min.js" type="text/javascript"></script>
-        <!-- =============================================================================================== --><script
-        src="vendor/bootstrap/js/popper.js" type="text/javascript"></script> <script
-        src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- =============================================================================================== --><script
-        src="vendor/select2/select2.min.js" type="text/javascript"></script>
-        <!-- =============================================================================================== --><script
-        src="vendor/daterangepicker/moment.min.js" type="text/javascript"></script> <script
-        src="vendor/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-        <!-- =============================================================================================== --><script
-        src="vendor/countdowntime/countdowntime.js" type="text/javascript"></script>
-        <!-- =============================================================================================== --><script
-        src="js/main.js" type="text/javascript"></script><script
-            type="text/javascript">//<![CDATA[	
+          =============================================================================================== -->
+        <script src="vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <!-- =============================================================================================== -->
+        <script src="vendor/animsition/js/animsition.min.js" type="text/javascript"></script>
+        <!-- =============================================================================================== -->
+        <script src="vendor/bootstrap/js/popper.js" type="text/javascript"></script> 
+        <script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- =============================================================================================== -->
+        <script src="vendor/select2/select2.min.js" type="text/javascript"></script>
+        <!-- =============================================================================================== -->
+        <script src="vendor/daterangepicker/moment.min.js" type="text/javascript"></script> 
+        <script src="vendor/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        <!-- =============================================================================================== -->
+        <script src="vendor/countdowntime/countdowntime.js" type="text/javascript"></script>
+        <!-- =============================================================================================== -->
+        <script src="js/main.js" type="text/javascript"></script>
+        <script type="text/javascript">//<![CDATA[	
                 $("#btnSA_3").click(function () {
                     swal("El cliente ha sido registrado!", {
                         icon: "success",

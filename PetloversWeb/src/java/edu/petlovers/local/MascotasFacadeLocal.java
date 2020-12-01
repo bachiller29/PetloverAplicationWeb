@@ -29,5 +29,7 @@ public interface MascotasFacadeLocal {
     List<Mascotas> findRange(int[] range);
 
     int count();
+
+    public int cantidadMascotas(int idCliente);
     
 }

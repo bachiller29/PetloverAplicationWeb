@@ -72,15 +72,15 @@ public class Usuarios implements Serializable {
     @Column(name = "UltimoIngreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ultimoIngreso;
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    private Collection<Empleados> empleadosCollection;
     @JoinColumn(name = "Id_Tipo_Rol", referencedColumnName = "Id_Tipo_Rol")
     @ManyToOne(fetch = FetchType.LAZY)
     private TipoRol idTipoRol;
     @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private Collection<Clientes> clientesCollection;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private Collection<Empleados> empleadosCollection;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private Collection<Administradores> administradoresCollection;
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    private Collection<Clientes> clientesCollection;
 
     public Usuarios() {
     }
@@ -167,23 +167,6 @@ public class Usuarios implements Serializable {
         this.ultimoIngreso = ultimoIngreso;
     }
 
-    public TipoRol getIdTipoRol() {
-        return idTipoRol;
-    }
-
-    public void setIdTipoRol(TipoRol idTipoRol) {
-        this.idTipoRol = idTipoRol;
-    }
-
-    @XmlTransient
-    public Collection<Clientes> getClientesCollection() {
-        return clientesCollection;
-    }
-
-    public void setClientesCollection(Collection<Clientes> clientesCollection) {
-        this.clientesCollection = clientesCollection;
-    }
-
     @XmlTransient
     public Collection<Empleados> getEmpleadosCollection() {
         return empleadosCollection;
@@ -193,6 +176,14 @@ public class Usuarios implements Serializable {
         this.empleadosCollection = empleadosCollection;
     }
 
+    public TipoRol getIdTipoRol() {
+        return idTipoRol;
+    }
+
+    public void setIdTipoRol(TipoRol idTipoRol) {
+        this.idTipoRol = idTipoRol;
+    }
+
     @XmlTransient
     public Collection<Administradores> getAdministradoresCollection() {
         return administradoresCollection;
@@ -200,6 +191,15 @@ public class Usuarios implements Serializable {
 
     public void setAdministradoresCollection(Collection<Administradores> administradoresCollection) {
         this.administradoresCollection = administradoresCollection;
+    }
+
+    @XmlTransient
+    public Collection<Clientes> getClientesCollection() {
+        return clientesCollection;
+    }
+
+    public void setClientesCollection(Collection<Clientes> clientesCollection) {
+        this.clientesCollection = clientesCollection;
     }
 
     @Override

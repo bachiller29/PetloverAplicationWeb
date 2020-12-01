@@ -41,11 +41,11 @@ public class Administradores implements Serializable {
     private Integer idAdmin;
     @OneToMany(mappedBy = "idAdmin", fetch = FetchType.LAZY)
     private Collection<Criadero> criaderoCollection;
-    @OneToMany(mappedBy = "idAdmin", fetch = FetchType.LAZY)
-    private Collection<Inventario> inventarioCollection;
     @JoinColumn(name = "id_usuario", referencedColumnName = "Id_Usuario")
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuarios idUsuario;
+    @OneToMany(mappedBy = "idAdmin", fetch = FetchType.LAZY)
+    private Collection<Inventario> inventarioCollection;
 
     public Administradores() {
     }
@@ -71,6 +71,14 @@ public class Administradores implements Serializable {
         this.criaderoCollection = criaderoCollection;
     }
 
+    public Usuarios getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuarios idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     @XmlTransient
     public Collection<Inventario> getInventarioCollection() {
         return inventarioCollection;
@@ -78,14 +86,6 @@ public class Administradores implements Serializable {
 
     public void setInventarioCollection(Collection<Inventario> inventarioCollection) {
         this.inventarioCollection = inventarioCollection;
-    }
-
-    public Usuarios getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuarios idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     @Override

@@ -30,32 +30,29 @@ public class RegistroUsuarioRequest implements Serializable {
     UsuariosFacadeLocal usuariosFacadeLocal;
     
     Usuarios usRed = new Usuarios();
-    String correoRecuperar = "";
+    
+    private String correoRecuperar = "";
 
-    /**
-     * Creates a new instance of RegistroUsuarioRequest
-     */
     public RegistroUsuarioRequest() {
     }
     
     public void crearUsuario() {
         String mensajeSw = "";
         try {
+            usRed.setFechaRegistro(new Date());
             usuariosFacadeLocal.create(usRed);
-            mensajeSw = "swal('Usuario creado' , 'con exito' , 'success')";
-            
+            mensajeSw = "swal('Usuario registrado' , ' con exito ', 'success')";
         } catch (Exception e) {
-            mensajeSw = "swal('El usuario' , 'ya se encuentra registrado' , 'error');";
+            mensajeSw = "swal('El usuario' , 'ya se encuentra registrado', 'error');";
         }
         usRed = new Usuarios();
-             PrimeFaces.current().executeScript(mensajeSw);
+        PrimeFaces.current().executeScript(mensajeSw);
     }
     
     public void recuperarClave() {
         Usuarios usuRecuperar = new Usuarios();
         String mensajeSw = "";
         try {
-            usRed.setFechaRegistro(new Date());
             usuRecuperar = usuariosFacadeLocal.recuperarClave(correoRecuperar);
             if (usuRecuperar.getNombres() == null) {
                 mensajeSw = "swal('El correo' , 'no se encuentra registrado' , 'error');";
@@ -64,12 +61,12 @@ public class RegistroUsuarioRequest implements Serializable {
                         usuRecuperar.getNombres() + " " + usuRecuperar.getApellidos(),
                         usuRecuperar.getEmail(),
                         usuRecuperar.getContrasena());
-                mensajeSw = "swal('La clave es invalida' , 'a su correo electronico' , 'success');";
+                mensajeSw = "swal('La clave fue enviada' , 'a su correo electronico' , 'success');";
             }
         } catch (Exception e) {
             mensajeSw = "swal('El correo' , 'no se encuentra registrado' , 'error');";
         }
-                     PrimeFaces.current().executeScript(mensajeSw);
+        PrimeFaces.current().executeScript(mensajeSw);
     }
     
     public Usuarios getUsRed() {

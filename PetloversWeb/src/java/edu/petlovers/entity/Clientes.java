@@ -8,6 +8,7 @@ package edu.petlovers.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,13 +52,15 @@ public class Clientes implements Serializable {
     private String barrio;
     @Column(name = "Telefono")
     private Integer telefono;
+    @OneToMany(mappedBy = "idCliente", fetch = FetchType.LAZY)
+    private Collection<Citas> citasCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente", fetch = FetchType.LAZY)
+    private Collection<Mascotas> mascotasCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente", fetch = FetchType.LAZY)
+    private Collection<HistoriaClinica> historiaClinicaCollection;
     @JoinColumn(name = "id_usuario", referencedColumnName = "Id_Usuario")
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuarios idUsuario;
-    @OneToMany(mappedBy = "idCliente", fetch = FetchType.LAZY)
-    private Collection<Citas> citasCollection;
-    @OneToMany(mappedBy = "idCliente", fetch = FetchType.LAZY)
-    private Collection<Mascotas> mascotasCollection;
 
     public Clientes() {
     }
@@ -106,14 +109,6 @@ public class Clientes implements Serializable {
         this.telefono = telefono;
     }
 
-    public Usuarios getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuarios idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     @XmlTransient
     public Collection<Citas> getCitasCollection() {
         return citasCollection;
@@ -130,6 +125,23 @@ public class Clientes implements Serializable {
 
     public void setMascotasCollection(Collection<Mascotas> mascotasCollection) {
         this.mascotasCollection = mascotasCollection;
+    }
+
+    @XmlTransient
+    public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
+        return historiaClinicaCollection;
+    }
+
+    public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
+        this.historiaClinicaCollection = historiaClinicaCollection;
+    }
+
+    public Usuarios getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuarios idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override

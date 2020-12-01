@@ -30,6 +30,17 @@ public class CitasFacade extends AbstractFacade<Citas> implements CitasFacadeLoc
         super(Citas.class);
     }
     
+    public int cantidadCitas(int idCliente, String fecha) {
+        try {
+            Query q = em.createNativeQuery("SELECT COUNT(*) FROM citas WHERE Id_Cliente = " + idCliente + " AND Fecha_Cita = '" + fecha + "'");
+            int count = ((Number) q.getSingleResult()).intValue();
+            return count;
+        } catch (Exception e) {
+            e.getMessage();
+            return 0;
+        }
+    }
+    
     public Citas buscarCita(int idCita){
         try {
             Query q = em.createQuery("SELECT c FROM Citas c WHERE c.idCitas = :idCita");

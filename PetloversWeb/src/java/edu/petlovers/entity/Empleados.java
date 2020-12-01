@@ -38,8 +38,6 @@ public class Empleados implements Serializable {
     @NotNull
     @Column(name = "Id_Empleado")
     private Integer idEmpleado;
-    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
-    private Collection<Cronograma> cronogramaCollection;
     @JoinColumn(name = "id_usuario", referencedColumnName = "Id_Usuario")
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuarios idUsuario;
@@ -48,6 +46,8 @@ public class Empleados implements Serializable {
     private TipoEmpleados idTipoEmpleado;
     @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
     private Collection<Servicios> serviciosCollection;
+    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
+    private Collection<Cronograma> cronogramaCollection;
 
     public Empleados() {
     }
@@ -62,15 +62,6 @@ public class Empleados implements Serializable {
 
     public void setIdEmpleado(Integer idEmpleado) {
         this.idEmpleado = idEmpleado;
-    }
-
-    @XmlTransient
-    public Collection<Cronograma> getCronogramaCollection() {
-        return cronogramaCollection;
-    }
-
-    public void setCronogramaCollection(Collection<Cronograma> cronogramaCollection) {
-        this.cronogramaCollection = cronogramaCollection;
     }
 
     public Usuarios getIdUsuario() {
@@ -96,6 +87,15 @@ public class Empleados implements Serializable {
 
     public void setServiciosCollection(Collection<Servicios> serviciosCollection) {
         this.serviciosCollection = serviciosCollection;
+    }
+
+    @XmlTransient
+    public Collection<Cronograma> getCronogramaCollection() {
+        return cronogramaCollection;
+    }
+
+    public void setCronogramaCollection(Collection<Cronograma> cronogramaCollection) {
+        this.cronogramaCollection = cronogramaCollection;
     }
 
     @Override

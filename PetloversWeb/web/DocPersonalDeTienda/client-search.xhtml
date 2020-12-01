@@ -69,26 +69,28 @@ and open the template in the editor.
                             <thead>
                                 <tr class="text-center roboto-medium">
                                     <th>Id Cita</th>
+                                    <th>Nombre Cliente</th>
+                                    <th>Nombre Mascota</th>
                                     <th>Fecha Cita</th>
                                     <th>Hora Cita</th>
-                                    <th>Estado Cita</th>
-                                    <th>Id Cliente</th>
                                     <th>Servicio</th>
+                                    <th>Estado Cita</th>
                                     <th>ACTUALIZAR</th>
                                     <th>ELIMINAR</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <h:form>
+                                <h:form id="unicaCita">
                                     <c:forEach items="#{citasRequest.unicaCita}" var="cita">
                                         <tr class="text-center">
                                             <td>#{cita.idCitas}</td>
+                                            <td>#{cita.idMascota.idCliente.idUsuario.nombres} #{cita.idMascota.idCliente.idUsuario.apellidos}</td>
+                                            <td>#{cita.idMascota.nombresMascota}</td>
                                             <td>#{cita.fechaCita}</td>
                                             <td>#{cita.horaCita}</td>
-                                            <td>#{cita.estadoCita}</td>
-                                            <td>#{cita.idCliente.idCliente}</td>
                                             <td>#{cita.idServicio.nombreServicio}</td>
-                                            <td><h:commandLink action="client-update.xhtml" onclick="#{citasRequest.cargarCita(cita)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td>#{cita.estadoCita}</td>
+                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{citasRequest.cargarCita(cita)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
                                             <td><h:commandLink action="#{citasRequest.eliminarCita(cita)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                             <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
@@ -99,7 +101,7 @@ and open the template in the editor.
                         </table>
                     </div>
                     <div class="col-12">
-                        <h:form>
+                        <h:form id="vaciar">
                             <p class="text-center" style="margin-top: 20px;">
                                 <h:commandButton action="#{citasRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
                         <!--        <button type="reset" class="btn btn-raised btn-danger"><i class="far fa-trash-alt"></i> &nbsp; ELIMINAR BÃSQUEDA</button>      -->

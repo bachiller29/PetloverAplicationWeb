@@ -9,6 +9,7 @@ import edu.petlovers.entity.Usuarios;
 import edu.petlovers.local.UsuariosFacadeLocal;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -31,13 +32,11 @@ public class UsuarioSession implements Serializable {
     @EJB
     UsuariosFacadeLocal usuariosFacadeLocal;
 
+    private Usuarios usuLogin = new Usuarios();
+    
     private String emailI = "";
     private String contrasenaIn = "";
-    private Usuarios usuLogin = new Usuarios();
-
-    /**
-     * Creates a new instance of UsuarioSession
-     */
+    
     public UsuarioSession() {
     }
 
@@ -50,7 +49,8 @@ public class UsuarioSession implements Serializable {
                 mensajeSw = "swal('El usuario' , 'no se encuentra registrado' , 'error');";
             } else {
                 FacesContext fc = FacesContext.getCurrentInstance();
-                fc.getExternalContext().redirect("./DocAdmin/item-new.xhtml");
+                usuLogin.setUltimoIngreso(new Date());
+                fc.getExternalContext().redirect("../DocAdmin/home.xhtml");
             }
 
         } catch (Exception e) {
@@ -67,6 +67,7 @@ public class UsuarioSession implements Serializable {
             ((HttpSession) ext.getSession(false)).invalidate();
             fc.getExternalContext().redirect("/index.xhtml");
         } catch (Exception e) {
+            System.out.println("Error cerrando sesion UsuarioSession:cerrarSesion " + e.getMessage());
         }
 
     }

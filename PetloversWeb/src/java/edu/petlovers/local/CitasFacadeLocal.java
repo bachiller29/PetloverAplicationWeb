@@ -31,5 +31,7 @@ public interface CitasFacadeLocal {
     int count();
 
     public Citas buscarCita(int idCita);
+
+    public int cantidadCitas(int idCliente, String fecha);
     
 }

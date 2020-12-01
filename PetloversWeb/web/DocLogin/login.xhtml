@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>PetLovers</title>
+        <title>Inicia Sesión</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <!--===============================================================================================-->	
@@ -37,21 +38,20 @@
             <div class="container-login100">
                 <div class="wrap-login100">
                     <div class="login100-form validate-form">
-                        <h:form>
-                            <h:inputText id="idproductps" value="#{usuarioSession.usuLogin.idUsuario}" style="display:none;" />
+                        <h:form class="col-xl-12">
+                            <h:inputText id="idproductos" value="#{usuarioSession.usuLogin.idUsuario}" style="display:none;" />
                             <span class="login100-form-title p-b-34">
-                                CUENTA DE INGRESO
+                                <strong>CUENTA DE INGRESO</strong>
                             </span>
-
                             <div class="wrap-input100 validate-input">
                                 <span class="label-input100" value="Email"></span>
-                                <h:inputText value="#{usuarioSession.emailI}" class="input100" id="regEmail"/> 
+                                <h:inputText value="#{usuarioSession.emailI}" class="input100" id="regEmail" html5:placeholder="Correo Electrónico"/> 
                                 <span class="focus-input100"></span>
                             </div>
                             <br/>
                             <div class="wrap-input100 validate-input">
                                 <span class="label-input100" value="Contraseña"></span>
-                                <h:inputSecret  value="#{usuarioSession.contrasenaIn}" class="input100" id="regContrasena"/> 
+                                <h:inputSecret value="#{usuarioSession.contrasenaIn}" class="input100" id="regContrasena" html5:placeholder="Contraseña"/> 
                                 <span class="focus-input100"></span>
                             </div>
                             <br/>
@@ -66,27 +66,23 @@
                             </div>
                             <div class="w-full text-center p-t-27 p-b-239">
                                 <span class="txt1">
-                                    ¿Olvidó su
+                                    ¿Olvidó su nombre de 
                                 </span>
-
-                                <a href="#" class="txt2">
-                                    nombre de usuario / contraseña?
+                                <a href="loginRecuperar.xhtml" class="txt2">
+                                    <strong>usuario / contraseña?</strong>
                                 </a>
                             </div>
                             <div class="w-full text-center">
-                                <a href="../DocFormulario/index.xhtml" class="txt3">
-                                    REGÍSTRATE
+                                <a href="../DocFormulario/registroUsuario.xhtml" class="txt3">
+                                    <strong>REGÍSTRATE</strong>
                                 </a>
                             </div>
                         </h:form>
                     </div>
-
                     <div class="login100-more" style="background-image: url('images/contact_form.png');"></div>
                 </div>
             </div>
         </div>
-
-
 
         <div id="dropDownSelect1"></div>
 
