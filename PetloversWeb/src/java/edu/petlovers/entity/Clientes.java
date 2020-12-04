@@ -52,12 +52,8 @@ public class Clientes implements Serializable {
     private String barrio;
     @Column(name = "Telefono")
     private Integer telefono;
-    @OneToMany(mappedBy = "idCliente", fetch = FetchType.LAZY)
-    private Collection<Citas> citasCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente", fetch = FetchType.LAZY)
     private Collection<Mascotas> mascotasCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente", fetch = FetchType.LAZY)
-    private Collection<HistoriaClinica> historiaClinicaCollection;
     @JoinColumn(name = "id_usuario", referencedColumnName = "Id_Usuario")
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuarios idUsuario;
@@ -110,30 +106,12 @@ public class Clientes implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Citas> getCitasCollection() {
-        return citasCollection;
-    }
-
-    public void setCitasCollection(Collection<Citas> citasCollection) {
-        this.citasCollection = citasCollection;
-    }
-
-    @XmlTransient
     public Collection<Mascotas> getMascotasCollection() {
         return mascotasCollection;
     }
 
     public void setMascotasCollection(Collection<Mascotas> mascotasCollection) {
         this.mascotasCollection = mascotasCollection;
-    }
-
-    @XmlTransient
-    public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
-        return historiaClinicaCollection;
-    }
-
-    public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
-        this.historiaClinicaCollection = historiaClinicaCollection;
     }
 
     public Usuarios getIdUsuario() {

@@ -5,11 +5,14 @@
  */
 package edu.petlovers.controller;
 
+import edu.petlovers.entity.TipoRol;
 import edu.petlovers.entity.Usuarios;
+import edu.petlovers.local.TipoRolFacadeLocal;
 import edu.petlovers.local.UsuariosFacadeLocal;
 import edu.petlovers.utilities.Email;
 import java.io.Serializable;
 import java.util.Date;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -25,9 +28,10 @@ import org.primefaces.PrimeFaces;
 @Named(value = "registroUsuarioRequest")
 @RequestScoped
 public class RegistroUsuarioRequest implements Serializable {
-    
     @EJB
     UsuariosFacadeLocal usuariosFacadeLocal;
+    @EJB
+    TipoRolFacadeLocal tipoRolFacadeLocal;
     
     Usuarios usRed = new Usuarios();
     
@@ -36,9 +40,15 @@ public class RegistroUsuarioRequest implements Serializable {
     public RegistroUsuarioRequest() {
     }
     
+    @PostConstruct
+    public void postUsuario() {
+        usRed.setIdTipoRol(new TipoRol(4));
+    }
+    
     public void crearUsuario() {
         String mensajeSw = "";
         try {
+            usRed.setIdTipoRol(tipoRolFacadeLocal.find(4));
             usRed.setFechaRegistro(new Date());
             usuariosFacadeLocal.create(usRed);
             mensajeSw = "swal('Usuario registrado' , ' con exito ', 'success')";

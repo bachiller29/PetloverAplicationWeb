@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="f66511a5-fc98-4c21-94e0-645dd1403022">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="10"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="RutaLogo" class="java.lang.String"/>
+	<parameter name="UsuarioReporte" class="java.lang.String"/>
+	<parameter name="RutaImagenFondo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     citas.`Id_Citas` AS citas_Id_Citas,
+     mascotas.`Nombres_Mascota` AS mascotas_Nombres_Mascota,
+     usuarios.`Nombres` AS usuarios_Nombres,
+     usuarios.`Apellidos` AS usuarios_Apellidos,
+     citas.`Fecha_Cita` AS citas_Fecha_Cita,
+     citas.`Hora_Cita` AS citas_Hora_Cita,
+     servicios.`Nombre_Servicio` AS servicios_Nombre_Servicio,
+     citas.`Estado_Cita` AS citas_Estado_Cita
+FROM
+     `mascotas` mascotas INNER JOIN `citas` citas ON mascotas.`Id_Mascota` = citas.`Id_Mascota`
+     INNER JOIN `clientes` clientes ON mascotas.`Id_Cliente` = clientes.`Id_Cliente`
+     INNER JOIN `usuarios` usuarios ON clientes.`id_usuario` = usuarios.`Id_Usuario`
+     INNER JOIN `servicios` servicios ON citas.`Id_Servicio` = servicios.`Id_Servicio`]]>
+	</queryString>
+	<field name="citas_Id_Citas" class="java.lang.Integer"/>
+	<field name="mascotas_Nombres_Mascota" class="java.lang.String"/>
+	<field name="usuarios_Nombres" class="java.lang.String"/>
+	<field name="usuarios_Apellidos" class="java.lang.String"/>
+	<field name="citas_Fecha_Cita" class="java.lang.String"/>
+	<field name="citas_Hora_Cita" class="java.lang.String"/>
+	<field name="servicios_Nombre_Servicio" class="java.lang.String"/>
+	<field name="citas_Estado_Cita" class="java.lang.String"/>
+	<background>
+		<band height="575" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#666666" uuid="b9872e75-f020-4cab-b306-e46a76ee5989"/>
+				<textField>
+					<reportElement style="Column header" x="0" y="0" width="104" height="73" forecolor="#000000" uuid="06e01dab-9120-432d-b63a-7e0c0788a12f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#000000" uuid="1a1f4ee0-3afb-44c0-a90a-8525e249438b"/>
+					<box leftPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center">
+						<font size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="27070739-3a5a-404c-af95-2a6274117f35"/>
+				</line>
+			</frame>
+			<image>
+				<reportElement x="84" y="143" width="629" height="305" uuid="c70d5bdf-2c6e-41bb-80a3-90b7a465a50a"/>
+				<imageExpression><![CDATA[$P{RutaImagenFondo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="802" height="67" uuid="966868f7-67ca-4434-8695-5daaf9099619"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[LISTADO CITAS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="22" y="0" width="143" height="104" uuid="0795d188-708b-4664-b44d-c9414ddcf13e"/>
+				<imageExpression><![CDATA[$P{RutaLogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Transparent" x="165" y="67" width="636" height="37" forecolor="#666666" backcolor="#FFFFFF" uuid="d0aeffed-c6c2-430b-bf5f-45c91b9ff8ee"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="20" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reporte generado por " + $P{UsuarioReporte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#666666" uuid="c189f642-412a-45fc-92e1-09b1bdcd5f08"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="68" height="15" uuid="161fc741-b154-41cc-b23f-188a8a654226"/>
+					<text><![CDATA[Id Cita]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="68" y="0" width="88" height="15" uuid="dac78767-9843-44e0-a12b-d51c125bd746"/>
+					<text><![CDATA[Mascota]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="156" y="0" width="49" height="15" uuid="7914cb6f-9e5a-4d20-a507-899c16654b40"/>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="205" y="0" width="147" height="15" uuid="a74e67da-028c-4693-ac73-5951068f94f0"/>
+					<text><![CDATA[ Propietario]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="352" y="0" width="88" height="15" uuid="324bb541-9bee-4131-8890-1bfbfabc24e9"/>
+					<text><![CDATA[Fecha Cita]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="440" y="0" width="88" height="15" uuid="a723fb88-9b9b-492e-95ff-1f5f6127e47d"/>
+					<text><![CDATA[Hora Cita]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="528" y="0" width="88" height="15" uuid="3447c74c-d18a-4c3e-8931-2323777e7949"/>
+					<text><![CDATA[Servicio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="616" y="0" width="88" height="15" uuid="77660f90-5d4d-4b7e-a55b-81560b98a758"/>
+					<text><![CDATA[Estado Cita]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="705" height="15" uuid="61767926-52ac-4b13-91a5-ecbe8bc2c13d"/>
+				<textField>
+					<reportElement style="Detail" x="244" y="0" width="108" height="15" uuid="be15be43-340b-4434-9371-9a31bb9ba0d5"/>
+					<textFieldExpression><![CDATA[$F{usuarios_Apellidos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="352" y="0" width="88" height="15" uuid="2ecd4508-2f4a-49c1-8700-76328a801006"/>
+					<textFieldExpression><![CDATA[$F{citas_Fecha_Cita}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="440" y="0" width="88" height="15" uuid="0e283b35-1f25-4bdb-be8a-3c6c7323d709"/>
+					<textFieldExpression><![CDATA[$F{citas_Hora_Cita}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="528" y="0" width="88" height="15" uuid="ddcdbd69-0569-4d36-ab4d-6b3613ffc6b8"/>
+					<textFieldExpression><![CDATA[$F{servicios_Nombre_Servicio}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="616" y="0" width="88" height="15" uuid="43479a8c-68f4-4e7b-9e58-3677dfe1dd7f"/>
+					<textFieldExpression><![CDATA[$F{citas_Estado_Cita}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="0597989d-0de7-4909-ad6b-49ec7d56afb5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="165" y="0" width="88" height="15" uuid="7477ac14-a87c-43a6-8b59-e4e614e7e8e0"/>
+				<textFieldExpression><![CDATA[$F{mascotas_Nombres_Mascota}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="253" y="0" width="88" height="15" uuid="ce8cba07-0ee4-4594-83fe-506254affcf2"/>
+				<textFieldExpression><![CDATA[$F{usuarios_Nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="97" y="0" width="68" height="15" uuid="474ef8a6-c5c7-44bd-b0da-bfc96b0f9cdb"/>
+				<textFieldExpression><![CDATA[$F{citas_Id_Citas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="42a19c0c-e3bc-4596-96f3-3179d927b8ee"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="96" y="0" width="267" height="20" uuid="60ccee7d-13ae-4914-b2e7-6d5305766fa8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[SENA - ADSI]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

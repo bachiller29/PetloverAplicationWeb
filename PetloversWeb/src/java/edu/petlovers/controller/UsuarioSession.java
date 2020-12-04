@@ -7,7 +7,6 @@ package edu.petlovers.controller;
 
 import edu.petlovers.entity.Usuarios;
 import edu.petlovers.local.UsuariosFacadeLocal;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import javax.ejb.EJB;
@@ -17,7 +16,6 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
-import org.jboss.weld.bean.builtin.ee.HttpSessionBean;
 import org.primefaces.PrimeFaces;
 
 /**
@@ -25,18 +23,18 @@ import org.primefaces.PrimeFaces;
  * @author wsbachiller
  */
 @ManagedBean
-@Named(value = "usuarioSession")
 @SessionScoped
+@Named(value = "usuarioSession")
 public class UsuarioSession implements Serializable {
 
     @EJB
     UsuariosFacadeLocal usuariosFacadeLocal;
 
     private Usuarios usuLogin = new Usuarios();
-    
+
     private String emailI = "";
     private String contrasenaIn = "";
-    
+
     public UsuarioSession() {
     }
 
@@ -48,11 +46,20 @@ public class UsuarioSession implements Serializable {
             if (usuLogin.getIdUsuario() == null) {
                 mensajeSw = "swal('El usuario' , 'no se encuentra registrado' , 'error');";
             } else {
-                FacesContext fc = FacesContext.getCurrentInstance();
                 usuLogin.setUltimoIngreso(new Date());
-                fc.getExternalContext().redirect("../DocAdmin/home.xhtml");
+                if (usuLogin.getIdTipoRol().getIdTipoRol() == 1 || usuLogin.getIdTipoRol().getIdTipoRol() == 2) {
+                    FacesContext fc = FacesContext.getCurrentInstance();
+                    fc.getExternalContext().redirect("../DocAdmin/home.xhtml");
+                } else {
+                    if (usuLogin.getIdTipoRol().getIdTipoRol() == 3) {
+                        FacesContext fc = FacesContext.getCurrentInstance();
+                        fc.getExternalContext().redirect("../DocPersonalDeTienda/home.xhtml");
+                    } else {
+                        FacesContext fc = FacesContext.getCurrentInstance();
+                        fc.getExternalContext().redirect("../DocVentas/checkout.xhtml");
+                    }
+                }
             }
-
         } catch (Exception e) {
             mensajeSw = "swal('El usuario' , 'no se encuentra registrado' , 'error');";
         }
@@ -65,7 +72,7 @@ public class UsuarioSession implements Serializable {
             FacesContext fc = FacesContext.getCurrentInstance();
             ExternalContext ext = FacesContext.getCurrentInstance().getExternalContext();
             ((HttpSession) ext.getSession(false)).invalidate();
-            fc.getExternalContext().redirect("/index.xhtml");
+            fc.getExternalContext().redirect("../index.xhtml");
         } catch (Exception e) {
             System.out.println("Error cerrando sesion UsuarioSession:cerrarSesion " + e.getMessage());
         }

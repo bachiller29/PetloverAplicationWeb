@@ -30,9 +30,10 @@ public class CitasFacade extends AbstractFacade<Citas> implements CitasFacadeLoc
         super(Citas.class);
     }
     
-    public int cantidadCitas(int idCliente, String fecha) {
+    @Override
+    public int cantidadCitas(int idMascota, String fecha) {
         try {
-            Query q = em.createNativeQuery("SELECT COUNT(*) FROM citas WHERE Id_Cliente = " + idCliente + " AND Fecha_Cita = '" + fecha + "'");
+            Query q = em.createNativeQuery("SELECT COUNT(*) FROM citas WHERE Id_Mascota = " + idMascota + " AND Fecha_Cita = '" + fecha + "'");
             int count = ((Number) q.getSingleResult()).intValue();
             return count;
         } catch (Exception e) {
@@ -40,7 +41,18 @@ public class CitasFacade extends AbstractFacade<Citas> implements CitasFacadeLoc
             return 0;
         }
     }
-    
+/*    
+    public String nombrePropietario(int idMascota){
+        try {
+            Query q = em.createNativeQuery("SELECT Nombres, Apellidos FROM mascotas m INNER JOIN clientes c ON m.Id_Cliente = c.Id_Cliente INNER JOIN usuarios u ON u.Id_Usuario = c.id_usuario WHERE Id_Mascota = " + idMascota);
+            String nombrePro = (String) q.getSingleResult();
+            return nombrePro;
+        } catch (Exception e) {
+            return "";
+        }
+    }
+*/    
+    @Override
     public Citas buscarCita(int idCita){
         try {
             Query q = em.createQuery("SELECT c FROM Citas c WHERE c.idCitas = :idCita");

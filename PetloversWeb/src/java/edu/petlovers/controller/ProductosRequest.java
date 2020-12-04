@@ -35,16 +35,12 @@ public class ProductosRequest implements Serializable {
 
     @EJB
     ProductosFacadeLocal productosFacadeLocal;
-
     @EJB
     ProveedoresFacadeLocal proveedoresFacadeLocal;
-
     @EJB
     TipoProductosFacadeLocal tipoProductosFacadeLocal;
-
     @EJB
     InventarioFacadeLocal inventarioFacadeLocal;
-
     @EJB
     MarcaProductosFacadeLocal marcaProductosFacadeLocal;
 
@@ -93,16 +89,31 @@ public class ProductosRequest implements Serializable {
     }
 
     public void removerProducto(Productos objProductos) {
-        productosFacadeLocal.remove(objProductos);
-        listaProductos.remove(objProductos);
+        String mensaje = "";
+        try {
+            productosFacadeLocal.remove(objProductos);
+            listaProductos.remove(objProductos);
+            mensaje = "swal('Producto' , ' Eliminado ', 'success')";
+        } catch (Exception e) {
+            mensaje = "swal('El producto' , ' No ha sido eliminado ', 'error')";
+        }
+        PrimeFaces.current().executeScript(mensaje);
     }
 
     public void actualizarProducto() {
+        String mensaje = "";
 
-//        objProductos.setIdProducto(this.idToUpdate);
-        productosFacadeLocal.edit(objProductos);
-        listaProductos.clear();
-        listaProductos.addAll(productosFacadeLocal.findAll());
+        try {
+//          objProductos.setIdProducto(this.idToUpdate);
+            productosFacadeLocal.edit(objProductos);
+            listaProductos.clear();
+            listaProductos.addAll(productosFacadeLocal.findAll());
+            mensaje = "swal('El producto' , ' se ha modificado exitosamente ', 'success')";
+        } catch (Exception e) {
+            mensaje = "swal('El producto' , ' No ha sido modificado ', 'error')";
+        }
+        objProductos = new Productos();
+        PrimeFaces.current().executeScript(mensaje);
     }
 
     public Productos getObjProductos() {

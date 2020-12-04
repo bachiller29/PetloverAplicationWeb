@@ -6,19 +6,35 @@
 package edu.petlovers.controller;
 
 import edu.petlovers.entity.Citas;
-import edu.petlovers.entity.Clientes;
 import edu.petlovers.entity.Mascotas;
 import edu.petlovers.entity.Servicios;
 import edu.petlovers.local.CitasFacadeLocal;
-import edu.petlovers.local.ClientesFacadeLocal;
 import edu.petlovers.local.MascotasFacadeLocal;
 import edu.petlovers.local.ServiciosFacadeLocal;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Named;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import org.primefaces.PrimeFaces;
 
 /**
@@ -26,52 +42,62 @@ import org.primefaces.PrimeFaces;
  * @author HP
  */
 @ManagedBean
-@RequestScoped
-public class CitasRequest implements Serializable {
-
+@ViewScoped
+@Named(value = "citaView")
+public class CitaView implements Serializable{
+    
     @EJB
     CitasFacadeLocal citasFacadeLocal;
     @EJB
     MascotasFacadeLocal mascotasFacadeLocal;
     @EJB
-    ClientesFacadeLocal clientesFacadeLocal;
-    @EJB
     ServiciosFacadeLocal serviciosFacadeLocal;
-
+    
+//    @Inject
+//    UsuarioSession usuarioSession;
+    
     private Citas objCita = new Citas();
-//    private Clientes objCliente = new Clientes();
-
+    private Mascotas mascotaSeleccionada = new Mascotas();
+    
     private ArrayList<Citas> listaCitas = new ArrayList<>();
     private ArrayList<Mascotas> listaIdMascotas = new ArrayList<>();
-//    private ArrayList<Clientes> listaIdClientes = new ArrayList<>();
     private ArrayList<Servicios> listaIdServicio = new ArrayList<>();
 
-//    private Clientes idCliente;
-//    private Servicios idServicio;
+    private int idMascota;
     private int idCita;
     private ArrayList<Citas> unicaCita = new ArrayList<>();
-
-    public CitasRequest() {
+    
+    public CitaView() {
     }
-
+        
     @PostConstruct
     public void postCita() {
         listaCitas.addAll(citasFacadeLocal.findAll());
         listaIdMascotas.addAll(mascotasFacadeLocal.findAll());
         listaIdServicio.addAll(serviciosFacadeLocal.findAll());
         objCita.setIdMascota(new Mascotas());
-//        objCita.setIdCliente(new Clientes());
         objCita.setIdServicio(new Servicios());
     }
-
+    
+    public void cargaMascota() {
+        mascotaSeleccionada = mascotasFacadeLocal.find(idMascota);
+    }
+    
+    public String nombrePropietario() {
+        try {
+            return mascotaSeleccionada.getIdCliente().getIdUsuario().getNombres() + " " + mascotaSeleccionada.getIdCliente().getIdUsuario().getApellidos();
+        } catch (Exception e) {
+            return " ";
+        }
+    }
+    
     public void crearCita() {
         String mensaje = "";
-
         try {
-            int cantidadCitas = citasFacadeLocal.cantidadCitas(objCita.getIdCliente().getIdCliente(), objCita.getFechaCita());
+            objCita.setIdMascota(getMascotaSeleccionada());
+            int cantidadCitas = citasFacadeLocal.cantidadCitas(objCita.getIdMascota().getIdMascota(), objCita.getFechaCita());
             if (cantidadCitas < 3) {
-                objCita.setIdMascota(mascotasFacadeLocal.find(objCita.getIdMascota().getIdMascota()));
-//                objCita.setIdCliente(clientesFacadeLocal.find(objCita.getIdCliente().getIdCliente()));
+//                objCita.setIdMascota(mascotasFacadeLocal.find(objCita.getIdMascota().getIdMascota()));
                 objCita.setIdServicio(serviciosFacadeLocal.find(objCita.getIdServicio().getIdServicio()));
                 citasFacadeLocal.create(objCita);
                 mensaje = "swal('La cita' , ' Se ha registrado exitosamente ', 'success')";
@@ -81,17 +107,18 @@ public class CitasRequest implements Serializable {
         } catch (Exception e) {
             mensaje = "swal('La cita' , ' No ha sido registrada ', 'error')";
         }
+        mascotaSeleccionada = new Mascotas();
         objCita = new Citas();
         PrimeFaces.current().executeScript(mensaje);
     }
 
     public void cargarCita(Citas objCargar) {
         this.objCita = objCargar;
+//        usuarioSession.setObjCit(objCita);
     }
 
     public void actualizarCita() {
         String mensaje = "";
-
         try {
             citasFacadeLocal.edit(objCita);
             listaCitas.clear();
@@ -100,6 +127,7 @@ public class CitasRequest implements Serializable {
         } catch (Exception e) {
             mensaje = "swal('La cita' , ' No ha sido modificada ', 'error')";
         }
+        mascotaSeleccionada = new Mascotas();
         objCita = new Citas();
         PrimeFaces.current().executeScript(mensaje);
     }
@@ -137,6 +165,63 @@ public class CitasRequest implements Serializable {
         unicaCita = new ArrayList<>();
     }
 
+    
+    public void descargaReporte(String nombreReporte, String nombreUsuario)  {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext context = facesContext.getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) context.getRequest();
+
+        HttpServletResponse response = (HttpServletResponse) context.getResponse();
+        response.setContentType("application/pdf");
+
+        try {
+            Map parametro = new HashMap();
+            parametro.put("RutaLogo", context.getRealPath("/assets/img/logo/fondo1.jpg"));
+            parametro.put("UsuarioReporte", nombreUsuario);//usuarioSession.getUsuLogin().getNombres() + " " + usuarioSession.getUsuLogin().getApellidos());
+            parametro.put("RutaImagenFondo", context.getRealPath("/assets/img/logo/logoPetlovers2.png"));
+            Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/petlovers", "petloversuser", "1234");
+            System.out.println("Catalogo : " + conec.getCatalog());
+            
+            File jasper = new File(context.getRealPath("/WEB-INF/classes/edu/petlovers/reports/"+nombreReporte+".jasper"));
+             
+            JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), parametro, conec);
+            
+            HttpServletResponse hsr = (HttpServletResponse) context.getResponse();
+            hsr.addHeader("Content-disposition", "attachment; filename=Listado Citas.pdf");
+            OutputStream os = hsr.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jp, os);
+            os.flush();
+            os.close();
+            facesContext.responseComplete();
+           
+        } catch (JRException e) {
+            System.out.println("edu.petlovers.controller.CitaView.descargaReporte() " + e.getMessage());
+        } catch(IOException i){
+            System.out.println("edu.petlovers.controller.CitaView.descargaReporte() " + i.getMessage());
+        } catch (SQLException q){
+            System.out.println("edu.petlovers.controller.CitaView.descargaReporte() " + q.getMessage());
+        }
+
+    }
+
+    
+    
+    public int getIdMascota() {
+        return idMascota;
+    }
+
+    public void setIdMascota(int idMascota) {
+        this.idMascota = idMascota;
+    }
+
+    public Mascotas getMascotaSeleccionada() {
+        return mascotaSeleccionada;
+    }
+
+    public void setMascotaSeleccionada(Mascotas mascotaSeleccionada) {
+        this.mascotaSeleccionada = mascotaSeleccionada;
+    }
+    
     public Citas getObjCita() {
         return objCita;
     }
@@ -176,15 +261,7 @@ public class CitasRequest implements Serializable {
     public void setListaIdMascotas(ArrayList<Mascotas> listaIdMascotas) {
         this.listaIdMascotas = listaIdMascotas;
     }
-/*    
-    public ArrayList<Clientes> getListaIdClientes() {
-        return listaIdClientes;
-    }
-
-    public void setListaIdClientes(ArrayList<Clientes> listaIdClientes) {
-        this.listaIdClientes = listaIdClientes;
-    }
-*/
+    
     public ArrayList<Servicios> getListaIdServicio() {
         return listaIdServicio;
     }
@@ -193,30 +270,4 @@ public class CitasRequest implements Serializable {
         this.listaIdServicio = listaIdServicio;
     }
 
-    /*
-     public Clientes getObjCliente() {
-     return objCliente;
-     }
-
-     public void setObjCliente(Clientes objCliente) {
-     this.objCliente = objCliente;
-     }    
-
-     public Clientes getIdCliente() {
-     return idCliente;
-     }
-
-     public void setIdCliente(Clientes idCliente) {
-     this.idCliente = idCliente;
-     }
-    
-     public Servicios getIdServicio() {
-     return idServicio;
-     }
-
-     public void setIdServicio(Servicios idServicio) {
-     this.idServicio = idServicio;
-     }
-
-     */
 }

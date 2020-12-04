@@ -6,9 +6,11 @@
 package edu.petlovers.controller;
 
 import edu.petlovers.entity.Citas;
+import edu.petlovers.entity.Clientes;
 import edu.petlovers.entity.HistoriaClinica;
 import edu.petlovers.entity.Mascotas;
 import edu.petlovers.local.CitasFacadeLocal;
+import edu.petlovers.local.ClientesFacadeLocal;
 import edu.petlovers.local.HistoriaClinicaFacadeLocal;
 import edu.petlovers.local.MascotasFacadeLocal;
 import java.io.Serializable;
@@ -17,6 +19,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.primefaces.PrimeFaces;
 
 /**
@@ -25,18 +29,25 @@ import org.primefaces.PrimeFaces;
  */
 @ManagedBean
 @RequestScoped
+@Named(value = "historiasClinicasRequest")
 public class HistoriasClinicasRequest implements Serializable{
+    
     @EJB
     HistoriaClinicaFacadeLocal historiaClinicaFacadeLocal;
     @EJB
-    MascotasFacadeLocal mascotasFacadeLocal;
-    @EJB
     CitasFacadeLocal citasFacadeLocal;
+//    @EJB
+//    MascotasFacadeLocal mascotasFacadeLocal;
+//    @EJB
+ //   ClientesFacadeLocal clientesFacadeLocal;
+    
+//    @Inject
+//    HistoriaClinicaView historiaClinicaView;
     
     private HistoriaClinica objHistoriaC = new HistoriaClinica();
     
     private ArrayList<HistoriaClinica> listaHistoriaC = new ArrayList<>();
-    private ArrayList<Mascotas> listaIdMascotas = new ArrayList<>();
+//    private ArrayList<Mascotas> listaIdMascotas = new ArrayList<>();
     private ArrayList<Citas> listaIdCitas = new ArrayList<>();
     
     private int idHistoria;
@@ -48,26 +59,14 @@ public class HistoriasClinicasRequest implements Serializable{
     @PostConstruct
     public void postHistoriaC(){
         listaHistoriaC.addAll(historiaClinicaFacadeLocal.findAll());
-        listaIdMascotas.addAll(mascotasFacadeLocal.findAll());
         listaIdCitas.addAll(citasFacadeLocal.findAll());
-        objHistoriaC.setIdMascota(new Mascotas());
+//        listaIdMascotas.addAll(mascotasFacadeLocal.findAll());
         objHistoriaC.setIdCitas(new Citas());
+        objHistoriaC.setIdMascota(new Mascotas());
+        objHistoriaC.setIdCliente(new Clientes());
     }
     
-    public void crearHistoriaC() {
-        String mensaje = "";
-        
-        try {
-            objHistoriaC.setIdMascota(mascotasFacadeLocal.find(objHistoriaC.getIdMascota().getIdMascota()));
-            objHistoriaC.setIdCitas(citasFacadeLocal.find(objHistoriaC.getIdCitas().getIdCitas()));
-            historiaClinicaFacadeLocal.create(objHistoriaC);
-            mensaje = "swal('La historia clinica' , ' Se ha registrado exitosamente ', 'success')";
-        } catch (Exception e) {
-            mensaje = "swal('La historia clinica' , ' No ha sido registrada ', 'error')";
-        }
-        objHistoriaC = new HistoriaClinica();
-        PrimeFaces.current().executeScript(mensaje);
-    }
+    
     
     public void cargarHistoriaC(HistoriaClinica objCargar){
         this.objHistoriaC = objCargar;
@@ -136,7 +135,7 @@ public class HistoriasClinicasRequest implements Serializable{
     public void setListaHistoriaC(ArrayList<HistoriaClinica> listaHistoriaC) {
         this.listaHistoriaC = listaHistoriaC;
     }
-
+/*
     public ArrayList<Mascotas> getListaIdMascotas() {
         return listaIdMascotas;
     }
@@ -144,7 +143,7 @@ public class HistoriasClinicasRequest implements Serializable{
     public void setListaIdMascotas(ArrayList<Mascotas> listaIdMascotas) {
         this.listaIdMascotas = listaIdMascotas;
     }
-
+*/
     public ArrayList<Citas> getListaIdCitas() {
         return listaIdCitas;
     }

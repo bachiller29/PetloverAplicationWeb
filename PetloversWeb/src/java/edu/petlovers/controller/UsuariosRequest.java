@@ -11,6 +11,7 @@ import edu.petlovers.local.TipoRolFacadeLocal;
 import edu.petlovers.local.UsuariosFacadeLocal;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -52,6 +53,7 @@ public class UsuariosRequest implements Serializable{
         
         try {
             objUsuario.setIdTipoRol(tipoRolFacadeLocal.find(objUsuario.getIdTipoRol().getIdTipoRol()));
+            objUsuario.setFechaRegistro(new Date());
             usuariosFacadeLocal.create(objUsuario);
             mensaje = "swal('El usuario' , ' Se ha registrado exitosamente ', 'success')";
         } catch (Exception e) {

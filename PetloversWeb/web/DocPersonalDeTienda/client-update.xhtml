@@ -40,22 +40,34 @@ and open the template in the editor.
                             <legend>
                                 <i class="fas fa-user"></i> &nbsp; Información básica
                             </legend>
-                            <h:inputText id="id_cita" value="#{citasRequest.objCita.idCitas}" style="display: none;" />
+                            <h:inputText id="id_cita" value="#{citaView.objCita.idCitas}" style="display: none;" />
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-3">
                                         <div class="form-group">
-                                            <label for="id_cliente">ID Cliente</label>
-                                            <h:selectOneMenu id="id_cliente" value="#{citasRequest.objCita.idCliente.idCliente}" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItems value="#{citasRequest.listaIdClientes}" var="idCli" itemValue="#{idCli.idCliente}" itemLabel="#{idCli.idCliente}"></f:selectItems>  
+                                            <label for="id_mascota">ID - Nombre de la Mascota</label>
+                                            <h:selectOneMenu id="id_mascota" value="#{citaView.idMascota}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{citaView.listaIdMascotas}" var="idMasc" itemValue="#{idMasc.idMascota}" itemLabel="#{idMasc.idMascota} - #{idMasc.nombresMascota}"></f:selectItems>  
                                             </h:selectOneMenu>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-1">
+                                        <div class="form-group">
+                                            <td><h:commandLink action="#{citaView.cargaMascota()}" class="btn btn-warning"><i class="far fa-user-circle"></i></h:commandLink></td>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="id_cliente">Nombre del Cliente Propietario</label>
+                                            <h:outputText id="id_cliente" value="#{citaView.nombrePropietario()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
                                         <div class="form-group">
                                             <label for="id_servicio">Seleccione un Servicio</label>
-                                            <h:selectOneMenu id="id_servicio" value="#{citasRequest.objCita.idServicio.idServicio}" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItems value="#{citasRequest.listaIdServicio}" var="idSer" itemValue="#{idSer.idServicio}" itemLabel="#{idSer.nombreServicio}"></f:selectItems>
+                                            <h:selectOneMenu id="id_servicio" value="#{citaView.objCita.idServicio.idServicio}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{citaView.listaIdServicio}" var="idSer" itemValue="#{idSer.idServicio}" itemLabel="#{idSer.nombreServicio}"></f:selectItems>
                                         <!--    <f:selectItem itemValue="1" itemLabel="Baño" />
                                                 <f:selectItem itemValue="2" itemLabel="Vacunación" />
                                                 <f:selectItem itemValue="3" itemLabel="Cepillado" />
@@ -75,21 +87,21 @@ and open the template in the editor.
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
                                             <label for="fecha">Fecha de reserva</label>
-                                            <h:inputText id="fecha" required="true" requiredMessage="Ingrese una fecha valida" value="#{citasRequest.objCita.fechaCita}" class="form-control" html5:type="date"/>
+                                            <h:inputText id="fecha" required="true" requiredMessage="Ingrese una fecha valida" value="#{citaView.objCita.fechaCita}" class="form-control" html5:type="date"/>
                                             <h:message for="fecha" style="color: red;" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
                                             <label for="hora" class="bmd-label-floating">Hora</label>
-                                            <h:inputText id="hora" required="true" requiredMessage="Ingrese una hora valida" maxlength="15" value="#{citasRequest.objCita.horaCita}" class="form-control" html5:type="time" />
+                                            <h:inputText id="hora" required="true" requiredMessage="Ingrese una hora valida" maxlength="15" value="#{citaView.objCita.horaCita}" class="form-control" html5:type="time" />
                                             <h:message for="hora" style="color: red;" />
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
                                             <label for="estado" class="bmd-label-floating">Estado cita</label>
-                                            <h:selectOneMenu id="estado" value="#{citasRequest.objCita.estadoCita}" class="form-control" style="margin-top: 10px;">
+                                            <h:selectOneMenu id="estado" value="#{citaView.objCita.estadoCita}" class="form-control" style="margin-top: 10px;">
                                                 <f:selectItem itemValue="" itemLabel="Seleccione una opción" />
                                                 <f:selectItem itemValue="Reservada" itemLabel="Reservada" />
                                                 <f:selectItem itemValue="Finalizada" itemLabel="Finalizada" />
@@ -105,7 +117,7 @@ and open the template in the editor.
                         <p class="text-center" style="margin-top: 40px;">
                             <a href="client-list.xhtml" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"> <i class="fas fa-backward"></i> &nbsp; REGRESAR</a>
                             &nbsp; &nbsp;
-                            <h:commandButton action="#{citasRequest.actualizarCita()}" class="btn btn-raised btn-success btn-lg" value="Actualizar"></h:commandButton>
+                            <h:commandButton action="#{citaView.actualizarCita()}" class="btn btn-raised btn-success btn-lg" value="Actualizar"></h:commandButton>
                             <!--        <button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>   -->
                         </p>
                     </h:form>

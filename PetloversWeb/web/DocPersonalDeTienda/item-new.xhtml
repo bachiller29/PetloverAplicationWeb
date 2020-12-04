@@ -39,55 +39,62 @@ and open the template in the editor.
                             <legend>
                                 <i class="fas fa-user"></i> &nbsp; Información básica
                             </legend>
-                            <div class="container-fluid">
+                            <div class="container-fluid" style="margin-top: 40px;">
                                 <div class="row">
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-3">
                                         <div class="form-group">
-                                            <label for="id_mascota">ID Mascota</label>
-                                            <h:selectOneMenu id="id_mascota" value="#{historiasClinicasRequest.objHistoriaC.idMascota.idMascota}" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItems value="#{historiasClinicasRequest.listaIdMascotas}" var="idMas" itemValue="#{idMas.idMascota}" itemLabel="#{idMas.idMascota}  -  #{idMas.nombresMascota}"></f:selectItems>  
+                                            <label for="idCita" class="bmd-label-floating">Datos Cita (ID Cita // Fecha // Hora )</label>
+                                            <h:selectOneMenu id="idCita" value="#{historiaClinicaView.idCita}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems  value="#{historiasClinicasRequest.listaIdCitas}" var="idCiti" itemValue="#{idCiti.idCitas}" itemLabel=" #{idCiti.idCitas}  //  #{idCiti.fechaCita}  //  #{idCiti.horaCita}"></f:selectItems>  
                                             </h:selectOneMenu>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-1">
                                         <div class="form-group">
-                                            <label for="idCita">Detalle Cita (ID Cita // Fecha // Hora // ID Servicio)</label>
-                                            <h:selectOneMenu id="idCita" value="#{historiasClinicasRequest.objHistoriaC.idCitas.idCitas}" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItems  value="#{historiasClinicasRequest.listaIdCitas}" var="idCiti" itemValue="#{idCiti.idCitas}" itemLabel=" #{idCiti.idCitas}  //  #{idCiti.fechaCita}  //  #{idCiti.horaCita}  //  #{idCiti.idServicio.idServicio}"></f:selectItems>  
-                                            </h:selectOneMenu>
+                                            <td><h:commandLink action="#{historiaClinicaView.cargaCita()}" class="btn btn-warning" style="width: 100%;"><i class="far fa-user-circle"></i></h:commandLink></td>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group">
+                                            <label for="id_mascota" class="bmd-label-floating">Nombre Mascota</label>
+                                            <h:outputText id="id_mascota" value="#{historiaClinicaView.nombreMascota()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group">
+                                            <label for="id_cliente" class="bmd-label-floating">Nombre Cliente</label>
+                                            <h:outputText id="id_cliente" value="#{historiaClinicaView.nombrePropietario()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-2">
                                         <div class="form-group">
                                             <label for="pesoMas" class="bmd-label-floating">Peso de la Mascota (Kg)</label>
-                                            <h:inputText id="pesoMas" required="true" requiredMessage="Ingrese un peso valido" value="#{historiasClinicasRequest.objHistoriaC.peso}" class="form-control"/>
-                                            <h:message for="PesoMas" style="color: red;" />
+                                            <h:inputText id="pesoMas" value="#{historiaClinicaView.objHistoriaC.peso}" class="form-control"/>
+                                            
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="enfermedad" class="bmd-label-floating">Enfermedades Previas</label>
-                                            <h:inputTextarea id="enfermedad" value="#{historiasClinicasRequest.objHistoriaC.enfermedadesPrevias}" class="form-control"></h:inputTextarea>
+                                            <h:inputTextarea id="enfermedad" rows="7" value="#{historiaClinicaView.objHistoriaC.enfermedadesPrevias}" class="form-control"></h:inputTextarea>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="diagnostico" class="bmd-label-floating">Diagnostico y/o Valoración</label>
-                                            <h:inputTextarea id="diagnostico" required="true" requiredMessage="Ingrese un diagnostico y/o Valoración" value="#{historiasClinicasRequest.objHistoriaC.diagnostico}" class="form-control"></h:inputTextarea>
-                                            <h:message for="diagnostico" style="color: red;" />
+                                            <label for="diagnos" class="bmd-label-floating">Diagnostico y/o Valoración</label>
+                                            <h:inputTextarea id="diagnos" rows="7" value="#{historiaClinicaView.objHistoriaC.diagnostico}" class="form-control"></h:inputTextarea>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label for="tratamiento" class="bmd-label-floating">Tratamiento</label>
-                                            <h:inputTextarea id="tratamiento" required="true" requiredMessage="Ingrese un tratamiento" value="#{historiasClinicasRequest.objHistoriaC.tratamiento}" class="form-control"></h:inputTextarea>
-                                            <h:message for="tratamiento" style="color: red;" />
+                                            <label for="tratami" class="bmd-label-floating">Tratamiento</label>
+                                            <h:inputTextarea id="tratami" rows="7" value="#{historiaClinicaView.objHistoriaC.tratamiento}" class="form-control"></h:inputTextarea>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="cirugia" class="bmd-label-floating">Procedimiento Quirurgico</label>
-                                            <h:inputTextarea id="cirugia" value="#{historiasClinicasRequest.objHistoriaC.procedimientoQuirurgico}" class="form-control"></h:inputTextarea>
+                                            <h:inputTextarea id="cirugia" rows="7" value="#{historiaClinicaView.objHistoriaC.procedimientoQuirurgico}" class="form-control"></h:inputTextarea>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +105,7 @@ and open the template in the editor.
                             <button type="reset" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
                             &nbsp; &nbsp; 
                             <!--    <button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>        -->
-                            <h:commandButton action="#{historiasClinicasRequest.crearHistoriaC()}" class="btn btn-raised btn-info btn-lg" value="Guardar"></h:commandButton>
+                            <h:commandButton action="#{historiaClinicaView.crearHistoriaC()}" class="btn btn-raised btn-info btn-lg" value="Guardar"></h:commandButton>
                         </p>
                     </h:form>
                 </div>

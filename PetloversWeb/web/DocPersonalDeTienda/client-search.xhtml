@@ -39,13 +39,13 @@ and open the template in the editor.
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="id_cita" class="bmd-label-floating">Ingresa el ID de la cita a buscar</label> 
-                                        <h:inputText required="true" requiredMessage="Ingrese un ID valido" value="#{citasRequest.idCita}" class="form-control" id="id_cita" maxlength="5" />
+                                        <h:inputText required="true" requiredMessage="Ingrese un ID valido" value="#{citaView.idCita}" class="form-control" id="id_cita" maxlength="5" />
                                         <h:message for="id_cita" style="color: red;" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <p class="text-center" style="margin-top: 40px;">
-                                        <h:commandButton type="submit" action="#{citasRequest.buscaCita()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
+                                        <h:commandButton type="submit" action="#{citaView.buscaCita()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
                                         <!--        <button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search"></i> 
                                                     &nbsp; BUSCAR</button>      -->
                                     </p>
@@ -81,7 +81,7 @@ and open the template in the editor.
                             </thead>
                             <tbody>
                                 <h:form id="unicaCita">
-                                    <c:forEach items="#{citasRequest.unicaCita}" var="cita">
+                                    <c:forEach items="#{citaView.unicaCita}" var="cita">
                                         <tr class="text-center">
                                             <td>#{cita.idCitas}</td>
                                             <td>#{cita.idMascota.idCliente.idUsuario.nombres} #{cita.idMascota.idCliente.idUsuario.apellidos}</td>
@@ -90,9 +90,9 @@ and open the template in the editor.
                                             <td>#{cita.horaCita}</td>
                                             <td>#{cita.idServicio.nombreServicio}</td>
                                             <td>#{cita.estadoCita}</td>
-                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{citasRequest.cargarCita(cita)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{citaView.cargarCita(cita)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
-                                            <td><h:commandLink action="#{citasRequest.eliminarCita(cita)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{citaView.eliminarCita(cita)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                             <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
                                         </tr>
                                     </c:forEach>
@@ -103,7 +103,7 @@ and open the template in the editor.
                     <div class="col-12">
                         <h:form id="vaciar">
                             <p class="text-center" style="margin-top: 20px;">
-                                <h:commandButton action="#{citasRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
+                                <h:commandButton action="#{citaView.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>
                         <!--        <button type="reset" class="btn btn-raised btn-danger"><i class="far fa-trash-alt"></i> &nbsp; ELIMINAR BÃSQUEDA</button>      -->
                             </p>
                         </h:form>

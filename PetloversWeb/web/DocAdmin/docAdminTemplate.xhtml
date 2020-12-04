@@ -7,7 +7,7 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        
+
         <meta content="" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
         <title>Administrador</title>
@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
         <!--  General Styles -->
         <link rel="stylesheet" href="./css/style.css" />
-        
+
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </h:head>
 
@@ -43,9 +43,9 @@
                         <i class="far fa-times-circle show-nav-lateral" />
                         <img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" />
                         <figcaption class="roboto-medium text-center">
-                            Carlos Alfaro
+                            #{usuarioSession.usuLogin.nombres} #{usuarioSession.usuLogin.apellidos}
                             <br />
-                            <small class="roboto-condensed-light">Administrador</small>
+                            <small class="roboto-condensed-light">#{usuarioSession.usuLogin.idTipoRol.nombreRol}</small>
                         </figcaption>
                     </figure>
                     <div class="full-box nav-lateral-bar" />
@@ -122,19 +122,19 @@
                                         <li>
                                             <h:commandLink action="reservation-new">
                                                 <i class="fas fa-plus fa-fw" />
-                                                &nbsp; Nuevo producto
+                                                &nbsp; Nuevo inventario
                                             </h:commandLink>
                                         </li>
                                         <li>
                                             <h:commandLink action="reservation-list">
                                                 <i class="fas fa-clipboard-list fa-fw" />
-                                                &nbsp; Lista de producto
+                                                &nbsp; Lista de inventarios
                                             </h:commandLink>
                                         </li>
                                         <li>
                                             <h:commandLink action="reservation-search">
                                                 <i class="fas fa-search-dollar fa-fw" />
-                                                &nbsp; Buscar producto
+                                                &nbsp; Buscar inventario
                                             </h:commandLink>
                                         </li>
                                         <li>
@@ -207,14 +207,15 @@
             </section>
             <!--  Page content -->
             <section class="full-box page-content">
-                <nav class="full-box navbar-info">
-                    <a href="#" class="float-left show-nav-lateral">
-                        <i class="fas fa-exchange-alt" />
-                    </a>
-                    <a href="../index.xhtml">
-                        <i class="fas fa-power-off" />
-                    </a>
-                </nav>
+                <h:form>
+                    <nav class="full-box navbar-info">
+                        <a href="#" class="float-left show-nav-lateral">
+                            <i class="fas fa-exchange-alt" />
+                        </a>
+                        <!-- <a href="../index.xhtml"></a>  -->
+                        <h:commandLink action="#{usuarioSession.cerrarSesion()}"><i class="fas fa-power-off" /></h:commandLink>
+                    </nav>
+                </h:form>
                 <!--  Page header -->
                 <div class="full-box page-header">
                     <h3 class="text-left">

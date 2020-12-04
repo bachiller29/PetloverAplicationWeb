@@ -29,6 +29,13 @@ and open the template in the editor.
                             <a href="client-search.xhtml"><i class="fas fa-search fa-fw"></i>
                                 &nbsp; BUSCAR CITAS</a>
                         </li>
+                        <h:form>
+                        <li>
+                            <h:commandLink action="#{citaView.descargaReporte('ListaCitas','ALEXANDER ABONDANO ACEVEDO')}"><i class="fas fa-download fa-fw"></i>
+                                &nbsp; REPORTE
+                            </h:commandLink>
+                        </li>
+                        </h:form>
                     </ul>
                 </div>
                 <!--  Content here -->
@@ -50,7 +57,7 @@ and open the template in the editor.
                             </thead>
                             <tbody>
                                 <h:form>
-                                    <c:forEach items="#{citasRequest.listaCitas}" var="obl">
+                                    <c:forEach items="#{citaView.listaCitas}" var="obl">
                                         <tr class="text-center">
                                             <td>#{obl.idCitas}</td>
                                             <td>#{obl.idMascota.idCliente.idUsuario.nombres} #{obl.idMascota.idCliente.idUsuario.apellidos}</td>
@@ -59,9 +66,9 @@ and open the template in the editor.
                                             <td>#{obl.horaCita}</td>
                                             <td>#{obl.idServicio.nombreServicio}</td>
                                             <td>#{obl.estadoCita}</td>
-                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{citasRequest.cargarCita(obl)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{citaView.cargarCita(obl)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
-                                            <td><h:commandLink action="#{citasRequest.eliminarCita(obl)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{citaView.eliminarCita(obl)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                             <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
                                         </tr>
                                     </c:forEach>
