@@ -47,7 +47,7 @@ public class ClientesRequest implements Serializable {
     private Clientes objClientes = new Clientes();
     private ArrayList<Clientes> listaClientes = new ArrayList();
     private int idCliente;
-
+    private ArrayList<Clientes> unicoClientes = new ArrayList();
     /**
      * Creates a new instance of ClientesRequest
      */
@@ -70,7 +70,7 @@ public class ClientesRequest implements Serializable {
             mensajeSw = "swal('El cliente' , 'no fue registrado' , 'error');";
         }
         objClientes = new Clientes();
-        PrimeFaces.current().executeInitScript(mensajeSw);
+        PrimeFaces.current().executeScript(mensajeSw);
     }
 
     public void removerCliente(Clientes objCliente) {
@@ -114,7 +114,7 @@ public class ClientesRequest implements Serializable {
             if (busCliente.getIdCliente() == null) {
                 mensajeSw = "swal('El cliente' , ' no se encuentra registrado ', 'error')";
             } else {
-                listaClientes.add(busCliente);
+                unicoClientes.add(busCliente);
                 mensajeSw = "swal('Cliente' , ' Encontrado exitosamente ', 'success')";
             }
         } catch (Exception e) {
@@ -187,6 +187,14 @@ public class ClientesRequest implements Serializable {
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public ArrayList<Clientes> getUnicoClientes() {
+        return unicoClientes;
+    }
+
+    public void setUnicoClientes(ArrayList<Clientes> unicoClientes) {
+        this.unicoClientes = unicoClientes;
     }
 
 }

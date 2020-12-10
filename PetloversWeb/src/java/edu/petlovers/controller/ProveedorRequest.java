@@ -100,7 +100,7 @@ public class ProveedorRequest implements Serializable {
             listaProveedores.addAll(proveedorFacadeLocal.findAll());
             mensajeSw = "swal('El proveedor' , ' se ha modificado exitosamente ', 'success')";
         } catch (Exception e) {
-            mensajeSw = "swal('El usuario' , ' No ha sido modificado ', 'error')";
+            mensajeSw = "swal('El proveedor' , ' No ha sido modificado ', 'error')";
         }
         objProveedores = new Proveedores();
         PrimeFaces.current().executeScript(mensajeSw);

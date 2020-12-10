@@ -39,58 +39,13 @@ and open the template in the editor.
                 <!--  CONTENT -->
                 <div class="container-fluid">
                     <div class="container-fluid form-neon">
-                        <div class="container-fluid">
-                            <p class="text-center roboto-medium">
-                                AGREGAR PRODUCTO
-                            </p>                           
-                            <div class="table-responsive">
-                                <table class="table table-dark table-sm">
-                                    <thead>
-                                        <tr class="text-center roboto-medium">
-                                            <th>ID</th>
-                                            <th>Nombre</th>
-                                            <th>Descripcion</th>
-                                            <th>Tamaño</th>
-                                            <th>Color</th>
-                                            <th>Sabor</th>
-                                            <th>Precio</th>
-                                            <th>Codigo de barras</th>                                        
-                                            <th>Eliminar</th>
-                                            <th>Editar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <h:form>
-                                            <c:forEach items="#{productosRequest.listaProductos}" var="obj">
-                                                <tr>
-                                                    <td>#{obj.idProducto}</td>
-                                                    <td>#{obj.nombreProducto}</td>
-                                                    <td>#{obj.descripcion}</td>
-                                                    <td>#{obj.tamanoProducto}</td>
-                                                    <td>#{obj.colorProducto}</td>
-                                                    <td>#{obj.saborProducto}</td>
-                                                    <td>#{obj.precioProducto}</td>
-                                                    <td>#{obj.codigoBarrasProducto}</td>
-<!--                                                    <td>#{obj.nitProveedor}</td>                                                    -->
-                                                    <td>
-                                                        <h:commandButton action="#{productosRequest.removerProducto(obj)}" value="Eliminar"></h:commandButton>                                                                                    
-                                                    </td>
-                                                    <td>
-                                                        <h:commandButton action="#{productosRequest.cargarFormulario(obj)}" value="Ver"></h:commandButton>
-                                                    </td>
-                                                </tr>
-                                            </c:forEach>
-                                        </h:form>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+
                         <h:form>
                             <fieldset>
                                 <legend>
                                     <i class="far fa-plus-square"></i> &nbsp; Informacion del producto
                                 </legend>                 
-                                <h:inputText id="idproductps" value="#{productosRequest.objProductos.idProducto}" style="display:none;" />
+
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-12 col-md-6">
@@ -152,9 +107,8 @@ and open the template in the editor.
                             </fieldset>
                             <br /><br /><br />
                             <p class="text-center" style="margin-top: 40px;">
-                                <h:commandButton action="#{productosRequest.actualizarProducto()}" class="btn btn-raised btn-info btn-sm" value="ACTUALIZAR"></h:commandButton>              
-                                &nbsp; &nbsp;                                
-                                <h:commandButton action="#{productosRequest.registrarProducto()}" class="btn btn-raised btn-info btn-sm" value="GUARDAR"></h:commandButton>    
+                                <h:commandButton class="btn btn-raised btn-info btn-sm" value="Guardar" action="#{productosRequest.registrarProducto()}">                                    
+                                </h:commandButton>
                             </p>                            
                         </h:form>
 

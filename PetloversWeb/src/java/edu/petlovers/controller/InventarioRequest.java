@@ -90,9 +90,12 @@ public class InventarioRequest implements Serializable {
 
         try {
             objInventario.setIdAdmin(administradoresFacadeLocal.find(objInventario.getIdAdmin().getIdAdmin()));
-            objInventario.setIdEntradaProductos(entradaProductosFacadeLocal.find(objInventario.getIdEntradaProductos().getIdEntradaProductos()));
-            objInventario.setIdSalidaProductos(salidaProductosFacadeLocal.find(objInventario.getIdSalidaProductos().getIdSalidaProductos()));
+            objInventario.setIdEntradaProductos(entradaProductosFacadeLocal.find(objInventario.getIdEntradaProductos()));
+            objInventario.setIdSalidaProductos(salidaProductosFacadeLocal.find(objInventario.getIdSalidaProductos()));
 
+            objInventario.getIdEntradaProductos().setIdEntradaProductos(objInventario.getIdEntradaProductos().getIdEntradaProductos());
+            objInventario.getIdSalidaProductos().setIdSalidaProductos(objInventario.getIdSalidaProductos().getIdSalidaProductos());
+            
             inventarioFacadeLocal.create(objInventario);
             listaInventario.add(objInventario);
             mensajeSw = "swal('Inventario creado' , 'con exito' , 'success')";

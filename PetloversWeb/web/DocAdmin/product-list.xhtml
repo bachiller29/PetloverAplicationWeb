@@ -40,8 +40,7 @@ and open the template in the editor.
                                 </h:commandLink>
                             </li>
                         </h:form>
-                        <h:form id="miformUno" enctype="multipart/form-data" style="margin-bottom: 10px">
-                            <!--                            <h:inputFile id="fileImgUno" onchange="$('#miformUno\\:myBoton').click();" style="display: none" value=""></h:inputFile>-->
+                        <h:form id="miformUno" enctype="multipart/form-data" style="margin-bottom: 10px">                            
                             <h:inputFile id="fileImgUno" onchange="$('#miformUno\\:myBoton').click();" style="display: none" value="#{productosRequest.archivoExcel}"></h:inputFile>
                             <h:commandButton id="myBoton" style="display: none" class="btn btn-outline-success" action="#{productosRequest.subeExcel()}" value="Cargar Imagen">                                
                                 <f:ajax  execute="fileImgUno" ></f:ajax>
@@ -83,8 +82,8 @@ and open the template in the editor.
                                             <td>#{obPro.saborProducto}</td>
                                             <td>#{obPro.precioProducto}</td>
                                             <td>#{obPro.codigoBarrasProducto}</td>
-                                            <td>#{obPro.nitProveedor}</td>
-                                            <td><h:commandLink action="item-update.xhtml" actionListener="#{productosRequest.cargarProducto(obPro)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td>#{obPro.nitProveedor.nitProveedor}</td>
+                                            <td><h:commandLink action="product-update.xhtml" actionListener="#{productosRequest.cargarProducto(obPro)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <td><h:commandLink action="#{productosRequest.removerProducto(obPro)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                         </tr>
                                     </c:forEach>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="a8084889-ea3a-4fe7-b758-b7eb6c631a10">
-	<property name="ireport.zoom" value="0.6830134553650707"/>
+	<property name="ireport.zoom" value="1.2100000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="85"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
@@ -98,17 +98,12 @@ FROM
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#666666" uuid="c0984440-b546-457c-aa16-b4f5f5846d92"/>
 				<staticText>
-					<reportElement style="Column header" x="0" y="0" width="22" height="15" uuid="0bbfbe80-4851-4b77-a47f-169ac89e2982"/>
-					<textElement textAlignment="Justified"/>
-					<text><![CDATA[Id]]></text>
-				</staticText>
-				<staticText>
-					<reportElement style="Column header" x="22" y="0" width="96" height="15" uuid="9e81f7b7-54d7-4ca8-8d3c-495e0b64dfb3"/>
+					<reportElement style="Column header" x="0" y="0" width="96" height="15" uuid="9e81f7b7-54d7-4ca8-8d3c-495e0b64dfb3"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Nombre]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="118" y="0" width="110" height="15" uuid="1cc550b7-272b-4349-a9a6-583592636552"/>
+					<reportElement style="Column header" x="96" y="0" width="132" height="15" uuid="1cc550b7-272b-4349-a9a6-583592636552"/>
 					<textElement textAlignment="Justified"/>
 					<text><![CDATA[Descripcion]]></text>
 				</staticText>
@@ -145,16 +140,11 @@ FROM
 			<frame>
 				<reportElement x="0" y="2" width="555" height="15" uuid="b5101a41-b355-4e37-887c-8ec43fe46818"/>
 				<textField>
-					<reportElement style="Detail" x="0" y="0" width="22" height="15" uuid="b24982df-86ee-4b31-be5d-bd5c7fa0e54a"/>
-					<textElement textAlignment="Justified"/>
-					<textFieldExpression><![CDATA[$F{productos_Id_Producto}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement style="Detail" x="27" y="0" width="91" height="15" uuid="b2b89c8e-7e19-4e2c-ab56-04bf756fc946"/>
+					<reportElement style="Detail" x="0" y="0" width="96" height="15" uuid="b2b89c8e-7e19-4e2c-ab56-04bf756fc946"/>
 					<textFieldExpression><![CDATA[$F{productos_Nombre_Producto}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Detail" x="118" y="0" width="110" height="15" uuid="c6f4acd8-1eea-4cf3-89bf-b3d250e44161"/>
+					<reportElement style="Detail" x="96" y="0" width="132" height="15" uuid="c6f4acd8-1eea-4cf3-89bf-b3d250e44161"/>
 					<textFieldExpression><![CDATA[$F{productos_Descripcion}]]></textFieldExpression>
 				</textField>
 				<textField>

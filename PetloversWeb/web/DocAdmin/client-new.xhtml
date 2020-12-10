@@ -15,19 +15,19 @@
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a class="active" href="client-new.html">
+                            <a class="active" href="client-new.xhtml">
                                 <i class="fas fa-plus fa-fw" />
                                 &nbsp; AGREGAR CLIENTE
                             </a>
                         </li>
                         <li>
-                            <a href="client-list.html">
+                            <a href="client-list.xhtml">
                                 <i class="fas fa-clipboard-list fa-fw" />
                                 &nbsp; LISTA DE CLIENTES
                             </a>
                         </li>
                         <li>
-                            <a href="client-search.html">
+                            <a href="client-search.xhtml">
                                 <i class="fas fa-search fa-fw" />
                                 &nbsp; BUSCAR CLIENTE
                             </a>
@@ -71,10 +71,11 @@
                                             <h:message for="Nit" style="color: red;" />
                                         </div>
                                     </div>
-<!--                                    <div class="col-12 col-md-6">
+<!--                                   <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <h:outputText value="Email" class="bmd-label-floating"/>
-                                            <h:inputText id="Email" value="{clientesRequest.objClientes.}" class="form-control"></h:inputText>
+                                            <h:outputText value="Nombre" class="bmd-label-floating">Nombre</h:outputText>
+                                            <h:inputText  id="Nombre" class="form-control" value="#{clientesRequest.objClientes.idUsuario}" requiredMessage="Ingrese un telefono"></h:inputText>
+                                            <h:message for="Nit" style="color: red;" />
                                         </div>
                                     </div>-->
                                 </div>

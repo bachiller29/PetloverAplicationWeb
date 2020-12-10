@@ -46,44 +46,50 @@
                                 <div class="row">
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <h:outputText value="Nit" class="bmd-label-floating">Nit proveedor</h:outputText>
-                                            <h:inputText id="Nit" required="true" requiredMessage="Ingrese un NIT valido" maxlength="10" value="#{proveedorRequest.objProveedores.nitProveedor}" class="form-control"></h:inputText>
-                                            <h:message for="Nit" style="color: red;" />
+                                            <div class="form-group">
+                                                <label for="Nit" class="bmd-label-floating">Nit</label>
+                                                <h:inputText id="Nit" value="#{proveedorRequest.objProveedores.nitProveedor}" class="form-control" maxlength="20"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <h:outputText value="Nombre" class="bmd-label-floating">Nombre proveedor</h:outputText>
-                                            <h:inputText id="NomProv" required="true" requiredMessage="Ingrese un nombre valido" maxlength="20" value="#{proveedorRequest.objProveedores.nombresProveedor}" class="form-control"></h:inputText>
-                                            <h:message for="NomProv" style="color: red;" />
+                                              <div class="form-group">
+                                                <label for="nombre" class="bmd-label-floating">Nombre</label>
+                                                <h:inputText id="nombre" value="#{proveedorRequest.objProveedores.nombresProveedor}" class="form-control" maxlength="20"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <h:outputText value="Dirección" class="bmd-label-floating">Dirección proveedor</h:outputText>
-                                            <h:inputText id="DireccionProve" required="true" requiredMessage="Ingrese una direccion valida" maxlength="40" value="#{proveedorRequest.objProveedores.direccionProveedor}" class="form-control"></h:inputText>
-                                            <h:message for="DireccionProve" style="color: red;" />
+                                              <div class="form-group">
+                                                <label for="Direccion" class="bmd-label-floating">Direccion</label>
+                                                <h:inputText id="Direccion" value="#{proveedorRequest.objProveedores.direccionProveedor}" class="form-control" maxlength="20"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="CiudadProve" style="margin-top: 30px;" class="bmd-label-floating">Ciudad</label>
-                                            <h:inputText id="CiudadProve" required="true" requiredMessage="Ingrese una ciudad valida" maxlength="15" value="#{proveedorRequest.objProveedores.ciudadProveedor}" class="form-control"></h:inputText>
-                                            <h:message for="CiudadProve" style="color: red;" />
+                                              <div class="form-group">
+                                                <label for="Ciudad" class="bmd-label-floating">Ciudad</label>
+                                                <h:inputText id="Ciudad" value="#{proveedorRequest.objProveedores.ciudadProveedor}" class="form-control" maxlength="20"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="EmailProve" style="margin-top: 30px;" class="bmd-label-floating">Email</label>
-                                            <h:inputText id="EmailProve" required="true" requiredMessage="Ingrese un correo valido" maxlength="40" value="#{proveedorRequest.objProveedores.emailProveedor}" class="form-control"></h:inputText>
-                                            <h:message for="EmailProve" style="color: red;" />
+                                              <div class="form-group">
+                                                <label for="Email" class="bmd-label-floating">Email</label>
+                                                <h:inputText id="Email" value="#{proveedorRequest.objProveedores.emailProveedor}" class="form-control" maxlength="20"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="TelefonoProve" style="margin-top: 30px;" class="bmd-label-floating">Teléfono</label>
-                                            <h:inputText id="TelefonoProve" required="true" requiredMessage="Ingrese un correo valido" maxlength="10" value="#{proveedorRequest.objProveedores.telefonoProveedor}" class="form-control"></h:inputText>
-                                            <h:message for="TelefonoProve" style="color: red;" />
+                                              <div class="form-group">
+                                                <label for="Telefono" class="bmd-label-floating">Telefono</label>
+                                                <h:inputText id="Telefono" value="#{proveedorRequest.objProveedores.telefonoProveedor}" class="form-control" maxlength="20"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

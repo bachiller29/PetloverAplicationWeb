@@ -72,11 +72,10 @@ public class ProductosRequest implements Serializable {
 
 //    @Inject
 //    UsuarioSession usuarioSession;
-
     private Productos objProductos = new Productos();
 
     private Integer idToUpdate;
-     private int idProducto;
+    private int idProducto;
     ArrayList<Productos> listaProductos = new ArrayList();
 
     private Part archivoExcel;
@@ -147,10 +146,10 @@ public class ProductosRequest implements Serializable {
         objProductos = new Productos();
         PrimeFaces.current().executeScript(mensaje);
     }
-    
-     public void cargarProducto(Productos objProductos){
+
+    public void cargarProducto(Productos objProductos) {
         this.objProductos = objProductos;
-         this.idProducto = objProductos.getIdProducto();
+        this.idProducto = objProductos.getIdProducto();
     }
 
     public void descargaReporte(String nombreReporte, String nombreUsuario) {
@@ -201,10 +200,9 @@ public class ProductosRequest implements Serializable {
                     XSSFCell hssfCell = (XSSFCell) cellTemp.get(j);
                     switch (filasContador) {
                         case 0:
-                            Productos nueva = productosFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
-                            newP.setIdTipoProducto(nueva.getIdTipoProducto());
-                            productosFacadeLocal.create(newP);
-                            filasContador = 0;
+                            TipoProductos nueva = tipoProductosFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newP.setIdTipoProducto(nueva);
+                            filasContador++;
                             break;
                         case 1:
                             newP.setNombreProducto(hssfCell.toString());
@@ -227,31 +225,29 @@ public class ProductosRequest implements Serializable {
                             filasContador++;
                             break;
                         case 6:
-                            newP.setPrecioProducto(hssfCell.getColumnIndex());
+                            newP.setPrecioProducto((int) Math.floor(hssfCell.getNumericCellValue()));
                             filasContador++;
                             break;
                         case 7:
-                            newP.setCodigoBarrasProducto(hssfCell.getColumnIndex());
+                            newP.setCodigoBarrasProducto((int) Math.floor(hssfCell.getNumericCellValue()));
                             filasContador++;
                             break;
                         case 8:
-                            Productos p = productosFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
-                            newP.setNitProveedor(p.getNitProveedor());
-                            productosFacadeLocal.create(newP);
-                            filasContador = 0;
+                            Proveedores f = proveedoresFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newP.setNitProveedor(f);
+                            filasContador++;
                             break;
                         case 9:
-                            Productos r = productosFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
-                            newP.setIdInventario(r.getIdInventario());
+                            Inventario r = inventarioFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newP.setIdInventario(r);
+                            filasContador++;
+                            break;
+                        case 10:
+                            MarcaProductos o = marcaProductosFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newP.setIdMarcaProducto(o);
                             productosFacadeLocal.create(newP);
                             filasContador = 0;
                             break;
-                        case 10:
-                            Productos o = productosFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
-                            newP.setIdMarcaProducto(o.getIdMarcaProducto());
-                            productosFacadeLocal.create(newP);
-                            filasContador = 0;
-                            break;                        
                     }
 
                 }
@@ -289,7 +285,7 @@ public class ProductosRequest implements Serializable {
                         PrimeFaces.current().executeScript("swal('Problemas ingresando el archivo' , 'error');");
                     }
                     ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-                    context.redirect("index.xhtml");
+                    context.redirect("product-list.xhtml");
                 } else {
                     mensajeSw = "swal('El archivo' , ' no es una XLSX ', 'error')";
                 }

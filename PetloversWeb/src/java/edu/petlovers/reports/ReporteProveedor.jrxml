@@ -58,7 +58,7 @@ FROM
 				</line>
 			</frame>
 			<image>
-				<reportElement x="42" y="263" width="481" height="396" uuid="5cdd9c75-9494-4be4-b853-520f571b9184"/>
+				<reportElement x="42" y="260" width="481" height="396" uuid="5cdd9c75-9494-4be4-b853-520f571b9184"/>
 				<imageExpression><![CDATA[$P{RutaImagenFondo}]]></imageExpression>
 			</image>
 		</band>
