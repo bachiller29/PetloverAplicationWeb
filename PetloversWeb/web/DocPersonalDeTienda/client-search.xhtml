@@ -90,7 +90,7 @@ and open the template in the editor.
                                             <td>#{cita.horaCita}</td>
                                             <td>#{cita.idServicio.nombreServicio}</td>
                                             <td>#{cita.estadoCita}</td>
-                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{citaView.cargarCita(cita)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{citaRequest.cargarCita(cita)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
                                             <td><h:commandLink action="#{citaView.eliminarCita(cita)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                             <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->

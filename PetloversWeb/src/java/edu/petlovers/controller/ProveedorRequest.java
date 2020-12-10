@@ -110,7 +110,7 @@ public class ProveedorRequest implements Serializable {
     public void vaciarBusqueda() {
         unicoProveedor = new ArrayList<>();
     }
-    
+/*    
     public void correoMasico() {
         try {
             for (Proveedores iProveedores : listaProveedores) {
@@ -119,7 +119,7 @@ public class ProveedorRequest implements Serializable {
         } catch (Exception e) {
         }
     }
-
+*/
     public Proveedores getObjProveedores() {
         return objProveedores;
     }

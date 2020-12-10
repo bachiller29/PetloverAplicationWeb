@@ -31,5 +31,7 @@ public interface HistoriaClinicaFacadeLocal {
     int count();
 
     public HistoriaClinica buscarHistoriaClinica(int idHistoria);
+
+    public int cantidadHistoriasC(int idCita, int idMascota, int idCliente);
     
 }

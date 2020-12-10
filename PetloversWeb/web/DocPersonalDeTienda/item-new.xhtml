@@ -45,7 +45,7 @@ and open the template in the editor.
                                         <div class="form-group">
                                             <label for="idCita" class="bmd-label-floating">Datos Cita (ID Cita // Fecha // Hora )</label>
                                             <h:selectOneMenu id="idCita" value="#{historiaClinicaView.idCita}" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItems  value="#{historiasClinicasRequest.listaIdCitas}" var="idCiti" itemValue="#{idCiti.idCitas}" itemLabel=" #{idCiti.idCitas}  //  #{idCiti.fechaCita}  //  #{idCiti.horaCita}"></f:selectItems>  
+                                                <f:selectItems  value="#{historiaClinicaView.listaIdCitas}" var="idCiti" itemValue="#{idCiti.idCitas}" itemLabel=" #{idCiti.idCitas}  //  #{idCiti.fechaCita}  //  #{idCiti.horaCita}"></f:selectItems>  
                                             </h:selectOneMenu>
                                         </div>
                                     </div>
@@ -54,47 +54,55 @@ and open the template in the editor.
                                             <td><h:commandLink action="#{historiaClinicaView.cargaCita()}" class="btn btn-warning" style="width: 100%;"><i class="far fa-user-circle"></i></h:commandLink></td>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="id_servicio" class="bmd-label-floating">Tipo Servicio</label>
+                                            <h:outputText id="id_servicio" value="#{historiaClinicaView.tipoServicio()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
                                         <div class="form-group">
                                             <label for="id_mascota" class="bmd-label-floating">Nombre Mascota</label>
                                             <h:outputText id="id_mascota" value="#{historiaClinicaView.nombreMascota()}" class="form-control"></h:outputText>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-3">
-                                        <div class="form-group">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 20px;">
                                             <label for="id_cliente" class="bmd-label-floating">Nombre Cliente</label>
                                             <h:outputText id="id_cliente" value="#{historiaClinicaView.nombrePropietario()}" class="form-control"></h:outputText>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-2">
-                                        <div class="form-group">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 20px;">
                                             <label for="pesoMas" class="bmd-label-floating">Peso de la Mascota (Kg)</label>
                                             <h:inputText id="pesoMas" value="#{historiaClinicaView.objHistoriaC.peso}" class="form-control"/>
                                             
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 20px;">
                                             <label for="enfermedad" class="bmd-label-floating">Enfermedades Previas</label>
-                                            <h:inputTextarea id="enfermedad" rows="7" value="#{historiaClinicaView.objHistoriaC.enfermedadesPrevias}" class="form-control"></h:inputTextarea>
+                                            <h:inputText id="enfermedad" value="#{historiaClinicaView.objHistoriaC.enfermedadesPrevias}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="diagnos" class="bmd-label-floating">Diagnostico y/o Valoración</label>
-                                            <h:inputTextarea id="diagnos" rows="7" value="#{historiaClinicaView.objHistoriaC.diagnostico}" class="form-control"></h:inputTextarea>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="diag" class="bmd-label-floating">Diagnostico y/o Valoración</label>
+                                            <h:inputTextarea id="diag" required="true" requiredMessage="Ingrese una valoración" rows="6" value="#{historiaClinicaView.objHistoriaC.diagnostico}" class="form-control"/>
+                                            <h:message for="diag" style="color: red;" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="tratami" class="bmd-label-floating">Tratamiento</label>
-                                            <h:inputTextarea id="tratami" rows="7" value="#{historiaClinicaView.objHistoriaC.tratamiento}" class="form-control"></h:inputTextarea>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="trata" class="bmd-label-floating">Tratamiento</label>
+                                            <h:inputTextarea id="trata" required="true" requiredMessage="Ingrese un procedimiento a seguir" rows="6" value="#{historiaClinicaView.objHistoriaC.tratamiento}" class="form-control"/>
+                                            <h:message for="trata" style="color: red;" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 20px;">
                                             <label for="cirugia" class="bmd-label-floating">Procedimiento Quirurgico</label>
-                                            <h:inputTextarea id="cirugia" rows="7" value="#{historiaClinicaView.objHistoriaC.procedimientoQuirurgico}" class="form-control"></h:inputTextarea>
+                                            <h:inputTextarea id="cirugia" rows="6" value="#{historiaClinicaView.objHistoriaC.procedimientoQuirurgico}" class="form-control"></h:inputTextarea>
                                         </div>
                                     </div>
                                 </div>

@@ -40,33 +40,37 @@ and open the template in the editor.
                                 <tr class="text-center roboto-medium">
                                     <th>Id HC</th>
                                     <th>Datos Cita</th>
-                                    <th>Nombre Mascota</th>
-                                    <th>Nombre Cliente</th>
+                                    <th>Servicio</th>
+                                    <th>Mascota</th>
+                                    <th>Propietario</th>
                                     <th>Peso</th>
                                     <th>Enfermedades P.</th>
                                     <th>Diagnostico</th>
                                     <th>Tratamiento</th>
                                     <th>P. Quirurgico</th>
-                                    <th>ACTUALIZAR</th>
-                                    <th>ELIMINAR</th>
+                                    <th>PRINT</th>
+                                    <th>UPDATE</th>
+                                    <th>DELETE</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <h:form>
-                                    <c:forEach items="#{historiasClinicasRequest.listaHistoriaC}" var="hisCli">
+                                    <c:forEach items="#{historiaClinicaRequest.listaHistoriaC}" var="hisCli">
                                         <tr class="text-center">
                                             <td>#{hisCli.idHistoriaClinica}</td>
                                             <td>#{hisCli.idCitas.idCitas} - #{hisCli.idCitas.fechaCita} - #{hisCli.idCitas.horaCita}</td>
+                                            <td>#{hisCli.idCitas.idServicio.nombreServicio}</td>
                                             <td>#{hisCli.idCitas.idMascota.nombresMascota}</td>
-                                            <td>#{hisCli.idCitas.idMascota.idCliente.idUsuario.nombres} - #{hisCli.idCitas.idMascota.idCliente.idUsuario.apellidos}</td>
+                                            <td>#{hisCli.idCitas.idMascota.idCliente.idUsuario.nombres} #{hisCli.idCitas.idMascota.idCliente.idUsuario.apellidos}</td>
                                             <td>#{hisCli.peso}</td>
                                             <td>#{hisCli.enfermedadesPrevias}</td>
                                             <td>#{hisCli.diagnostico}</td>
                                             <td>#{hisCli.tratamiento}</td>
                                             <td>#{hisCli.procedimientoQuirurgico}</td>
-                                            <td><h:commandLink action="item-update.xhtml" actionListener="#{historiasClinicasRequest.cargarHistoriaC(hisCli)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{historiaClinicaView.descargaHistoriaClinica(hisCli.idHistoriaClinica)}" class="btn btn-secondary"><i class="far fa-file-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="item-update.xhtml" actionListener="#{historiaClinicaRequest.cargarHistoriaC(hisCli)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <!--    <a href="item-update.html" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
-                                            <td><h:commandLink action="#{historiasClinicasRequest.eliminarHistoriaC(hisCli)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{historiaClinicaRequest.eliminarHistoriaC(hisCli)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                             <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>   -->
                                         </tr>
                                     </c:forEach>

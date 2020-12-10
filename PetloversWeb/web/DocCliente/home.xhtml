@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="./docClienteTemplate.xhtml">
+            <ui:define name="head">
+                <i class="fab fa-dashcube fa-fw"></i> &nbsp; SERVICIOS
+            </ui:define>
+            <ui:define name="content">
+                <div class="full-box tile-container">
+                    <a href="client-update.xhtml" class="tile"> 
+                        <div class="tile-tittle">
+                            Mi Perfil
+                        </div>
+                        <div class="tile-icon">
+                            <i class="fas fa-users fa-fw"></i>
+                            <p>
+                                1 Modificación
+                            </p>
+                        </div>
+                    </a>
+                    <a href="item-list.xhtml" class="tile"> 
+                        <div class="tile-tittle">
+                            Mis Mascotas
+                        </div>
+                        <div class="tile-icon">
+                            <i class="fas fa-user-secret fa-fw"></i>
+                            <p>
+                                1 Registrado
+                            </p>
+                        </div>
+                    </a>
+                    <a href="#" class="tile"> 
+                        <div class="tile-tittle">
+                            Mis Pedidos
+                        </div>
+                        <div class="tile-icon">
+                            <i class="fas fa-file-invoice-dollar fa-fw"></i>
+                            <p>
+                                3 Registrados
+                            </p>
+                        </div>
+                    </a>
+                    <a href="item-list.html" class="tile"> 
+                        <div class="tile-tittle">
+                            Citas Reservadas
+                        </div>
+                        <div class="tile-icon">
+                            <i class="fas fa-pallet fa-fw"></i>
+                            <p>
+                                1 Registrado
+                            </p>
+                        </div>
+                    </a>
+                    <a href="#" class="tile"> 
+                        <div class="tile-tittle">
+                            Pet Lovers Social
+                        </div>
+                        <div class="tile-icon">
+                            <i class="fas fa-store-alt fa-fw"></i>
+                            <p>
+                                2 Encontrados
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

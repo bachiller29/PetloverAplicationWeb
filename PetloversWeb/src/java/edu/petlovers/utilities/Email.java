@@ -101,10 +101,10 @@ public class Email {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
-            message.setSubject("Recordatorio Claves ficha - 1966781 A");
+            message.setSubject("Recordatorio Claves PetLovers");
 
             message.setContent(
-                    "<center><img src='https://www.batiburrillo.net/wp-content/uploads/2019/06/SterJo-KeyFinder-para-recuperar-claves-perdidas.jpg' title='Banco Pedagogico'></center>"
+                    "<center><img src='https://www.batiburrillo.net/wp-content/uploads/2019/06/SterJo-KeyFinder-para-recuperar-claves-perdidas.jpg' title='Recordatorio Claves Petlovers'></center>"
                     + "<h3> Recordatorio Claves. "
                     + Nombres
                     + "</h3>"
@@ -112,7 +112,7 @@ public class Email {
                     + "<h4> Correo Usuario : "
                     + emailUsu
                     + "</h4>"
-                    + "<h4> Clave Usuario : "
+                    + "<h4> Contraseña Usuario : "
                     + contrasena
                     + " </h4>", "text/html");
 
@@ -127,7 +127,7 @@ public class Email {
 
     }
 
-    public static void sendBienvenido(String para, String Nombres, String nombUsu, String clave) {
+    public static void sendBienvenido(String para, String Nombres, String Email, String Contrasena) {
         final String user = "stivencruz09291998@gmail.com";//cambiará en consecuencia al servidor utilizado
         final String pass = "123hola123";
 
@@ -152,7 +152,7 @@ public class Email {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
-            message.setSubject("Bienvenido Banco-Pedagogico");
+            message.setSubject("Bienvenido a Pet Lovers");
 
             message.setContent(
                     "<center><img src='https://elsignificadode.net/wp-content/uploads/2017/10/BIENVENIDO.jpg' title='Bienvenidos'></center>"
@@ -161,10 +161,10 @@ public class Email {
                     + "</h3>"
                     + "Datos de Ingreso: "
                     + "<h4> Correo Usuario : "
-                    + nombUsu
+                    + Email
                     + "</h4>"
                     + "<h4> Clave usuario : "
-                    + clave
+                    + Contrasena
                     + " </h4>", "text/html");
 
             //3rd paso)send message
@@ -178,10 +178,10 @@ public class Email {
 
     }
 
-    public static void send(String para, String sujeto, String mensaje) {
+    public static void send(String para, String Nombres, String Email, String Contrasena) {
 
-        final String user = "";//cambiará en consecuencia al servidor utilizado
-        final String pass = "";
+        final String user = "stivencruz09291998@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "123hola123";
 
 //1st paso) Obtener el objeto de sesión
         Properties props = new Properties();
@@ -204,8 +204,21 @@ public class Email {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
-            message.setSubject(sujeto);
-            message.setContent(mensaje, "text/html;");
+            message.setSubject("Ultimos Descuentos Pet Lovers");
+
+            message.setContent(
+                    "<center><img src='https://www.kanu.pet/arquivos/Banner-10-off-Kanu%20mobile.jpg?v=637189372128400000' title='Descuentos'></center>"
+                    + "<h3> Bienvenido. "
+                    + Nombres
+                    + "</h3>"
+                    + "Datos de Ingreso: "
+                    + "<h4> Correo Usuario : "
+                    + Email
+                    + "</h4>"
+                    + "<h4> Clave usuario : "
+                    + Contrasena
+                    + " </h4>", "text/html");
+            
             //3rd paso)send message
             Transport.send(message);
 

@@ -30,6 +30,18 @@ public class HistoriaClinicaFacade extends AbstractFacade<HistoriaClinica> imple
         super(HistoriaClinica.class);
     }
     
+    @Override
+    public int cantidadHistoriasC(int idCita, int idMascota, int idCliente) {
+        try {
+            Query q = em.createNativeQuery("SELECT COUNT(*) FROM historia_clinica WHERE Id_Citas = " + idCita + " AND Id_Mascota = " + idMascota + " AND Id_Cliente = " + idCliente);
+            int count = ((Number) q.getSingleResult()).intValue();
+            return count;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    @Override
     public HistoriaClinica buscarHistoriaClinica(int idHistoria) {
         try {
             Query q = em.createQuery("SELECT hc FROM HistoriaClinica hc WHERE hc.idHistoriaClinica = :idHistoria");

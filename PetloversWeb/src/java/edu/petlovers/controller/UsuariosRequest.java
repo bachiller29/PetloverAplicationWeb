@@ -9,6 +9,7 @@ import edu.petlovers.entity.TipoRol;
 import edu.petlovers.entity.Usuarios;
 import edu.petlovers.local.TipoRolFacadeLocal;
 import edu.petlovers.local.UsuariosFacadeLocal;
+import edu.petlovers.utilities.Email;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -113,6 +114,30 @@ public class UsuariosRequest implements Serializable{
     
     public void vaciarBusqueda() {
         unicoUsuario = new ArrayList<>();
+    }
+    
+    public void correoMasivo() {
+        try {
+            for (Usuarios lUsuario : listaUsuarios) {
+                Email.sendBienvenido(lUsuario.getEmail(),
+                        lUsuario.getNombres() + " " + lUsuario.getApellidos(),
+                        lUsuario.getEmail(), lUsuario.getContrasena());
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+    
+    public void correoMasivoDos() {
+        try {
+            for (Usuarios lUsuario : listaUsuarios) {
+                Email.send(lUsuario.getEmail(),
+                        lUsuario.getNombres() + " " + lUsuario.getApellidos(),
+                        lUsuario.getEmail(), lUsuario.getContrasena());
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
     
     public Usuarios getObjUsuario() {

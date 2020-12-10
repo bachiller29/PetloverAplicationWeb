@@ -100,6 +100,7 @@ public class CitaView implements Serializable{
 //                objCita.setIdMascota(mascotasFacadeLocal.find(objCita.getIdMascota().getIdMascota()));
                 objCita.setIdServicio(serviciosFacadeLocal.find(objCita.getIdServicio().getIdServicio()));
                 citasFacadeLocal.create(objCita);
+                listaCitas.add(objCita);
                 mensaje = "swal('La cita' , ' Se ha registrado exitosamente ', 'success')";
             } else {
                 mensaje = "swal('Excede numero de citas' , ' por el dia " + objCita.getFechaCita() + " ', 'error')";

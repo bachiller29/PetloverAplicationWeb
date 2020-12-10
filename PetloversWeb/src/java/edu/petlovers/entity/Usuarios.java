@@ -63,7 +63,7 @@ public class Usuarios implements Serializable {
     @Size(max = 50)
     @Column(name = "Email")
     private String email;
-    @Size(max = 15)
+    @Size(max = 30)
     @Column(name = "Contrasena")
     private String contrasena;
     @Column(name = "FechaRegistro")

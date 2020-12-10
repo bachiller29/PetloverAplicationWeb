@@ -57,7 +57,7 @@ and open the template in the editor.
                             </thead>
                             <tbody>
                                 <h:form>
-                                    <c:forEach items="#{citaView.listaCitas}" var="obl">
+                                    <c:forEach items="#{citaRequest.listaCitas}" var="obl">
                                         <tr class="text-center">
                                             <td>#{obl.idCitas}</td>
                                             <td>#{obl.idMascota.idCliente.idUsuario.nombres} #{obl.idMascota.idCliente.idUsuario.apellidos}</td>
@@ -66,9 +66,9 @@ and open the template in the editor.
                                             <td>#{obl.horaCita}</td>
                                             <td>#{obl.idServicio.nombreServicio}</td>
                                             <td>#{obl.estadoCita}</td>
-                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{citaView.cargarCita(obl)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{citaRequest.cargarCita(obl)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <!--    <a href="client-update.xhtml" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
-                                            <td><h:commandLink action="#{citaView.eliminarCita(obl)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{citaRequest.eliminarCita(obl)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                             <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>       -->
                                         </tr>
                                     </c:forEach>

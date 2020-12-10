@@ -19,8 +19,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 import org.primefaces.PrimeFaces;
 
 /**
@@ -29,53 +27,50 @@ import org.primefaces.PrimeFaces;
  */
 @ManagedBean
 @RequestScoped
-@Named(value = "historiasClinicasRequest")
-public class HistoriasClinicasRequest implements Serializable{
-    
+public class HistoriaClinicaRequest implements Serializable{
+
     @EJB
     HistoriaClinicaFacadeLocal historiaClinicaFacadeLocal;
     @EJB
     CitasFacadeLocal citasFacadeLocal;
-//    @EJB
-//    MascotasFacadeLocal mascotasFacadeLocal;
-//    @EJB
- //   ClientesFacadeLocal clientesFacadeLocal;
-    
-//    @Inject
-//    HistoriaClinicaView historiaClinicaView;
+    @EJB
+    MascotasFacadeLocal mascotasFacadeLocal;
+    @EJB
+    ClientesFacadeLocal clientesFacadeLocal;
     
     private HistoriaClinica objHistoriaC = new HistoriaClinica();
     
     private ArrayList<HistoriaClinica> listaHistoriaC = new ArrayList<>();
-//    private ArrayList<Mascotas> listaIdMascotas = new ArrayList<>();
     private ArrayList<Citas> listaIdCitas = new ArrayList<>();
+    private ArrayList<Mascotas> listaIdMascotas = new ArrayList<>();
+    private ArrayList<Clientes> listaIdClientes = new ArrayList<>();
+
     
-    private int idHistoria;
-    private ArrayList<HistoriaClinica> unicaHistoriaC = new ArrayList<>();
-    
-    public HistoriasClinicasRequest() {
+    public HistoriaClinicaRequest() {
     }
 
     @PostConstruct
-    public void postHistoriaC(){
+    public void postHistoriaC() {
         listaHistoriaC.addAll(historiaClinicaFacadeLocal.findAll());
         listaIdCitas.addAll(citasFacadeLocal.findAll());
-//        listaIdMascotas.addAll(mascotasFacadeLocal.findAll());
+        listaIdMascotas.addAll(mascotasFacadeLocal.findAll());
+        listaIdClientes.addAll(clientesFacadeLocal.findAll());
         objHistoriaC.setIdCitas(new Citas());
         objHistoriaC.setIdMascota(new Mascotas());
         objHistoriaC.setIdCliente(new Clientes());
     }
-    
-    
-    
-    public void cargarHistoriaC(HistoriaClinica objCargar){
+
+    public void cargarHistoriaC(HistoriaClinica objCargar) {
         this.objHistoriaC = objCargar;
     }
-    
+
     public void actualizarHistoriaC() {
         String mensaje = "";
-        
+
         try {
+            objHistoriaC.setIdCitas(citasFacadeLocal.find(objHistoriaC.getIdCitas().getIdCitas()));
+            objHistoriaC.setIdMascota(mascotasFacadeLocal.find(objHistoriaC.getIdMascota().getIdMascota()));
+            objHistoriaC.setIdCliente(clientesFacadeLocal.find(objHistoriaC.getIdCliente().getIdCliente()));
             historiaClinicaFacadeLocal.edit(objHistoriaC);
             listaHistoriaC.clear();
             listaHistoriaC.addAll(historiaClinicaFacadeLocal.findAll());
@@ -86,7 +81,7 @@ public class HistoriasClinicasRequest implements Serializable{
         objHistoriaC = new HistoriaClinica();
         PrimeFaces.current().executeScript(mensaje);
     }
-    
+
     public void eliminarHistoriaC(HistoriaClinica objEliminar) {
         String mensaje = "";
         try {
@@ -98,27 +93,7 @@ public class HistoriasClinicasRequest implements Serializable{
         }
         PrimeFaces.current().executeScript(mensaje);
     }
-    
-    public void buscaHistoriaC() {
-        HistoriaClinica histCli = new HistoriaClinica();
-        String mensaje = "";
-        try {
-            histCli = historiaClinicaFacadeLocal.buscarHistoriaClinica(idHistoria);
-            if(histCli.getIdCitas() == null) {
-                mensaje = "swal('La historia clinica' , ' No se encuentra registrada ', 'error')";
-            } else {
-                unicaHistoriaC.add(histCli);
-                mensaje = "swal('Historia clinica' , ' encontrada exitosamente ', 'success')";
-            }
-        } catch (Exception e) {
-            mensaje = "swal('La historia clinica' , ' No se encuentra registrada ', 'error')";
-        }
-        PrimeFaces.current().executeScript(mensaje);
-    }
-    
-    public void vaciarBusqueda() {
-        unicaHistoriaC = new ArrayList<>();
-    }
+
     
     public HistoriaClinica getObjHistoriaC() {
         return objHistoriaC;
@@ -135,15 +110,7 @@ public class HistoriasClinicasRequest implements Serializable{
     public void setListaHistoriaC(ArrayList<HistoriaClinica> listaHistoriaC) {
         this.listaHistoriaC = listaHistoriaC;
     }
-/*
-    public ArrayList<Mascotas> getListaIdMascotas() {
-        return listaIdMascotas;
-    }
 
-    public void setListaIdMascotas(ArrayList<Mascotas> listaIdMascotas) {
-        this.listaIdMascotas = listaIdMascotas;
-    }
-*/
     public ArrayList<Citas> getListaIdCitas() {
         return listaIdCitas;
     }
@@ -152,20 +119,20 @@ public class HistoriasClinicasRequest implements Serializable{
         this.listaIdCitas = listaIdCitas;
     }
 
-    public int getIdHistoria() {
-        return idHistoria;
+    public ArrayList<Mascotas> getListaIdMascotas() {
+        return listaIdMascotas;
     }
 
-    public void setIdHistoria(int idHistoria) {
-        this.idHistoria = idHistoria;
+    public void setListaIdMascotas(ArrayList<Mascotas> listaIdMascotas) {
+        this.listaIdMascotas = listaIdMascotas;
     }
 
-    public ArrayList<HistoriaClinica> getUnicaHistoriaC() {
-        return unicaHistoriaC;
+    public ArrayList<Clientes> getListaIdClientes() {
+        return listaIdClientes;
     }
 
-    public void setUnicaHistoriaC(ArrayList<HistoriaClinica> unicaHistoriaC) {
-        this.unicaHistoriaC = unicaHistoriaC;
+    public void setListaIdClientes(ArrayList<Clientes> listaIdClientes) {
+        this.listaIdClientes = listaIdClientes;
     }
     
 }

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="./docClienteTemplate.xhtml">
+            <ui:define name="head">
+                <i class="fas fa-plus fa-fw"></i> &nbsp; INFORMACIÓN ADICIONAL DE CONTACTO
+            </ui:define>
+            <ui:define name="content">
+                <div class="container-fluid">
+                    <ul class="full-box list-unstyled page-nav-tabs">
+                        <li>
+                            <a href="client-update.xhtml"><i class="fas fa-plus fa-fw"></i> 
+                                &nbsp; ACTUALIZAR MIS DATOS</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--  Content here -->
+                <div class="container-fluid">
+                    <h:form class="form-neon">
+                        <fieldset>
+                            <legend>
+                                <i class="fas fa-user"></i> &nbsp; Información de contacto
+                            </legend>
+                            <div class="container-fluid" style="margin-top: 40px;">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="idUsua" class="bmd-label-floating">Nombre Usuario</label>
+                                            <h:selectOneMenu id="idUsua" value="#{clientesRequest.objClientes.idUsuario.idUsuario}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{usuarioSession.usuariologeado}" var="idUsu" itemValue="#{idUsu.idUsuario}" itemLabel="#{idUsu.nombres} #{idUsu.apellidos}"></f:selectItems>
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label  value="Direccion" class="bmd-label-floating">Dirección</label>
+                                            <h:inputText id="Direccion" value="#{clientesRequest.objClientes.direccion}" required="true" requiredMessage="Ingrese una direccion" class="form-control"></h:inputText>
+                                            <h:message for="Direccion" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 40px;">
+                                            <label  value="Ciudad" class="bmd-label-floating">Ciudad</label>
+                                            <h:inputText id="Ciudad" required="true" requiredMessage="Ingrese una ciudad" value="#{clientesRequest.objClientes.ciudad}" class="form-control"></h:inputText>
+                                            <h:message for="Ciudad" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 40px;">
+                                            <label value="Barrio" class="bmd-label-floating">Barrio</label>
+                                            <h:inputText id="Barrio" value="#{clientesRequest.objClientes.barrio}" class="form-control"></h:inputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 40px;">
+                                            <label value="Telefono" class="bmd-label-floating">Teléfono</label>
+                                            <h:inputText id="Telefono" class="form-control" value="#{clientesRequest.objClientes.telefono}" required="true" requiredMessage="Ingrese un telefono"></h:inputText>
+                                            <h:message for="Telefono" style="color: red;" />
+                                        </div>
+                                    </div>                                  
+
+                                </div>
+                            </div>
+                        </fieldset>
+                        <br /><br /><br />
+                        <p class="text-center" style="margin-top: 40px;">
+                            <button type="reset" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
+                            &nbsp; &nbsp; 
+                            <!--    <button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>    -->
+                            <h:commandButton action="#{clientesRequest.registrarCliente()}" class="btn btn-raised btn-info btn-lg" value="Guardar"></h:commandButton>
+                        </p>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

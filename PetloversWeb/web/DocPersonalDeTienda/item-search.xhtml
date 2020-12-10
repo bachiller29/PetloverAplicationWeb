@@ -40,13 +40,13 @@ and open the template in the editor.
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="id_historia" class="bmd-label-floating">Ingresa el ID de la historia clinica a buscar?</label> 
-                                        <h:inputText required="true" requiredMessage="Ingrese un ID valido" value="#{historiasClinicasRequest.idHistoria}" class="form-control" id="id_historia" maxlength="5" />
+                                        <h:inputText required="true" requiredMessage="Ingrese un ID valido" value="#{historiaClinicaView.idHistoria}" class="form-control" id="id_historia" maxlength="5" />
                                         <h:message for="id_historia" style="color: red;" />
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <p class="text-center" style="margin-top: 40px;">
-                                        <h:commandButton action="#{historiasClinicasRequest.buscaHistoriaC()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
+                                        <h:commandButton action="#{historiaClinicaView.buscaHistoriaC()}" class="btn btn-raised btn-info btn-lg" value="Buscar"></h:commandButton>
                                         <!--    <button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>  -->
                                     </p>
                                 </div>
@@ -68,33 +68,39 @@ and open the template in the editor.
                         <table class="table table-dark table-sm">
                             <thead>
                                 <tr class="text-center roboto-medium">
-                                    <th>Id Historia Clinica</th>
-                                    <th>Id Mascota</th>
-                                    <th>Id Cita</th>
+                                    <th>Id HC</th>
+                                    <th>Datos Cita</th>
+                                    <th>Servicio</th>
+                                    <th>Mascota</th>
+                                    <th>Propietario</th>
                                     <th>Peso</th>
                                     <th>Enfermedades P.</th>
                                     <th>Diagnostico</th>
                                     <th>Tratamiento</th>
                                     <th>P. Quirurgico</th>
-                                    <th>ACTUALIZAR</th>
-                                    <th>ELIMINAR</th>
+                                    <th>PRINT</th>
+                                    <th>UPDATE</th>
+                                    <th>DELETE</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <h:form>
-                                    <c:forEach items="#{historiasClinicasRequest.unicaHistoriaC}" var="his">
+                                    <c:forEach items="#{historiaClinicaView.unicaHistoriaC}" var="his">
                                         <tr class="text-center">
                                             <td>#{his.idHistoriaClinica}</td>
-                                            <td>#{his.idMascota.idMascota}</td>
-                                            <td>#{his.idCitas.idCitas}</td>
+                                            <td>#{his.idCitas.idCitas} - #{his.idCitas.fechaCita} - #{his.idCitas.horaCita}</td>
+                                            <td>#{his.idCitas.idServicio.nombreServicio}</td>
+                                            <td>#{his.idCitas.idMascota.nombresMascota}</td>
+                                            <td>#{his.idCitas.idMascota.idCliente.idUsuario.nombres} #{hisCli.idCitas.idMascota.idCliente.idUsuario.apellidos}</td>
                                             <td>#{his.peso}</td>
                                             <td>#{his.enfermedadesPrevias}</td>
                                             <td>#{his.diagnostico}</td>
                                             <td>#{his.tratamiento}</td>
                                             <td>#{his.procedimientoQuirurgico}</td>
-                                            <td><h:commandLink action="item-update.xhtml" actionListener="#{historiasClinicasRequest.cargarHistoriaC(his)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{historiaClinicaView.descargaHistoriaClinica(hisCli.idHistoriaClinica)}" class="btn btn-secondary"><i class="far fa-file-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="item-update.xhtml" actionListener="#{historiaClinicaRequest.cargarHistoriaC(his)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <!--    <a href="item-update.html" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
-                                            <td><h:commandLink action="#{historiasClinicasRequest.eliminarHistoriaC(his)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{historiaClinicaView.eliminarHistoriaC(his)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                             <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>   -->
                                         </tr>
                                     </c:forEach>
@@ -105,7 +111,7 @@ and open the template in the editor.
                     <div class="col-12">
                         <h:form>
                             <p class="text-center" style="margin-top: 20px;">
-                                <h:commandButton action="#{historiasClinicasRequest.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>  
+                                <h:commandButton action="#{historiaClinicaView.vaciarBusqueda()}" class="btn btn-raised btn-danger btn-lg" value="Eliminar Busqueda"></h:commandButton>  
                             <!--        <button type="reset" class="btn btn-raised btn-danger"><i class="far fa-trash-alt"></i> &nbsp; ELIMINAR BUSQUEDA</button>  -->
                             </p>
                         </h:form>
