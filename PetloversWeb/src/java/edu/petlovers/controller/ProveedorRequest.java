@@ -7,6 +7,7 @@ package edu.petlovers.controller;
 
 import edu.petlovers.entity.Proveedores;
 import edu.petlovers.local.ProveedoresFacadeLocal;
+import edu.petlovers.utilities.Email;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -125,7 +126,7 @@ public class ProveedorRequest implements Serializable {
     public void vaciarBusqueda() {
         unicoProveedor = new ArrayList<>();
     }
-    
+
 
     public void descargaReporte(String nombreReporte, String nombreUsuario) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
