@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="34170610-ab3c-4db5-908b-4bc2fc84f072">
+	<property name="ireport.zoom" value="0.9090909090909093"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="RutaImagenFondo" class="java.lang.String"/>
+	<parameter name="UsuarioReporte" class="java.lang.String"/>
+	<parameter name="RutaLogo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     inventario.`Id_Inventario` AS inventario_Id_Inventario,
+     inventario.`Cantidad_Productos` AS inventario_Cantidad_Productos,
+     inventario.`Id_Admin` AS inventario_Id_Admin,
+     inventario.`Id_Salida_Productos` AS inventario_Id_Salida_Productos,
+     inventario.`Id_Entrada_Productos` AS inventario_Id_Entrada_Productos
+FROM
+     `inventario` inventario]]>
+	</queryString>
+	<field name="inventario_Id_Inventario" class="java.lang.Integer"/>
+	<field name="inventario_Cantidad_Productos" class="java.lang.Integer"/>
+	<field name="inventario_Id_Admin" class="java.lang.Integer"/>
+	<field name="inventario_Id_Salida_Productos" class="java.lang.Integer"/>
+	<field name="inventario_Id_Entrada_Productos" class="java.lang.Integer"/>
+	<background>
+		<band height="822" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="722" width="105" height="100" forecolor="#666666" backcolor="#666666" uuid="f75bfef6-d14b-4410-b26a-b3ea5f15c927"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textField isBlankWhenNull="true">
+					<reportElement style="Column header" x="0" y="0" width="104" height="73" forecolor="#000000" uuid="7be58fd7-f095-410c-9b31-d9803e6c4683"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#000000" uuid="cfddd78b-5d02-4c7d-8baa-d3bfd97d718f"/>
+					<box leftPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center">
+						<font size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" uuid="d3ae5c74-c6b2-412e-9317-459a761b4e96"/>
+				</line>
+			</frame>
+			<image>
+				<reportElement x="0" y="192" width="507" height="294" uuid="d9ea158a-4b41-40a5-8641-cff948672560"/>
+				<imageExpression><![CDATA[$P{RutaImagenFondo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="152" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="555" height="115" uuid="c2d72156-710b-47e1-81f4-431500698456"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[INVENTARIO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="231" height="115" uuid="22039d61-f658-4b43-bad1-8b08a0e2187a"/>
+				<imageExpression><![CDATA[$P{RutaLogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Transparent" x="0" y="115" width="555" height="37" forecolor="#666666" backcolor="#FFFFFF" uuid="05a582d8-b040-4113-aec4-3dfac4506643"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="20" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reporte generado por " + $P{UsuarioReporte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="5" width="555" height="20" backcolor="#666666" uuid="caa1c898-67f4-4fee-8f47-206fec3c4ffe"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="91" height="15" uuid="a2d5dcc0-51b2-45c2-b058-93e9bfb2e271"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Id]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="91" y="0" width="91" height="15" uuid="6f3a57c3-32a4-43e5-94d8-bef580b296af"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Cantidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="182" y="0" width="103" height="15" uuid="87b7ef4f-4e32-40d8-b193-fc008b5455b3"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Id administrador]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="285" y="0" width="79" height="15" uuid="df5aeb50-0415-4c48-8b8c-8b8aea6bb210"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[N. salida producto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="364" y="0" width="91" height="15" uuid="47ea4adb-dec8-4b9f-a5cd-952af8c621ea"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[N. entrada producto]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="1" width="555" height="15" uuid="7a420e0c-5182-4c5a-b208-d2fcb3ec0e89"/>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="91" height="15" uuid="15572c57-2269-4ba0-98f6-1054f61d98b7"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{inventario_Id_Inventario}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="91" y="0" width="91" height="15" uuid="03a8ae72-3942-4ff2-856b-040f9fe3e52a"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{inventario_Cantidad_Productos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="182" y="0" width="103" height="15" uuid="21007320-2aa6-4297-bd09-fd0fa6c91278"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{inventario_Id_Admin}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="285" y="0" width="79" height="15" uuid="55f6ccd7-cee4-4c1c-b805-a56c522834ba"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{inventario_Id_Salida_Productos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="364" y="0" width="91" height="15" uuid="cd33f34a-3e46-489d-9b39-bb4b63820162"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{inventario_Id_Entrada_Productos}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="16" width="555" height="1" uuid="ee1d3319-a65d-4ee5-81dd-5bf208af2849"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="100" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="424" y="0" width="131" height="20" forecolor="#000000" uuid="7abaed1f-5b33-44b7-aae0-e55de7a8dcad"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="96" y="0" width="267" height="20" forecolor="#000000" uuid="25e5080c-88a0-4452-858f-a26b2c8a9347"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SENA - ADSI]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

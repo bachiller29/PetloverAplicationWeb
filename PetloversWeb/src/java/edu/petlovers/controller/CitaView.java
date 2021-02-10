@@ -203,9 +203,7 @@ public class CitaView implements Serializable{
             System.out.println("edu.petlovers.controller.CitaView.descargaReporte() " + q.getMessage());
         }
 
-    }
-
-    
+    }  
     
     public int getIdMascota() {
         return idMascota;

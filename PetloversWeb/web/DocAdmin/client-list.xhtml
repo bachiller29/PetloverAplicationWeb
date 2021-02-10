@@ -32,6 +32,13 @@
                                 &nbsp; BUSCAR CLIENTE
                             </a>
                         </li>
+                         <h:form>
+                            <li>
+                                <h:commandLink action="#{clientesRequest.descargaReporte('ReporteCliente','Wollman Bachiller')}">
+                                    <i class="fas fa-download fa-fw"></i> &nbsp; Reporte
+                                </h:commandLink>
+                            </li>
+                        </h:form>
                     </ul>
                 </div>
                 <div class="container-fluid">
@@ -59,7 +66,7 @@
                                             <td>#{obCli.barrio}</td>
                                             <td>#{obCli.telefono}</td>
                                             <td>#{obCli.idUsuario.nombres}</td> 
-                                            <td><h:commandLink action="item-update.xhtml" actionListener="#{clientesRequest.cargarCliente(obCli)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="client-update.xhtml" actionListener="#{clientesRequest.cargarCliente(obCli)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <td><h:commandLink action="#{clientesRequest.removerCliente(obCli)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                         </tr>
                                     </c:forEach>

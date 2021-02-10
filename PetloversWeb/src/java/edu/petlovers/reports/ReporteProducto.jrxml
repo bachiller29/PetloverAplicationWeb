@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="a8084889-ea3a-4fe7-b758-b7eb6c631a10">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="85"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="RutaImagenFondo" class="java.lang.String"/>
+	<parameter name="UsuarioReporte" class="java.lang.String"/>
+	<parameter name="RutaLogo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     productos.`Id_Producto` AS productos_Id_Producto,
+     productos.`Nombre_Producto` AS productos_Nombre_Producto,
+     productos.`Descripcion` AS productos_Descripcion,
+     productos.`Tamano_Producto` AS productos_Tamano_Producto,
+     productos.`Color_Producto` AS productos_Color_Producto,
+     productos.`Sabor_Producto` AS productos_Sabor_Producto,
+     productos.`Precio_Producto` AS productos_Precio_Producto,
+     productos.`Codigo_Barras_Producto` AS productos_Codigo_Barras_Producto
+FROM
+     `productos` productos]]>
+	</queryString>
+	<field name="productos_Id_Producto" class="java.lang.Integer"/>
+	<field name="productos_Nombre_Producto" class="java.lang.String"/>
+	<field name="productos_Descripcion" class="java.lang.String"/>
+	<field name="productos_Tamano_Producto" class="java.lang.String"/>
+	<field name="productos_Color_Producto" class="java.lang.String"/>
+	<field name="productos_Sabor_Producto" class="java.lang.String"/>
+	<field name="productos_Precio_Producto" class="java.lang.Integer"/>
+	<field name="productos_Codigo_Barras_Producto" class="java.lang.Integer"/>
+	<background>
+		<band height="822" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="722" width="105" height="100" forecolor="#666666" backcolor="#666666" uuid="f665dbd6-df5a-448c-8e1c-666ccccb949a"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textField isBlankWhenNull="true">
+					<reportElement style="Column header" x="0" y="0" width="104" height="73" forecolor="#000000" uuid="7eedb1e8-1cef-410b-92c4-867c5a3b6bec"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#000000" uuid="5c0de436-32af-40e8-96fd-523b6ec03181"/>
+					<box leftPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center">
+						<font size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" uuid="cd667349-327a-41e2-8d76-ed2f891c4914"/>
+				</line>
+			</frame>
+			<image>
+				<reportElement x="0" y="282" width="519" height="308" uuid="13a3ec93-4131-4bae-9615-7423b1e0d2de"/>
+				<imageExpression><![CDATA[$P{RutaImagenFondo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="152" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="555" height="115" uuid="d5877555-cd96-42d0-a6ce-8553a43deb57"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[PRODUCTOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="0" y="115" width="555" height="37" forecolor="#666666" backcolor="#FFFFFF" uuid="24c8200e-1fa0-42a6-9ad4-7f3dc1b83511"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="20" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reporte generado por " + $P{UsuarioReporte}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="216" height="115" uuid="0fcb52f4-08aa-4cde-bda4-9dfd4e47ebbf"/>
+				<imageExpression><![CDATA[$P{RutaLogo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#666666" uuid="c0984440-b546-457c-aa16-b4f5f5846d92"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="96" height="15" uuid="9e81f7b7-54d7-4ca8-8d3c-495e0b64dfb3"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="96" y="0" width="132" height="15" uuid="1cc550b7-272b-4349-a9a6-583592636552"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Descripcion]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="228" y="0" width="52" height="15" uuid="772093c9-f4b6-4033-9f87-755f146578e3"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Tamaño]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="295" y="0" width="45" height="15" uuid="b57b5c3c-e67e-4ee5-8d71-9517461ab107"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Color]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="340" y="0" width="73" height="15" uuid="8616eec5-8a09-461c-801b-69aa23977697"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Sabor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="413" y="0" width="57" height="15" uuid="580a8d27-4e5f-432a-9579-2e3d9244273e"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Precio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="470" y="0" width="85" height="15" uuid="b170bb05-49f8-4b84-b6b9-f37c5b9116fb"/>
+					<textElement textAlignment="Justified"/>
+					<text><![CDATA[Codigo barras]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="2" width="555" height="15" uuid="b5101a41-b355-4e37-887c-8ec43fe46818"/>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="96" height="15" uuid="b2b89c8e-7e19-4e2c-ab56-04bf756fc946"/>
+					<textFieldExpression><![CDATA[$F{productos_Nombre_Producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="96" y="0" width="132" height="15" uuid="c6f4acd8-1eea-4cf3-89bf-b3d250e44161"/>
+					<textFieldExpression><![CDATA[$F{productos_Descripcion}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="295" y="0" width="45" height="15" uuid="01fe7cdd-56cf-465d-8df8-28a90702a61d"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{productos_Color_Producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="413" y="0" width="57" height="15" uuid="fd6cf4d0-286f-477b-817a-528707ec8aef"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{productos_Precio_Producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="470" y="0" width="85" height="15" uuid="73ed3f32-1401-4faf-8a56-bb12f02002df"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA[$F{productos_Codigo_Barras_Producto}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="16" width="555" height="1" uuid="93cadc7a-75ee-4502-a070-d2c75a4c69ab"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="228" y="0" width="52" height="15" uuid="6136ff46-0d99-4cf1-ad98-a688313ad990"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{productos_Tamano_Producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="340" y="1" width="73" height="15" uuid="7bd4408f-0ef5-4ac5-b843-695eaad10b4c"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{productos_Sabor_Producto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="100" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="424" y="0" width="131" height="20" forecolor="#000000" uuid="e23c4825-b6e0-4c9b-8d90-173dec3f31c4"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="96" y="0" width="267" height="20" forecolor="#000000" uuid="7ec7fbdc-42c9-43c1-be5b-09acedc91bb8"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SENA - ADSI]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

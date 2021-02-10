@@ -17,16 +17,15 @@ and open the template in the editor.
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="product-new.html"><i class="fas fa-plus fa-fw"></i>
+                            <a href="product-new.xhtml"><i class="fas fa-plus fa-fw"></i>
                                 &nbsp; NUEVO PRODUCTO</a>
                         </li>
                         <li>
-                            <a href="product-list.html"><i
-                                    class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE
-                                PRODUCTO</a>
+                            <a href="product-list.xhtml"><i
+                                    class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE PRODUCTO</a>
                         </li>
                         <li>
-                            <a href="product-search.html"><i
+                            <a href="product-search.xhtml"><i
                                     class="fas fa-search-dollar fa-fw"></i> &nbsp; BUSCAR PRODUCTO</a>
                         </li>                       
                     </ul>
@@ -38,194 +37,65 @@ and open the template in the editor.
                             <div>
                                 <span class="roboto-medium">PRODUCTO</span>                             
                             </div>
-                            <div class="table-responsive">
-                                <table class="table table-dark table-sm">
-                                    <thead>
-                                        <tr class="text-center roboto-medium">
-                                            <th>
-                                                Id
-                                            </th>
-                                            <th>
-                                                Id tipo producto
-                                            </th>
-                                            <th>
-                                                Nombre
-                                            </th>
-                                            <th>
-                                                DescripciÃ³n
-                                            </th>
-                                            <th>
-                                                TamaÃ±o
-                                            </th>
-                                            <th>
-                                                Color
-                                            </th>
-                                            <th>
-                                                Sabor
-                                            </th>
-                                            <th>
-                                                Precio
-                                            </th>
-                                            <th>
-                                                Codigo de brras
-                                            </th>
-                                            <th>
-                                                Nit Proveedor
-                                            </th>
-                                            <th>
-                                                Id inventario
-                                            </th>
-                                            <th>
-                                                Id marca producto
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="text-center">
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                GlicopanPetGotasÂ 
-                                            </td>
-                                            <td>
-                                                Para nutricion inadecuada
-                                            </td>
-                                            <td>
-                                                30 Ml
-                                            </td>
-                                            <td>
-                                                NA
-                                            </td>
-                                            <td>
-                                                NA
-                                            </td>
-                                            <td>
-                                                31100
-                                            </td>
-                                            <td>
-                                                77056845114
-                                            </td>
-                                            <td>
-                                                90068932
-                                            </td>
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                2
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                Guante Dog
-                                            </td>
-                                            <td>
-                                                Removedor de Pelo Muerto
-                                            </td>
-                                            <td>
-                                                Talla M
-                                            </td>
-                                            <td>
-                                                Azul
-                                            </td>
-                                            <td>
-                                                Griseofulvina
-                                            </td>
-                                            <td>
-                                                33500
-                                            </td>
-                                            <td>
-                                                99001007260
-                                            </td>
-                                            <td>
-                                                90068941
-                                            </td>
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                3
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+
                         </div>
-                        <form action="">
-                            <fieldset>
-                                <legend>
-                                    <i class="far fa-plus-square"></i> &nbsp; InformaciÃ³n
-                                    del prestamo
-                                </legend>
+                        <h:form >
+                            <fieldset>                                
+                                <h:inputText id="id_proveedor" value="#{productosRequest.objProductos.idProducto}" style="display: none;" />
                                 <div class="container-fluid">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="cliente_telefono" class="bmd-label-floating">Precio</label>
-                                                    <input type="text" class="form-control"
-                                                           name="cliente_telefono" id="cliente_telefono"
-                                                           maxlength="20" />
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="nombre" class="bmd-label-floating">Nombre</label>
+                                                <h:inputText id="nombre" value="#{productosRequest.objProductos.nombreProducto}" class="form-control" maxlength="20"/>
                                             </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="cliente_telefono" class="bmd-label-floating">Nit
-                                                        proveedor</label> <input type="text"
-                                                                             class="form-control" name="cliente_telefono"
-                                                                             id="cliente_telefono_" maxlength="20" />
-                                                </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="precio" class="bmd-label-floating">Precio</label>
+                                                <h:inputText id="precio" value="#{productosRequest.objProductos.precioProducto}" class="form-control"  maxlength="20" />
                                             </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="cliente_nombre" class="bmd-label-floating">Color</label>
-                                                    <input type="text" class="form-control"
-                                                           name="cliente_nombre" id="cliente_nombre" maxlength="40" />
-                                                </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="nitProveedor" class="bmd-label-floating">Nit proveedor</label> 
+                                                <h:inputText value="#{productosRequest.objProductos.nitProveedor.nitProveedor}" class="form-control" id="nitProveedor" maxlength="20" />
                                             </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <label for="cliente_nombre" class="bmd-label-floating">Sabor</label>
-                                                    <input type="text" class="form-control"
-                                                           name="cliente_nombre" id="cliente_nombre_" maxlength="40" />
-                                                </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="productp" class="bmd-label-floating">Producto</label> 
+                                                <h:inputText value="#{productosRequest.objProductos.idTipoProducto.idTipoProducto}" class="form-control" id="productp" maxlength="20" />
                                             </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <label for="prestamo_observacion"
-                                                           class="bmd-label-floating">TamaÃ±o</label> <input
-                                                           type="text" class="form-control"
-                                                           name="prestamo_observacion" id="prestamo_observacion"
-                                                           maxlength="400" />
-                                                </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="color" class="bmd-label-floating">Color</label>
+                                                <h:inputText value="#{productosRequest.objProductos.colorProducto}" class="form-control" id="color" maxlength="40" />
                                             </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <label for="prestamo_observacion"
-                                                           class="bmd-label-floating">Codigo de barras</label>
-                                                    <input type="text" class="form-control"
-                                                           name="prestamo_observacion" id="prestamo_observacion_"
-                                                           maxlength="400" />
-                                                </div>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="form-group">
+                                                <label for="sabor" class="bmd-label-floating">Sabor</label>
+                                                <h:inputText value="#{productosRequest.objProductos.saborProducto}" class="form-control" id="sabor" maxlength="40" />
                                             </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <label for="prestamo_observacion"
-                                                           class="bmd-label-floating">DescripcciÃ³n</label>
-                                                    <input type="text" class="form-control"
-                                                           name="prestamo_observacion" id="prestamo_observacion__"
-                                                           maxlength="400" />
-                                                </div>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="form-group">
+                                                <label for="tamaño" class="bmd-label-floating">Tamaño</label>
+                                                <h:inputText value="#{productosRequest.objProductos.tamanoProducto}" class="form-control" id="tamaño" maxlength="400" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="form-group">
+                                                <label for="codigoDeBarras" class="bmd-label-floating">Codigo de barras</label>
+                                                <h:inputText value="#{productosRequest.objProductos.codigoBarrasProducto}" class="form-control" id="codigoDeBarras" maxlength="400" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="form-group">
+                                                <label for="decripcion" class="bmd-label-floating">Descripcion</label>
+                                                <h:inputText value="#{productosRequest.objProductos.descripcion}" class="form-control" id="decripcion" maxlength="400" />
                                             </div>
                                         </div>
                                     </div>
@@ -233,10 +103,10 @@ and open the template in the editor.
                             </fieldset>
                             <br /><br /><br />
                             <p class="text-center" style="margin-top: 40px;">
-                                <button type="submit" class="btn btn-raised btn-success btn-sm"><i
-                                        class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>
+                                <h:commandButton class="btn btn-raised btn-info btn-sm" value="Actualizar" action="#{productosRequest.actualizarProducto()}">                                   
+                                </h:commandButton>
                             </p>
-                        </form>
+                        </h:form>
                     </div>
                 </div>
 

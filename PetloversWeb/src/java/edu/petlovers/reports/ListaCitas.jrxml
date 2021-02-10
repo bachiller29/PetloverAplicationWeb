@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="f66511a5-fc98-4c21-94e0-645dd1403022">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="10"/>
+	<property name="ireport.zoom" value="0.9313819845887327"/>
+	<property name="ireport.x" value="120"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
@@ -66,7 +66,7 @@ FROM
 	<title>
 		<band height="104" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="0" width="802" height="67" uuid="966868f7-67ca-4434-8695-5daaf9099619"/>
+				<reportElement style="Title" x="-1" y="10" width="802" height="67" uuid="966868f7-67ca-4434-8695-5daaf9099619"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="54" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>

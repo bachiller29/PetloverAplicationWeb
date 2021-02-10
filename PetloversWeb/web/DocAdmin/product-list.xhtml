@@ -7,7 +7,9 @@ and open the template in the editor.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
@@ -17,294 +19,81 @@ and open the template in the editor.
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a href="product-new.html"><i class="fas fa-plus fa-fw"></i>
-                                &nbsp; NUEVO PRODUCTO</a>
+                            <a href="product-new.xhtml">
+                                <i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO PRODUCTO
+                            </a>
                         </li>
                         <li>
-                            <a class="active" href="product-list.html"><i
-                                    class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE
-                                PRODUCTO</a>
+                            <a class="active" href="product-list.xhtml">
+                                <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE PRODUCTO
+                            </a>
                         </li>
                         <li>
-                            <a href="product-search.html"><i
-                                    class="fas fa-search-dollar fa-fw"></i> &nbsp; BUSCAR PRODUCTO</a>
-                        </li>                      
+                            <a href="product-search.xhtml">
+                                <i class="fas fa-search-dollar fa-fw"></i> &nbsp; BUSCAR PRODUCTO
+                            </a>
+                        </li>
+                        <h:form>
+                            <li>
+                                <h:commandLink action="#{productosRequest.descargaReporte('ReporteProducto','Wollman Bachiller')}">
+                                    <i class="fas fa-download fa-fw"></i> &nbsp; Reporte
+                                </h:commandLink>
+                            </li>
+                        </h:form>
+                        <h:form id="miformUno" enctype="multipart/form-data" style="margin-bottom: 10px">                            
+                            <h:inputFile id="fileImgUno" onchange="$('#miformUno\\:myBoton').click();" style="display: none" value="#{productosRequest.archivoExcel}"></h:inputFile>
+                            <h:commandButton id="myBoton" style="display: none" class="btn btn-outline-success" action="#{productosRequest.subeExcel()}" value="Cargar Imagen">                                
+                                <f:ajax  execute="fileImgUno" ></f:ajax>
+                            </h:commandButton>
+                            <button type="button" onclick="$('#miformUno\\:fileImgUno').click();" class="btn btn-outline-success btn-sm __web-inspector-hide-shortcut__"><i class="fa fa-magic"></i>&nbsp; Cargar Productos Xlsx</button>
+                        </h:form>
                     </ul>
                 </div>
                 <!--  CONTENT -->
                 <div class="container-fluid">
                     <div class="table-responsive">
                         <table class="table table-dark table-sm">
-                            <thead>
+                            <thead>               
                                 <tr class="text-center roboto-medium">
-                                    <th>
-                                        Id
-                                    </th>
-                                    <th>
-                                        Id tipo producto
-                                    </th>
-                                    <th>
-                                        Nombre
-                                    </th>
-                                    <th>
-                                        Descripcion
-                                    </th>
-                                    <th>
-                                        Tamaño
-                                    </th>
-                                    <th>
-                                        Color
-                                    </th>
-                                    <th>
-                                        Sabor
-                                    </th>
-                                    <th>
-                                        Precio
-                                    </th>
-                                    <th>
-                                        Codigo de barras
-                                    </th>
-                                    <th>
-                                        Nit Proveedor
-                                    </th>
-                                    <th>
-                                        Id inventario
-                                    </th>
-                                    <th>
-                                        Id marca producto
-                                    </th>
-                                    <th>
-                                        ELIMINAR
-                                    </th>
+                                    <td>Id</td>
+                                    <td>Id producto</td>
+                                    <td>Nombre</td>
+                                    <td>Descripccion</td>
+                                    <td>Tamaño</td>
+                                    <td>Color</td>
+                                    <td>Sabor</td>
+                                    <td>Precio</td>
+                                    <td>Codigo de barra</td>
+                                    <td>Nit</td>
+                                    <td>ACTUALIZAR</td>
+                                    <td>ELIMINAR</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="text-center">
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        GlicopanPetGotasÂ 
-                                    </td>
-                                    <td>
-                                        Para nutricion inadecuada
-                                    </td>
-                                    <td>
-                                        30 Ml
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        31100
-                                    </td>
-                                    <td>
-                                        77056845114
-                                    </td>
-                                    <td>
-                                        90068932
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning"> <i
-                                                    class="far fa-trash-alt"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        Guante Dog
-                                    </td>
-                                    <td>
-                                        Removedor de Pelo Muerto
-                                    </td>
-                                    <td>
-                                        Talla M
-                                    </td>
-                                    <td>
-                                        Azul
-                                    </td>
-                                    <td>
-                                        Griseofulvina
-                                    </td>
-                                    <td>
-                                        33500
-                                    </td>
-                                    <td>
-                                        99001007260
-                                    </td>
-                                    <td>
-                                        90068941
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning"> <i
-                                                    class="far fa-trash-alt"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        Guante Dog
-                                    </td>
-                                    <td>
-                                        Removedor de Pelo Muerto
-                                    </td>
-                                    <td>
-                                        Talla M
-                                    </td>
-                                    <td>
-                                        Azul
-                                    </td>
-                                    <td>
-                                        Griseofulvina
-                                    </td>
-                                    <td>
-                                        33500
-                                    </td>
-                                    <td>
-                                        99001007260
-                                    </td>
-                                    <td>
-                                        90068941
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning"> <i
-                                                    class="far fa-trash-alt"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        CamaSpice
-                                    </td>
-                                    <td>
-                                        Antibiotico para la piel
-                                    </td>
-                                    <td>
-                                        250 Mg
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        37600
-                                    </td>
-                                    <td>
-                                        77020040035
-                                    </td>
-                                    <td>
-                                        90068942
-                                    </td>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning"> <i
-                                                    class="far fa-trash-alt"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td>
-                                        5
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        DigestiveCare
-                                    </td>
-                                    <td>
-                                        Cama para perro mediano
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        Negro
-                                    </td>
-                                    <td>
-                                        NA
-                                    </td>
-                                    <td>
-                                        150500
-                                    </td>
-                                    <td>
-                                        84123456789
-                                    </td>
-                                    <td>
-                                        90068943
-                                    </td>
-                                    <td>
-                                        5
-                                    </td>
-                                    <td>
-                                        5
-                                    </td>
-                                    <td>
-                                        <form action="">
-                                            <button type="button" class="btn btn-warning"> <i
-                                                    class="far fa-trash-alt"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                <h:form>
+                                    <c:forEach items="#{productosRequest.listaProductos}" var="obPro">
+                                        <tr>
+                                            <td>#{obPro.idProducto}</td>
+                                            <td>#{obPro.idTipoProducto.tipoProducto}</td>
+                                            <td>#{obPro.nombreProducto}</td>
+                                            <td>#{obPro.descripcion}</td>
+                                            <td>#{obPro.tamanoProducto}</td>
+                                            <td>#{obPro.colorProducto}</td>
+                                            <td>#{obPro.saborProducto}</td>
+                                            <td>#{obPro.precioProducto}</td>
+                                            <td>#{obPro.codigoBarrasProducto}</td>
+                                            <td>#{obPro.nitProveedor.nitProveedor}</td>
+                                            <td><h:commandLink action="product-update.xhtml" actionListener="#{productosRequest.cargarProducto(obPro)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{productosRequest.removerProducto(obPro)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                        </tr>
+                                    </c:forEach>
+                                </h:form>
                             </tbody>
                         </table>
                     </div>
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterios</a>
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
                         </li>
                         <li class="page-item">
                             <a class="page-link" href="#">1</a>
