@@ -20,8 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,10 +27,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "tipo_mascotas")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TipoMascotas.findAll", query = "SELECT t FROM TipoMascotas t")})
 public class TipoMascotas implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +40,7 @@ public class TipoMascotas implements Serializable {
     @Size(max = 10)
     @Column(name = "Tipo_Mascota")
     private String tipoMascota;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoMascota", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoMascota", fetch = FetchType.EAGER)
     private Collection<Mascotas> mascotasCollection;
 
     public TipoMascotas() {
@@ -68,7 +66,6 @@ public class TipoMascotas implements Serializable {
         this.tipoMascota = tipoMascota;
     }
 
-    @XmlTransient
     public Collection<Mascotas> getMascotasCollection() {
         return mascotasCollection;
     }

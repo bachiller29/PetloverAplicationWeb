@@ -42,13 +42,13 @@ public class RegistroUsuarioRequest implements Serializable {
     
     @PostConstruct
     public void postUsuario() {
-        usRed.setIdTipoRol(new TipoRol(4));
+        usRed.setIdTipoRol(new TipoRol(7));
     }
     
     public void crearUsuario() {
         String mensajeSw = "";
         try {
-            usRed.setIdTipoRol(tipoRolFacadeLocal.find(4));
+            usRed.setIdTipoRol(tipoRolFacadeLocal.find(7));
             usRed.setFechaRegistro(new Date());
             usuariosFacadeLocal.create(usRed);
             mensajeSw = "swal('Usuario registrado' , ' con exito ', 'success')";

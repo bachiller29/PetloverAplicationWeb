@@ -8,7 +8,6 @@ package edu.petlovers.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,8 +21,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,10 +28,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "mascotas")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Mascotas.findAll", query = "SELECT m FROM Mascotas m")})
 public class Mascotas implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,18 +56,18 @@ public class Mascotas implements Serializable {
     @Size(max = 5)
     @Column(name = "Esterilizado")
     private String esterilizado;
-    @OneToMany(mappedBy = "idMascota", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idMascota", fetch = FetchType.EAGER)
     private Collection<Citas> citasCollection;
     @JoinColumn(name = "Id_Tipo_Mascota", referencedColumnName = "Id_Tipo_Mascota")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private TipoMascotas idTipoMascota;
     @JoinColumn(name = "Id_Raza_Mascota", referencedColumnName = "Id_Raza_Mascota")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private RazaMascotas idRazaMascota;
     @JoinColumn(name = "Id_Cliente", referencedColumnName = "Id_Cliente")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Clientes idCliente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMascota", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idMascota", fetch = FetchType.EAGER)
     private Collection<HistoriaClinica> historiaClinicaCollection;
 
     public Mascotas() {
@@ -136,7 +133,6 @@ public class Mascotas implements Serializable {
         this.esterilizado = esterilizado;
     }
 
-    @XmlTransient
     public Collection<Citas> getCitasCollection() {
         return citasCollection;
     }
@@ -169,7 +165,6 @@ public class Mascotas implements Serializable {
         this.idCliente = idCliente;
     }
 
-    @XmlTransient
     public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
         return historiaClinicaCollection;
     }

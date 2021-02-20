@@ -18,8 +18,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -27,10 +25,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "tipo_rol")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TipoRol.findAll", query = "SELECT t FROM TipoRol t")})
 public class TipoRol implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -40,7 +38,7 @@ public class TipoRol implements Serializable {
     @Size(max = 25)
     @Column(name = "Nombre_Rol")
     private String nombreRol;
-    @OneToMany(mappedBy = "idTipoRol", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idTipoRol", fetch = FetchType.EAGER)
     private Collection<Usuarios> usuariosCollection;
 
     public TipoRol() {
@@ -66,7 +64,6 @@ public class TipoRol implements Serializable {
         this.nombreRol = nombreRol;
     }
 
-    @XmlTransient
     public Collection<Usuarios> getUsuariosCollection() {
         return usuariosCollection;
     }

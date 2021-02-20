@@ -19,8 +19,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,10 +26,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "empleados")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Empleados.findAll", query = "SELECT e FROM Empleados e")})
 public class Empleados implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -39,15 +37,10 @@ public class Empleados implements Serializable {
     @Column(name = "Id_Empleado")
     private Integer idEmpleado;
     @JoinColumn(name = "id_usuario", referencedColumnName = "Id_Usuario")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Usuarios idUsuario;
-    @JoinColumn(name = "Id_Tipo_Empleado", referencedColumnName = "Id_Tipo_Empleado")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private TipoEmpleados idTipoEmpleado;
-    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.EAGER)
     private Collection<Servicios> serviciosCollection;
-    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
-    private Collection<Cronograma> cronogramaCollection;
 
     public Empleados() {
     }
@@ -72,30 +65,12 @@ public class Empleados implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public TipoEmpleados getIdTipoEmpleado() {
-        return idTipoEmpleado;
-    }
-
-    public void setIdTipoEmpleado(TipoEmpleados idTipoEmpleado) {
-        this.idTipoEmpleado = idTipoEmpleado;
-    }
-
-    @XmlTransient
     public Collection<Servicios> getServiciosCollection() {
         return serviciosCollection;
     }
 
     public void setServiciosCollection(Collection<Servicios> serviciosCollection) {
         this.serviciosCollection = serviciosCollection;
-    }
-
-    @XmlTransient
-    public Collection<Cronograma> getCronogramaCollection() {
-        return cronogramaCollection;
-    }
-
-    public void setCronogramaCollection(Collection<Cronograma> cronogramaCollection) {
-        this.cronogramaCollection = cronogramaCollection;
     }
 
     @Override

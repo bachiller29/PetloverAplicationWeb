@@ -19,7 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -27,10 +26,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "productos")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Productos.findAll", query = "SELECT p FROM Productos p")})
 public class Productos implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,16 +56,16 @@ public class Productos implements Serializable {
     @Column(name = "Codigo_Barras_Producto")
     private Integer codigoBarrasProducto;
     @JoinColumn(name = "Id_Tipo_Producto", referencedColumnName = "Id_Tipo_Producto")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private TipoProductos idTipoProducto;
     @JoinColumn(name = "Nit_Proveedor", referencedColumnName = "Nit_Proveedor")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Proveedores nitProveedor;
     @JoinColumn(name = "Id_Inventario", referencedColumnName = "Id_Inventario")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Inventario idInventario;
     @JoinColumn(name = "Id_Marca_Producto", referencedColumnName = "Id_Marca_Producto")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private MarcaProductos idMarcaProducto;
 
     public Productos() {

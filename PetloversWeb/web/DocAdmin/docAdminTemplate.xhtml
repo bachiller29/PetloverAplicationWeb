@@ -10,7 +10,7 @@
 
         <meta content="" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-        <title>Administrador</title>
+        <title>Pet Lovers - Administrador</title>
         <!--  Normalize V8.0.1 -->
         <link rel="stylesheet" href="./css/normalize.css" />
         <!--  Bootstrap V4.3 -->
@@ -88,7 +88,7 @@
                                 <li>
                                     <a href="#" class="nav-btn-submenu">
                                         <i class="fas fa-pallet fa-fw" />
-                                        &nbsp; Proveedor
+                                        &nbsp; Proveedores
                                         <i class="fas fa-chevron-down" />
                                     </a>
                                     <ul>
@@ -108,6 +108,36 @@
                                             <h:commandLink action="item-search">
                                                 <i class="fas fa-search fa-fw" />
                                                 &nbsp; Buscar Proveedor
+                                            </h:commandLink>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-btn-submenu">
+                                        <i class="fas fa-puzzle-piece fa-fw"></i> 
+                                            &nbsp; Productos
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <h:commandLink action="product-new">
+                                                <i class="fas fa-plus fa-fw"></i>
+                                                &nbsp; Nuevo producto
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink action="product-list">
+                                                <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de productos
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink action="product-search">
+                                                <i class="fas fa-search-dollar fa-fw"></i> &nbsp; Buscar producto
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink action="product-pending">
+                                                <i class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; Prestamos producto
                                             </h:commandLink>
                                         </li>
                                     </ul>
@@ -146,34 +176,6 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-btn-submenu"><i
-                                            class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp; Producto
-                                        <i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li>
-                                            <h:commandLink action="product-new">
-                                                <i class="fas fa-plus fa-fw"></i>
-                                                &nbsp; Nuevo producto
-                                            </h:commandLink>
-                                        </li>
-                                        <li>
-                                            <h:commandLink action="product-list">
-                                                <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de producto
-                                            </h:commandLink>
-                                        </li>
-                                        <li>
-                                            <h:commandLink action="product-search">
-                                                <i class="fas fa-search-dollar fa-fw"></i> &nbsp; Buscar producto
-                                            </h:commandLink>
-                                        </li>
-                                        <li>
-                                            <h:commandLink action="product-pending">
-                                                <i class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; Prestamos producto
-                                            </h:commandLink>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
                                     <a href="#" class="nav-btn-submenu">
                                         <i class="fas  fa-user-secret fa-fw" />
                                         &nbsp; Usuarios
@@ -196,6 +198,54 @@
                                             <h:commandLink action="user-search">
                                                 <i class="fas fa-search fa-fw" />
                                                 &nbsp; Buscar usuario
+                                            </h:commandLink>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-btn-submenu">
+                                        <i class="fas fa-store-alt fa-fw" />
+                                        &nbsp; Pet Lovers
+                                        <i class="fas fa-chevron-down" />
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <h:commandLink action="#">
+                                                <i class="fas fa-plus fa-fw" />
+                                                &nbsp; Nuevo Match
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink action="#">
+                                                <i class="fas fa-clipboard-list fa-fw" />
+                                                &nbsp; Lista de Matchs
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink action="#">
+                                                <i class="fas fa-search fa-fw" />
+                                                &nbsp; Buscar match
+                                            </h:commandLink>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-btn-submenu">
+                                        <i class="fas fa-hospital fa-fw" />
+                                        &nbsp; Servicios
+                                        <i class="fas fa-chevron-down" />
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <h:commandLink action="service-new">
+                                                <i class="fas fa-plus fa-fw" />
+                                                &nbsp; Nuevo servicio
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink action="service-list">
+                                                <i class="fas fa-clipboard-list fa-fw" />
+                                                &nbsp; Lista de servicios
                                             </h:commandLink>
                                         </li>
                                     </ul>

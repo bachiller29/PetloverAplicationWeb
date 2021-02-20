@@ -25,8 +25,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,10 +32,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "usuarios")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u")})
 public class Usuarios implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,7 +57,7 @@ public class Usuarios implements Serializable {
     private String tipoDocumento;
     @Column(name = "Documento")
     private Integer documento;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Correo electrónico no válido")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 50)
     @Column(name = "Email")
     private String email;
@@ -72,14 +70,14 @@ public class Usuarios implements Serializable {
     @Column(name = "UltimoIngreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ultimoIngreso;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.EAGER)
     private Collection<Empleados> empleadosCollection;
     @JoinColumn(name = "Id_Tipo_Rol", referencedColumnName = "Id_Tipo_Rol")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private TipoRol idTipoRol;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.EAGER)
     private Collection<Administradores> administradoresCollection;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.EAGER)
     private Collection<Clientes> clientesCollection;
 
     public Usuarios() {
@@ -167,7 +165,6 @@ public class Usuarios implements Serializable {
         this.ultimoIngreso = ultimoIngreso;
     }
 
-    @XmlTransient
     public Collection<Empleados> getEmpleadosCollection() {
         return empleadosCollection;
     }
@@ -184,7 +181,6 @@ public class Usuarios implements Serializable {
         this.idTipoRol = idTipoRol;
     }
 
-    @XmlTransient
     public Collection<Administradores> getAdministradoresCollection() {
         return administradoresCollection;
     }
@@ -193,7 +189,6 @@ public class Usuarios implements Serializable {
         this.administradoresCollection = administradoresCollection;
     }
 
-    @XmlTransient
     public Collection<Clientes> getClientesCollection() {
         return clientesCollection;
     }

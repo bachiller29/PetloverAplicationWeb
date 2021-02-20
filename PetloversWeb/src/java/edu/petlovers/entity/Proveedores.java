@@ -18,8 +18,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -27,10 +25,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "proveedores")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Proveedores.findAll", query = "SELECT p FROM Proveedores p")})
 public class Proveedores implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -51,7 +49,7 @@ public class Proveedores implements Serializable {
     private String emailProveedor;
     @Column(name = "Telefono_Proveedor")
     private Integer telefonoProveedor;
-    @OneToMany(mappedBy = "nitProveedor", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "nitProveedor", fetch = FetchType.EAGER)
     private Collection<Productos> productosCollection;
 
     public Proveedores() {
@@ -109,7 +107,6 @@ public class Proveedores implements Serializable {
         this.telefonoProveedor = telefonoProveedor;
     }
 
-    @XmlTransient
     public Collection<Productos> getProductosCollection() {
         return productosCollection;
     }

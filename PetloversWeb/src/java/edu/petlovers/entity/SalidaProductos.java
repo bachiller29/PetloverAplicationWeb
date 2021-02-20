@@ -19,8 +19,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,10 +26,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "salida_productos")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SalidaProductos.findAll", query = "SELECT s FROM SalidaProductos s")})
 public class SalidaProductos implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +41,7 @@ public class SalidaProductos implements Serializable {
     @Size(max = 15)
     @Column(name = "Fecha_Salida")
     private String fechaSalida;
-    @OneToMany(mappedBy = "idSalidaProductos", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idSalidaProductos", fetch = FetchType.EAGER)
     private Collection<Inventario> inventarioCollection;
 
     public SalidaProductos() {
@@ -77,7 +75,6 @@ public class SalidaProductos implements Serializable {
         this.fechaSalida = fechaSalida;
     }
 
-    @XmlTransient
     public Collection<Inventario> getInventarioCollection() {
         return inventarioCollection;
     }

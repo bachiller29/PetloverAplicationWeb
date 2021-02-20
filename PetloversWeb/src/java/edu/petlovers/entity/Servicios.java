@@ -20,10 +20,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,31 +28,34 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "servicios")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Servicios.findAll", query = "SELECT s FROM Servicios s")})
 public class Servicios implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id_Servicio")
     private Integer idServicio;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    @Size(max = 30)
     @Column(name = "Nombre_Servicio")
     private String nombreServicio;
-    @OneToMany(mappedBy = "idServicio", fetch = FetchType.LAZY)
+    @Size(max = 280)
+    @Column(name = "Descripcion")
+    private String descripcion;
+    @Column(name = "Valor_Servicio")
+    private Integer valorServicio;
+    @OneToMany(mappedBy = "idServicio", fetch = FetchType.EAGER)
     private Collection<Citas> citasCollection;
     @JoinColumn(name = "Nit_Criadero", referencedColumnName = "Nit_Criadero")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Criadero nitCriadero;
     @JoinColumn(name = "Id_Tipo_Servicio", referencedColumnName = "Id_Tipo_Servicio")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private TipoServicios idTipoServicio;
     @JoinColumn(name = "Id_Empleado", referencedColumnName = "Id_Empleado")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Empleados idEmpleado;
 
     public Servicios() {
@@ -63,11 +63,6 @@ public class Servicios implements Serializable {
 
     public Servicios(Integer idServicio) {
         this.idServicio = idServicio;
-    }
-
-    public Servicios(Integer idServicio, String nombreServicio) {
-        this.idServicio = idServicio;
-        this.nombreServicio = nombreServicio;
     }
 
     public Integer getIdServicio() {
@@ -86,7 +81,22 @@ public class Servicios implements Serializable {
         this.nombreServicio = nombreServicio;
     }
 
-    @XmlTransient
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Integer getValorServicio() {
+        return valorServicio;
+    }
+
+    public void setValorServicio(Integer valorServicio) {
+        this.valorServicio = valorServicio;
+    }
+
     public Collection<Citas> getCitasCollection() {
         return citasCollection;
     }

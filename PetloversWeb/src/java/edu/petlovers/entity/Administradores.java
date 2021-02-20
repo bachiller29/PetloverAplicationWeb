@@ -20,8 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,22 +27,22 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "administradores")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Administradores.findAll", query = "SELECT a FROM Administradores a")})
 public class Administradores implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id_Admin")
     private Integer idAdmin;
-    @OneToMany(mappedBy = "idAdmin", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idAdmin", fetch = FetchType.EAGER)
     private Collection<Criadero> criaderoCollection;
     @JoinColumn(name = "id_usuario", referencedColumnName = "Id_Usuario")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Usuarios idUsuario;
-    @OneToMany(mappedBy = "idAdmin", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idAdmin", fetch = FetchType.EAGER)
     private Collection<Inventario> inventarioCollection;
 
     public Administradores() {
@@ -62,7 +60,6 @@ public class Administradores implements Serializable {
         this.idAdmin = idAdmin;
     }
 
-    @XmlTransient
     public Collection<Criadero> getCriaderoCollection() {
         return criaderoCollection;
     }
@@ -79,7 +76,6 @@ public class Administradores implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    @XmlTransient
     public Collection<Inventario> getInventarioCollection() {
         return inventarioCollection;
     }

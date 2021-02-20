@@ -20,8 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,10 +27,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "inventario")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Inventario.findAll", query = "SELECT i FROM Inventario i")})
 public class Inventario implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,15 +40,15 @@ public class Inventario implements Serializable {
     @Column(name = "Cantidad_Productos")
     private Integer cantidadProductos;
     @JoinColumn(name = "Id_Admin", referencedColumnName = "Id_Admin")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Administradores idAdmin;
     @JoinColumn(name = "Id_Salida_Productos", referencedColumnName = "Id_Salida_Productos")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private SalidaProductos idSalidaProductos;
     @JoinColumn(name = "Id_Entrada_Productos", referencedColumnName = "Id_Entrada_Productos")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private EntradaProductos idEntradaProductos;
-    @OneToMany(mappedBy = "idInventario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idInventario", fetch = FetchType.EAGER)
     private Collection<Productos> productosCollection;
 
     public Inventario() {
@@ -100,7 +98,6 @@ public class Inventario implements Serializable {
         this.idEntradaProductos = idEntradaProductos;
     }
 
-    @XmlTransient
     public Collection<Productos> getProductosCollection() {
         return productosCollection;
     }

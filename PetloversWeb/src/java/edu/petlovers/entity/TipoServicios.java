@@ -18,10 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,24 +26,20 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "tipo_servicios")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TipoServicios.findAll", query = "SELECT t FROM TipoServicios t")})
 public class TipoServicios implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id_Tipo_Servicio")
     private Integer idTipoServicio;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 280)
-    @Column(name = "Descripcion")
-    private String descripcion;
-    @Column(name = "Valor_Servicio")
-    private Integer valorServicio;
-    @OneToMany(mappedBy = "idTipoServicio", fetch = FetchType.LAZY)
+    @Size(max = 45)
+    @Column(name = "Tipo_Servicio")
+    private String tipoServicio;
+    @OneToMany(mappedBy = "idTipoServicio", fetch = FetchType.EAGER)
     private Collection<Servicios> serviciosCollection;
 
     public TipoServicios() {
@@ -54,11 +47,6 @@ public class TipoServicios implements Serializable {
 
     public TipoServicios(Integer idTipoServicio) {
         this.idTipoServicio = idTipoServicio;
-    }
-
-    public TipoServicios(Integer idTipoServicio, String descripcion) {
-        this.idTipoServicio = idTipoServicio;
-        this.descripcion = descripcion;
     }
 
     public Integer getIdTipoServicio() {
@@ -69,23 +57,14 @@ public class TipoServicios implements Serializable {
         this.idTipoServicio = idTipoServicio;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getTipoServicio() {
+        return tipoServicio;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setTipoServicio(String tipoServicio) {
+        this.tipoServicio = tipoServicio;
     }
 
-    public Integer getValorServicio() {
-        return valorServicio;
-    }
-
-    public void setValorServicio(Integer valorServicio) {
-        this.valorServicio = valorServicio;
-    }
-
-    @XmlTransient
     public Collection<Servicios> getServiciosCollection() {
         return serviciosCollection;
     }

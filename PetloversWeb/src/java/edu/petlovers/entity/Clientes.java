@@ -22,8 +22,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,10 +29,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "clientes")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Clientes.findAll", query = "SELECT c FROM Clientes c")})
 public class Clientes implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,10 +50,12 @@ public class Clientes implements Serializable {
     private String barrio;
     @Column(name = "Telefono")
     private Integer telefono;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente", fetch = FetchType.EAGER)
     private Collection<Mascotas> mascotasCollection;
+    @OneToMany(mappedBy = "idCliente", fetch = FetchType.EAGER)
+    private Collection<HistoriaClinica> historiaClinicaCollection;
     @JoinColumn(name = "id_usuario", referencedColumnName = "Id_Usuario")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Usuarios idUsuario;
 
     public Clientes() {
@@ -105,13 +105,20 @@ public class Clientes implements Serializable {
         this.telefono = telefono;
     }
 
-    @XmlTransient
     public Collection<Mascotas> getMascotasCollection() {
         return mascotasCollection;
     }
 
     public void setMascotasCollection(Collection<Mascotas> mascotasCollection) {
         this.mascotasCollection = mascotasCollection;
+    }
+
+    public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
+        return historiaClinicaCollection;
+    }
+
+    public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
+        this.historiaClinicaCollection = historiaClinicaCollection;
     }
 
     public Usuarios getIdUsuario() {

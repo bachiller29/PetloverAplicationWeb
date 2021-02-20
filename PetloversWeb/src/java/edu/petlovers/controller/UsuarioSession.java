@@ -34,7 +34,7 @@ public class UsuarioSession implements Serializable {
     private Usuarios usuLogin = new Usuarios();
 
     private ArrayList<Usuarios> usuariologeado = new ArrayList<>();
-    
+
     private String emailI = "";
     private String contrasenaIn = "";
 
@@ -59,12 +59,19 @@ public class UsuarioSession implements Serializable {
                     if (usuLogin.getIdTipoRol().getIdTipoRol() == 3) {
                         usuariologeado.add(usuLogin);
                         FacesContext fc = FacesContext.getCurrentInstance();
-                        fc.getExternalContext().redirect("../DocPersonalDeTienda/home.xhtml");
+                        fc.getExternalContext().redirect("../DocAssesorComercial/home.xhtml");
                     } else {
                         usuLogin.setUltimoIngreso(new Date());
-                        usuariologeado.add(usuLogin);
-                        FacesContext fc = FacesContext.getCurrentInstance();
-                        fc.getExternalContext().redirect("../DocCliente/home.xhtml");
+                        if (usuLogin.getIdTipoRol().getIdTipoRol() == 4 || usuLogin.getIdTipoRol().getIdTipoRol() == 5 || usuLogin.getIdTipoRol().getIdTipoRol() == 6) {
+                            usuariologeado.add(usuLogin);
+                            FacesContext fc = FacesContext.getCurrentInstance();
+                            fc.getExternalContext().redirect("../DocPersonalDeTienda/home.xhtml");
+                        } else {
+                            usuLogin.setUltimoIngreso(new Date());
+                            usuariologeado.add(usuLogin);
+                            FacesContext fc = FacesContext.getCurrentInstance();
+                            fc.getExternalContext().redirect("../DocCliente/home.xhtml");
+                        }
                     }
                 }
             }
@@ -74,7 +81,6 @@ public class UsuarioSession implements Serializable {
         PrimeFaces.current().executeScript(mensaje);
     }
 
-    
     public void cerrarSesion() {
         usuLogin = null;
         try {
@@ -87,7 +93,6 @@ public class UsuarioSession implements Serializable {
         }
     }
 
-    
     public void actualizarMisDatos() {
         String mensaje = "";
         try {
@@ -99,7 +104,6 @@ public class UsuarioSession implements Serializable {
         PrimeFaces.current().executeScript(mensaje);
     }
 
-    
     public String getEmailI() {
         return emailI;
     }

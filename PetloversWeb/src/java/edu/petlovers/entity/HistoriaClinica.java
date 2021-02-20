@@ -18,9 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -28,10 +26,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "historia_clinica")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "HistoriaClinica.findAll", query = "SELECT h FROM HistoriaClinica h")})
 public class HistoriaClinica implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,27 +42,23 @@ public class HistoriaClinica implements Serializable {
     @Size(max = 250)
     @Column(name = "Enfermedades_Previas")
     private String enfermedadesPrevias;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 500)
+    @Size(max = 500)
     @Column(name = "Diagnostico")
     private String diagnostico;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 500)
+    @Size(max = 500)
     @Column(name = "Tratamiento")
     private String tratamiento;
     @Size(max = 250)
     @Column(name = "Procedimiento_Quirurgico")
     private String procedimientoQuirurgico;
     @JoinColumn(name = "Id_Cliente", referencedColumnName = "Id_Cliente")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Clientes idCliente;
     @JoinColumn(name = "Id_Mascota", referencedColumnName = "Id_Mascota")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Mascotas idMascota;
     @JoinColumn(name = "Id_Citas", referencedColumnName = "Id_Citas")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Citas idCitas;
 
     public HistoriaClinica() {
@@ -72,12 +66,6 @@ public class HistoriaClinica implements Serializable {
 
     public HistoriaClinica(Integer idHistoriaClinica) {
         this.idHistoriaClinica = idHistoriaClinica;
-    }
-
-    public HistoriaClinica(Integer idHistoriaClinica, String diagnostico, String tratamiento) {
-        this.idHistoriaClinica = idHistoriaClinica;
-        this.diagnostico = diagnostico;
-        this.tratamiento = tratamiento;
     }
 
     public Integer getIdHistoriaClinica() {

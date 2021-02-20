@@ -6,6 +6,7 @@
 package edu.petlovers.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,9 +18,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -27,10 +28,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "citas")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Citas.findAll", query = "SELECT c FROM Citas c")})
 public class Citas implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,11 +48,13 @@ public class Citas implements Serializable {
     @Column(name = "Estado_Cita")
     private String estadoCita;
     @JoinColumn(name = "Id_Mascota", referencedColumnName = "Id_Mascota")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Mascotas idMascota;
     @JoinColumn(name = "Id_Servicio", referencedColumnName = "Id_Servicio")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Servicios idServicio;
+    @OneToMany(mappedBy = "idCitas", fetch = FetchType.EAGER)
+    private Collection<HistoriaClinica> historiaClinicaCollection;
 
     public Citas() {
     }
@@ -106,6 +109,14 @@ public class Citas implements Serializable {
 
     public void setIdServicio(Servicios idServicio) {
         this.idServicio = idServicio;
+    }
+
+    public Collection<HistoriaClinica> getHistoriaClinicaCollection() {
+        return historiaClinicaCollection;
+    }
+
+    public void setHistoriaClinicaCollection(Collection<HistoriaClinica> historiaClinicaCollection) {
+        this.historiaClinicaCollection = historiaClinicaCollection;
     }
 
     @Override
