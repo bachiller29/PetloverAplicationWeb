@@ -7,6 +7,7 @@ package edu.petlovers.controller;
 
 import edu.petlovers.entity.Usuarios;
 import edu.petlovers.local.UsuariosFacadeLocal;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -81,6 +82,13 @@ public class UsuarioSession implements Serializable {
         PrimeFaces.current().executeScript(mensaje);
     }
 
+    public void verificarSesion() throws IOException{
+        if(usuLogin.getIdUsuario()==null){
+            FacesContext fc = FacesContext.getCurrentInstance();
+            fc.getExternalContext().redirect("../DocLogin/login.xhtml");
+        }
+    }
+    
     public void cerrarSesion() {
         usuLogin = null;
         try {

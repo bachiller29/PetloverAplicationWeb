@@ -100,7 +100,7 @@ public class RegistroMascotaRequest {
         PrimeFaces.current().executeScript(mensaje);
     }
     
-    public void eliminarCita(Mascotas objEliminar) {
+    public void eliminarMascota(Mascotas objEliminar) {
         String mensaje = "";
         try {
             mascotasFacadeLocal.remove(objEliminar);

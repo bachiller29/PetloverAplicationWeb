@@ -18,7 +18,10 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
@@ -96,7 +99,8 @@ public class CitaView implements Serializable{
         try {
             objCita.setIdMascota(getMascotaSeleccionada());
             int cantidadCitas = citasFacadeLocal.cantidadCitas(objCita.getIdMascota().getIdMascota(), objCita.getFechaCita());
-            if (cantidadCitas < 3) {
+            Citas cita = citasFacadeLocal.buscarCitaXCliente(objCita.getIdMascota().getIdMascota(), objCita.getFechaCita());
+            if (cantidadCitas < 3 && calcularDiferencia(cita.getHoraCita(),objCita.getHoraCita())) {
 //                objCita.setIdMascota(mascotasFacadeLocal.find(objCita.getIdMascota().getIdMascota()));
                 objCita.setIdServicio(serviciosFacadeLocal.find(objCita.getIdServicio().getIdServicio()));
                 citasFacadeLocal.create(objCita);
@@ -111,6 +115,23 @@ public class CitaView implements Serializable{
         mascotaSeleccionada = new Mascotas();
         objCita = new Citas();
         PrimeFaces.current().executeScript(mensaje);
+    }
+    
+    public boolean calcularDiferencia(String time1, String time2) throws ParseException {
+        //String time1 = "16:00:00";
+        //String time2 = "19:00:00";
+        
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        Date date1 = format.parse(time1);
+        Date date2 = format.parse(time2);
+        
+        int difMins = (int)( (date2.getTime() - date1.getTime()) / (60 * 1000) );
+        int difMinsM = (int)( (date1.getTime() - date2.getTime()) / (60 * 1000) );
+        if(difMins > 30 && difMinsM < -30){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public void cargarCita(Citas objCargar) {
