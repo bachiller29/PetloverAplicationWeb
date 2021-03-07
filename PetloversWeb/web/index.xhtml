@@ -49,28 +49,32 @@
                                         src="assets/img/logo/logoPetlovers.png" width="80%" alt="" /></a>
                             </div>
                         </div>
+                        <h:form>
+                            
+                        </h:form>
                         <div class="col-xl-10 col-lg-10 col-md-10">
                             <div class="menu-main d-flex align-items-center justify-content-end">
                                 <!--  Main-menu -->
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <ul id="navigation">
                                         <li>
-                                            <a href="./DocVentas/index.xhtml"> Productos y Servicios</a>
+                                            <h:link outcome="/DocVentas/index.xhtml" value="Productos y Servicios"></h:link>
+<!--                                            <a href="./DocVentas/index.xhtml"> Productos y Servicios</a>-->
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="./DocVentas/shop-details.xhtml">Alimentos</a>
+                                                    <h:link outcome="/DocVentas/shop-details.xhtml" value="Alimentos"></h:link>
                                                 </li>
                                                 <li>
-                                                    <a href="./DocVentas/shop-grid.xhtml">Accesorios</a>
+                                                    <h:link outcome="/DocVentas/shop-grid.xhtml" value="Accesorios"></h:link>
                                                 </li>
                                                 <li>
-                                                    <a href="./DocVentas/shop-grid-veterinaria.xhtml">Veterinario</a>
+                                                    <h:link outcome="/DocVentas/shop-grid-veterinaria.xhtml" value="Veterinario"></h:link>
                                                 </li>
                                                 <li>
-                                                    <a href="./DocVentas/shop-grid-aseo.xhtml">Higiene</a>
+                                                    <h:link outcome="/DocVentas/shop-grid-aseo.xhtml" value="Higiene"></h:link>
                                                 </li>
                                                 <li>
-                                                    <a href="./DocVentas/shop-grid-Belleza.xhtml">Estilista</a>
+                                                    <h:link outcome="/DocVentas/shop-grid-Belleza.xhtml" value="Estilista"></h:link>
                                                 </li>
                                             </ul>
                                         </li>
@@ -78,22 +82,21 @@
                                             <a href="#">Pet Lovers Social</a>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="./DocFormulario/loginMascota.xhtml">Registrar Mascota</a>
+                                                    <h:link outcome="/DocFormulario/loginMascota.xhtml" value="Registrar Mascota"></h:link>
                                                 </li>
                                                 <li>
-                                                    <a
-                                                        href="./DocAdminAuxiliar/pet-match-search-busqueda.xhtml">Buscar Pareja</a>
+                                                    <h:link outcome="/DocAdminAuxiliar/pet-match-search-busqueda.xhtml" value="Buscar Pareja"></h:link>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="about.xhtml">Quienes somos</a>
+                                            <h:link outcome="about.xhtml" value="Quienes somos"></h:link>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="contact.xhtml">Contactenos</a>
+                                                    <h:link outcome="contact.xhtml" value="Contactenos"></h:link>
                                                 </li>
                                                 <li>
-                                                    <a href="blog_details.xhtml">Blog</a>
+                                                    <h:link outcome="blog_details.xhtml" value="Blog"></h:link>
                                                 </li>
                                             </ul>
                                         </li>
@@ -599,6 +602,7 @@
         </div>
         <!--  contact-animal-owner End -->
         <!--  Footer Start -->
+        <h:form>
         <div class="footer-area footer-padding">
             <div class="container">
                 <div class="row d-flex justify-content-between">
@@ -635,13 +639,13 @@
                                 </h4>
                                 <ul>
                                     <li>
-                                        <a href="about.xhtml">Sobre nosotros</a>
+                                        <h:link outcome="about.xhtml" value="Sobre nosotros" ></h:link>
                                     </li>
                                     <li>
-                                        <a href="services.html">Servicios</a>
+                                        <h:link outcome="services.xhtml" value="Servicios" ></h:link>
                                     </li>
                                     <li>
-                                        <a href="contact.xhtml">Contáctenos</a>
+                                        <h:link outcome="contact.xhtml" value="Contáctenos" ></h:link>
                                     </li>
                                 </ul>
                             </div>
@@ -650,22 +654,12 @@
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>
-                                    Servicios
-                                </h4>
+                                <h4>Servicios</h4>
                                 <ul>
-                                    <li>
-                                        <a href="./DocVentas/shop-grid-Belleza.xhtml">Estilista</a>
-                                    </li>
-                                    <li>
-                                        <a href="./DocVentas/shop-grid-aseo.xhtml">Higiene</a>
-                                    </li>
-                                    <li>
-                                        <a href="./DocVentas/shop-grid-veterinaria.xhtml">Esterilización</a>
-                                    </li>
-                                    <li>
-                                        <a href="./DocVentas/shop-grid-veterinaria.xhtml">Veterinaria</a>
-                                    </li>
+                                    <li><h:link outcome="/DocVentas/shop-grid-Belleza.xhtml" value="Estilista" ></h:link></li>
+                                    <li><h:link outcome="/DocVentas/shop-grid-aseo.xhtml" value="Higiene" ></h:link></li>
+                                    <li><h:link outcome="/DocVentas/shop-grid-veterinaria.xhtml" value="Esterilización" ></h:link></li>
+                                    <li><h:link outcome="/DocVentas/shop-grid-veterinaria.xhtml" value="Veterinaria" ></h:link></li>
                                 </ul>
                             </div>
                         </div>
@@ -678,16 +672,16 @@
                                 </h4>
                                 <ul>
                                     <li>
-                                        <a href="contact.xhtml">(57) 1 4158162</a>
+                                        <h:link outcome="contact.xhtml" value="(57) 1 4158162" />
                                     </li>
                                     <li>
-                                        <a href="contact.xhtml">comercial@petlovers.com.co</a>
+                                        <h:link outcome="contact.xhtml" value="comercial@petlovers.com.co" />
                                     </li>
                                     <li>
-                                        <a href="contact.xhtml">Cra. 110 # 96 - 29</a>
+                                        <h:link outcome="contact.xhtml" value="Cra. 110 # 96 - 29" />
                                     </li>
                                     <li>
-                                        <a href="contact.xhtml">Bogotá, Colombia</a>
+                                        <h:link outcome="contact.xhtml" value="Bogotá, Colombia" />
                                     </li>
                                 </ul>
                             </div>
@@ -696,6 +690,7 @@
                 </div>
             </div>
         </div>
+        </h:form>
         <!--  footer-bottom area -->
         <div class="footer-bottom-area">
             <div class="container">
