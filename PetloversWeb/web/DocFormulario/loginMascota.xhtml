@@ -58,7 +58,7 @@
                         </div>
                         <div class="wrap-input100 validate-input">
                             <span class="label-input100">Seleccione la raza de la mascota</span>
-                            <h:selectOneMenu id="id_tipo_mascota" value="#{registroMascotaRequest.objMascotas.idRazaMascota.idRazaMascota}" class="form-control">
+                            <h:selectOneMenu id="id_raza_mascota" value="#{registroMascotaRequest.objMascotas.idRazaMascota.idRazaMascota}" class="form-control">
                                 <f:selectItems value="#{registroMascotaRequest.listaRazaMascota}" var="idTiRa" itemValue="#{idTiRa.idRazaMascota}" itemLabel="#{idTiRa.razaMascota}"></f:selectItems>
                             </h:selectOneMenu>
                             <span class="focus-input100"></span>
@@ -94,7 +94,7 @@
                         </div>
                         <div class="wrap-input100 validate-input">
                             <span class="label-input100">Esterilizado</span> 
-                            <h:selectOneMenu id="sexoMasc" value="#{registroMascotaRequest.objMascotas.esterilizado}" class="form-control">
+                            <h:selectOneMenu id="esterilizado" value="#{registroMascotaRequest.objMascotas.esterilizado}" class="form-control">
                                 <f:selectItem itemValue="" itemLabel="Seleccione una opción" />
                                 <f:selectItem itemValue="SI" itemLabel="Si" />
                                 <f:selectItem itemValue="NO" itemLabel="No" />

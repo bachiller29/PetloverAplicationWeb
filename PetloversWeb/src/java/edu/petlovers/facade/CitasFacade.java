@@ -62,4 +62,16 @@ public class CitasFacade extends AbstractFacade<Citas> implements CitasFacadeLoc
             return new Citas();
         }
     }
+    
+    @Override
+    public Citas buscarCitaXCliente(int idMascota, String fecha){
+        try {
+            Query q = em.createQuery("SELECT c FROM Citas c WHERE c.id_mascota = :idMascota AND c.Estado_Cita = 'Reservada' And c.Fecha_Cita = :fechaCita order by hora_cita desc;");
+            q.setParameter("idMascota", idMascota);
+            q.setParameter("fechaCita", fecha);
+            return (Citas) q.getSingleResult();
+        } catch (Exception e) {
+            return new Citas();
+        }
+    }
 }
