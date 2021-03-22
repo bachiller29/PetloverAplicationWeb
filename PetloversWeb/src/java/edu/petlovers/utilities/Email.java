@@ -77,8 +77,8 @@ public class Email {
     }
 
     public static void sendClaves(String para, String Nombres, String emailUsu, String contrasena) {
-        final String user = "stivencruz09291998@gmail.com";//cambiará en consecuencia al servidor utilizado
-        final String pass = "123hola123";
+        final String user = "comunicaciones.petlovers@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "12345HolaMundo";
 
 //1st paso) Obtener el objeto de sesión
         Properties props = new Properties();
@@ -128,17 +128,24 @@ public class Email {
     }
 
     public static void sendBienvenido(String para, String Nombres, String Email, String Contrasena) {
-        final String user = "stivencruz09291998@gmail.com";//cambiará en consecuencia al servidor utilizado
-        final String pass = "123hola123";
+        final String user = "comunicaciones.petlovers@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "12345HolaMundo";
 
 //1st paso) Obtener el objeto de sesión
-        Properties props = new Properties();
+//        Properties props = new Properties();
+//        props.setProperty("mail.smtp.host", "smtp.gmail.com"); // envia 
+//        props.setProperty("mail.smtp.starttls.enable", "true");
+//        props.setProperty("mail.smtp.port", "587");
+//        props.setProperty("mail.smtp.starttls.required", "false");
+//        props.setProperty("mail.smtp.auth", "true");
+//        props.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+Properties props = new Properties();
         props.setProperty("mail.smtp.host", "smtp.gmail.com"); // envia 
         props.setProperty("mail.smtp.starttls.enable", "true");
-        props.setProperty("mail.smtp.port", "25");
-        props.setProperty("mail.smtp.starttls.required", "false");
+        props.setProperty("mail.smtp.port", "587");
+//        props.setProperty("mail.smtp.starttls.required", "true");
         props.setProperty("mail.smtp.auth", "true");
-        props.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+//        props.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             @Override
@@ -180,8 +187,8 @@ public class Email {
 
     public static void send(String para, String Nombres, String Email, String Contrasena) {
 
-        final String user = "stivencruz09291998@gmail.com";//cambiará en consecuencia al servidor utilizado
-        final String pass = "123hola123";
+        final String user = "comunicaciones.petlovers@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "12345HolaMundo";
 
 //1st paso) Obtener el objeto de sesión
         Properties props = new Properties();
@@ -230,4 +237,55 @@ public class Email {
 
     }
 
+     public static void sendWelcome(String para, String Nombres, String emailUsu, String contrasena) {
+        final String user = "comunicaciones.petlovers@gmail.com";//cambiará en consecuencia al servidor utilizado
+        final String pass = "12345HolaMundo";
+
+//1st paso) Obtener el objeto de sesión
+        Properties props = new Properties();
+        props.setProperty("mail.smtp.host", "smtp.gmail.com"); // envia 
+        props.setProperty("mail.smtp.starttls.enable", "true");
+        props.setProperty("mail.smtp.port", "587");
+//        props.setProperty("mail.smtp.starttls.required", "true");
+        props.setProperty("mail.smtp.auth", "true");
+//        props.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(user, pass);
+            }
+        });
+
+//2nd paso)compose message
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
+            message.setSubject("Bienvenido a Pet Lovers");
+
+            message.setContent(
+                    "<center><img src='https://elsignificadode.net/wp-content/uploads/2017/10/BIENVENIDO.jpg' title='Bienvenidos'></center>"
+                    + "<h3> Bienvenido. "
+                    + Nombres
+                    + "</h3>"
+                    + "Datos de Ingreso: "
+                    + "<h4> Correo Usuario : "
+                    +  emailUsu
+                    + "</h4>"
+                    + "<h4> Clave usuario : "
+                    + contrasena
+                    + " </h4>", "text/html");
+
+            //3rd paso)send message
+            Transport.send(message);
+
+            System.out.println("Done ");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    
 }

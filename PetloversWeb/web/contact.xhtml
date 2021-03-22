@@ -54,22 +54,22 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li>
-                                                    <a href="./DocVentas/index.xhtml"> Productos y Servicios</a>
+                                                    <h:link outcome="/DocVentas/index.xhtml" value="Productos y Servicios"></h:link>
                                                     <ul class="submenu">
                                                         <li>
-                                                            <a href="./DocVentas/shop-details.xhtml">Alimentos</a>
+                                                            <h:link outcome="/DocVentas/shop-details.xhtml" value="Alimentos"></h:link>
                                                         </li>
                                                         <li>
-                                                            <a href="./DocVentas/shop-grid.xhtml">Accesorios</a>
+                                                            <h:link outcome="/DocVentas/shop-grid.xhtml" value="Accesorios"></h:link>
                                                         </li>
                                                         <li>
-                                                            <a href="./DocVentas/shop-grid-veterinaria.xhtml">Veterinario</a>
+                                                            <h:link outcome="/DocVentas/shop-grid-veterinaria.xhtml" value="Veterinario"></h:link>
                                                         </li>
                                                         <li>
-                                                            <a href="./DocVentas/shop-grid-aseo.xhtml">Higiene</a>
+                                                            <h:link outcome="/DocVentas/shop-grid-aseo.xhtml" value="Higiene"></h:link>
                                                         </li>
                                                         <li>
-                                                            <a href="./DocVentas/shop-grid-Belleza.xhtml">Estilista</a>
+                                                            <h:link outcome="/DocVentas/shop-grid-Belleza.xhtml" value="Estilista"></h:link>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -77,22 +77,21 @@
                                                     <a href="#">Pet Lovers Social</a>
                                                     <ul class="submenu">
                                                         <li>
-                                                            <a href="./DocFormulario/loginMascota.xhtml">Registrar Mascota</a>
+                                                            <h:link outcome="/DocFormulario/loginMascota.xhtml" value="Registrar Mascota"></h:link>
                                                         </li>
                                                         <li>
-                                                            <a
-                                                                href="./DocAdminAuxiliar/pet-match-search-busqueda.xhtml">Buscar Pareja</a>
+                                                            <h:link outcome="/DocAdminAuxiliar/pet-match-search-busqueda.xhtml" value="Buscar Pareja"></h:link>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="about.xhtml">Quienes somos</a>
+                                                    <h:link outcome="about.xhtml" value="Quienes somos"></h:link>
                                                     <ul class="submenu">
                                                         <li>
-                                                            <a href="contact.xhtml">Contactenos</a>
+                                                            <h:link outcome="contact.xhtml" value="Contactenos"></h:link>
                                                         </li>
                                                         <li>
-                                                            <a href="blog_details.xhtml">Blog</a>
+                                                            <h:link outcome="blog_details.xhtml" value="Blog"></h:link>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -101,7 +100,7 @@
                                     </div>
                                     <div class="header-right-btn f-right d-none d-lg-block ml-30">
                                         <!--<h:form>-->
-                                        <h:link class="header-btn" outcome="/DocLogin/login" value="Iniciar Sesion"></h:link>
+                                          <h:link class="header-btn" outcome="/DocLogin/login" value="Iniciar Sesion"></h:link>
                                         <!--</h:form>-->
                                         <!--                                    <a href="./DocLogin/index.html" class="header-btn"></a>-->
                                     </div>
@@ -613,13 +612,13 @@
                                     </h4>
                                     <ul>
                                         <li>
-                                            <a href="about.xhtml">Sobre nosotros</a>
+                                            <h:link outcome="about.xhtml" value="Sobre nosotros" ></h:link>
                                         </li>
                                         <li>
-                                            <a href="services.html">Servicios</a>
+                                            <h:link outcome="services.xhtml" value="Servicios" ></h:link>
                                         </li>
                                         <li>
-                                            <a href="contact.xhtml">Contáctenos</a>
+                                            <h:link outcome="contact.xhtml" value="Contáctenos" ></h:link>
                                         </li>
                                     </ul>
                                 </div>
@@ -632,18 +631,10 @@
                                         Servicios
                                     </h4>
                                     <ul>
-                                        <li>
-                                            <a href="./DocVentas/shop-grid-Belleza.xhtml">Estilista</a>
-                                        </li>
-                                        <li>
-                                            <a href="./DocVentas/shop-grid-aseo.xhtml">Higiene</a>
-                                        </li>
-                                        <li>
-                                            <a href="./DocVentas/shop-grid-veterinaria.xhtml">Esterilización</a>
-                                        </li>
-                                        <li>
-                                            <a href="./DocVentas/shop-grid-veterinaria.xhtml">Veterinaria</a>
-                                        </li>
+                                        <li><h:link outcome="/DocVentas/shop-grid-Belleza.xhtml" value="Estilista" ></h:link></li>
+                                        <li><h:link outcome="/DocVentas/shop-grid-aseo.xhtml" value="Higiene" ></h:link></li>
+                                        <li><h:link outcome="/DocVentas/shop-grid-veterinaria.xhtml" value="Esterilización" ></h:link></li>
+                                        <li><h:link outcome="/DocVentas/shop-grid-veterinaria.xhtml" value="Veterinaria" ></h:link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -656,16 +647,16 @@
                                     </h4>
                                     <ul>
                                         <li>
-                                            <a href="contact.xhtml">(57) 1 4158162</a>
+                                            <h:link outcome="contact.xhtml" value="(57) 1 4158162" />
                                         </li>
                                         <li>
-                                            <a href="contact.xhtml">comercial@petlovers.com.co</a>
+                                            <h:link outcome="contact.xhtml" value="comercial@petlovers.com.co" />
                                         </li>
                                         <li>
-                                            <a href="contact.xhtml">Cra. 110 # 96 - 29</a>
+                                            <h:link outcome="contact.xhtml" value="Cra. 110 # 96 - 29" />
                                         </li>
                                         <li>
-                                            <a href="contact.xhtml">Bogotá, Colombia</a>
+                                            <h:link outcome="contact.xhtml" value="Bogotá, Colombia" />
                                         </li>
                                     </ul>
                                 </div>

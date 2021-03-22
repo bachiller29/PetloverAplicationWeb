@@ -13,6 +13,8 @@ import edu.petlovers.utilities.Email;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -25,33 +27,34 @@ import org.primefaces.PrimeFaces;
  */
 @ManagedBean
 @RequestScoped
-public class UsuariosRequest implements Serializable{
+public class UsuariosRequest implements Serializable {
+
     @EJB
     UsuariosFacadeLocal usuariosFacadeLocal;
     @EJB
     TipoRolFacadeLocal tipoRolFacadeLocal;
-    
+
     private Usuarios objUsuario = new Usuarios();
-    
+
     private ArrayList<Usuarios> listaUsuarios = new ArrayList<>();
     private ArrayList<TipoRol> listaRoles = new ArrayList<>();
-    
+
     private int idUsuario;
     private ArrayList<Usuarios> unicoUsuario = new ArrayList<>();
-    
+
     public UsuariosRequest() {
     }
-    
+
     @PostConstruct
-    public void postUsuario(){
+    public void postUsuario() {
         listaUsuarios.addAll(usuariosFacadeLocal.findAll());
         listaRoles.addAll(tipoRolFacadeLocal.findAll());
         objUsuario.setIdTipoRol(new TipoRol());
     }
-    
+
     public void crearUsuario() {
         String mensaje = "";
-        
+
         try {
             objUsuario.setIdTipoRol(tipoRolFacadeLocal.find(objUsuario.getIdTipoRol().getIdTipoRol()));
             objUsuario.setFechaRegistro(new Date());
@@ -63,14 +66,14 @@ public class UsuariosRequest implements Serializable{
         objUsuario = new Usuarios();
         PrimeFaces.current().executeScript(mensaje);
     }
-    
-    public void cargarUsuario(Usuarios objCargar){
+
+    public void cargarUsuario(Usuarios objCargar) {
         this.objUsuario = objCargar;
     }
-    
+
     public void actualizarUsuario() {
         String mensaje = "";
-        
+
         try {
             usuariosFacadeLocal.edit(objUsuario);
             listaUsuarios.clear();
@@ -82,7 +85,7 @@ public class UsuariosRequest implements Serializable{
         objUsuario = new Usuarios();
         PrimeFaces.current().executeScript(mensaje);
     }
-    
+
     public void eliminarUsuario(Usuarios objEliminar) {
         String mensaje = "";
         try {
@@ -94,13 +97,13 @@ public class UsuariosRequest implements Serializable{
         }
         PrimeFaces.current().executeScript(mensaje);
     }
-    
+
     public void buscaUsuario() {
         Usuarios busUsua = new Usuarios();
         String mensaje = "";
         try {
             busUsua = usuariosFacadeLocal.buscarUsuario(idUsuario);
-            if(busUsua.getIdUsuario() == null) {
+            if (busUsua.getIdUsuario() == null) {
                 mensaje = "swal('El usuario' , ' No se encuentra registrado ', 'error')";
             } else {
                 unicoUsuario.add(busUsua);
@@ -111,23 +114,28 @@ public class UsuariosRequest implements Serializable{
         }
         PrimeFaces.current().executeScript(mensaje);
     }
-    
+
     public void vaciarBusqueda() {
         unicoUsuario = new ArrayList<>();
     }
-    
+
     public void correoMasivo() {
         try {
+            int total = listaUsuarios.size();
+            int counter = 1;
             for (Usuarios lUsuario : listaUsuarios) {
-                Email.sendBienvenido(lUsuario.getEmail(),
+                Email.sendWelcome(lUsuario.getEmail(),
                         lUsuario.getNombres() + " " + lUsuario.getApellidos(),
                         lUsuario.getEmail(), lUsuario.getContrasena());
+                TimeUnit.SECONDS.sleep(3);
+                System.out.println("Send " + counter + " of " + total);
+                counter++;
             }
         } catch (Exception e) {
             e.getMessage();
         }
     }
-    
+
     public void correoMasivoDos() {
         try {
             for (Usuarios lUsuario : listaUsuarios) {
@@ -139,7 +147,7 @@ public class UsuariosRequest implements Serializable{
             e.getMessage();
         }
     }
-    
+
     public Usuarios getObjUsuario() {
         return objUsuario;
     }
@@ -179,5 +187,5 @@ public class UsuariosRequest implements Serializable{
     public void setUnicoUsuario(ArrayList<Usuarios> unicoUsuario) {
         this.unicoUsuario = unicoUsuario;
     }
-    
+
 }
