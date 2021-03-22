@@ -31,6 +31,17 @@ public class ClientesFacade extends AbstractFacade<Clientes> implements Clientes
     }
     
     @Override
+    public int cantidadDatosCliente(int idUsuario) {
+        try {
+            Query q = em.createNativeQuery("SELECT COUNT(*) FROM clientes WHERE id_usuario = " + idUsuario);
+            int count = ((Number) q.getSingleResult()).intValue();
+            return count;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    @Override
     public Clientes buscarCliente(int idCliente){
         try {
             Query q = em.createQuery("SELECT c FROM Clientes c WHERE c.idCliente = :idCliente");
@@ -38,6 +49,16 @@ public class ClientesFacade extends AbstractFacade<Clientes> implements Clientes
             return (Clientes) q.getSingleResult();
         } catch (Exception e) {
             return new Clientes();
+        }
+    }
+    
+    @Override
+    public Clientes datosPorUsuario(int idUsuario){
+        try {
+            Query q = em.createNativeQuery("SELECT * FROM clientes c INNER JOIN usuarios u ON u.Id_Usuario = c.id_usuario WHERE u.Id_Usuario = " + idUsuario, Clientes.class);
+            return (Clientes) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
         }
     }
 }

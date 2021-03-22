@@ -5,12 +5,21 @@
  */
 package edu.petlovers.controller;
 
+import edu.petlovers.dto.CitasDTO;
+import edu.petlovers.dto.MascotasDTO;
+import edu.petlovers.entity.Citas;
+import edu.petlovers.entity.Clientes;
+import edu.petlovers.entity.Mascotas;
 import edu.petlovers.entity.Usuarios;
+import edu.petlovers.local.CitasFacadeLocal;
+import edu.petlovers.local.ClientesFacadeLocal;
+import edu.petlovers.local.MascotasFacadeLocal;
 import edu.petlovers.local.UsuariosFacadeLocal;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -31,11 +40,26 @@ public class UsuarioSession implements Serializable {
 
     @EJB
     UsuariosFacadeLocal usuariosFacadeLocal;
-
+    @EJB
+    MascotasFacadeLocal mascotasFacadeLocal;
+    @EJB
+    CitasFacadeLocal citasFacadeLocal;
+    @EJB
+    ClientesFacadeLocal clientesFacadeLocal;
+    
     private Usuarios usuLogin = new Usuarios();
 
     private ArrayList<Usuarios> usuariologeado = new ArrayList<>();
-
+    
+    private Clientes objCostumer = new Clientes();
+    private Clientes objCostum = new Clientes();
+ 
+    private List<Mascotas> listMascotas = new ArrayList<>();
+    private List<MascotasDTO> listaMascotasDTO = new ArrayList<>();
+    
+    private List<Citas> listCitas = new ArrayList<>();
+    private List<CitasDTO> listaCitasDTO = new ArrayList<>();
+    
     private String emailI = "";
     private String contrasenaIn = "";
 
@@ -70,6 +94,11 @@ public class UsuarioSession implements Serializable {
                         } else {
                             usuLogin.setUltimoIngreso(new Date());
                             usuariologeado.add(usuLogin);
+                            objCostumer = clientesFacadeLocal.datosPorUsuario(usuLogin.getIdUsuario());
+                            listMascotas = mascotasFacadeLocal.mascotasPorUsuario(usuLogin.getIdUsuario());
+                            listaMascotasDTO = this.consultarInfoMascota(listMascotas);
+                            listCitas = citasFacadeLocal.citasPorUsuario(usuLogin.getIdUsuario());
+                            listaCitasDTO = this.consultarInfoCita(listCitas);
                             FacesContext fc = FacesContext.getCurrentInstance();
                             fc.getExternalContext().redirect("../DocCliente/home.xhtml");
                         }
@@ -81,7 +110,43 @@ public class UsuarioSession implements Serializable {
         }
         PrimeFaces.current().executeScript(mensaje);
     }
+    
+    private List<MascotasDTO> consultarInfoMascota(List<Mascotas> list){
+        List<MascotasDTO> listaMascotasDTO = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            MascotasDTO objMascotasDTO = new MascotasDTO();
+            
+            objMascotasDTO.setIdMascota(list.get(i).getIdMascota());
+            objMascotasDTO.setIdCliente(list.get(i).getIdCliente().getIdCliente());
+            objMascotasDTO.setTipoMascota(list.get(i).getIdTipoMascota().getTipoMascota());
+            objMascotasDTO.setRazaMascota(list.get(i).getIdRazaMascota().getRazaMascota());
+            objMascotasDTO.setSexo(list.get(i).getSexo());
+            objMascotasDTO.setNombre(list.get(i).getNombresMascota());
+            objMascotasDTO.setEdad(list.get(i).getEdad());
+            objMascotasDTO.setFechaNacimiento(list.get(i).getFechaDeNacimiento());
+            objMascotasDTO.setColor(list.get(i).getColor());
+            objMascotasDTO.setEsterilizado(list.get(i).getEsterilizado());
+            listaMascotasDTO.add(objMascotasDTO);
+        }
+        return listaMascotasDTO;
+    }
 
+    private List<CitasDTO> consultarInfoCita(List<Citas> list){
+        List<CitasDTO> listaCitasDTO = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            CitasDTO objCitasDTO = new CitasDTO();
+            
+            objCitasDTO.setIdCita(list.get(i).getIdCitas());
+            objCitasDTO.setIdMascota(list.get(i).getIdMascota().getNombresMascota());
+            objCitasDTO.setIdServicio(list.get(i).getIdServicio().getNombreServicio());
+            objCitasDTO.setFechaCita(list.get(i).getFechaCita());
+            objCitasDTO.setHoraCita(list.get(i).getHoraCita());
+            objCitasDTO.setEstadoCita(list.get(i).getEstadoCita());
+            listaCitasDTO.add(objCitasDTO);
+        }
+        return listaCitasDTO;
+    }
+    
     public void verificarSesion() throws IOException{
         if(usuLogin.getIdUsuario()==null){
             FacesContext fc = FacesContext.getCurrentInstance();
@@ -112,6 +177,22 @@ public class UsuarioSession implements Serializable {
         PrimeFaces.current().executeScript(mensaje);
     }
 
+    public void cargarDatosCliente() {
+        this.objCostum = objCostumer;
+    }
+    
+    public void actualizarDatosCliente() {
+        String mensajeSw = "";
+
+        try {
+            clientesFacadeLocal.edit(objCostum);
+            mensajeSw = "swal('Sus datos' , ' se han modificado exitosamente ', 'success')";
+        } catch (Exception e) {
+            mensajeSw = "swal('Los datos' , ' No han sido modificados ', 'error')";
+        }
+        PrimeFaces.current().executeScript(mensajeSw);
+    }
+    
     public String getEmailI() {
         return emailI;
     }
@@ -142,6 +223,30 @@ public class UsuarioSession implements Serializable {
 
     public void setUsuariologeado(ArrayList<Usuarios> usuariologeado) {
         this.usuariologeado = usuariologeado;
+    }
+
+    public List<MascotasDTO> getListaMascotasDTO() {
+        return listaMascotasDTO;
+    }
+
+    public void setListaMascotasDTO(List<MascotasDTO> listaMascotasDTO) {
+        this.listaMascotasDTO = listaMascotasDTO;
+    }
+
+    public List<CitasDTO> getListaCitasDTO() {
+        return listaCitasDTO;
+    }
+
+    public void setListaCitasDTO(List<CitasDTO> listaCitasDTO) {
+        this.listaCitasDTO = listaCitasDTO;
+    }
+
+    public Clientes getObjCostum() {
+        return objCostum;
+    }
+
+    public void setObjCostum(Clientes objCostum) {
+        this.objCostum = objCostum;
     }
 
 }

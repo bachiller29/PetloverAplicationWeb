@@ -36,5 +36,7 @@ public interface CitasFacadeLocal {
 
     public Citas buscarCitaXCliente(int idMascota, String fecha);
 //    public String nombrePropietario(int idMascota);
+
+    public List<Citas> citasPorUsuario(int idUsuario);
     
 }

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="./docPersonalDeTiendaTemplate.xhtml">
+            <ui:define name="head">
+                <i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR NOVEDAD
+            </ui:define>         
+            <ui:define name="content">  
+                <div class="container-fluid">
+                    <ul class="full-box list-unstyled page-nav-tabs">
+                        <li>
+                            <a href="novelty-new.xhtml"><i class="fas fa-plus fa-fw"></i>
+                                &nbsp; AGREGAR NOVEDAD</a>
+                        </li>
+                        <li>
+                            <a href="novelty-list.xhtml"><i class="fas fa-clipboard-list fa-fw"></i>
+                                &nbsp; LISTADO DE NOVEDADES</a>
+                        </li>
+                        <li>
+                            <a href="novelty-search.xhtml"><i class="fas fa-search fa-fw"></i>
+                                &nbsp; BUSCAR NOVEDAD</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--  Content here -->
+                <div class="container-fluid">
+                    <h:form class="form-neon">
+                        <fieldset>
+                            <legend>
+                                <i class="fas fa-user"></i> &nbsp; Información básica
+                            </legend>
+                            <h:inputText id="id_cita" value="#{novedadRequest.objNovedad.idNovedad}" style="display: none;" />
+                            <div class="container-fluid" style="margin-top: 40px;">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="idCita" class="bmd-label-floating">Datos Cita (ID Cita // Fecha // Hora )</label>
+                                            <h:selectOneMenu id="idCita" value="#{novedadRequest.objNovedad.idCitas.idCitas}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems  value="#{novedadRequest.listaIdCitas}" var="idCiti" itemValue="#{idCiti.idCitas}" itemLabel=" #{idCiti.idCitas}  //  #{idCiti.fechaCita}  //  #{idCiti.horaCita}"></f:selectItems>  
+                                            </h:selectOneMenu>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="durac" class="bmd-label-floating">Duración del Servicio (horas o días)</label>
+                                            <h:inputText id="durac" required="true" requiredMessage="Ingrese un valor valido" value="#{novedadRequest.objNovedad.duracion}" class="form-control"/>
+                                            <h:message for="durac" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="priori" class="bmd-label-floating">Prioridad</label>
+                                            <h:selectOneMenu id="priori" value="#{novedadRequest.objNovedad.prioridad}" style="margin-top: 10px;" class="form-control">
+                                                <f:selectItem itemValue="" itemLabel="Seleccione una opción" />
+                                                <f:selectItem itemValue="Baja" itemLabel="Baja" />
+                                                <f:selectItem itemValue="Media" itemLabel="Media" />
+                                                <f:selectItem itemValue="Alta" itemLabel="Alta" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="adicional" style="margin-top: 30px;" class="bmd-label-floating">Servicio Adicional (Opcional)</label>
+                                            <h:inputTextarea id="adicional" rows="6" value="#{novedadRequest.objNovedad.adicional}" class="form-control"></h:inputTextarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="noveda" style="margin-top: 30px;" class="bmd-label-floating">Novedad/Imprevisto</label>
+                                            <h:inputTextarea id="noveda" rows="6" required="true" requiredMessage="Ingrese una novedad" value="#{novedadRequest.objNovedad.novedad}" class="form-control"></h:inputTextarea>
+                                            <h:message for="noveda" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="recomen" style="margin-top: 30px;" class="bmd-label-floating">Recomendaciones</label>
+                                            <h:inputTextarea id="recomen" rows="6" value="#{novedadRequest.objNovedad.recomendacion}" class="form-control"></h:inputTextarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <br /><br /><br />
+                        <p class="text-center" style="margin-top: 40px;">
+                            <a href="novelty-list.xhtml" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"> <i class="fas fa-backward"></i> &nbsp; REGRESAR</a>
+                            &nbsp; &nbsp;
+                            <h:commandButton action="#{novedadRequest.actualizarNovedad()}" class="btn btn-raised btn-success btn-lg" value="Actualizar"></h:commandButton>
+                        <!--    <button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button> -->
+                        </p>
+                    </h:form>
+                </div>
+            </ui:define>  
+        </ui:composition>
+    </h:body>
+</html>

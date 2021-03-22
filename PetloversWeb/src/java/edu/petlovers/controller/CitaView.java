@@ -86,6 +86,46 @@ public class CitaView implements Serializable{
         mascotaSeleccionada = mascotasFacadeLocal.find(idMascota);
     }
     
+    public String edadMascota() {
+        try {
+            return mascotaSeleccionada.getEdad();
+        } catch (Exception e) {
+            return " ";
+        }
+    }
+    
+    public String sexoMascota() {
+        try {
+            return mascotaSeleccionada.getSexo();
+        } catch (Exception e) {
+            return " ";
+        }
+    }
+    
+    public String tipoMascota() {
+        try {
+            return mascotaSeleccionada.getIdTipoMascota().getTipoMascota();
+        } catch (Exception e) {
+            return " ";
+        }
+    }
+    
+    public String razaMascota() {
+        try {
+            return mascotaSeleccionada.getIdRazaMascota().getRazaMascota();
+        } catch (Exception e) {
+            return " ";
+        }
+    }
+    
+    public String fechaNacimientoMascota() {
+        try {
+            return mascotaSeleccionada.getFechaDeNacimiento();
+        } catch (Exception e) {
+            return " ";
+        }
+    }
+    
     public String nombrePropietario() {
         try {
             return mascotaSeleccionada.getIdCliente().getIdUsuario().getNombres() + " " + mascotaSeleccionada.getIdCliente().getIdUsuario().getApellidos();
@@ -100,7 +140,7 @@ public class CitaView implements Serializable{
             objCita.setIdMascota(getMascotaSeleccionada());
             int cantidadCitas = citasFacadeLocal.cantidadCitas(objCita.getIdMascota().getIdMascota(), objCita.getFechaCita());
             Citas cita = citasFacadeLocal.buscarCitaXCliente(objCita.getIdMascota().getIdMascota(), objCita.getFechaCita());
-            if (cantidadCitas < 3 && calcularDiferencia(cita.getHoraCita(),objCita.getHoraCita())) {
+            if (cantidadCitas < 3 || calcularDiferencia(cita.getHoraCita(),objCita.getHoraCita())) {
 //                objCita.setIdMascota(mascotasFacadeLocal.find(objCita.getIdMascota().getIdMascota()));
                 objCita.setIdServicio(serviciosFacadeLocal.find(objCita.getIdServicio().getIdServicio()));
                 citasFacadeLocal.create(objCita);

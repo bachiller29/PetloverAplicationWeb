@@ -54,6 +54,8 @@ public class Citas implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private Servicios idServicio;
     @OneToMany(mappedBy = "idCitas", fetch = FetchType.EAGER)
+    private Collection<Novedades> novedadesCollection;
+    @OneToMany(mappedBy = "idCitas", fetch = FetchType.EAGER)
     private Collection<HistoriaClinica> historiaClinicaCollection;
 
     public Citas() {
@@ -109,6 +111,14 @@ public class Citas implements Serializable {
 
     public void setIdServicio(Servicios idServicio) {
         this.idServicio = idServicio;
+    }
+
+    public Collection<Novedades> getNovedadesCollection() {
+        return novedadesCollection;
+    }
+
+    public void setNovedadesCollection(Collection<Novedades> novedadesCollection) {
+        this.novedadesCollection = novedadesCollection;
     }
 
     public Collection<HistoriaClinica> getHistoriaClinicaCollection() {

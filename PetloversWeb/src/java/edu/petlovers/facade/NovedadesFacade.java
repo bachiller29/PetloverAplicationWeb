@@ -5,9 +5,8 @@
  */
 package edu.petlovers.facade;
 
-import edu.petlovers.entity.Mascotas;
-import edu.petlovers.local.MascotasFacadeLocal;
-import java.util.List;
+import edu.petlovers.local.NovedadesFacadeLocal;
+import edu.petlovers.entity.Novedades;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,10 +14,11 @@ import javax.persistence.Query;
 
 /**
  *
- * @author wsbachiller
+ * @author HP
  */
 @Stateless
-public class MascotasFacade extends AbstractFacade<Mascotas> implements MascotasFacadeLocal {
+public class NovedadesFacade extends AbstractFacade<Novedades> implements NovedadesFacadeLocal {
+
     @PersistenceContext(unitName = "PetloversWebPU")
     private EntityManager em;
 
@@ -27,14 +27,14 @@ public class MascotasFacade extends AbstractFacade<Mascotas> implements Mascotas
         return em;
     }
 
-    public MascotasFacade() {
-        super(Mascotas.class);
+    public NovedadesFacade() {
+        super(Novedades.class);
     }
     
     @Override
-    public int cantidadMascotas(int idCliente){
+    public int cantidadNovedades(int idCita) {
         try {
-            Query q = em.createNativeQuery("SELECT COUNT(*) FROM mascotas WHERE id_Cliente = " + idCliente);
+            Query q = em.createNativeQuery("SELECT COUNT(*) FROM novedades WHERE Id_Citas = " + idCita);
             int count = ((Number) q.getSingleResult()).intValue();
             return count;
         } catch (Exception e) {
@@ -43,12 +43,13 @@ public class MascotasFacade extends AbstractFacade<Mascotas> implements Mascotas
     }
     
     @Override
-    public List<Mascotas> mascotasPorUsuario(int idUsuario){
+    public Novedades buscarNovedad(int idNovedad) {
         try {
-            Query q = em.createNativeQuery("SELECT * FROM mascotas m INNER JOIN clientes c ON c.Id_Cliente = m.Id_Cliente INNER JOIN usuarios u ON u.Id_Usuario = c.id_usuario WHERE u.Id_Usuario = " + idUsuario, Mascotas.class);
-            return q.getResultList();
+            Query q = em.createQuery("SELECT n FROM Novedades n WHERE n.idNovedad = :idNovedad");
+            q.setParameter("idNovedad", idNovedad);
+            return (Novedades) q.getSingleResult();
         } catch (Exception e) {
-            return null;
+            return new Novedades();
         }
     }
     

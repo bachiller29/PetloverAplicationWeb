@@ -6,6 +6,7 @@
 package edu.petlovers.entity;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -49,7 +50,7 @@ public class Clientes implements Serializable {
     @Column(name = "Barrio")
     private String barrio;
     @Column(name = "Telefono")
-    private Integer telefono;
+    private BigInteger telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente", fetch = FetchType.EAGER)
     private Collection<Mascotas> mascotasCollection;
     @OneToMany(mappedBy = "idCliente", fetch = FetchType.EAGER)
@@ -97,11 +98,11 @@ public class Clientes implements Serializable {
         this.barrio = barrio;
     }
 
-    public Integer getTelefono() {
+    public BigInteger getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(BigInteger telefono) {
         this.telefono = telefono;
     }
 

@@ -34,8 +34,9 @@
                         </li>
                          <h:form>
                             <li>
-                                <h:commandLink action="#{clientesRequest.descargaReporte('ReporteCliente','Wollman Bachiller')}">
-                                    <i class="fas fa-download fa-fw"></i> &nbsp; Reporte
+                                <h:commandLink action="#{clientesRequest.descargaReporte('ReporteCliente','ADRIANA CAROLINA HERNANDEZ')}">
+                                    <i class="fas fa-download fa-fw"></i> 
+                                    &nbsp; REPORTE
                                 </h:commandLink>
                             </li>
                         </h:form>
@@ -47,11 +48,12 @@
                             <thead>               
                                 <tr class="text-center roboto-medium">
                                     <td>Id</td>
+                                    <td>Nombres</td>
+                                    <td>Apellidos</td>
                                     <td>Dirección</td>
                                     <td>Ciudad</td>
                                     <td>Barrio</td>
                                     <td>Telefono</td>
-                                    <td>Usuario</td>
                                     <td>ACTUALIZAR</td>
                                     <td>ELIMINAR</td>
                                 </tr>
@@ -61,11 +63,12 @@
                                     <c:forEach items="#{clientesRequest.listaClientes}" var="obCli">
                                         <tr>
                                             <td>#{obCli.idCliente}</td>
+                                            <td>#{obCli.idUsuario.nombres}</td>
+                                            <td>#{obCli.idUsuario.apellidos}</td>
                                             <td>#{obCli.direccion}</td>
                                             <td>#{obCli.ciudad}</td>
                                             <td>#{obCli.barrio}</td>
                                             <td>#{obCli.telefono}</td>
-                                            <td>#{obCli.idUsuario.nombres}</td> 
                                             <td><h:commandLink action="client-update.xhtml" actionListener="#{clientesRequest.cargarCliente(obCli)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
                                             <td><h:commandLink action="#{clientesRequest.removerCliente(obCli)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                         </tr>

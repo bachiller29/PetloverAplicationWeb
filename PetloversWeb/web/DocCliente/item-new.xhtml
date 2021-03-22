@@ -12,24 +12,18 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:body>
-        <ui:composition template="./docPersonalDeTiendaTemplate.xhtml">
+        <ui:composition template="./docClienteTemplate.xhtml">
             <ui:define name="head">
-                <i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CITAS
+                <i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR NUEVA CITA
             </ui:define>         
             <ui:define name="content">  
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
                         <li>
-                            <a class="active" href="client-new.xhtml"><i class="fas fa-plus fa-fw"></i> 
-                                &nbsp; AGREGAR CITAS</a>
-                        </li>
-                        <li>
-                            <a href="client-list.xhtml"><i class="fas fa-clipboard-list fa-fw"></i>
-                                &nbsp; LISTA DE CITAS</a>
-                        </li>
-                        <li>
-                            <a href="client-search.xhtml"><i class="fas fa-search fa-fw"></i>
-                                &nbsp; BUSCAR CITAS</a>
+                            <a href="item-list.xhtml">
+                                <i class="fas fa-clipboard-list fa-fw"></i>
+                                &nbsp; LISTA DE CITAS
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -44,9 +38,9 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-12 col-md-3">
                                         <div class="form-group">
-                                            <label for="id_mascota" class="bmd-label-floating">ID - Nombre de la Mascota</label>
+                                            <label for="id_mascota" class="bmd-label-floating">Nombre de la Mascota</label>
                                             <h:selectOneMenu id="id_mascota" value="#{citaView.idMascota}" required="true" requiredMessage="Seleccione una mascota" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItems value="#{citaView.listaIdMascotas}" var="idMasc" itemValue="#{idMasc.idMascota}" itemLabel="#{idMasc.idMascota} - #{idMasc.nombresMascota}"></f:selectItems>  
+                                                <f:selectItems value="#{usuarioSession.listaMascotasDTO}" var="idMasc" itemValue="#{idMasc.idMascota}" itemLabel="  #{idMasc.nombre}"></f:selectItems>  
                                             </h:selectOneMenu>
                                         </div>
                                     </div>
@@ -73,25 +67,19 @@ and open the template in the editor.
                                             <h:outputText id="id_tipo" value="#{citaView.tipoMascota()}" class="form-control"></h:outputText>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-4">
                                         <div class="form-group" style="margin-top: 30px;">
                                             <label for="id_raza" class="bmd-label-floating">Raza</label>
                                             <h:outputText id="id_raza" value="#{citaView.razaMascota()}" class="form-control"></h:outputText>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-4">
                                         <div class="form-group" style="margin-top: 30px;">
                                             <label for="id_nacimi" class="bmd-label-floating">Fecha de Nacimiento</label>
                                             <h:outputText id="id_nacimi" value="#{citaView.fechaNacimientoMascota()}" class="form-control"></h:outputText>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-3">
-                                        <div class="form-group" style="margin-top: 30px;">
-                                            <label for="id_cliente" class="bmd-label-floating">Nombre del Cliente Propietario</label>
-                                            <h:outputText id="id_cliente" value="#{citaView.nombrePropietario()}" class="form-control"></h:outputText>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-4">
                                         <div class="form-group" style="margin-top: 30px;">
                                             <label for="id_servicio" class="bmd-label-floating">Seleccione un Servicio</label>
                                             <h:selectOneMenu id="id_servicio" value="#{citaView.objCita.idServicio.idServicio}" class="form-control" style="margin-top: 10px;">
@@ -130,10 +118,10 @@ and open the template in the editor.
                                         <div class="form-group" style="margin-top: 30px;">
                                             <label for="estado" class="bmd-label-floating">Estado cita</label>
                                             <h:selectOneMenu id="estado" value="#{citaView.objCita.estadoCita}" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItem itemValue="" itemLabel="Seleccione una opción" />
+                                                <!--    <f:selectItem itemValue="" itemLabel="Seleccione una opción" />     -->
                                                 <f:selectItem itemValue="Reservada" itemLabel="Reservada" />
-                                                <f:selectItem itemValue="Reprogramada" itemLabel="Reprogramada" />
-                                                <f:selectItem itemValue="Cancelada" itemLabel="Cancelada" />
+                                                <!--    <f:selectItem itemValue="Reprogramada" itemLabel="Reprogramada" />
+                                                <f:selectItem itemValue="Cancelada" itemLabel="Cancelada" />    -->
                                             </h:selectOneMenu>
                                         </div>
                                     </div>

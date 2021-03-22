@@ -11,7 +11,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:html5="http://xmlns.jcp.org/jsf/passthrough">
     <h:body>
-        <ui:composition template="./docClienteTemplate.xhtml">
+        <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
                 <i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR DATOS DE LA MASCOTA
             </ui:define>
@@ -91,7 +91,7 @@ and open the template in the editor.
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
                                             <label for="id_client" style="margin-top: 30px;" class="bmd-label-floating">Nombre propietario de la mascota</label> 
-                                            <h:selectOneMenu id="id_client" disabled="true" value="#{registroMascotaRequest.objMascotas.idCliente.idCliente}" style="margin-top: 10px;" class="form-control">
+                                            <h:selectOneMenu id="id_client" value="#{registroMascotaRequest.objMascotas.idCliente.idCliente}" style="margin-top: 10px;" class="form-control">
                                                 <f:selectItems value="#{registroMascotaRequest.listaClientes}" var="idClie" itemValue="#{idClie.idCliente}" itemLabel="#{idClie.idUsuario.nombres} #{idClie.idUsuario.apellidos}"></f:selectItems>  
                                             </h:selectOneMenu>
                                         </div>

@@ -10,27 +10,30 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
-        <ui:composition template="./docClienteTemplate.xhtml">
+        <ui:composition template="./docAdminTemplate.xhtml">
             <ui:define name="head">
                 <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE MASCOTAS
             </ui:define>
             <ui:define name="content">
                 <div class="container-fluid">
                     <ul class="full-box list-unstyled page-nav-tabs">
-                        <li>
-                            <a href="pet-new.xhtml">
-                                <i class="fas fa-plus fa-fw"></i> 
-                                &nbsp; AGREGAR NUEVA MASCOTA
-                            </a>
-                        </li>
+                        <h:form>
+                            <li>
+                                <h:commandLink action="#{registroMascotaRequest.descargaReporte('ListaMascotas','ADRIANA CAROLINA HERNANDEZ')}"><i class="fas fa-download fa-fw"></i>
+                                    &nbsp; REPORTE MASCOTAS
+                                </h:commandLink>
+                            </li>
+                        </h:form>
                     </ul>	
                 </div>
+
                 <!-- Content here-->
                 <div class="container-fluid">
                     <div class="table-responsive">
                         <table class="table table-dark table-sm">
                             <thead>
                                 <tr class="text-center roboto-medium">
+                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Edad</th>
                                     <th>Sexo</th>
@@ -39,20 +42,25 @@ and open the template in the editor.
                                     <th>Raza</th>
                                     <th>Fecha de Nacimiento</th>
                                     <th>Esterilizado</th>
+                                    <th>ACTUALIZAR</th>
+                                    <th>ELIMINAR</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <h:form>
-                                    <c:forEach items="#{usuarioSession.listaMascotasDTO}" var="msc">
+                                    <c:forEach items="#{registroMascotaRequest.listaMascotas}" var="masco">
                                         <tr class="text-center">
-                                            <td>#{msc.nombre}</td>
-                                            <td>#{msc.edad}</td>
-                                            <td>#{msc.sexo}</td>
-                                            <td>#{msc.color}</td>
-                                            <td>#{msc.tipoMascota}</td>
-                                            <td>#{msc.razaMascota}</td>
-                                            <td>#{msc.fechaNacimiento}</td>
-                                            <td>#{msc.esterilizado}</td>
+                                            <td>#{masco.idMascota}</td>
+                                            <td>#{masco.nombresMascota}</td>
+                                            <td>#{masco.edad}</td>
+                                            <td>#{masco.sexo}</td>
+                                            <td>#{masco.color}</td>
+                                            <td>#{masco.idTipoMascota.tipoMascota}</td>
+                                            <td>#{masco.idRazaMascota.razaMascota}</td>
+                                            <td>#{masco.fechaDeNacimiento}</td>
+                                            <td>#{masco.esterilizado}</td>
+                                            <td><h:commandLink action="pet-update.xhtml" actionListener="#{registroMascotaRequest.cargarMascota(masco)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <td><h:commandLink action="#{registroMascotaRequest.eliminarMascota(masco)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
                                         </tr>
                                     </c:forEach>
                                 </h:form>

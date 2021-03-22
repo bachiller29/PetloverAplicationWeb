@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="./docPersonalDeTiendaTemplate.xhtml">
+            <ui:define name="head">
+                <i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR NOVEDAD
+            </ui:define>         
+            <ui:define name="content">  
+                <div class="container-fluid">
+                    <ul class="full-box list-unstyled page-nav-tabs">
+                        <li>
+                            <a class="active" href="novelty-new.xhtml"><i class="fas fa-plus fa-fw"></i> 
+                                &nbsp; AGREGAR NOVEDAD</a>
+                        </li>
+                        <li>
+                            <a href="novelty-list.xhtml"><i class="fas fa-clipboard-list fa-fw"></i>
+                                &nbsp; LISTADO DE NOVEDADES</a>
+                        </li>
+                        <li>
+                            <a href="novelty-search.xhtml"><i class="fas fa-search fa-fw"></i>
+                                &nbsp; BUSCAR NOVEDAD</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--  Content here -->
+                <div class="container-fluid">
+                    <h:form class="form-neon">
+                        <fieldset>
+                            <legend>
+                                <i class="fas fa-user"></i> &nbsp; Información básica
+                            </legend>
+                            <div class="container-fluid" style="margin-top: 40px;">
+                                <div class="row">
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group">
+                                            <label for="idCita" class="bmd-label-floating">Datos Cita (ID Cita // Fecha // Hora )</label>
+                                            <h:selectOneMenu id="idCita" value="#{novedadView.idCita}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems  value="#{novedadView.listaIdCitas}" var="idCiti" itemValue="#{idCiti.idCitas}" itemLabel=" #{idCiti.idCitas}  //  #{idCiti.fechaCita}  //  #{idCiti.horaCita}"></f:selectItems>  
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-1">
+                                        <div class="form-group">
+                                            <td><h:commandLink action="#{novedadView.cargaCita()}" class="btn btn-warning" style="width: 100%;"><i class="far fa-user-circle"></i></h:commandLink></td>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="id_fecha" class="bmd-label-floating">Fecha Cita</label>
+                                            <h:outputText id="id_fecha" value="#{novedadView.fechaCita()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="id_servicio" class="bmd-label-floating">Tipo Servicio</label>
+                                            <h:outputText id="id_servicio" value="#{novedadView.tipoServicio()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="id_mascota" class="bmd-label-floating">Nombre Mascota</label>
+                                            <h:outputText id="id_mascota" value="#{novedadView.nombreMascota()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="id_edad" class="bmd-label-floating">Edad</label>
+                                            <h:outputText id="id_edad" value="#{novedadView.edadMascota()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="id_sexo" class="bmd-label-floating">Sexo</label>
+                                            <h:outputText id="id_sexo" value="#{novedadView.sexoMascota()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="id_tipo" class="bmd-label-floating">Tipo Mascota</label>
+                                            <h:outputText id="id_tipo" value="#{novedadView.tipoMascota()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="id_raza" class="bmd-label-floating">Raza</label>
+                                            <h:outputText id="id_raza" value="#{novedadView.razaMascota()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="id_cliente" class="bmd-label-floating">Nombre Propietario</label>
+                                            <h:outputText id="id_cliente" value="#{novedadView.nombrePropietario()}" class="form-control"></h:outputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="durac" class="bmd-label-floating">Duración del Servicio (horas o días)</label>
+                                            <h:inputText id="durac" value="#{novedadView.objNovedad.duracion}" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="priori" class="bmd-label-floating">Prioridad</label>
+                                            <h:selectOneMenu id="priori" value="#{novedadView.objNovedad.prioridad}" style="margin-top: 10px;" class="form-control">
+                                                <f:selectItem itemValue="" itemLabel="Seleccione una opción" />
+                                                <f:selectItem itemValue="Baja" itemLabel="Baja" />
+                                                <f:selectItem itemValue="Media" itemLabel="Media" />
+                                                <f:selectItem itemValue="Alta" itemLabel="Alta" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="adicional" class="bmd-label-floating">Servicio Adicional (Opcional)</label>
+                                            <h:inputTextarea id="adicional" rows="6" value="#{novedadView.objNovedad.adicional}" class="form-control"></h:inputTextarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="noveda" class="bmd-label-floating">Novedad/Imprevisto</label>
+                                            <h:inputTextarea id="noveda" rows="6" required="true" requiredMessage="Ingrese una novedad" value="#{novedadView.objNovedad.novedad}" class="form-control"></h:inputTextarea>
+                                            <h:message for="noveda" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group" style="margin-top: 20px;">
+                                            <label for="recomen" class="bmd-label-floating">Recomendaciones</label>
+                                            <h:inputTextarea id="recomen" rows="6" value="#{novedadView.objNovedad.recomendacion}" class="form-control"></h:inputTextarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <br /><br /><br />
+                        <p class="text-center" style="margin-top: 40px;">
+                            <button type="reset" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
+                            &nbsp; &nbsp; 
+                            <!--    <button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>        -->
+                            <h:commandButton action="#{novedadView.crearNovedad()}" class="btn btn-raised btn-info btn-lg" value="Guardar"></h:commandButton>
+                        </p>
+                    </h:form>
+                </div>
+            </ui:define>  
+        </ui:composition>
+    </h:body>
+</html>

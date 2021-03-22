@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="f66511a5-fc98-4c21-94e0-645dd1403022">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="RutaLogo" class="java.lang.String"/>
+	<parameter name="UsuarioReporte" class="java.lang.String"/>
+	<parameter name="RutaImagenFondo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     servicios.`Id_Servicio` AS servicios_Id_Servicio,
+     servicios.`Nombre_Servicio` AS servicios_Nombre_Servicio,
+     servicios.`Descripcion` AS servicios_Descripcion,
+     servicios.`Valor_Servicio` AS servicios_Valor_Servicio,
+     tipo_servicios.`Tipo_Servicio` AS tipo_servicios_Tipo_Servicio,
+     usuarios.`Nombres` AS usuarios_Nombres,
+     usuarios.`Apellidos` AS usuarios_Apellidos,
+     tipo_rol.`Nombre_Rol` AS tipo_rol_Nombre_Rol,
+     criadero.`Sede_Criadero` AS criadero_Sede_Criadero
+FROM
+     `usuarios` usuarios INNER JOIN `empleados` empleados ON usuarios.`Id_Usuario` = empleados.`id_usuario`
+     INNER JOIN `servicios` servicios ON empleados.`Id_Empleado` = servicios.`Id_Empleado`
+     INNER JOIN `criadero` criadero ON servicios.`Nit_Criadero` = criadero.`Nit_Criadero`
+     INNER JOIN `tipo_servicios` tipo_servicios ON servicios.`Id_Tipo_Servicio` = tipo_servicios.`Id_Tipo_Servicio`
+     INNER JOIN `tipo_rol` tipo_rol ON usuarios.`Id_Tipo_Rol` = tipo_rol.`Id_Tipo_Rol`]]>
+	</queryString>
+	<field name="servicios_Id_Servicio" class="java.lang.Integer"/>
+	<field name="servicios_Nombre_Servicio" class="java.lang.String"/>
+	<field name="servicios_Descripcion" class="java.lang.String"/>
+	<field name="servicios_Valor_Servicio" class="java.lang.Integer"/>
+	<field name="tipo_servicios_Tipo_Servicio" class="java.lang.String"/>
+	<field name="usuarios_Nombres" class="java.lang.String"/>
+	<field name="usuarios_Apellidos" class="java.lang.String"/>
+	<field name="tipo_rol_Nombre_Rol" class="java.lang.String"/>
+	<field name="criadero_Sede_Criadero" class="java.lang.String"/>
+	<background>
+		<band height="575" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#666666" uuid="b9872e75-f020-4cab-b306-e46a76ee5989"/>
+				<textField>
+					<reportElement style="Column header" x="0" y="0" width="104" height="73" forecolor="#000000" uuid="06e01dab-9120-432d-b63a-7e0c0788a12f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#000000" uuid="1a1f4ee0-3afb-44c0-a90a-8525e249438b"/>
+					<box leftPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center">
+						<font size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="27070739-3a5a-404c-af95-2a6274117f35"/>
+				</line>
+			</frame>
+			<image>
+				<reportElement x="84" y="143" width="629" height="305" uuid="c70d5bdf-2c6e-41bb-80a3-90b7a465a50a"/>
+				<imageExpression><![CDATA[$P{RutaImagenFondo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="-1" y="10" width="802" height="67" uuid="966868f7-67ca-4434-8695-5daaf9099619"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[SERVICIOS CRIADERO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="22" y="0" width="143" height="104" uuid="0795d188-708b-4664-b44d-c9414ddcf13e"/>
+				<imageExpression><![CDATA[$P{RutaLogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Transparent" x="165" y="67" width="636" height="37" forecolor="#666666" backcolor="#FFFFFF" uuid="d0aeffed-c6c2-430b-bf5f-45c91b9ff8ee"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="20" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reporte generado por " + $P{UsuarioReporte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#666666" uuid="c189f642-412a-45fc-92e1-09b1bdcd5f08"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="22" height="15" uuid="161fc741-b154-41cc-b23f-188a8a654226"/>
+					<text><![CDATA[Id]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="22" y="0" width="88" height="15" uuid="dac78767-9843-44e0-a12b-d51c125bd746"/>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="110" y="0" width="156" height="15" uuid="7914cb6f-9e5a-4d20-a507-899c16654b40"/>
+					<text><![CDATA[Descripción]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="266" y="0" width="46" height="15" uuid="a74e67da-028c-4693-ac73-5951068f94f0"/>
+					<text><![CDATA[Valor $]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="312" y="0" width="88" height="15" uuid="324bb541-9bee-4131-8890-1bfbfabc24e9"/>
+					<text><![CDATA[Tipo Servicio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="400" y="0" width="155" height="15" uuid="a723fb88-9b9b-492e-95ff-1f5f6127e47d"/>
+					<text><![CDATA[Encargado]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="639" y="0" width="65" height="15" uuid="77660f90-5d4d-4b7e-a55b-81560b98a758"/>
+					<text><![CDATA[Sede]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="555" y="0" width="84" height="15" uuid="0c5b74d4-da51-4c77-a00f-ede425a3b85d"/>
+					<text><![CDATA[Cargo]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="73" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="705" height="15" uuid="61767926-52ac-4b13-91a5-ecbe8bc2c13d"/>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement mode="Transparent" x="639" y="0" width="65" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="95fd208d-aa63-4479-bf98-041928791290"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+						<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{criadero_Sede_Criadero}]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement mode="Transparent" x="400" y="0" width="78" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="ee817716-1244-4745-997c-c33306829ca7"/>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+						<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{usuarios_Nombres}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="22" y="0" width="88" height="15" uuid="61d62700-b0b2-46f3-967d-ab02fbf37c6b"/>
+					<textFieldExpression><![CDATA[$F{servicios_Nombre_Servicio}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="97" y="1" width="22" height="15" uuid="54d6627e-69f8-4806-98e9-e0a453320109"/>
+				<textFieldExpression><![CDATA[$F{servicios_Id_Servicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="653" y="1" width="83" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="d82d2e79-41e4-437d-930f-0480742dbcb6"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_rol_Nombre_Rol}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="575" y="1" width="77" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="99bed134-02b7-46c2-9f08-8b33c0058ee3"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarios_Apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="409" y="1" width="88" height="15" uuid="8cc727f9-fd39-4998-963a-589d74ff17b9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tipo_servicios_Tipo_Servicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="1" width="46" height="15" uuid="23149c9d-a44d-4778-97bf-0d52a92f9f70"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{servicios_Valor_Servicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="1" width="156" height="71" uuid="3608ffb0-2f7d-4f0b-976d-814d456b7055"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{servicios_Descripcion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="96" y="72" width="705" height="1" uuid="0597989d-0de7-4909-ad6b-49ec7d56afb5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="42a19c0c-e3bc-4596-96f3-3179d927b8ee"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="97" y="0" width="266" height="20" uuid="60ccee7d-13ae-4914-b2e7-6d5305766fa8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[SENA - ADSI]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

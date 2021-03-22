@@ -7,6 +7,7 @@ package edu.petlovers.facade;
 
 import edu.petlovers.local.CitasFacadeLocal;
 import edu.petlovers.entity.Citas;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -74,4 +75,15 @@ public class CitasFacade extends AbstractFacade<Citas> implements CitasFacadeLoc
             return new Citas();
         }
     }
+    
+    @Override
+    public List<Citas> citasPorUsuario(int idUsuario){
+        try {
+            Query q = em.createNativeQuery("SELECT * FROM citas ct INNER JOIN mascotas m ON m.Id_Mascota = ct.Id_Mascota INNER JOIN clientes c ON c.Id_Cliente = m.Id_Cliente INNER JOIN usuarios u ON u.Id_Usuario = c.id_usuario WHERE u.Id_Usuario = " + idUsuario, Citas.class);
+            return q.getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
 }

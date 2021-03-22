@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="./docClienteTemplate.xhtml">
+            <ui:define name="head">
+                <i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR MIS DATOS DE USUARIO
+            </ui:define>
+            <ui:define name="content">
+                <div class="container-fluid">
+                    <ul class="full-box list-unstyled page-nav-tabs">
+                        <h:form>
+                            <li>
+                                <!--    <a href="client-new.xhtml"><i class="fas fa-plus fa-fw"></i>    -->
+                                <h:commandLink action="client-update.xhtml" actionListener="#{usuarioSession.cargarDatosCliente()}"><i class="fas fa-sync fa-fw"></i>
+                                &nbsp; MODIFICAR INFORMACIÓN ADICIONAL
+                                </h:commandLink>
+                                <!--    </a>    -->
+                            </li>
+                        </h:form>
+                        <li>
+                            <a href="client-new.xhtml">
+                                <i class="fas fa-plus fa-fw"></i> 
+                                &nbsp; AGREGAR NUEVA INFORMACIÓN ADICIONAL
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--  Content here -->
+                <div class="container-fluid">
+                    <h:form class="form-neon">
+                        <fieldset>
+                            <legend>
+                                <i class="fas fa-user"></i> 
+                                &nbsp; Información personal del usuario
+                            </legend>
+                            <h:inputText id="id_usuario" value="#{usuarioSession.usuLogin.idUsuario}" style="display: none;" />
+                            <div class="container-fluid" style="margin-top: 40px;">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="tipoDoc" class="bmd-label-floating">Tipo Documento</label>
+                                            <h:inputText id="tipoDoc" disabled="true" value="#{usuarioSession.usuLogin.tipoDocumento}" class="form-control"></h:inputText>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="documento" class="bmd-label-floating">Numero Documento</label>
+                                            <h:inputText id="documento" disabled="true" value="#{usuarioSession.usuLogin.documento}" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="nombre" style="margin-top: 30px;" class="bmd-label-floating">Nombres</label>
+                                            <h:inputText id="nombre" required="true" requiredMessage="Ingrese un nombre valido" maxlength="35" value="#{usuarioSession.usuLogin.nombres}" class="form-control"/>
+                                            <h:message for="nombre" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="apellido" style="margin-top: 30px;" class="bmd-label-floating">Apellidos</label>
+                                            <h:inputText id="apellido" required="true" requiredMessage="Ingrese un apellido valido" maxlength="35" value="#{usuarioSession.usuLogin.apellidos}" class="form-control"/>
+                                            <h:message for="apellido" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="email" style="margin-top: 30px;" class="bmd-label-floating">Correo Electronico</label>
+                                            <h:inputText id="email" disabled="true" value="#{usuarioSession.usuLogin.email}" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="clave" style="margin-top: 30px;" class="bmd-label-floating">Contraseña</label>
+                                            <h:inputSecret id="clave" required="true" requiredMessage="Ingrese una contraseña valida" maxlength="15" value="#{usuarioSession.usuLogin.contrasena}" class="form-control"/>
+                                            <h:message for="clave" style="color: red;" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </fieldset>
+                        <br /><br /><br />
+                        <p class="text-center" style="margin-top: 40px;">
+                            <!--    <button type="submit" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>  -->
+                            <a href="home.xhtml" class="btn btn-raised btn-secondary btn-lg" style="margin-right: 15px;"> <i class="fas fa-backward"></i> &nbsp; REGRESAR</a>
+                            &nbsp; &nbsp;
+                            <h:commandButton action="#{usuarioSession.actualizarMisDatos()}" class="btn btn-raised btn-success btn-lg" value="Actualizar"></h:commandButton>
+                        </p>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

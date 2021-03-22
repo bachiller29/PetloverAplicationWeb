@@ -32,4 +32,5 @@ public interface MascotasFacadeLocal {
 
     public int cantidadMascotas(int idCliente);
     
+    public List<Mascotas> mascotasPorUsuario(int idUsuario);
 }

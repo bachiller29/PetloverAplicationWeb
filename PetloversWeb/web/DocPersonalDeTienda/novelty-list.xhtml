@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:body>
+        <ui:composition template="./docPersonalDeTiendaTemplate.xhtml">
+            <ui:define name="head">
+                <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTADO DE NOVEDADES
+            </ui:define>         
+            <ui:define name="content">  
+                <div class="container-fluid">
+                    <ul class="full-box list-unstyled page-nav-tabs">
+                        <li>
+                            <a href="novelty-new.xhtml"><i class="fas fa-plus fa-fw"></i>
+                                &nbsp; AGREGAR NOVEDAD</a>
+                        </li>
+                        <li>
+                            <a class="active" href="novelty-list.xhtml"><i class="fas fa-clipboard-list fa-fw"></i> 
+                                &nbsp; LISTADO DE NOVEDADES</a>
+                        </li>
+                        <li>
+                            <a href="novelty-search.xhtml"><i class="fas fa-search fa-fw"></i>
+                                &nbsp; BUSCAR NOVEDAD</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--  Content here -->
+                <div class="container-fluid">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-sm">
+                            <thead>
+                                <tr class="text-center roboto-medium">
+                                    <th>ID</th>
+                                    <th>Datos Cita</th>
+                                    <th>Servicio</th>
+                                    <th>Mascota</th>
+                                    <th>Duración</th>
+                                    <th>Prioridad</th>
+                                    <th>Servicio Adicional</th>
+                                    <th>Novedad/Imprevisto</th>
+                                    <th>Recomendaciones</th>
+                                    <th>UPDATE</th>
+                                    <th>DELETE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <h:form>
+                                    <c:forEach items="#{novedadRequest.listaNovedad}" var="noved">
+                                        <tr class="text-center">
+                                            <td>#{noved.idNovedad}</td>
+                                            <td>#{noved.idCitas.idCitas} - #{noved.idCitas.fechaCita} - #{noved.idCitas.horaCita}</td>
+                                            <td>#{noved.idCitas.idServicio.nombreServicio}</td>
+                                            <td>#{noved.idCitas.idMascota.nombresMascota}</td>
+                                            <td>#{noved.duracion}</td>
+                                            <td>#{noved.prioridad}</td>
+                                            <td>#{noved.adicional}</td>
+                                            <td>#{noved.novedad}</td>
+                                            <td>#{noved.recomendacion}</td>
+                                            <td><h:commandLink action="novelty-update.xhtml" actionListener="#{novedadRequest.cargarNovedad(noved)}" class="btn btn-success"><i class="fas fa-sync-alt"></i></h:commandLink></td>
+                                            <!--    <a href="item-update.html" class="btn btn-success"> <i class="fas fa-sync-alt"></i> </a>    -->
+                                            <td><h:commandLink action="#{novedadRequest.eliminarHistoriaC(noved)}" class="btn btn-warning"><i class="far fa-trash-alt"></i></h:commandLink></td>
+                                            <!--    <button type="button" class="btn btn-warning"> <i class="far fa-trash-alt"></i> </button>   -->
+                                        </tr>
+                                    </c:forEach>
+                                </h:form>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </div>
+            </ui:define>  
+        </ui:composition>
+    </h:body>
+</html>

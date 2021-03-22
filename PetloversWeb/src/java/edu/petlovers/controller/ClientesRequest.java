@@ -6,7 +6,9 @@
 package edu.petlovers.controller;
 
 import edu.petlovers.entity.Clientes;
+import edu.petlovers.entity.Usuarios;
 import edu.petlovers.local.ClientesFacadeLocal;
+import edu.petlovers.local.UsuariosFacadeLocal;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -43,9 +45,12 @@ public class ClientesRequest implements Serializable {
 
     @EJB
     ClientesFacadeLocal clientesFacadeLocal;
+    @EJB
+    UsuariosFacadeLocal usuariosFacadeLocal;
 
     private Clientes objClientes = new Clientes();
     private ArrayList<Clientes> listaClientes = new ArrayList();
+    
     private int idCliente;
     private ArrayList<Clientes> unicoClientes = new ArrayList();
     /**
@@ -57,17 +62,24 @@ public class ClientesRequest implements Serializable {
     @PostConstruct
     public void postCliente() {
         listaClientes.addAll(clientesFacadeLocal.findAll());
+        objClientes.setIdUsuario(new Usuarios());
     }
 
     public void registrarCliente() {
         String mensajeSw = "";
 
         try {
-            clientesFacadeLocal.create(objClientes);
-            listaClientes.add(objClientes);
-            mensajeSw = "swal('Cliente creado' , 'con exito' , 'success')";
+            objClientes.setIdUsuario(usuariosFacadeLocal.find(objClientes.getIdUsuario().getIdUsuario()));
+            int cantidadDatosPorCliente = clientesFacadeLocal.cantidadDatosCliente(objClientes.getIdUsuario().getIdUsuario());
+            if(cantidadDatosPorCliente < 1){
+                clientesFacadeLocal.create(objClientes);
+                listaClientes.add(objClientes);
+                mensajeSw = "swal('Datos registrados' , 'con exito' , 'success')";
+            } else {
+                mensajeSw = "swal('Excede la cantidad' , ' de registros nuevos en nuestra base de datos ', 'error')";
+            }
         } catch (Exception e) {
-            mensajeSw = "swal('El cliente' , 'no fue registrado' , 'error');";
+            mensajeSw = "swal('Los datos' , 'no fueron registrados' , 'error');";
         }
         objClientes = new Clientes();
         PrimeFaces.current().executeScript(mensajeSw);
@@ -86,8 +98,8 @@ public class ClientesRequest implements Serializable {
         PrimeFaces.current().executeScript(mensajeSw);
     }
     
-    public void cargarCliente(Clientes objCliente){
-        this.objClientes = objCliente;
+    public void cargarCliente(Clientes objCargar){
+        this.objClientes = objCargar;
          this.idCliente = objClientes.getIdCliente();
     }
 

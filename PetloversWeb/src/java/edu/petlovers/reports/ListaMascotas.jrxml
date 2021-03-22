@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="f66511a5-fc98-4c21-94e0-645dd1403022">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="314"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="RutaLogo" class="java.lang.String"/>
+	<parameter name="UsuarioReporte" class="java.lang.String"/>
+	<parameter name="RutaImagenFondo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     mascotas.`Id_Mascota` AS mascotas_Id_Mascota,
+     mascotas.`Nombres_Mascota` AS mascotas_Nombres_Mascota,
+     mascotas.`Edad` AS mascotas_Edad,
+     mascotas.`Sexo` AS mascotas_Sexo,
+     mascotas.`Color` AS mascotas_Color,
+     tipo_mascotas.`Tipo_Mascota` AS tipo_mascotas_Tipo_Mascota,
+     raza_mascotas.`Raza_Mascota` AS raza_mascotas_Raza_Mascota,
+     mascotas.`Fecha_De_Nacimiento` AS mascotas_Fecha_De_Nacimiento,
+     mascotas.`Esterilizado` AS mascotas_Esterilizado,
+     usuarios.`Nombres` AS usuarios_Nombres,
+     usuarios.`Apellidos` AS usuarios_Apellidos
+FROM
+     `mascotas` mascotas INNER JOIN `clientes` clientes ON mascotas.`Id_Cliente` = clientes.`Id_Cliente`
+     INNER JOIN `usuarios` usuarios ON clientes.`id_usuario` = usuarios.`Id_Usuario`
+     INNER JOIN `tipo_mascotas` tipo_mascotas ON mascotas.`Id_Tipo_Mascota` = tipo_mascotas.`Id_Tipo_Mascota`
+     INNER JOIN `raza_mascotas` raza_mascotas ON mascotas.`Id_Raza_Mascota` = raza_mascotas.`Id_Raza_Mascota`]]>
+	</queryString>
+	<field name="mascotas_Id_Mascota" class="java.lang.Integer"/>
+	<field name="mascotas_Nombres_Mascota" class="java.lang.String"/>
+	<field name="mascotas_Edad" class="java.lang.String"/>
+	<field name="mascotas_Sexo" class="java.lang.String"/>
+	<field name="mascotas_Color" class="java.lang.String"/>
+	<field name="tipo_mascotas_Tipo_Mascota" class="java.lang.String"/>
+	<field name="raza_mascotas_Raza_Mascota" class="java.lang.String"/>
+	<field name="mascotas_Fecha_De_Nacimiento" class="java.lang.String"/>
+	<field name="mascotas_Esterilizado" class="java.lang.String"/>
+	<field name="usuarios_Nombres" class="java.lang.String"/>
+	<field name="usuarios_Apellidos" class="java.lang.String"/>
+	<background>
+		<band height="575" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#666666" uuid="b9872e75-f020-4cab-b306-e46a76ee5989"/>
+				<textField>
+					<reportElement style="Column header" x="0" y="0" width="104" height="73" forecolor="#000000" uuid="06e01dab-9120-432d-b63a-7e0c0788a12f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#000000" uuid="1a1f4ee0-3afb-44c0-a90a-8525e249438b"/>
+					<box leftPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center">
+						<font size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="27070739-3a5a-404c-af95-2a6274117f35"/>
+				</line>
+			</frame>
+			<image>
+				<reportElement x="84" y="143" width="629" height="305" uuid="c70d5bdf-2c6e-41bb-80a3-90b7a465a50a"/>
+				<imageExpression><![CDATA[$P{RutaImagenFondo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="-1" y="10" width="802" height="67" uuid="966868f7-67ca-4434-8695-5daaf9099619"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[LISTADO MASCOTAS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="22" y="0" width="143" height="104" uuid="0795d188-708b-4664-b44d-c9414ddcf13e"/>
+				<imageExpression><![CDATA[$P{RutaLogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Transparent" x="165" y="67" width="636" height="37" forecolor="#666666" backcolor="#FFFFFF" uuid="d0aeffed-c6c2-430b-bf5f-45c91b9ff8ee"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="20" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reporte generado por " + $P{UsuarioReporte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#666666" uuid="c189f642-412a-45fc-92e1-09b1bdcd5f08"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="26" height="15" uuid="161fc741-b154-41cc-b23f-188a8a654226"/>
+					<text><![CDATA[ID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="26" y="0" width="54" height="15" uuid="dac78767-9843-44e0-a12b-d51c125bd746"/>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="80" y="0" width="33" height="15" uuid="7914cb6f-9e5a-4d20-a507-899c16654b40"/>
+					<text><![CDATA[Edad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="205" y="0" width="61" height="15" uuid="324bb541-9bee-4131-8890-1bfbfabc24e9"/>
+					<text><![CDATA[Tipo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="266" y="0" width="75" height="15" uuid="a723fb88-9b9b-492e-95ff-1f5f6127e47d"/>
+					<text><![CDATA[Raza]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="341" y="0" width="108" height="15" uuid="3447c74c-d18a-4c3e-8931-2323777e7949"/>
+					<text><![CDATA[Fecha Nacimiento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="449" y="0" width="72" height="15" uuid="77660f90-5d4d-4b7e-a55b-81560b98a758"/>
+					<text><![CDATA[Esterilizado]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="113" y="0" width="33" height="15" uuid="effa7ab0-0d35-4d58-bcf2-11ad90c59398"/>
+					<text><![CDATA[Sexo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="146" y="0" width="59" height="15" uuid="e673d2e4-344d-40b6-9369-26dae66d4a22"/>
+					<text><![CDATA[Color]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="521" y="0" width="183" height="15" uuid="a74e67da-028c-4693-ac73-5951068f94f0"/>
+					<text><![CDATA[ Propietario]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="705" height="15" uuid="61767926-52ac-4b13-91a5-ecbe8bc2c13d"/>
+				<textField>
+					<reportElement x="26" y="0" width="54" height="15" uuid="74e0536c-44ad-4806-beac-1edd8071f472"/>
+					<textFieldExpression><![CDATA[$F{mascotas_Nombres_Mascota}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="113" y="0" width="33" height="15" uuid="d170c494-6f43-43b3-a1fb-bf170f3d51f6"/>
+					<textFieldExpression><![CDATA[$F{mascotas_Sexo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="146" y="0" width="59" height="15" uuid="c22ed188-7e53-4f31-a065-ccd86bec4919"/>
+					<textFieldExpression><![CDATA[$F{mascotas_Color}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="205" y="0" width="61" height="15" uuid="91a51a65-a420-493f-a738-9bbac7d7d393"/>
+					<textFieldExpression><![CDATA[$F{tipo_mascotas_Tipo_Mascota}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="266" y="0" width="75" height="15" uuid="807f876d-5c35-4fd3-8d31-ddab5b18f1ea"/>
+					<textFieldExpression><![CDATA[$F{raza_mascotas_Raza_Mascota}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="341" y="0" width="108" height="15" uuid="3c8e27e8-9a39-4cd7-9ffd-7d70d715170c"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{mascotas_Fecha_De_Nacimiento}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="449" y="0" width="72" height="15" uuid="2e8f1101-07c7-4cef-9a46-9272c9449d8e"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{mascotas_Esterilizado}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="521" y="0" width="85" height="15" uuid="fee9a5b0-9bd3-4c41-b974-218f3c4c1fb5"/>
+					<textFieldExpression><![CDATA[$F{usuarios_Nombres}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="606" y="0" width="98" height="15" uuid="7a76ee92-03c8-4dae-8d41-ac2f95180c96"/>
+					<textFieldExpression><![CDATA[$F{usuarios_Apellidos}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="0597989d-0de7-4909-ad6b-49ec7d56afb5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="97" y="1" width="26" height="16" uuid="7267228a-3435-42d9-bfef-c13077cb5b5b"/>
+				<textFieldExpression><![CDATA[$F{mascotas_Id_Mascota}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="1" width="33" height="15" uuid="627ffd1d-db9d-4f7a-ab79-2ad3a8ecd056"/>
+				<textFieldExpression><![CDATA[$F{mascotas_Edad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="42a19c0c-e3bc-4596-96f3-3179d927b8ee"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="96" y="0" width="267" height="20" uuid="60ccee7d-13ae-4914-b2e7-6d5305766fa8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[SENA - ADSI]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
