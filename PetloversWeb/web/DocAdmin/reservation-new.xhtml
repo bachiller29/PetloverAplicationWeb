@@ -57,21 +57,23 @@
                                                 <f:selectItems value="#{inventarioRequest.listaAdministradores}" var="idAdmin" itemValue="#{idAdmin.idAdmin}" itemLabel="#{idAdmin.idAdmin}"></f:selectItems>  
                                             </h:selectOneMenu>
                                         </div>
-                                    </div>
+                                    </div>   
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <h:outputText  value="Entrada Producto" class="bmd-label-floating">Referencia entrada producto</h:outputText >
-                                            <h:inputText id="Entrada" required="true" requiredMessage="Ingrese un valor valido" maxlength="10" value="#{inventarioRequest.objInventario.idEntradaProductos.cantidadEntrada}" class="form-control" ></h:inputText>
-
+                                            <h:outputText value="ID Administrador" class="bmd-label-floating">Producto</h:outputText >
+                                            <h:selectOneMenu id="producto" value="#{inventarioRequest.objInventario.idProducto.idProducto}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{inventarioRequest.listaProductos}" var="producto" itemValue="#{producto.idProducto}" itemLabel="#{producto.nombreProducto}"></f:selectItems>  
+                                            </h:selectOneMenu>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
+                                    </div>   
+<!--                                    <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <h:outputText value="Salida Producto" class="bmd-label-floating">Referencia salida producto</h:outputText >
-                                            <h:inputText id="Salida" required="true" requiredMessage="Ingrese un valor valido" maxlength="10" value="#{inventarioRequest.objInventario.idSalidaProductos.cantidadSalida}" class="form-control" ></h:inputText>
-
+                                            <h:outputText value="Nombre" class="bmd-label-floating">Producto</h:outputText>
+                                            <h:selectOneMenu id="Nombre" value="#{inventarioRequest.objInventario.idProducto}" required="true" requiredMessage="Seleccione un usuario" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{inventarioRequest.listaProductos}" var="itemProducto" itemValue="#{itemProducto}" itemLabel="#{itemProducto.idProducto} - #{itemProducto.nombreProducto}"></f:selectItems>  
+                                            </h:selectOneMenu>
                                         </div>
-                                    </div>                                                                                                                      
+                                    </div>-->
                                 </div>
                             </div>
                         </fieldset>

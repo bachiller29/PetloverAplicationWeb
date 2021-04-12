@@ -6,13 +6,12 @@
 package edu.petlovers.controller;
 
 import edu.petlovers.entity.Administradores;
-import edu.petlovers.entity.EntradaProductos;
 import edu.petlovers.entity.Inventario;
-import edu.petlovers.entity.SalidaProductos;
+import edu.petlovers.entity.Productos;
 import edu.petlovers.local.AdministradoresFacadeLocal;
-import edu.petlovers.local.EntradaProductosFacadeLocal;
 import edu.petlovers.local.InventarioFacadeLocal;
-import edu.petlovers.local.SalidaProductosFacadeLocal;
+import edu.petlovers.local.ProductosFacadeLocal;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -54,17 +53,13 @@ public class InventarioRequest implements Serializable {
     AdministradoresFacadeLocal administradoresFacadeLocal;
 
     @EJB
-    SalidaProductosFacadeLocal salidaProductosFacadeLocal;
-
-    @EJB
-    EntradaProductosFacadeLocal entradaProductosFacadeLocal;
+    ProductosFacadeLocal productosFacadeLocal;
 
     private Inventario objInventario = new Inventario();
     
     private ArrayList<Inventario> listaInventario = new ArrayList();
     private ArrayList<Administradores> listaAdministradores = new ArrayList<>();
-    private ArrayList<EntradaProductos> listaEntradaP = new ArrayList<>();
-    private ArrayList<SalidaProductos> listaSalidaP = new ArrayList<>();
+    private ArrayList<Productos> listaProductos = new ArrayList<>();
 
     private Integer idToUpdate;
     
@@ -77,12 +72,10 @@ public class InventarioRequest implements Serializable {
     @PostConstruct
     public void postInventario() {
         listaInventario.addAll(inventarioFacadeLocal.findAll());
-        listaAdministradores.addAll(administradoresFacadeLocal.findAll());
-        listaEntradaP.addAll(entradaProductosFacadeLocal.findAll());
-        listaSalidaP.addAll(salidaProductosFacadeLocal.findAll());
-        objInventario.setIdAdmin(new Administradores());
-        objInventario.setIdEntradaProductos(new EntradaProductos());
-        objInventario.setIdSalidaProductos(new SalidaProductos());
+        listaAdministradores.addAll(administradoresFacadeLocal.findAll());       
+        listaProductos.addAll(productosFacadeLocal.findAll());
+        objInventario.setIdAdmin(new Administradores());    
+        objInventario.setIdProducto(new Productos());
     }
 
     public void registrarInventario() {
@@ -90,12 +83,7 @@ public class InventarioRequest implements Serializable {
 
         try {
             objInventario.setIdAdmin(administradoresFacadeLocal.find(objInventario.getIdAdmin().getIdAdmin()));
-            objInventario.setIdEntradaProductos(entradaProductosFacadeLocal.find(objInventario.getIdEntradaProductos()));
-            objInventario.setIdSalidaProductos(salidaProductosFacadeLocal.find(objInventario.getIdSalidaProductos()));
-
-            objInventario.getIdEntradaProductos().setIdEntradaProductos(objInventario.getIdEntradaProductos().getIdEntradaProductos());
-            objInventario.getIdSalidaProductos().setIdSalidaProductos(objInventario.getIdSalidaProductos().getIdSalidaProductos());
-            
+objInventario.setIdProducto(productosFacadeLocal.find(objInventario.getIdProducto().getIdProducto()));
             inventarioFacadeLocal.create(objInventario);
             listaInventario.add(objInventario);
             mensajeSw = "swal('Inventario creado' , 'con exito' , 'success')";
@@ -222,22 +210,6 @@ public class InventarioRequest implements Serializable {
         this.listaAdministradores = listaAdministradores;
     }
 
-    public ArrayList<EntradaProductos> getListaEntradaP() {
-        return listaEntradaP;
-    }
-
-    public void setListaEntradaP(ArrayList<EntradaProductos> listaEntradaP) {
-        this.listaEntradaP = listaEntradaP;
-    }
-
-    public ArrayList<SalidaProductos> getListaSalidaP() {
-        return listaSalidaP;
-    }
-
-    public void setListaSalidaP(ArrayList<SalidaProductos> listaSalidaP) {
-        this.listaSalidaP = listaSalidaP;
-    }
-
     public int getIdInventario() {
         return idInventario;
     }
@@ -254,4 +226,13 @@ public class InventarioRequest implements Serializable {
         this.unicoInventario = unicoInventario;
     }
 
+    public ArrayList<Productos> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(ArrayList<Productos> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+
+    
 }

@@ -15,16 +15,14 @@
      inventario.`Id_Inventario` AS inventario_Id_Inventario,
      inventario.`Cantidad_Productos` AS inventario_Cantidad_Productos,
      inventario.`Id_Admin` AS inventario_Id_Admin,
-     inventario.`Id_Salida_Productos` AS inventario_Id_Salida_Productos,
-     inventario.`Id_Entrada_Productos` AS inventario_Id_Entrada_Productos
+     inventario.`Id_producto` AS inventario_Id_Producto
 FROM
      `inventario` inventario]]>
 	</queryString>
 	<field name="inventario_Id_Inventario" class="java.lang.Integer"/>
 	<field name="inventario_Cantidad_Productos" class="java.lang.Integer"/>
 	<field name="inventario_Id_Admin" class="java.lang.Integer"/>
-	<field name="inventario_Id_Salida_Productos" class="java.lang.Integer"/>
-	<field name="inventario_Id_Entrada_Productos" class="java.lang.Integer"/>
+	<field name="inventario_Id_Producto" class="java.lang.Integer"/>
 	<background>
 		<band height="822" splitType="Stretch">
 			<frame>
@@ -109,12 +107,7 @@ FROM
 				<staticText>
 					<reportElement style="Column header" x="285" y="0" width="79" height="15" uuid="df5aeb50-0415-4c48-8b8c-8b8aea6bb210"/>
 					<textElement textAlignment="Justified"/>
-					<text><![CDATA[N. salida producto]]></text>
-				</staticText>
-				<staticText>
-					<reportElement style="Column header" x="364" y="0" width="91" height="15" uuid="47ea4adb-dec8-4b9f-a5cd-952af8c621ea"/>
-					<textElement textAlignment="Justified"/>
-					<text><![CDATA[N. entrada producto]]></text>
+					<text><![CDATA[ID. producto]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -141,12 +134,7 @@ FROM
 				<textField>
 					<reportElement style="Detail" x="285" y="0" width="79" height="15" uuid="55f6ccd7-cee4-4c1c-b805-a56c522834ba"/>
 					<textElement textAlignment="Justified"/>
-					<textFieldExpression><![CDATA[$F{inventario_Id_Salida_Productos}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement style="Detail" x="364" y="0" width="91" height="15" uuid="cd33f34a-3e46-489d-9b39-bb4b63820162"/>
-					<textElement textAlignment="Justified"/>
-					<textFieldExpression><![CDATA[$F{inventario_Id_Entrada_Productos}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{inventario_Id_Producto}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<line>

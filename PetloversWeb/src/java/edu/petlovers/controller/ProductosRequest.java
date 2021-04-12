@@ -91,7 +91,7 @@ public class ProductosRequest implements Serializable {
         listaProductos.addAll(productosFacadeLocal.findAll());
         objProductos.setNitProveedor(new Proveedores());
         objProductos.setIdTipoProducto(new TipoProductos(1));
-        objProductos.setIdInventario(new Inventario(1));
+//        objProductos.setIdInventario(new Inventario(1));
         objProductos.setIdMarcaProducto(new MarcaProductos(1));
     }
 
@@ -101,12 +101,13 @@ public class ProductosRequest implements Serializable {
         try {
             objProductos.setNitProveedor(proveedoresFacadeLocal.find(objProductos.getNitProveedor().getNitProveedor()));
             objProductos.setIdTipoProducto(tipoProductosFacadeLocal.find(objProductos.getIdTipoProducto().getIdTipoProducto()));
-            objProductos.setIdInventario(inventarioFacadeLocal.find(1));
+//            objProductos.setIdInventario(inventarioFacadeLocal.find(1));
             objProductos.setIdMarcaProducto(marcaProductosFacadeLocal.find(1));
 
             productosFacadeLocal.create(objProductos);
             listaProductos.add(objProductos);
-            mensajeSw = "swal('Producto creado' , 'con exito' , 'success')";
+            //mensajeSw = "swal('Producto creado' , 'con exito' , 'success')";
+            mensajeSw = "swal('El producto' , 'no fue registrado' , 'error');";
         } catch (Exception e) {
             mensajeSw = "swal('El producto' , 'no fue registrado' , 'error');";
         }
@@ -238,11 +239,6 @@ public class ProductosRequest implements Serializable {
                             filasContador++;
                             break;
                         case 9:
-                            Inventario r = inventarioFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
-                            newP.setIdInventario(r);
-                            filasContador++;
-                            break;
-                        case 10:
                             MarcaProductos o = marcaProductosFacadeLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
                             newP.setIdMarcaProducto(o);
                             productosFacadeLocal.create(newP);

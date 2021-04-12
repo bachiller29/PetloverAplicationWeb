@@ -138,10 +138,15 @@ public class UsuariosRequest implements Serializable {
 
     public void correoMasivoDos() {
         try {
+            int total = listaUsuarios.size();
+            int counter = 1;
             for (Usuarios lUsuario : listaUsuarios) {
-                Email.send(lUsuario.getEmail(),
-                        lUsuario.getNombres() + " " + lUsuario.getApellidos(),
-                        lUsuario.getEmail(), lUsuario.getContrasena());
+                Email.sendDiscounts(lUsuario.getEmail(),
+                                lUsuario.getNombres() + " " + lUsuario.getApellidos(),
+                                lUsuario.getEmail(), lUsuario.getContrasena());
+                TimeUnit.SECONDS.sleep(3);
+                System.out.println("Send " + counter + " of " + total);
+                counter++;
             }
         } catch (Exception e) {
             e.getMessage();

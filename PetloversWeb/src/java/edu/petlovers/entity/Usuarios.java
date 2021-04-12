@@ -219,7 +219,7 @@ public class Usuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.petlovers.entity.Usuarios[ idUsuario=" + idUsuario + " ]";
+        return nombres +" "+ apellidos;
     }
     
 }

@@ -61,20 +61,12 @@
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <h:outputText  value="ID Entrada Producto" class="bmd-label-floating">Referencia entrada producto</h:outputText >
-                                            <h:selectOneMenu id="id_entrada_p" value="#{inventarioRequest.objInventario.idEntradaProductos.idEntradaProductos}" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItems value="#{inventarioRequest.listaEntradaP}" var="idEntrada" itemValue="#{idEntrada.idEntradaProductos}" itemLabel="#{idEntrada.idEntradaProductos} - #{idEntrada.fechaEntrada}"></f:selectItems>  
+                                            <h:outputText value="ID Administrador" class="bmd-label-floating">Producto</h:outputText >
+                                            <h:selectOneMenu id="producto" value="#{inventarioRequest.objInventario.idProducto.idProducto}" class="form-control" style="margin-top: 10px;">
+                                                <f:selectItems value="#{inventarioRequest.listaProductos}" var="producto" itemValue="#{producto.idProducto}" itemLabel="#{producto.nombreProducto}"></f:selectItems>  
                                             </h:selectOneMenu>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <h:outputText value="ID Salida Producto" class="bmd-label-floating">Referencia salida producto</h:outputText >
-                                            <h:selectOneMenu id="id_salida_p" value="#{inventarioRequest.objInventario.idSalidaProductos.idSalidaProductos}" class="form-control" style="margin-top: 10px;">
-                                                <f:selectItems value="#{inventarioRequest.listaSalidaP}" var="idSalida" itemValue="#{idSalida.idSalidaProductos}" itemLabel="#{idSalida.idSalidaProductos} - #{idSalida.fechaSalida}"></f:selectItems>  
-                                            </h:selectOneMenu>
-                                        </div>
-                                    </div>
+                                    </div>   
                                 </div>
                             </div>
                         </fieldset>

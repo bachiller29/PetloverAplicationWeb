@@ -42,6 +42,7 @@
                                 &nbsp; Informacion basica
                             </legend>
                             <h:inputText id="id_proveedor" value="#{clientesRequest.objClientes.idCliente}" style="display: none;" />
+                            <h:inputText id="id_usuario" value="#{clientesRequest.objClientes.idUsuario.idUsuario}" style="display: none;" />
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12 col-md-4">
@@ -58,27 +59,37 @@
                                             <h:message for="Nit" style="color: red;" />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label  value="Barrio" class="bmd-label-floating">Barrio</label>
                                             <h:inputText id="Barrio" value="#{clientesRequest.objClientes.barrio}" class="form-control"></h:inputText>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-6">
                                         <div class="col-12 col-md-4">
                                             <div class="form-group">
                                                 <h:outputText value="Telefono" class="bmd-label-floating">Telefono</h:outputText>
                                                 <h:inputText  id="Telefono" class="form-control" value="#{clientesRequest.objClientes.telefono}" requiredMessage="Ingrese un telefono"></h:inputText>
                                                 <h:message for="Nit" style="color: red;" />
                                             </div>
+
                                         </div>                                  
-<!--                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <h:outputText value="Email" class="bmd-label-floating"/>
-                                                <h:inputText id="Email" value="{clientesRequest.objClientes.}" class="form-control"></h:inputText>
-                                            </div>
-                                        </div>-->
+                                        <!--                                        <div class="col-12 col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <h:outputText value="Email" class="bmd-label-floating"/>
+                                                                                        <h:inputText id="Email" value="{clientesRequest.objClientes.}" class="form-control"></h:inputText>
+                                                                                    </div>
+                                                                                </div>-->
+
                                     </div>
+<!--                                    <div class="col-12 col-md-8">
+                                        <div class="form-group">
+                                            <h:outputText value="Nombre" class="bmd-label-floating">Nombre</h:outputText>
+                                            <h:inputText  disabled="true" class="form-control" value="{clientesRequest.objClientes.idUsuario.toString()}" ></h:inputText>
+                                            <h:inputText  disabled="true" class="form-control" value="{clientesRequest.usuario}" style="display:none;"></h:inputText>
+                                        </div>
+                                    </div>-->
+
                                 </div>
                             </div>
                         </fieldset>
@@ -86,9 +97,7 @@
                         <br />
                         <br />
                         <p class="text-center" style="margin-top: 40px;" />
-                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Actualizar" action="#{clientesRequest.actualizarCliente()}">
-                            <i class="far fa-save" />
-                            Guardar
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Actualizar" action="#{clientesRequest.actualizarCliente()}">                      
                         </h:commandButton>
                     </h:form>
                 </div>
@@ -97,23 +106,24 @@
         <!--  Sweet Alert -->
         <script type="text/javascript">//<![CDATA[	
             $("#btnSA_3").click(function () {
-                swal({
-                title: "Â¿EstÃ¡ seguro?",
-                        text: "Una vez actualice, no podrÃ¡ recuperar este archivo!",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                })
-                        .then((willDelete) = > {
-                        if (willDelete) {
-                            swal("El archivo ha sido actualizado!", {
-                                icon: "success",
-                            });
-                        } else {
-                            swal("OperaciÃ³n cancelada!");
-                        }
+            swal({
+            title: "Â¿EstÃ¡ seguro?",
+                    text: "Una vez actualice, no podrÃ¡ recuperar este archivo!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+            })
+                    .then((willDelete) = > {
+                    if (willDelete) {
+                    swal("El archivo ha sido actualizado!", {
+                    icon: "success",
                     });
-            });
-                    //]]></script>
+                    } else {
+                    swal("OperaciÃ³n cancelada!");
+                    }
+                    });
+            }
+            );
+            //]]></script>
     </h:body>
 </html>

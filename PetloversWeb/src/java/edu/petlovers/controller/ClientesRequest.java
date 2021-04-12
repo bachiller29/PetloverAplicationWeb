@@ -50,8 +50,12 @@ public class ClientesRequest implements Serializable {
 
     private Clientes objClientes = new Clientes();
     private ArrayList<Clientes> listaClientes = new ArrayList();
+    private ArrayList<Usuarios> listaUsuarios = new ArrayList();
     
     private int idCliente;
+    
+    private Usuarios usuario;
+    
     private ArrayList<Clientes> unicoClientes = new ArrayList();
     /**
      * Creates a new instance of ClientesRequest
@@ -62,6 +66,7 @@ public class ClientesRequest implements Serializable {
     @PostConstruct
     public void postCliente() {
         listaClientes.addAll(clientesFacadeLocal.findAll());
+        listaUsuarios.addAll(usuariosFacadeLocal.findAll());
         objClientes.setIdUsuario(new Usuarios());
     }
 
@@ -101,12 +106,14 @@ public class ClientesRequest implements Serializable {
     public void cargarCliente(Clientes objCargar){
         this.objClientes = objCargar;
          this.idCliente = objClientes.getIdCliente();
+//         this.usuario = objClientes.getIdUsuario();
     }
 
     public void actualizarCliente() {
         String mensajeSw = "";
 
         try {
+//            objClientes.setIdUsuario(this.usuario);
             clientesFacadeLocal.edit(objClientes);
             listaClientes.clear();
             listaClientes.addAll(clientesFacadeLocal.findAll());
@@ -208,5 +215,23 @@ public class ClientesRequest implements Serializable {
     public void setUnicoClientes(ArrayList<Clientes> unicoClientes) {
         this.unicoClientes = unicoClientes;
     }
+
+    public ArrayList<Usuarios> getListaUsuarios() {
+        return listaUsuarios;
+    }
+
+    public void setListaUsuarios(ArrayList<Usuarios> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
+    }
+
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
+    }
+    
+    
 
 }

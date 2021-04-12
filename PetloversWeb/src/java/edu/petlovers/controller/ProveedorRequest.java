@@ -64,9 +64,14 @@ public class ProveedorRequest implements Serializable {
         String mensajeSw = "";
 
         try {
-            proveedorFacadeLocal.create(objProveedores);
-            listaProveedores.add(objProveedores);
-            mensajeSw = "swal('Proveedor creado' , 'con exito' , 'success')";
+            if (!validateNit(objProveedores.getNitProveedor())) {
+                proveedorFacadeLocal.create(objProveedores);
+                listaProveedores.add(objProveedores);
+                mensajeSw = "swal('Proveedor creado' , 'con exito' , 'success')";
+            } else {
+                 mensajeSw = "swal('El proveedor' , 'No fue creado por que el nit ya existe' , 'warning')";   
+            }
+
         } catch (Exception e) {
             mensajeSw = "swal('El proveedor' , 'no fue registrado' , 'error');";
         }
@@ -148,7 +153,7 @@ public class ProveedorRequest implements Serializable {
             Map parametro = new HashMap();
             parametro.put("RutaLogo", context.getRealPath("/assets/img/logo/fondo1.jpg"));
             parametro.put("UsuarioReporte", nombreUsuario);
-            parametro.put("RutaImagenFondo", context.getRealPath("/assets/img/logo/logoPetlovers2.png"));       
+            parametro.put("RutaImagenFondo", context.getRealPath("/assets/img/logo/logoPetlovers2.png"));
             Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/petlovers", "petloversuser", "1234");
             System.out.println("Catalogo : " + conec.getCatalog());
 
@@ -204,6 +209,15 @@ public class ProveedorRequest implements Serializable {
 
     public void setUnicoProveedor(ArrayList<Proveedores> unicoProveedor) {
         this.unicoProveedor = unicoProveedor;
+    }
+
+    private boolean validateNit(Integer nitProveedor) {
+        Proveedores prov = proveedorFacadeLocal.buscarProveedor(nitProveedor);
+        if (prov.getNitProveedor() == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
